@@ -1,13 +1,13 @@
 import React from 'react';
 
 function App() {
-  let func = function () {
-    let foo = 'text';
+  const func = function () {
+    const foo = 'text';
     return foo;
   };
 
-  var number = 10;
-  var number2 = 20;
+  const number = 10;
+  const number2 = 20;
 
   if (number == number2) {
     console.log('Hello World');
