@@ -1,6 +1,8 @@
 import React from 'react';
 
 function App() {
+  const testName = '황경수';
+
   const func = function () {
     const foo = 'text';
     return foo;
