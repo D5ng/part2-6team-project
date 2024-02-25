@@ -1,7 +1,8 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "node": true
   },
   "extends": ["airbnb"],
   "parserOptions": {
@@ -10,6 +11,16 @@
   },
   "rules": {
     "linebreak-style": 0,
+    "import/no-unresolved": [2, { "devDependencies": true }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {},
+      "node": {
+        "paths": ["src"],
+        "extensions": [".ts", ".tsx", ".js", ".jsx"]
+      }
+    }
   }
 }
