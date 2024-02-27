@@ -1,12 +1,11 @@
 import styled from 'styled-components';
 
 export const Input = styled.div`
-  margin: 30px;
   width: 320px;
 `;
 
 export const InputElement = styled.input`
-  border: 1px solid ${(props) => (props.error ? 'red' : 'var(--gray300)')};
+  border: 1px solid ${({ $error }) => ($error ? 'red' : 'var(--gray300)')};
   width: 320px;
   height: 50px;
   border-radius: 8px;
