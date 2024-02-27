@@ -12,7 +12,8 @@
   "rules": {
     "linebreak-style": 0,
     "object-curly-newline": 0,
-    "import/no-unresolved": [2, { "devDependencies": true }],
+    "import/no-unresolved": "off",
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   },
   "settings": {
