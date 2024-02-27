@@ -16,10 +16,7 @@ function Home() {
             <S.Description>로그인 없이 자유롭게 만들어요.</S.Description>
           </div>
           <figure>
-            <S.FirstSectionImage
-              src="/images/home/home-manual-1.png"
-              alt="롤링 페이퍼 사용 이미지"
-            />
+            <S.FirstSectionImage src="/images/home/home-manual-1.svg" alt="롤링 페이퍼 사용 이미지" />
             <figcaption className="ir_so">롤링페이퍼</figcaption>
           </figure>
         </S.Wrapper>
@@ -28,10 +25,7 @@ function Home() {
       <S.Section>
         <S.EmojiWrapper>
           <figure>
-            <S.SecondSectionImage
-              src="/images/home/home-manual-2.png"
-              alt="롤링페이퍼 사용 이미지"
-            />
+            <S.SecondSectionImage src="/images/home/home-manual-2.png" alt="롤링페이퍼 사용 이미지" />
             <figcaption className="ir_so">롤링페이퍼</figcaption>
           </figure>
           <div>
@@ -41,9 +35,7 @@ function Home() {
               <br />
               표현해보세요
             </S.Title>
-            <S.Description>
-              롤링 페이퍼에 이모지를 추가할 수 있어요.
-            </S.Description>
+            <S.Description>롤링 페이퍼에 이모지를 추가할 수 있어요.</S.Description>
           </div>
         </S.EmojiWrapper>
       </S.Section>

@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-const Colors = css`
+const colors = css`
   :root {
     --primary100: #f8f0ff;
     --primary200: #ecd9ff;
@@ -47,4 +47,4 @@ const Colors = css`
   }
 `;
 
-export default Colors;
+export default colors;

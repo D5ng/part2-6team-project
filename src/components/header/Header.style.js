@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { device } from 'styles/breakpoints';
 
 export const Header = styled.header`
   border-bottom: 1px solid #ededed;
@@ -51,7 +52,7 @@ export const Button = styled(Link)`
   border-radius: 6px;
   border: 1px solid var(--gray300);
 
-  @media (max-width: 767px) {
+  @media ${device.mobile} {
     width: 142px;
     font-size: 14px;
   }

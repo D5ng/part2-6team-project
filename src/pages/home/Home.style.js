@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { device } from 'styles/breakpoints';
 
 export const Section = styled.section`
   margin-top: 60px;
@@ -8,7 +9,7 @@ export const Section = styled.section`
     margin-top: 30px;
   }
 
-  @media (max-width: 1280px) {
+  @media ${device.tablet} {
     padding: 0 24px;
     margin-top: 50px;
   }
@@ -24,12 +25,12 @@ export const Wrapper = styled.div`
   background-color: var(--surface);
   border-radius: 16px;
 
-  @media (max-width: 1280px) {
+  @media ${device.tablet} {
     display: block;
     padding: 40px 40px 60px 40px;
   }
 
-  @media (max-width: 768px) {
+  @media ${device.mobile} {
     padding: 24px 24px 50px;
   }
 `;
@@ -43,7 +44,7 @@ export const Point = styled.span`
   background-color: var(--primary600);
   border-radius: 50px;
 
-  @media (max-width: 768px) {
+  @media ${device.mobile} {
     padding: 4px 12px;
   }
 `;
@@ -55,13 +56,13 @@ export const Title = styled.h2`
   color: var(--gray900);
   font-weight: 700;
 
-  @media (max-width: 1280px) {
+  @media ${device.tablet} {
     br {
       display: none;
     }
   }
 
-  @media (max-width: 767px) {
+  @media ${device.mobile} {
     font-size: 18px;
     line-height: 28px;
     margin: 16px 0 4px;
@@ -73,7 +74,7 @@ export const Description = styled.p`
   font-weight: 400;
   color: var(--gray500);
 
-  @media (max-width: 767px) {
+  @media ${device.mobile} {
     font-size: 15px;
     line-height: 22px;
   }
@@ -82,12 +83,12 @@ export const Description = styled.p`
 export const FirstSectionImage = styled.img`
   width: 640px;
 
-  @media (max-width: 1280px) {
+  @media ${device.tablet} {
     width: 100%;
     margin-top: 40px;
   }
 
-  @media (max-width: 767px) {
+  @media ${device.mobile} {
     margin-top: 50px;
     width: calc(100% + 48px);
     transform: translateX(-24px);
@@ -97,7 +98,7 @@ export const FirstSectionImage = styled.img`
 export const SecondSectionImage = styled.img`
   width: 470px;
 
-  @media (max-width: 1280px) {
+  @media ${device.tablet} {
     width: 100%;
   }
 `;
@@ -115,7 +116,7 @@ export const StyleButton = styled(Link)`
   margin-left: auto;
   margin-right: auto;
 
-  @media (max-width: 1280px) {
+  @media ${device.tablet} {
     width: calc(100% - 48px);
     margin-top: 72px;
   }
@@ -125,7 +126,7 @@ export const EmojiWrapper = styled(Wrapper)`
   justify-content: center;
   gap: 125px;
 
-  @media (max-width: 1280px) {
+  @media ${device.tablet} {
     display: flex;
     flex-direction: column-reverse;
     gap: 0;
@@ -135,7 +136,7 @@ export const EmojiWrapper = styled(Wrapper)`
     }
   }
 
-  @media (max-width: 767px) {
+  @media ${device.mobile} {
     ${Title} br {
       display: block;
     }
