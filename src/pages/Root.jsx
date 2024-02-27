@@ -1,13 +1,13 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import GlobalStyle from 'styles/Global.style';
-import Test from '@Test/Test';
+import Header from '@Components/header/Header';
 
 function Root() {
   return (
     <>
-      <Test />
       <GlobalStyle />
+      <Header />
       <main>
         <Outlet />
       </main>
