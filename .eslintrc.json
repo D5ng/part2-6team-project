@@ -10,6 +10,7 @@
     "sourceType": "module"
   },
   "rules": {
+    "react/prop-types": "off",
     "linebreak-style": 0,
     "object-curly-newline": 0,
     "import/no-unresolved": "off",
