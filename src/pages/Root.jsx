@@ -1,6 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import GlobalStyle from 'styles/Global.style';
+import GlobalStyle from 'styles/global';
 import Header from '@Components/header/Header';
 
 function Root() {
