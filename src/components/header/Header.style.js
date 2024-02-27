@@ -50,4 +50,9 @@ export const Button = styled(Link)`
   height: 40px;
   border-radius: 6px;
   border: 1px solid var(--gray300);
+
+  @media (max-width: 767px) {
+    width: 142px;
+    font-size: 14px;
+  }
 `;
