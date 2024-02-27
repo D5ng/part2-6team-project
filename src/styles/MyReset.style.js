@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const MyReset = css`
+const MyReset = css`
   * {
     margin: 0;
     padding: 0;
@@ -63,3 +63,5 @@ export const MyReset = css`
     text-indent: -9999px;
   }
 `;
+
+export default MyReset;

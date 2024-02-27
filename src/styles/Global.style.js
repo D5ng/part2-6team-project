@@ -1,9 +1,12 @@
 import { createGlobalStyle } from 'styled-components';
-import { MyReset } from './MyReset.style';
-import { Reset } from 'styled-reset';
+import reset from 'styled-reset';
+import MyReset from './MyReset.style';
+import Colors from './Colors.style';
 
-export const GlobalStyle = createGlobalStyle`
-	${Reset}
-	${MyReset}
-	${Colors}
+const GlobalStyle = createGlobalStyle`
+${reset}
+${MyReset}
+${Colors}
 `;
+
+export default GlobalStyle;
