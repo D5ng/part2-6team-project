@@ -14,6 +14,14 @@ export const HeaderWrapper = styled.div`
   align-items: center;
   margin-left: auto;
   margin-right: auto;
+
+  @media (max-width: 1280px) {
+    padding: 0 24px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 0 20px;
+  }
 `;
 
 export const Image = styled.img`
@@ -42,4 +50,9 @@ export const Button = styled(Link)`
   height: 40px;
   border-radius: 6px;
   border: 1px solid var(--gray300);
+
+  @media (max-width: 767px) {
+    width: 142px;
+    font-size: 14px;
+  }
 `;
