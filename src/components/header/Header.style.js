@@ -14,6 +14,14 @@ export const HeaderWrapper = styled.div`
   align-items: center;
   margin-left: auto;
   margin-right: auto;
+
+  @media (max-width: 1280px) {
+    padding: 0 24px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 0 20px;
+  }
 `;
 
 export const Image = styled.img`
