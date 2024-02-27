@@ -1,13 +1,13 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Root from './pages/Root';
+import * as Page from 'pages';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Root />}>
-          <Route index element={<span>Hello</span>} />
+        <Route path="/" element={<Page.Root />}>
+          <Route index element={<Page.Home />} />
           <Route path="*" element={<p>Page Not Found</p>} />
         </Route>
       </Routes>
