@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from '@Components/AddButton.style';
+import * as S from '@Components/ui/AddButton.style';
 
 function AddButton({ disabled }) {
   return (

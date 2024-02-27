@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from '@Components/Badge.imogi.style';
+import * as S from '@Components/ui/Badge.imogi.style';
 
 const badge = [
   {

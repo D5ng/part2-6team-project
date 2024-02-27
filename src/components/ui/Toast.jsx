@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from '@Components/Toast.style';
+import * as S from '@Components/ui/Toast.style';
 
 function Toast() {
   return (
