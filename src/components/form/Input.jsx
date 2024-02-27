@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import * as S from '@Components/Input.style';
+import * as S from '@Components/form/Input.style';
 
 function Input({ disabled, error }) {
   const [inputValue, setInputValue] = useState('');

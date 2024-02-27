@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from '@Components/Modal.style';
+import * as S from '@Components/modal/Modal.style';
 
 function Modal() {
   return (

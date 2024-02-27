@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from '@Components/Badge.relationship.style';
+import * as S from '@Components/ui/Badge.relationship.style';
 
 const badge = [
   {
@@ -28,11 +28,7 @@ function BadgeRelationship() {
   return (
     <S.BadgeContainer>
       {badge.map((item) => (
-        <S.BadgeItem
-          key={item.relationship}
-          bgColor={item.bgColor}
-          textColor={item.textColor}
-        >
+        <S.BadgeItem key={item.relationship} bgColor={item.bgColor} textColor={item.textColor}>
           {item.relationship}
         </S.BadgeItem>
       ))}

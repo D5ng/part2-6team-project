@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import * as S from '@Components/Dropdown.style';
+import * as S from '@Components/form/Dropdown.style';
 
 const OPTION_LISTS = [
   {
