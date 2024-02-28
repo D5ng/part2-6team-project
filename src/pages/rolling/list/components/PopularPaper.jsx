@@ -4,6 +4,18 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import * as S from '@List/components/Paper.style';
 
+const breakPoints = {
+  1280: {
+    slidesPerView: 4,
+  },
+  768: {
+    slidesPerView: 'auto',
+  },
+  360: {
+    spaceBetween: 12,
+  },
+};
+
 function PopularPaper() {
   // eslint-disable-next-line no-unused-vars
   const [_, setInit] = useState(false);
@@ -18,6 +30,7 @@ function PopularPaper() {
           prevEl: navigationPrevRef.current,
           nextEl: navigationNextRef.current,
         }}
+        breakpoints={breakPoints}
         modules={[Navigation]}
         spaceBetween={20}
         slidesPerView={4}

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from 'styles/breakpoints';
 
 export const Section = styled.section`
   margin-top: 50px;
@@ -9,6 +10,9 @@ export const Wrapper = styled.div`
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+
+  @media ${device.tablet} {
+  }
 `;
 
 export const Title = styled.h2`

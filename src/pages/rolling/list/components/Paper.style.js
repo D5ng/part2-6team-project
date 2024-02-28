@@ -2,20 +2,22 @@ import styled from 'styled-components';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 export const SwiperWrapper = styled.div`
-  width: 1200px;
+  width: 100%;
+  max-width: 1200px;
   margin: 16px auto 0 auto;
   position: relative;
 `;
 
 export const StyledSwiper = styled(Swiper)`
+  width: 100%;
+  max-width: 1160px;
   position: relative;
   display: flex;
   justify-content: center;
-  width: 1160px;
 `;
 
 export const StyledSlide = styled(SwiperSlide)`
-  width: 275px !important;
+  width: 275px;
   height: 260px;
   border-radius: 16px;
   background-color: var(--gray300);
