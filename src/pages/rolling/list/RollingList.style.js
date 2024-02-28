@@ -10,17 +10,22 @@ export const Wrapper = styled.div`
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-
-  @media ${device.tablet} {
-  }
 `;
 
 export const Title = styled.h2`
   font-size: 24px;
   font-weight: 700;
+
+  @media ${device.tablet} {
+    margin-left: 24px;
+  }
 `;
 
 export const LinkArea = styled.div`
   text-align: center;
   margin-top: 64px;
+
+  @media ${device.tablet} {
+    padding: 0 24px;
+  }
 `;

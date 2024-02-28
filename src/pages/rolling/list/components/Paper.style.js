@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from 'styles/breakpoints';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 export const SwiperWrapper = styled.div`
@@ -24,6 +25,10 @@ export const StyledSlide = styled(SwiperSlide)`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media ${device.tablet} {
+    margin-left: 20px;
+  }
 `;
 
 const Button = styled.button`
@@ -47,6 +52,10 @@ const Button = styled.button`
 
   &.swiper-button-disabled {
     opacity: 0.5;
+  }
+
+  @media ${device.tablet} {
+    display: none;
   }
 `;
 
