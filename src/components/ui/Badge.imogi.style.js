@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const BadgeContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 8px;
 `;
 export const BadgeBox = styled.div`
