@@ -21,8 +21,6 @@ function PopularPaper() {
         }}
         breakpoints={breakPoints}
         modules={[Navigation]}
-        spaceBetween={20}
-        slidesPerView={4}
         className="mySwiper"
       >
         <S.StyledSlide>Slide 1</S.StyledSlide>

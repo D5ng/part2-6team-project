@@ -1,6 +1,7 @@
 const breakPoints = {
   1280: {
     slidesPerView: 4,
+    spaceBetween: 20,
   },
   768: {
     slidesPerView: 'auto',
