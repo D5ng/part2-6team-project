@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
 import * as S from '@Components/form/Input.style';
 
-function Input({ disabled, error }) {
+function Input({ children, disabled, errorMessage }) {
   const [inputValue, setInputValue] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
+    setIsTyping(true);
   };
 
   return (
     <S.Input>
       <S.InputElement
-        placeholder="Placeholder"
+        placeholder={children}
         disabled={disabled}
-        $error={error}
+        $error={!inputValue && isTyping}
         value={inputValue}
         onChange={handleInputChange}
       />
-      {error && !inputValue && <S.Error>Error Message</S.Error>}
+      {!inputValue && isTyping && <S.Error>{errorMessage}</S.Error>}
     </S.Input>
   );
 }
