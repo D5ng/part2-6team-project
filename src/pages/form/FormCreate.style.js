@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from 'styles/breakpoints';
 
 export const FormCreate = styled.div`
   display: flex;
@@ -8,7 +9,10 @@ export const FormCreate = styled.div`
 
 export const Wrapper = styled.div`
   margin-top: 50px;
-  width: 720px;
+  @media ${device.mobile} {
+    padding: 0 20px;
+    width: 100%;
+  }
 `;
 
 export const Title = styled.h2`

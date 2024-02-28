@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from 'styles/breakpoints';
 
 export const ToggleButton = styled.div`
   display: inline-block;
@@ -14,4 +15,8 @@ export const Button = styled.button`
   height: 40px;
   border-radius: 6px;
   font-size: 16px;
+
+  @media ${device.mobile} {
+    width: 118px;
+  }
 `;

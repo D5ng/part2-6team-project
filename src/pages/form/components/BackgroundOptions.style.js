@@ -1,10 +1,16 @@
 import styled from 'styled-components';
+import { device } from 'styles/breakpoints';
 
 export const BackgroundOptions = styled.ul`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  gap: 16px;
   padding: 45px 0 70px;
+  @media ${device.mobile} {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 12px;
+    padding: 28px 0 80px;
+  }
 `;
 
 export const OptionList = styled.li`
@@ -21,6 +27,11 @@ export const OptionList = styled.li`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  @media ${device.mobile} {
+    width: 100%;
+    height: 42.7777vw;
+  }
 `;
 
 export const CheckIcon = styled.img`

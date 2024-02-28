@@ -40,6 +40,18 @@ export const PrimaryCreateBtn = styled.button`
   &:disabled {
     background: var(--gray300);
   }
+  @media ${device.tablet} {
+    position: fixed;
+    bottom: 24px;
+    left: 20px;
+    width: calc(100% - 40px);
+  }
+  @media ${device.mobile} {
+    position: fixed;
+    bottom: 24px;
+    left: 20px;
+    width: calc(100% - 40px);
+  }
 `;
 
 export const PrimaryCardModalBtn = styled.button`
