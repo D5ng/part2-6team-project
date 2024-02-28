@@ -2,6 +2,7 @@
 import React from 'react';
 import * as S from 'pages/form/FormCreate.style';
 import Input from '@Components/form/Input';
+import PrimaryCreateBtn from '@Components/ui/PrimaryCreateBtn';
 import ToggleButton from './components/ToggleButton';
 import BackgroundOptions from './components/BackgroundOptions';
 import { FormProvider } from './context/FormContext';
@@ -18,10 +19,8 @@ function FormCreate() {
           <S.Description>컬러를 선택하거나, 이미지를 선택할 수 있습니다.</S.Description>
 
           <ToggleButton />
-
           <BackgroundOptions />
-
-          {/* <button type="button">생성하기</button> */}
+          <PrimaryCreateBtn>생성하기</PrimaryCreateBtn>
         </S.Wrapper>
       </S.FormCreate>
     </FormProvider>
