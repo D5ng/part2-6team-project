@@ -3,6 +3,7 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import * as S from '@List/components/Paper.style';
+import breakPoints from '@List/utils/swiper.breakpoints';
 
 function PopularPaper() {
   // eslint-disable-next-line no-unused-vars
@@ -18,9 +19,8 @@ function PopularPaper() {
           prevEl: navigationPrevRef.current,
           nextEl: navigationNextRef.current,
         }}
+        breakpoints={breakPoints}
         modules={[Navigation]}
-        spaceBetween={20}
-        slidesPerView={4}
         className="mySwiper"
       >
         <S.StyledSlide>Slide 1</S.StyledSlide>
