@@ -14,11 +14,10 @@ const myReset = css`
   }
 
   body {
-    color: var(--black);
+    color: var(--gray900);
     font-weight: 400;
     min-height: 100vh;
     position: relative;
-    padding-bottom: 220px;
   }
 
   ol,
