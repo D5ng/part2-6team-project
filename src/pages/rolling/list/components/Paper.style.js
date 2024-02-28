@@ -42,16 +42,16 @@ const Button = styled.button`
     width: 16px;
     height: 16px;
   }
+
+  &.swiper-button-disabled {
+    opacity: 0.5;
+  }
 `;
 
 export const PrevButton = styled(Button)`
   left: 0;
   img {
     transform: scale(-1);
-  }
-
-  &.swiper-button-disabled {
-    opacity: 0.5;
   }
 `;
 
