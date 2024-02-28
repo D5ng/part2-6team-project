@@ -25,7 +25,7 @@ export const ShareBtn = styled.button`
   }
 `;
 
-export const ShareIconImg = styled.img`
+export const ButtonIconImg = styled.img`
   width: 24px;
   @media ${device.mobile} {
     width: 20px;
@@ -52,5 +52,24 @@ export const ShareOption = styled.button`
   font-size: 16px;
   &:hover {
     background: var(--gray100);
+  }
+`;
+
+export const EmojiAddBtn = styled.button`
+  ${Outlined}
+  padding : 6px 16px;
+  gap: 4px;
+  @media ${device.mobile} {
+    padding: 6px 8px;
+  }
+`;
+
+export const AddText = styled.span`
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 150%;
+  color: var(--gray900);
+  @media ${device.mobile} {
+    display: none;
   }
 `;

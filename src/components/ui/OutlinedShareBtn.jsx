@@ -5,7 +5,7 @@ function OutlinedShareBtn({ kakaoApi, cloneURL }) {
   const [hidden, setHidden] = useState(true);
   return (
     <S.ShareBtn onClick={() => setHidden(!hidden)}>
-      <S.ShareIconImg src="/images/icons/shareIcon.svg" />
+      <S.ButtonIconImg src="/images/icons/shareIcon.svg" alt="공유버튼 아이콘" />
       <S.Wrap hidden={hidden}>
         <S.ShareOption onClick={kakaoApi}>카카오톡 공유</S.ShareOption>
         <S.ShareOption onClick={cloneURL}>URL 공유</S.ShareOption>
