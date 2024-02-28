@@ -7,6 +7,10 @@ export const SwiperWrapper = styled.div`
   max-width: 1200px;
   margin: 16px auto 0 auto;
   position: relative;
+
+  @media ${device.mobile} {
+    margin: 12px auto 0 auto;
+  }
 `;
 
 export const StyledSwiper = styled(Swiper)`
@@ -28,6 +32,11 @@ export const StyledSlide = styled(SwiperSlide)`
 
   @media ${device.tablet} {
     margin-left: 20px;
+  }
+
+  @media ${device.mobile} {
+    width: 208px;
+    margin-left: 12px;
   }
 `;
 
