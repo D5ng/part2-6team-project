@@ -8,6 +8,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Page.Root />}>
           <Route index element={<Page.Home />} />
+          <Route path="list" element={<Page.RollingList />} />
           <Route path="*" element={<p>Page Not Found</p>} />
         </Route>
       </Routes>
