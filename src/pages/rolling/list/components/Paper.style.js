@@ -1,27 +1,43 @@
 import styled from 'styled-components';
+import { device } from 'styles/breakpoints';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 export const SwiperWrapper = styled.div`
-  width: 1200px;
+  width: 100%;
+  max-width: 1200px;
   margin: 16px auto 0 auto;
   position: relative;
+
+  @media ${device.mobile} {
+    margin: 12px auto 0 auto;
+  }
 `;
 
 export const StyledSwiper = styled(Swiper)`
+  width: 100%;
+  max-width: 1160px;
   position: relative;
   display: flex;
   justify-content: center;
-  width: 1160px;
 `;
 
 export const StyledSlide = styled(SwiperSlide)`
-  width: 275px !important;
+  width: 275px;
   height: 260px;
   border-radius: 16px;
   background-color: var(--gray300);
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media ${device.tablet} {
+    margin-left: 20px;
+  }
+
+  @media ${device.mobile} {
+    width: 208px;
+    margin-left: 12px;
+  }
 `;
 
 const Button = styled.button`
@@ -42,16 +58,20 @@ const Button = styled.button`
     width: 16px;
     height: 16px;
   }
+
+  &.swiper-button-disabled {
+    opacity: 0.5;
+  }
+
+  @media ${device.tablet} {
+    display: none;
+  }
 `;
 
 export const PrevButton = styled(Button)`
   left: 0;
   img {
     transform: scale(-1);
-  }
-
-  &.swiper-button-disabled {
-    opacity: 0.5;
   }
 `;
 
