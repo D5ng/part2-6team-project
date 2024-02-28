@@ -23,6 +23,16 @@ export const ProfileImg = styled.img`
   height: 56px;
   border-radius: 100px;
 `;
+export const ProfileTitle = styled.div`
+  display: flex;
+  gap: 6px;
+`;
+export const ProfileTitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 6px;
+`;
 export const ProfileText = styled.h1`
   font-size: 20px;
   font-weight: 400;
@@ -32,7 +42,6 @@ export const ProfileName = styled.span`
   font-size: 20px;
   font-weight: 700;
   line-height: 24px;
-  margin-left: 6px;
 `;
 export const CreatAt = styled.span`
   color: var(--gray400);
