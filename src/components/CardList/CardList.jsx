@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React from 'react';
 import Card from '@CardList/Card';
 import PROFILE from '@CardList/constant';

@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 import { useState } from 'react';
 
 function useAsync(asyncFunction) {

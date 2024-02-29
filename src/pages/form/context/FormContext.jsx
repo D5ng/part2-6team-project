@@ -42,7 +42,7 @@ export function FormProvider({ children }) {
       backgroundImages,
       randomBackgroundImages,
     }),
-    // eslint-disable-next-line max-len
+
     [selectedBtn, setSelectedBtn, selectedBackground, setSelectedBackground, backgroundImages, randomBackgroundImages],
   );
 

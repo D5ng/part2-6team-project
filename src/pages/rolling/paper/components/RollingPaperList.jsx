@@ -1,6 +1,3 @@
-/* eslint-disable operator-linebreak */
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
 import * as S from '@Paper/components/RollingPaperList.style';
 import PlusIcon from '@Components/ui/PlusIcon';

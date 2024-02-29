@@ -6,7 +6,6 @@ import * as S from '@List/components/Paper.style';
 import breakPoints from '@List/utils/swiper.breakpoints';
 
 function PopularPaper() {
-  // eslint-disable-next-line no-unused-vars
   const [_, setInit] = useState(false);
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);

@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as S from 'pages/form/components/FormSubmitter.style';
