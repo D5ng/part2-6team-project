@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import * as S from 'pages/form/components/FormSubmitter.style';
 import Input from '@Components/form/Input';
 import PrimaryCreateBtn from '@Components/ui/PrimaryCreateBtn';
+import Loading from '@Components/ui/Loading';
 import ToggleButton from './ToggleButton';
 import BackgroundOptions from './BackgroundOptions';
 import { useFormContext } from '../context/FormContext';
@@ -17,6 +18,8 @@ function FormSubmitter() {
 
   const handleCreatePaper = async (e) => {
     e.preventDefault();
+
+    if (isSubmitting) return;
 
     const newPaperData = { name, backgroundColor: selectedBackground };
 
@@ -43,8 +46,8 @@ function FormSubmitter() {
       <ToggleButton />
       <BackgroundOptions />
 
-      <PrimaryCreateBtn onClick={handleCreatePaper} disabled={isSubmitting}>
-        {isSubmitting ? 'Loading ...' : '생성하기'}
+      <PrimaryCreateBtn onClick={handleCreatePaper} disabled={name === ''}>
+        {isSubmitting ? <Loading /> : '생성하기'}
       </PrimaryCreateBtn>
     </S.Wrapper>
   );

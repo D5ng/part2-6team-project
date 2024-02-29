@@ -23,7 +23,7 @@ function useHttp() {
       } else if (error instanceof Error) {
         dispatch({ type: Reducer.httpActionType.ERROR, message: error.message });
       } else {
-        dispatch({ type: Reducer.httpActionType.ERROR, message: '알 수 없는 이유로 요청에 실패했습니다.' });
+        dispatch({ type: Reducer.httpActionType.ERROR, message: error.message });
       }
     }
   }, []);
