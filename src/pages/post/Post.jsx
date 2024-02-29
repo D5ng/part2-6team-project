@@ -38,6 +38,8 @@ const card = [
   },
 ];
 function Post() {
+  const console = 'zz';
+  console.log(console);
   return (
     <>
       <S.Nav>
