@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from '@Card/Card.style';
+import * as S from '@Components/Card/Card.style';
 
 function Card({ name, profileImg, label, text, date }) {
   return (
