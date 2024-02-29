@@ -17,11 +17,6 @@ export const InputElement = styled.input`
   &:focus {
     border: 2px solid var(--gray500);
   }
-  &:disabled {
-    background-color: #f2f2f2;
-    color: #999;
-    border-color: #ccc;
-  }
 `;
 
 export const Error = styled.p`
