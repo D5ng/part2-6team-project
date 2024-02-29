@@ -4,6 +4,7 @@ import ReactQuill from 'react-quill';
 import styled from 'styled-components';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'react-quill/dist/quill.snow.css';
+import './TextEditor.css';
 
 const Box = styled.div``;
 
@@ -21,7 +22,7 @@ function TextEditor() {
   return (
     <Box>
       <ReactQuill
-        style={{ height: '200px' }}
+        style={{ height: '250px' }}
         theme="snow"
         modules={modules}
         formats={formats}
