@@ -1,6 +1,5 @@
-const BASE_URL = 'https://rolling-api.vercel.app';
-const UNSPLASH_URL = 'https://api.unsplash.com/photos/random/?client_id=4VOX7zuvmoNb-YCxoDwmF6pxa2RadzXZQ7vwpO68fRM';
-// const TEAM = '4-6';
+const BASE_URL = process.env.REACT_APP_API_KEY;
+const UNSPLASH_URL = process.env.REACT_APP_UNSPLASH_API;
 
 async function fetchData(base, endpoint) {
   const url = `${base}${endpoint}`;
@@ -21,4 +20,18 @@ export function getBackgroundImages() {
 
 export function getProfileImages() {
   return fetchData(BASE_URL, '/profile-images/');
+}
+
+export async function createPaper(paperData) {
+  const response = await fetch(`${BASE_URL}/4-6/recipients/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(paperData),
+  });
+  if (!response.ok) {
+    throw new Error('Failed to create papaer');
+  }
+  return response.json();
 }
