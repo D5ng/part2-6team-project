@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
-export const Input = styled.div`
-  width: 320px;
-`;
+export const Input = styled.div``;
 
 export const InputElement = styled.input`
   border: 1px solid ${({ $error }) => ($error ? 'red' : 'var(--gray300)')};
-  width: 320px;
+  width: 100%;
   height: 50px;
   border-radius: 8px;
   display: flex;

@@ -1,5 +1,6 @@
 import React from 'react';
 import * as S from '@Components/modal/Modal.style';
+import BadgeRelationship from '@Components/ui/Badge.relationship';
 
 function Modal() {
   return (
@@ -7,8 +8,13 @@ function Modal() {
       <S.Info>
         <S.Profile>
           <S.ProfileImg src="/images/icons/logo.svg" />
-          <S.ProfileText>From.</S.ProfileText>
-          <S.ProfileName>김동훈</S.ProfileName>
+          <S.ProfileTitleContainer>
+            <S.ProfileTitle>
+              <S.ProfileText>From.</S.ProfileText>
+              <S.ProfileName>김동훈</S.ProfileName>
+            </S.ProfileTitle>
+            <BadgeRelationship />
+          </S.ProfileTitleContainer>
         </S.Profile>
         <S.CreatAt>2023.07.08</S.CreatAt>
       </S.Info>
