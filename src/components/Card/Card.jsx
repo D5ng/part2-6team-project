@@ -1,5 +1,6 @@
 import React from 'react';
-import * as S from '@Card/Card.style';
+import * as S from '@Components/Card/Card.style';
+import getDate from 'utils/format';
 
 function Card({ name, profileImg, label, text, date }) {
   return (
@@ -24,7 +25,7 @@ function Card({ name, profileImg, label, text, date }) {
           </S.Profile>
         </S.ProfoleWrapper>
         <S.Text>{text}</S.Text>
-        <S.Date>{date}</S.Date>
+        <S.Date>{getDate(date)}</S.Date>
       </S.Wrapper>
     </S.Card>
   );
