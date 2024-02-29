@@ -16,16 +16,16 @@ const COLOR_LIST = [
 function BackgroundOptions() {
   const { selectedBtn, selectedBackground, setSelectedBackground, backgroundImages, randomBackgroundImages } =
     useFormContext();
-  const handleBackgroundOptionClick = (color) => {
-    setSelectedBackground(color);
+  const handleBackgroundOptionClick = (option) => {
+    setSelectedBackground(option);
   };
 
   return (
     <S.BackgroundOptions>
       {selectedBtn === 'color'
         ? COLOR_LIST.map((list) => (
-            <S.OptionList key={list.title} color={list.color} onClick={() => handleBackgroundOptionClick(list.color)}>
-              {selectedBackground === list.color && <S.CheckIcon src="images/icons/check.svg" alt="" />}
+            <S.OptionList key={list.title} color={list.color} onClick={() => handleBackgroundOptionClick(list.title)}>
+              {selectedBackground === list.title && <S.CheckIcon src="images/icons/check.svg" alt="" />}
             </S.OptionList>
           ))
         : backgroundImages.slice(0, 3).map((list) => (

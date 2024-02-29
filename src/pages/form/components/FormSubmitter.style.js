@@ -1,13 +1,7 @@
 import styled from 'styled-components';
 import { device } from 'styles/breakpoints';
 
-export const FormCreate = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const Wrapper = styled.div`
+export const Wrapper = styled.form`
   margin-top: 50px;
   @media ${device.mobile} {
     padding: 0 20px;
