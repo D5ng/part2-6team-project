@@ -34,6 +34,7 @@ export const PrimaryCreateBtn = styled.button`
   height: 56px;
   font-size: 18px;
   border-radius: 12px;
+  position: relative;
   &:active {
     background: var(--primary800);
   }
