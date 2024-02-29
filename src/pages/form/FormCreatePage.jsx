@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React from 'react';
 import * as S from 'pages/form/FormCreatePage.style';
 import { FormProvider } from './context/FormContext';
