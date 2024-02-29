@@ -32,7 +32,7 @@ function FormSubmitter() {
       navigate(`/post/${createdPaper.id}`);
     }
   };
-
+  console.log(name);
   return (
     <S.Wrapper>
       <S.Title>To.</S.Title>
@@ -44,7 +44,7 @@ function FormSubmitter() {
       <ToggleButton />
       <BackgroundOptions />
 
-      <PrimaryCreateBtn onClick={handleCreatePaper} disabled={isSubmitting}>
+      <PrimaryCreateBtn onClick={handleCreatePaper} disabled={name === '' || isSubmitting}>
         {isSubmitting ? 'Loading ...' : '생성하기'}
       </PrimaryCreateBtn>
     </S.Wrapper>
