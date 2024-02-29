@@ -10,6 +10,7 @@ function App() {
           <Route index element={<Page.Home />} />
           <Route path="post" element={<Page.PostCreate />} />
           <Route path="list" element={<Page.RollingList />} />
+          <Route path="post/:id/message" element={<Page.MessageCreate />} />
           <Route path="*" element={<p>Page Not Found</p>} />
         </Route>
       </Routes>
