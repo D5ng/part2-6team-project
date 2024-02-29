@@ -1,7 +1,10 @@
+/* eslint-disable max-len */
 import React from 'react';
-import * as S from '@Card/Card.style';
+import * as S from '@Components/card/Card.style';
+import { BadgeItem, badge } from '@Components/ui/Badge.relationship';
 
-function Card({ name, profileImg, label, text, date }) {
+function Card({ name, profileImg, labelName, text, date }) {
+  const label = badge.filter((relationship) => relationship.relationship === labelName)[0];
   return (
     <S.Card>
       <S.Wrapper>
@@ -17,9 +20,9 @@ function Card({ name, profileImg, label, text, date }) {
                   <span>{name}</span>
                 </p>
               </S.ProfileName>
-              <S.ProfileLabel>
-                <span>{label}</span>
-              </S.ProfileLabel>
+              <BadgeItem relationship={label.relationship} bgColor={label.bgColor} textColor={label.textColor}>
+                {label.relationship}
+              </BadgeItem>
             </S.ProfileContent>
           </S.Profile>
         </S.ProfoleWrapper>
