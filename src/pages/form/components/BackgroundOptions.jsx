@@ -2,7 +2,7 @@
 /* eslint-disable max-len */
 /* eslint-disable indent */
 /* eslint-disable react/jsx-indent */
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as S from 'pages/form/components/BackgroundOptions.style';
 import { useFormContext } from '../context/FormContext';
 
@@ -16,10 +16,18 @@ const COLOR_LIST = [
 function BackgroundOptions() {
   const { selectedBtn, selectedBackground, setSelectedBackground, backgroundImages, randomBackgroundImages } =
     useFormContext();
+
   const handleBackgroundOptionClick = (option) => {
     setSelectedBackground(option);
   };
 
+  useEffect(() => {
+    if (selectedBtn === 'color') {
+      setSelectedBackground(COLOR_LIST[0].title);
+    } else if (selectedBtn === 'image') {
+      setSelectedBackground(backgroundImages[0]);
+    }
+  }, [selectedBtn]);
   return (
     <S.BackgroundOptions>
       {selectedBtn === 'color'
