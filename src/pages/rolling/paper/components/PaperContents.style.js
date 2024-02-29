@@ -5,7 +5,7 @@ const colors = {
 };
 
 export const Section = styled.section`
-  background-color: ${({ $bgColor }) => colors[$bgColor] || 'var(--gray100)'};
+  background-color: ${({ $bgColor }) => colors[$bgColor] || 'var(--white)'};
 `;
 
 export const PaperWrapper = styled.div`
