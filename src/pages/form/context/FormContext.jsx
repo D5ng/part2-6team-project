@@ -7,7 +7,7 @@ export const useFormContext = () => useContext(FormContext);
 
 export function FormProvider({ children }) {
   const [selectedBtn, setSelectedBtn] = useState('color');
-  const [selectedBackground, setSelectedBackground] = useState('');
+  const [selectedBackground, setSelectedBackground] = useState('beige');
   const [backgroundImages, setBackgroundImages] = useState({});
   const [randomBackgroundImages, setRandomBackgroundImages] = useState({});
 
