@@ -16,9 +16,24 @@ const OPTION_LISTS = [
   },
 ];
 
-function Dropdown({ disabled }) {
+const FONT_OPTION_LIST = [
+  {
+    title: 'Noto Sans',
+  },
+  {
+    title: 'Pretendard',
+  },
+  {
+    title: '나눔명조',
+  },
+  {
+    title: '나눔손글씨 손편지체',
+  },
+];
+function Dropdown({ disabled, type }) {
+  const Default = type === 'relation' ? OPTION_LISTS[0] : FONT_OPTION_LIST[0];
   const [isdrop, setIsdrop] = useState(false);
-  const [selected, setSelected] = useState(OPTION_LISTS[0]);
+  const [selected, setSelected] = useState(Default);
 
   const handleDropdownClick = () => {
     setIsdrop(!isdrop);
@@ -37,11 +52,21 @@ function Dropdown({ disabled }) {
       </S.DropdownElement>
       {isdrop && (
         <S.Options>
-          {OPTION_LISTS.map((list) => (
-            <S.Option key={list.title} onClick={() => handleOptionClick(list)}>
-              {list.title}
-            </S.Option>
-          ))}
+          {type === 'relation'
+            ? OPTION_LISTS.map((list) => (
+                // eslint-disable-next-line react/jsx-indent
+                <S.Option key={list.title} onClick={() => handleOptionClick(list)}>
+                  {list.title}
+                </S.Option>
+                // eslint-disable-next-line indent
+              ))
+            : FONT_OPTION_LIST.map((list) => (
+                // eslint-disable-next-line react/jsx-indent
+                <S.Option key={list.title} onClick={() => handleOptionClick(list)}>
+                  {list.title}
+                </S.Option>
+                // eslint-disable-next-line indent
+              ))}
         </S.Options>
       )}
     </S.Dropdown>

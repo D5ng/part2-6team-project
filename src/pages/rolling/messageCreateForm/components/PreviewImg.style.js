@@ -11,8 +11,7 @@ export const Background = styled.div`
 `;
 
 export const Img = styled.img`
-  width: 32px;
-  height: 32px;
+  width: 80px;
+  height: 80px;
+  border-radius: 100px;
 `;
-
-export const asdas = styled.div``;
