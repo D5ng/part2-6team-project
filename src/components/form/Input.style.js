@@ -22,5 +22,6 @@ export const InputElement = styled.input`
 export const Error = styled.p`
   font-size: 12px;
   color: var(--error);
-  margin-top: 5px;
+  height: 0;
+  padding: 5px 0;
 `;
