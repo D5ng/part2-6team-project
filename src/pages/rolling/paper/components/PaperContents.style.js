@@ -5,7 +5,7 @@ const colors = {
 };
 
 export const Section = styled.section`
-  background-color: ${({ $bgColor }) => colors[$bgColor]};
+  background-color: ${({ $bgColor }) => colors[$bgColor] || 'var(--gray100)'};
 `;
 
 export const PaperWrapper = styled.div`
@@ -17,10 +17,4 @@ export const PaperWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 384px);
   gap: 24px;
-`;
-
-export const PostButton = styled.button`
-  height: 280px;
-  background-color: var(--white);
-  border-radius: 16px;
 `;

@@ -21,7 +21,8 @@ const myReset = css`
   }
 
   ol,
-  ul {
+  ul,
+  li {
     list-style: none;
   }
 
