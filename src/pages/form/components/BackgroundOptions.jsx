@@ -1,7 +1,3 @@
-/* eslint-disable operator-linebreak */
-/* eslint-disable max-len */
-/* eslint-disable indent */
-/* eslint-disable react/jsx-indent */
 import React, { useEffect } from 'react';
 import * as S from 'pages/form/components/BackgroundOptions.style';
 import { useFormContext } from '../context/FormContext';
