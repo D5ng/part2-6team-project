@@ -12,6 +12,7 @@ export const BadgeItem = styled.span`
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
+  width: 41px;
   background-color: ${(props) => props.bgColor};
   color: ${(props) => props.textColor};
 `;
