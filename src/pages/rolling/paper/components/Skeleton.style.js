@@ -1,4 +1,5 @@
 import styled, { keyframes, css } from 'styled-components';
+import { device } from 'styles/breakpoints';
 
 export const SkeletonAnimation = keyframes`
   0% {
@@ -29,7 +30,7 @@ const animationCSS = css`
 
 export const SkeletonItem = styled.li`
   ${animationCSS}
-  width: 384px;
+  width: 100%;
   height: 280px;
   border-radius: 16px;
   background-color: var(--white);
