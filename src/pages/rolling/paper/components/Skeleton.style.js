@@ -15,10 +15,10 @@ const PseudoElement = css`
   position: absolute;
   top: 0;
   left: 0;
-  width: 60%;
+  width: 40%;
   height: 100%;
   background: linear-gradient(90deg, rgba(238, 238, 238, 1) 0%, rgba(224, 224, 224, 1) 100%);
-  animation: ${SkeletonAnimation} 3s infinite;
+  animation: ${SkeletonAnimation} 2s infinite linear;
 `;
 
 const animationCSS = css`
