@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from 'styles/breakpoints';
 
 export const Card = styled.div`
   display: flex;
@@ -6,6 +7,10 @@ export const Card = styled.div`
   height: 280px;
   border-radius: 16px;
   background-color: white;
+
+  @media ${device.tablet} {
+    width: 100%;
+  }
 `;
 
 export const Wrapper = styled.div`

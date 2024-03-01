@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import { getBackgroundImages, getRandomBackgroundImages } from '../api';
+import { getBackgroundImages } from '../api';
 
 const FormContext = createContext();
 
@@ -10,6 +10,7 @@ export function FormProvider({ children }) {
   const [selectedBackground, setSelectedBackground] = useState('');
   const [backgroundImages, setBackgroundImages] = useState({});
   const [randomBackgroundImages, setRandomBackgroundImages] = useState({});
+  const [unsplashBackgroundImages, setUnsplashBackgroundImages] = useState([]);
 
   // 배경 이미지 로드 함수
   const handleLoadImages = async () => {
@@ -19,17 +20,8 @@ export function FormProvider({ children }) {
     setBackgroundImages(images);
   };
 
-  // 랜덤 배경 이미지 로드 함수
-  const handleLoadRandomImages = async () => {
-    const result = await getRandomBackgroundImages();
-    if (!result) return;
-    const image = result.urls.full;
-    setRandomBackgroundImages(image);
-  };
-
   useEffect(() => {
     handleLoadImages();
-    handleLoadRandomImages();
   }, []);
 
   // 값 객체
@@ -37,13 +29,28 @@ export function FormProvider({ children }) {
     () => ({
       selectedBtn,
       setSelectedBtn,
+
       selectedBackground,
       setSelectedBackground,
+
       backgroundImages,
       randomBackgroundImages,
+      unsplashBackgroundImages,
+      setUnsplashBackgroundImages,
     }),
-    // eslint-disable-next-line max-len
-    [selectedBtn, setSelectedBtn, selectedBackground, setSelectedBackground, backgroundImages, randomBackgroundImages],
+
+    [
+      selectedBtn,
+      setSelectedBtn,
+
+      selectedBackground,
+      setSelectedBackground,
+
+      backgroundImages,
+      randomBackgroundImages,
+      unsplashBackgroundImages,
+      setUnsplashBackgroundImages,
+    ],
   );
 
   return <FormContext.Provider value={values}>{children}</FormContext.Provider>;

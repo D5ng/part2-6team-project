@@ -1,8 +1,4 @@
-/* eslint-disable operator-linebreak */
-/* eslint-disable max-len */
-/* eslint-disable indent */
-/* eslint-disable react/jsx-indent */
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as S from 'pages/form/components/BackgroundOptions.style';
 import { useFormContext } from '../context/FormContext';
 
@@ -13,33 +9,44 @@ const COLOR_LIST = [
   { title: 'green', color: 'var(--green200)' },
 ];
 
-function BackgroundOptions() {
+function BackgroundOptions({ openModal }) {
   const { selectedBtn, selectedBackground, setSelectedBackground, backgroundImages, randomBackgroundImages } =
     useFormContext();
-  const handleBackgroundOptionClick = (color) => {
-    setSelectedBackground(color);
+
+  const handleBackgroundOptionClick = (option) => {
+    setSelectedBackground(option);
   };
 
+  useEffect(() => {
+    if (selectedBtn === 'color') {
+      setSelectedBackground(COLOR_LIST[0].title);
+    } else if (selectedBtn === 'image') {
+      setSelectedBackground(backgroundImages[0]);
+    }
+  }, [selectedBtn]);
   return (
     <S.BackgroundOptions>
       {selectedBtn === 'color'
         ? COLOR_LIST.map((list) => (
-            <S.OptionList key={list.title} color={list.color} onClick={() => handleBackgroundOptionClick(list.color)}>
-              {selectedBackground === list.color && <S.CheckIcon src="images/icons/check.svg" alt="" />}
+            <S.OptionList key={list.title} color={list.color} onClick={() => handleBackgroundOptionClick(list.title)}>
+              {selectedBackground === list.title && <S.CheckIcon src="images/icons/check.svg" alt="" />}
             </S.OptionList>
           ))
         : backgroundImages.slice(0, 3).map((list) => (
-            <S.OptionList key={list} url={list} onClick={() => handleBackgroundOptionClick(list)}>
+            <S.OptionList key={list} $url={list} onClick={() => handleBackgroundOptionClick(list)}>
               {selectedBackground === list && <S.CheckIcon src="images/icons/check.svg" alt="" />}
             </S.OptionList>
           ))}
       {selectedBtn === 'image' && (
         <S.OptionList
-          key={randomBackgroundImages}
-          url={randomBackgroundImages}
-          onClick={() => handleBackgroundOptionClick(randomBackgroundImages)}
+          onClick={() => {
+            // handleBackgroundOptionClick(randomBackgroundImages);
+            openModal();
+          }}
+          $isModal
         >
-          {selectedBackground === randomBackgroundImages && <S.CheckIcon src="images/icons/check.svg" alt="" />}
+          {/* {selectedBackground === randomBackgroundImages && <S.CheckIcon src="images/icons/check.svg" alt="" />} */}
+          <S.SearchIcon src="/images/icons/image-search.svg" alt="사진 탐색 아이콘" />
         </S.OptionList>
       )}
     </S.BackgroundOptions>

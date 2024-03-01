@@ -14,7 +14,7 @@ export const BackgroundOptions = styled.ul`
 `;
 
 export const OptionList = styled.li`
-  background-color: ${({ color }) => color};
+  background-color: ${({ color }) => color || 'rgba(0, 0, 0, 0.1)'};
   width: 168px;
   height: 168px;
   border-radius: 16px;
@@ -23,7 +23,7 @@ export const OptionList = styled.li`
   justify-content: center;
   align-items: center;
 
-  background-image: url(${({ url }) => url});
+  background-image: url(${({ $url }) => $url});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -32,6 +32,12 @@ export const OptionList = styled.li`
     width: 100%;
     height: 42.7777vw;
   }
+`;
+
+export const SearchIcon = styled.img`
+  width: 80px;
+  height: 80px;
+  opacity: 0.3;
 `;
 
 export const CheckIcon = styled.img`

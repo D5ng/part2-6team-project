@@ -2,6 +2,7 @@
 import React from 'react';
 import * as S from '@Components/card/Card.style';
 import { BadgeItem, badge } from '@Components/ui/Badge.relationship';
+import getDate from 'utils/format';
 
 function Card({ name, profileImg, labelName, text, date }) {
   const label = badge.filter((relationship) => relationship.relationship === labelName)[0];
@@ -27,7 +28,7 @@ function Card({ name, profileImg, labelName, text, date }) {
           </S.Profile>
         </S.ProfoleWrapper>
         <S.Text>{text}</S.Text>
-        <S.Date>{date}</S.Date>
+        <S.Date>{getDate(date)}</S.Date>
       </S.Wrapper>
     </S.Card>
   );

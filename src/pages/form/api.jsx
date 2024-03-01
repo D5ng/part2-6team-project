@@ -1,9 +1,9 @@
-const BASE_URL = 'https://rolling-api.vercel.app';
-const UNSPLASH_URL = 'https://api.unsplash.com/photos/random/?client_id=4VOX7zuvmoNb-YCxoDwmF6pxa2RadzXZQ7vwpO68fRM';
-// const TEAM = '4-6';
+const BASE_URL = process.env.REACT_APP_API_KEY;
+const IMAGES_URL = process.env.REACT_APP_UNSPLASH_IMAGES_API;
+const UNSPLASH_TOKEN = process.env.REACT_APP_UNSPLASH_TOKEN;
 
-async function fetchData(base, endpoint) {
-  const url = `${base}${endpoint}`;
+async function fetchData(base, endpoint, token) {
+  const url = `${base}${endpoint}?${token}`;
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(`${endpoint} 요청 중 오류가 발생했습니다.`);
@@ -12,7 +12,11 @@ async function fetchData(base, endpoint) {
 }
 
 export function getRandomBackgroundImages() {
-  return fetchData(UNSPLASH_URL, '');
+  return fetchData(IMAGES_URL, `/photos/random`, UNSPLASH_TOKEN);
+}
+
+export function getUnsplashBackgroundImages(num = 1) {
+  return fetchData(IMAGES_URL, `/photos`, `page=${num}&per_page=6&${UNSPLASH_TOKEN}`);
 }
 
 export function getBackgroundImages() {
@@ -21,4 +25,18 @@ export function getBackgroundImages() {
 
 export function getProfileImages() {
   return fetchData(BASE_URL, '/profile-images/');
+}
+
+export async function createPaper(paperData) {
+  const response = await fetch(`${BASE_URL}/4-6/recipients/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(paperData),
+  });
+  if (!response.ok) {
+    throw new Error('Failed to create papaer');
+  }
+  return response.json();
 }
