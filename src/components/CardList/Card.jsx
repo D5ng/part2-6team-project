@@ -1,11 +1,23 @@
 import React from 'react';
-import * as S from '@CardList/CardList.style';
-import ImageGallery from '@CardList/ImageGallery';
-import AddCardButton from '@CardList/AddCardButton';
+import * as S from '@Components/CardList/CardList.style';
+import ImageGallery from '@Components/CardList/ImageGallery';
+import AddCardButton from '@Components/CardList/AddCardButton';
 
-function Card({ name, members, imageArray }) {
+const colorMap = {
+  beige: 'var(--orange200)',
+  purple: 'var(--primary200)',
+  blue: 'var(--blue200)',
+  green: 'var(--green200)',
+};
+function getColor(color) {
+  return colorMap[color] || color;
+}
+
+function Card({ backgroundColor, backgroundImageURL, name, members, imageArray, topReactions }) {
+  const backgroundColorDate = getColor(backgroundColor);
+
   return (
-    <S.CardList>
+    <S.CardList $backgroundColor={backgroundColorDate} $backgroundImageURL={backgroundImageURL}>
       <S.CardWrapper>
         <S.CardContentWrapper>
           <S.CardContent>
@@ -24,9 +36,9 @@ function Card({ name, members, imageArray }) {
         </S.CardContentWrapper>
         <S.CardButtonWrapper>
           <S.CardButton>
-            <AddCardButton icon="👍" initialCount={20} />
-            <AddCardButton icon="😍" initialCount={12} />
-            <AddCardButton icon="😢" initialCount={7} />
+            {topReactions.map((list) => (
+              <AddCardButton key={list.id} icon={list.emoji} initialCount={list.count} />
+            ))}
           </S.CardButton>
         </S.CardButtonWrapper>
       </S.CardWrapper>
