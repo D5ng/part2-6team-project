@@ -40,9 +40,3 @@ export const ProfileListTitle = styled.h2`
   font-weight: 400;
   color: var(--gray500);
 `;
-
-export const ProfileImgList = styled.ul`
-  display: flex;
-  gap: 4px;
-  flex: 1;
-`;

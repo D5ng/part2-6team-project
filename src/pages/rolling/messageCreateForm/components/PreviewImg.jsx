@@ -3,10 +3,11 @@ import * as S from 'pages/rolling/messageCreateForm/components/PreviewImg.style'
 import { useMessageFormContext } from '../context/MessageFormContext';
 
 function PreviewImg() {
-  const { profileImgSrc } = useMessageFormContext();
+  const { currentProfileImg } = useMessageFormContext();
+
   return (
     <S.Background>
-      <S.Img src={profileImgSrc} />
+      <S.Img src={currentProfileImg} />
     </S.Background>
   );
 }

@@ -1,20 +1,33 @@
-import React, { createContext, useContext, useMemo, useState } from 'react';
+import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import requsetProfileImgData from '../api';
 
 const MessageFormContext = createContext();
 
 export const useMessageFormContext = () => useContext(MessageFormContext);
 
 export function MessageFormContextProvider({ children }) {
-  const [inputFrom, setInputFrom] = useState('');
-  const [profileImgSrc, setProfileImgSrc] = useState('/images/icons/profileDefault.svg');
+  const [profileImgSrc, setProfileImgSrc] = useState([]);
+  const [currentProfileImg, setCurrentProfileImg] = useState('');
+  const getProfileImgData = async () => {
+    const response = await requsetProfileImgData();
+    setProfileImgSrc([...response.imageUrls]);
+  };
+
+  useEffect(() => {
+    getProfileImgData();
+  }, []);
+  useEffect(() => {
+    setCurrentProfileImg(profileImgSrc[0]);
+  }, [profileImgSrc]);
   const values = useMemo(
     () => ({
-      inputFrom,
-      setInputFrom,
       profileImgSrc,
       setProfileImgSrc,
+      currentProfileImg,
+      setCurrentProfileImg,
     }),
-    [inputFrom, setInputFrom, profileImgSrc, setProfileImgSrc],
+    // eslint-disable-next-line max-len
+    [profileImgSrc, setProfileImgSrc, currentProfileImg, setCurrentProfileImg],
   );
   return <MessageFormContext.Provider value={values}>{children}</MessageFormContext.Provider>;
 }

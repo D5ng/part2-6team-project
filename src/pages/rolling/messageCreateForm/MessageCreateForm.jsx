@@ -4,52 +4,9 @@ import Input from '@Components/form/Input';
 import Dropdown from '@Components/form/Dropdown';
 import { PrimaryCreateBtn } from '@Components/ui/PrimaryComponent.style';
 import PreviewImg from './components/PreviewImg';
-import ProfileImg from './components/ProfileImg';
 import TextEditor from './components/TextEditor';
 import { MessageFormContextProvider } from './context/MessageFormContext';
-
-const List = [
-  {
-    id: 1,
-    src: '/images/profileImg/img1.png',
-  },
-  {
-    id: 2,
-    src: '/images/profileImg/img2.png',
-  },
-  {
-    id: 3,
-    src: '/images/profileImg/img1.png',
-  },
-  {
-    id: 4,
-    src: '/images/profileImg/img2.png',
-  },
-  {
-    id: 5,
-    src: '/images/profileImg/img1.png',
-  },
-  {
-    id: 6,
-    src: '/images/profileImg/img2.png',
-  },
-  {
-    id: 7,
-    src: '/images/profileImg/img1.png',
-  },
-  {
-    id: 8,
-    src: '/images/profileImg/img2.png',
-  },
-  {
-    id: 9,
-    src: '/images/profileImg/img1.png',
-  },
-  {
-    id: 10,
-    src: '/images/profileImg/img2.png',
-  },
-];
+import ProfileImgList from './components/ProfileImgList';
 
 function MessageCreateForm() {
   return (
@@ -66,13 +23,7 @@ function MessageCreateForm() {
               <PreviewImg />
               <S.ProfileImgListWrap>
                 <S.ProfileListTitle>프로필 이미지를 선택해주세요!</S.ProfileListTitle>
-                <S.ProfileImgList>
-                  {List.map((v) => (
-                    <li key={v.id}>
-                      <ProfileImg imgSrc={v.src} />
-                    </li>
-                  ))}
-                </S.ProfileImgList>
+                <ProfileImgList />
               </S.ProfileImgListWrap>
             </S.ProfileImgBox>
           </S.Wrapper>
