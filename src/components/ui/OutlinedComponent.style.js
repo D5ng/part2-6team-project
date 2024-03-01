@@ -57,7 +57,8 @@ export const ShareOption = styled.button`
 
 export const EmojiAddBtn = styled.button`
   ${Outlined}
-  padding : 6px 16px;
+  position: relative;
+  padding: 6px 16px;
   gap: 4px;
   @media ${device.mobile} {
     padding: 6px 8px;
