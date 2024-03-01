@@ -15,15 +15,12 @@ function RollingPaperList() {
           <PlusIcon />
         </S.Button>
       </S.CreatePaperArea>
-      {Array.from({ length: 8 }).map((_, index) => (
-        <Skeleton key={index} />
-      ))}
-      {/* {paperState.isLoading &&
+      {paperState.isLoading &&
         messageState.isLoading &&
         Array.from({ length: 8 }).map((_, index) => <Skeleton key={index} />)}
       {messageState?.data?.results?.map((info) => (
         <RollingPaperItem key={info.id} data={info} />
-      ))} */}
+      ))}
     </S.GridLayout>
   );
 }
