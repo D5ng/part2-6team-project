@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from '@Components/ui/Badge.relationship.style';
+import * as S from '@Components/ui/BadgeRelationship.style';
 
 const badge = [
   {

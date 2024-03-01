@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 export const BadgeContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
 `;
 export const BadgeBox = styled.div`

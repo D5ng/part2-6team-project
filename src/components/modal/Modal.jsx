@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from '@Components/modal/Modal.style';
-import BadgeRelationship from '@Components/ui/Badge.relationship';
+import BadgeRelationship from '@Components/ui/BadgeRelationship';
 
 function Modal() {
   return (
