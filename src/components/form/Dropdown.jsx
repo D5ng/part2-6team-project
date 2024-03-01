@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as S from '@Components/form/Dropdown.style';
+import { useMessageFormContext } from 'pages/rolling/messageCreateForm/context/MessageFormContext';
 
 const OPTION_LISTS = [
   {
@@ -34,7 +35,7 @@ function Dropdown({ disabled, type }) {
   const Default = type === 'relation' ? OPTION_LISTS[0] : FONT_OPTION_LIST[0];
   const [isdrop, setIsdrop] = useState(false);
   const [selected, setSelected] = useState(Default);
-
+  const { dispatch } = useMessageFormContext();
   const handleDropdownClick = () => {
     setIsdrop(!isdrop);
   };
@@ -42,6 +43,10 @@ function Dropdown({ disabled, type }) {
   const handleOptionClick = (option) => {
     setSelected(option);
     setIsdrop(false);
+    // eslint-disable-next-line no-unused-expressions
+    type === 'relation'
+      ? dispatch({ type: 'relation', relation: option.title })
+      : dispatch({ type: 'font', font: option.title });
   };
 
   return (

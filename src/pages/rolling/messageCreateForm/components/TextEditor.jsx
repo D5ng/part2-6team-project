@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import ReactQuill from 'react-quill';
 import styled from 'styled-components';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import 'react-quill/dist/quill.snow.css';
 import './TextEditor.css';
+import { useMessageFormContext } from '../context/MessageFormContext';
 
 const Box = styled.div``;
 
@@ -15,10 +16,11 @@ const modules = {
 const formats = ['bold', 'italic', 'underline', 'bullet', 'indent', 'align', 'color'];
 
 function TextEditor() {
-  const [textValue, setTextValue] = useState('');
+  const { message, setMessage } = useMessageFormContext();
   const handleQuillChange = (content, delta, source, editor) => {
-    setTextValue(editor.getContents());
+    setMessage(editor.getContents());
   };
+
   return (
     <Box>
       <ReactQuill
@@ -26,7 +28,7 @@ function TextEditor() {
         theme="snow"
         modules={modules}
         formats={formats}
-        value={textValue || ''}
+        value={message || ''}
         onChange={handleQuillChange}
       />
     </Box>
