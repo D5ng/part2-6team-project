@@ -9,7 +9,7 @@ const COLOR_LIST = [
   { title: 'green', color: 'var(--green200)' },
 ];
 
-function BackgroundOptions() {
+function BackgroundOptions({ openModal }) {
   const { selectedBtn, selectedBackground, setSelectedBackground, backgroundImages, randomBackgroundImages } =
     useFormContext();
 
@@ -33,17 +33,20 @@ function BackgroundOptions() {
             </S.OptionList>
           ))
         : backgroundImages.slice(0, 3).map((list) => (
-            <S.OptionList key={list} url={list} onClick={() => handleBackgroundOptionClick(list)}>
+            <S.OptionList key={list} $url={list} onClick={() => handleBackgroundOptionClick(list)}>
               {selectedBackground === list && <S.CheckIcon src="images/icons/check.svg" alt="" />}
             </S.OptionList>
           ))}
       {selectedBtn === 'image' && (
         <S.OptionList
-          key={randomBackgroundImages}
-          url={randomBackgroundImages}
-          onClick={() => handleBackgroundOptionClick(randomBackgroundImages)}
+          onClick={() => {
+            // handleBackgroundOptionClick(randomBackgroundImages);
+            openModal();
+          }}
+          $isModal
         >
-          {selectedBackground === randomBackgroundImages && <S.CheckIcon src="images/icons/check.svg" alt="" />}
+          {/* {selectedBackground === randomBackgroundImages && <S.CheckIcon src="images/icons/check.svg" alt="" />} */}
+          <S.SearchIcon src="/images/icons/image-search.svg" alt="사진 탐색 아이콘" />
         </S.OptionList>
       )}
     </S.BackgroundOptions>
