@@ -1,10 +1,12 @@
 import styled from 'styled-components';
+import { device } from 'styles/breakpoints';
 
 export const ImagePickerModal = styled.div`
   position: relative;
   border-radius: 4px;
   background-color: white;
-  width: 500px;
+  padding-bottom: 80px;
+  width: 700px;
   height: 800px;
   position: fixed;
   left: 50%;
@@ -17,7 +19,9 @@ export const ImagePickerModal = styled.div`
     0 3px 3px -2px rgba(0, 0, 0, 0.2),
     0 1px 8px 0 rgba(0, 0, 0, 0.12);
 
-  padding-bottom: 80px;
+  @media ${device.mobile} {
+    width: 90%;
+  }
 `;
 
 export const Header = styled.div`
@@ -58,5 +62,8 @@ export const ImageLists = styled.ul`
     border-radius: 10px;
   }
 `;
+export const ImageList = styled.li`
+  position: relative;
+`;
 
-export const ImageList = styled.img``;
+export const Image = styled.img``;
