@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from 'styles/breakpoints';
 
 const colors = {
   green: 'var(--green200)',
@@ -15,4 +16,12 @@ export const PaperWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
   padding: 113px 0 0 0;
+
+  @media ${device.tablet} {
+    padding: 12.1093vw 0 11.8489vw 0;
+  }
+
+  @media ${device.mobile} {
+    padding: 8.889vw 0;
+  }
 `;
