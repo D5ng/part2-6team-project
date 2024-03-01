@@ -2,9 +2,13 @@ import Card from '@Components/Card/Card';
 import React from 'react';
 import CardList from '@Paper/components/RollingPaperItem.style';
 
-function RollingPaperItem({ data, onClickModal }) {
+function RollingPaperItem({ data, onClickModal, getPaperData }) {
+  const handleOpenModal = () => {
+    onClickModal();
+    getPaperData(data);
+  };
   return (
-    <CardList onClick={onClickModal}>
+    <CardList onClick={handleOpenModal}>
       <Card
         key={data.id}
         name={data.sender}

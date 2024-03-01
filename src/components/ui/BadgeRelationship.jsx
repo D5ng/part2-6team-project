@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from '@Components/ui/BadgeRelationship.style';
 
-const badge = [
+const badges = [
   {
     relationship: '지인',
     bgColor: 'var(--orange100)',
@@ -24,14 +24,13 @@ const badge = [
   },
 ];
 
-function BadgeRelationship() {
+function BadgeRelationship({ relationship }) {
+  const filteredBadge = badges.filter((badge) => badge.relationship === relationship)[0];
   return (
     <S.BadgeContainer>
-      {badge.map((item) => (
-        <S.BadgeItem key={item.relationship} bgColor={item.bgColor} textColor={item.textColor}>
-          {item.relationship}
-        </S.BadgeItem>
-      ))}
+      <S.BadgeItem bgColor={filteredBadge.bgColor} textColor={filteredBadge.textColor}>
+        {filteredBadge.relationship}
+      </S.BadgeItem>
     </S.BadgeContainer>
   );
 }

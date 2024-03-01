@@ -9,10 +9,17 @@ import RollingPaperItem from './RollingPaperItem';
 import Skeleton from './Skeleton';
 
 function RollingPaperList() {
-  const { paperState, messageState, modalState } = useContext(PaperContext);
+  const {
+    paperState,
+    messageState,
+    modal: { modalState, handleOpenModal, handleCloseModal, getModalData },
+  } = useContext(PaperContext);
 
   const backdrop = createPortal(<Backdrop />, document.getElementById('backdrop-root'));
-  const modal = createPortal(<Modal />, document.getElementById('modal-root'));
+  const modal = createPortal(
+    <Modal onCloseModal={handleCloseModal} modalData={modalState.data} />,
+    document.getElementById('modal-root'),
+  );
   return (
     <S.GridLayout>
       {modalState.isOpen && backdrop}
@@ -26,7 +33,7 @@ function RollingPaperList() {
         messageState.isLoading &&
         Array.from({ length: 8 }).map((_, index) => <Skeleton key={index} />)}
       {messageState?.data?.results?.map((info) => (
-        <RollingPaperItem key={info.id} data={info} onClickModal={modalState.handleOpenModal} />
+        <RollingPaperItem key={info.id} data={info} onClickModal={handleOpenModal} getPaperData={getModalData} />
       ))}
     </S.GridLayout>
   );

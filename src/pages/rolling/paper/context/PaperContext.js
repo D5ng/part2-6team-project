@@ -10,7 +10,7 @@ export function PaperContextProvider({ children }) {
   const { recipientsId } = useParams();
   const { state: paperState, fetchRequest: paperFetchRequest } = useHttp();
   const { state: messageState, fetchRequest: messageFetchRequest } = useHttp();
-  const { isOpen, handleCloseModal, handleOpenModal } = useModal();
+  const { modalState, handleCloseModal, handleOpenModal, getModalData } = useModal();
 
   useEffect(() => {
     paperFetchRequest({ url: API.getRollingPaper(recipientsId) });
@@ -21,7 +21,7 @@ export function PaperContextProvider({ children }) {
   const value = {
     paperState,
     messageState,
-    modalState: { isOpen, handleCloseModal, handleOpenModal },
+    modal: { modalState, handleOpenModal, handleCloseModal, getModalData },
   };
   return <PaperContext.Provider value={value}>{children}</PaperContext.Provider>;
 }

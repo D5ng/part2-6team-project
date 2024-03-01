@@ -1,13 +1,21 @@
 import React, { useState } from 'react';
 
 function useModal() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [modalState, setModalState] = useState({
+    isOpen: false,
+    data: null,
+  });
 
-  const handleOpenModal = () => setIsOpen(true);
-  const handleCloseModal = () => setIsOpen(false);
+  const getModalData = (data) => setModalState((prevModalState) => ({ ...prevModalState, data }));
 
+  const handleOpenModal = () => setModalState((prevModalState) => ({ ...prevModalState, isOpen: true }));
+
+  const handleCloseModal = () => setModalState((prevModalState) => ({ ...prevModalState, isOpen: false }));
+
+  // 모달의 상태
   return {
-    isOpen,
+    modalState,
+    getModalData,
     handleOpenModal,
     handleCloseModal,
   };
