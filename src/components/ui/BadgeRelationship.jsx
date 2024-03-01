@@ -1,7 +1,8 @@
+/* eslint-disable max-len */
 import React from 'react';
 import * as S from '@Components/ui/BadgeRelationship.style';
 
-const badge = [
+export const badge = [
   {
     relationship: '지인',
     bgColor: 'var(--orange100)',
@@ -24,16 +25,22 @@ const badge = [
   },
 ];
 
-function BadgeRelationship() {
+export function BadgeItem({ relationship, bgColor, textColor }) {
+  return (
+    <S.BadgeItem key={relationship} bgColor={bgColor} textColor={textColor}>
+      {relationship}
+    </S.BadgeItem>
+  );
+}
+
+export function BadgeRelationship() {
   return (
     <S.BadgeContainer>
       {badge.map((item) => (
-        <S.BadgeItem key={item.relationship} bgColor={item.bgColor} textColor={item.textColor}>
+        <BadgeItem relationship={item.relationship} bgColor={item.bgColor} textColor={item.textColor}>
           {item.relationship}
-        </S.BadgeItem>
+        </BadgeItem>
       ))}
     </S.BadgeContainer>
   );
 }
-
-export default BadgeRelationship;
