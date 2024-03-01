@@ -10,7 +10,7 @@ const colorMap = {
   green: 'var(--green200)',
 };
 function getColor(color) {
-  return colorMap[color] || color;
+  return colorMap[color];
 }
 
 function Card({ backgroundColor, backgroundImageURL, name, members, imageArray, topReactions }) {
@@ -26,7 +26,7 @@ function Card({ backgroundColor, backgroundImageURL, name, members, imageArray, 
                 To.
                 {name}
               </h2>
-              <ImageGallery imageArray={imageArray} />
+              <ImageGallery imageArray={imageArray} imageCount={members} />
               <p>
                 <span>{members}</span>
                 명이 작성했어요!

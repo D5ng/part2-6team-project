@@ -84,7 +84,7 @@ export const LastTestImg = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 12px;
-  color: ${(props) => props.$backgroundImageURL && 'black'};
+  color: ${(props) => (props.$backgroundImageURL ? 'black' : 'black')};
 `;
 
 export const CardButtonWrapper = styled.div`
