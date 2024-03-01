@@ -2,6 +2,7 @@ import useHttp from 'hooks/useHttp';
 import React, { createContext, useEffect } from 'react';
 import * as API from '@Paper/api';
 import { useParams } from 'react-router-dom';
+import useModal from '@Paper/hooks/useModal';
 
 export const PaperContext = createContext();
 
@@ -9,6 +10,7 @@ export function PaperContextProvider({ children }) {
   const { recipientsId } = useParams();
   const { state: paperState, fetchRequest: paperFetchRequest } = useHttp();
   const { state: messageState, fetchRequest: messageFetchRequest } = useHttp();
+  const { isOpen, handleCloseModal, handleOpenModal } = useModal();
 
   useEffect(() => {
     paperFetchRequest({ url: API.getRollingPaper(recipientsId) });
@@ -19,6 +21,7 @@ export function PaperContextProvider({ children }) {
   const value = {
     paperState,
     messageState,
+    modalState: { isOpen, handleCloseModal, handleOpenModal },
   };
   return <PaperContext.Provider value={value}>{children}</PaperContext.Provider>;
 }

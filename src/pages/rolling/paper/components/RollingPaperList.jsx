@@ -2,14 +2,21 @@ import React, { useContext } from 'react';
 import * as S from '@Paper/components/RollingPaperList.style';
 import PlusIcon from '@Components/ui/PlusIcon';
 import { PaperContext } from '@Paper/context/PaperContext';
+import Modal from '@Components/modal/Modal';
+import { createPortal } from 'react-dom';
+import Backdrop from '@Components/modal/Backdrop';
 import RollingPaperItem from './RollingPaperItem';
 import Skeleton from './Skeleton';
 
 function RollingPaperList() {
-  const { paperState, messageState } = useContext(PaperContext);
+  const { paperState, messageState, modalState } = useContext(PaperContext);
 
+  const backdrop = createPortal(<Backdrop />, document.getElementById('backdrop-root'));
+  const modal = createPortal(<Modal />, document.getElementById('modal-root'));
   return (
     <S.GridLayout>
+      {modalState.isOpen && backdrop}
+      {modalState.isOpen && modal}
       <S.CreatePaperArea>
         <S.Button to={`/post/${paperState?.data?.id}/message`}>
           <PlusIcon />
@@ -19,7 +26,7 @@ function RollingPaperList() {
         messageState.isLoading &&
         Array.from({ length: 8 }).map((_, index) => <Skeleton key={index} />)}
       {messageState?.data?.results?.map((info) => (
-        <RollingPaperItem key={info.id} data={info} />
+        <RollingPaperItem key={info.id} data={info} onClickModal={modalState.handleOpenModal} />
       ))}
     </S.GridLayout>
   );

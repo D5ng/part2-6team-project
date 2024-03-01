@@ -2,9 +2,9 @@ import Card from '@Components/Card/Card';
 import React from 'react';
 import CardList from '@Paper/components/RollingPaperItem.style';
 
-function RollingPaperItem({ data }) {
+function RollingPaperItem({ data, onClickModal }) {
   return (
-    <CardList>
+    <CardList onClick={onClickModal}>
       <Card
         key={data.id}
         name={data.sender}
