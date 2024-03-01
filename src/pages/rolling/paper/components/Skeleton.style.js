@@ -1,4 +1,5 @@
 import styled, { keyframes, css } from 'styled-components';
+import { device } from 'styles/breakpoints';
 
 export const SkeletonAnimation = keyframes`
   0% {
@@ -15,10 +16,10 @@ const PseudoElement = css`
   position: absolute;
   top: 0;
   left: 0;
-  width: 60%;
+  width: 40%;
   height: 100%;
   background: linear-gradient(90deg, rgba(238, 238, 238, 1) 0%, rgba(224, 224, 224, 1) 100%);
-  animation: ${SkeletonAnimation} 3s infinite;
+  animation: ${SkeletonAnimation} 2s infinite linear;
 `;
 
 const animationCSS = css`
@@ -29,7 +30,7 @@ const animationCSS = css`
 
 export const SkeletonItem = styled.li`
   ${animationCSS}
-  width: 384px;
+  width: 100%;
   height: 280px;
   border-radius: 16px;
   background-color: var(--white);
