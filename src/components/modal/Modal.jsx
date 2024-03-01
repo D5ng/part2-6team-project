@@ -4,7 +4,7 @@ import BadgeRelationship from '@Components/ui/BadgeRelationship';
 import formatDate from 'utils/format';
 
 function Modal({ onCloseModal, modalData }) {
-  const { sender, content, createdAt, profileImageURL, relationship } = modalData;
+  const { sender, content, createdAt, profileImageURL, relationship, fonts } = modalData;
 
   // content: '안녕하세요. 동현님 항상 열심히하는 모습 보기 좋습니다.';
   // createdAt: '2024-02-28T16:50:49.396725Z';
@@ -31,7 +31,7 @@ function Modal({ onCloseModal, modalData }) {
       </S.Info>
       <S.Contents>
         <S.Line />
-        <S.TextBox>{content}</S.TextBox>
+        <S.TextBox $font={fonts}>{content}</S.TextBox>
         <S.Button onClick={onCloseModal}>확인</S.Button>
       </S.Contents>
     </S.Container>

@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
+const fontsMapping = {
+  Pretendard: 'Pretendard',
+  NanumMyeongjo: 'NanumMyeongjo',
+  NotoSansKR: 'NotoSansKR',
+  NanumBaeEunHyeCe: 'NanumBaeEunHyeCe',
+};
+
 export const Container = styled.div`
   position: fixed;
   left: 50%;
@@ -75,6 +82,7 @@ export const TextBox = styled.div`
   font-weight: 400;
   line-height: 28px;
   overflow-y: scroll;
+  font-family: ${({ $font }) => fontsMapping[$font] || 'Pretendard'};
 
   &::-webkit-scrollbar {
     width: 4px;
