@@ -15,7 +15,7 @@ function RollingPaperList() {
     modal: { modalState, handleOpenModal, handleCloseModal, getModalData },
   } = useContext(PaperContext);
 
-  const backdrop = createPortal(<Backdrop />, document.getElementById('backdrop-root'));
+  const backdrop = createPortal(<Backdrop onCloseModal={handleCloseModal} />, document.getElementById('backdrop-root'));
   const modal = createPortal(
     <Modal onCloseModal={handleCloseModal} modalData={modalState.data} />,
     document.getElementById('modal-root'),
