@@ -1,4 +1,4 @@
-import Card from '@Components/Card/Card';
+import Card from '@Components/card/Card';
 import React from 'react';
 import CardList from '@Paper/components/RollingPaperItem.style';
 
