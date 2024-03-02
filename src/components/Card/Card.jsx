@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
 import React from 'react';
 import * as S from '@Components/Card/Card.style';
-import { BadgeItem, badge } from '@Components/ui/BadgeRelationship';
-import getDate from 'utils/format';
+import formatDate from 'utils/format';
+import { BadgeItem, badge } from '@Components/ui/Badge.relationship';
 
 function Card({ name, profileImg, labelName, text, date }) {
   const label = badge.filter((relationship) => relationship.relationship === labelName)[0];
@@ -28,7 +28,7 @@ function Card({ name, profileImg, labelName, text, date }) {
           </S.Profile>
         </S.ProfoleWrapper>
         <S.Text>{text}</S.Text>
-        <S.Date>{getDate(date)}</S.Date>
+        <S.Date>{formatDate(date)}</S.Date>
       </S.Wrapper>
     </S.Card>
   );
