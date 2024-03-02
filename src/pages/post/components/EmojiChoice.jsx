@@ -11,7 +11,6 @@ function EmojiChoice() {
         type: 'increase',
         emoji: emoji.emoji,
       };
-
       const response = await createReactions(data);
 
       console.log('이모지 전송 성공:', choice, response);

@@ -16,11 +16,11 @@ export const HeaderWrapper = styled.div`
   margin-left: auto;
   margin-right: auto;
 
-  @media (max-width: 1280px) {
+  @media ${device.tablet} {
     padding: 0 24px;
   }
 
-  @media (max-width: 767px) {
+  @media ${device.mobile} {
     padding: 0 20px;
   }
 `;

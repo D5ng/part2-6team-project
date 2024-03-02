@@ -2,7 +2,9 @@
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {
-      "@Components/*": ["./components/*"]
+      "@Components/*": ["./components/*"],
+      "@List/*": ["./pages/rolling/list/*"],
+      "@Paper/*": ["./pages/rolling/paper/*"]
     }
   }
 }

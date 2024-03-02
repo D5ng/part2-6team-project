@@ -1,23 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as S from '@Components/form/Input.style';
 
-function Input({ disabled, error }) {
-  const [inputValue, setInputValue] = useState('');
-
+function Input({ children, error, value, onChange }) {
   const handleInputChange = (e) => {
-    setInputValue(e.target.value);
+    onChange(e);
   };
 
   return (
     <S.Input>
-      <S.InputElement
-        placeholder="Placeholder"
-        disabled={disabled}
-        $error={error}
-        value={inputValue}
-        onChange={handleInputChange}
-      />
-      {error && !inputValue && <S.Error>Error Message</S.Error>}
+      <S.InputElement placeholder={children} $error={error} value={value} onChange={handleInputChange} />
+      <S.Error>{error && '이름을 입력해 주세요'}</S.Error>
     </S.Input>
   );
 }

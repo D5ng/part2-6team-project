@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
-export const Input = styled.div`
-  width: 320px;
-`;
+export const Input = styled.div``;
 
 export const InputElement = styled.input`
   border: 1px solid ${({ $error }) => ($error ? 'red' : 'var(--gray300)')};
-  width: 320px;
+  width: 100%;
   height: 50px;
   border-radius: 8px;
   display: flex;
@@ -19,15 +17,11 @@ export const InputElement = styled.input`
   &:focus {
     border: 2px solid var(--gray500);
   }
-  &:disabled {
-    background-color: #f2f2f2;
-    color: #999;
-    border-color: #ccc;
-  }
 `;
 
 export const Error = styled.p`
   font-size: 12px;
   color: var(--error);
-  margin-top: 5px;
+  height: 0;
+  padding: 5px 0;
 `;

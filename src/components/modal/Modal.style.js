@@ -1,12 +1,25 @@
 import styled from 'styled-components';
 
+const fontsMapping = {
+  Pretendard: 'Pretendard',
+  NanumMyeongjo: 'NanumMyeongjo',
+  NotoSansKR: 'NotoSansKR',
+  NanumBaeEunHyeCe: 'NanumBaeEunHyeCe',
+};
+
 export const Container = styled.div`
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--white);
   display: flex;
   flex-direction: column;
   width: 600px;
   height: 476px;
   border-radius: 16px;
   box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.1);
+  z-index: 100;
 `;
 export const Info = styled.div`
   display: flex;
@@ -66,6 +79,7 @@ export const TextBox = styled.div`
   font-weight: 400;
   line-height: 28px;
   overflow-y: scroll;
+  font-family: ${({ $font }) => fontsMapping[$font] || 'Pretendard'};
 
   &::-webkit-scrollbar {
     width: 4px;
