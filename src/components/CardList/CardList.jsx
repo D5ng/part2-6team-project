@@ -1,7 +1,6 @@
-/* eslint-disable max-len */
 import React from 'react';
-import Card from '@CardList/Card';
-import PROFILE from '@CardList/constant';
+import Card from '@Components/cardList/Card';
+import PROFILE from '@Components/cardList/constant';
 
 function CardList() {
   return (

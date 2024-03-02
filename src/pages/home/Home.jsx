@@ -40,7 +40,7 @@ function Home() {
         </S.EmojiWrapper>
       </S.Section>
 
-      <S.StyleButton>구경해보기</S.StyleButton>
+      <S.StyleButton to="/list">구경해보기</S.StyleButton>
     </>
   );
 }

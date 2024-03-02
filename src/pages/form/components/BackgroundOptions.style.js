@@ -13,8 +13,12 @@ export const BackgroundOptions = styled.ul`
   }
 `;
 
-export const OptionList = styled.li`
-  background-color: ${({ color }) => color};
+export const BackgroundOption = styled.li`
+  position: relative;
+`;
+
+export const ColorList = styled.div`
+  background-color: ${({ color }) => color || 'rgba(0, 0, 0, 0.1)'};
   width: 168px;
   height: 168px;
   border-radius: 16px;
@@ -23,7 +27,23 @@ export const OptionList = styled.li`
   justify-content: center;
   align-items: center;
 
-  background-image: url(${({ url }) => url});
+  @media ${device.mobile} {
+    width: 100%;
+    height: 42.7777vw;
+  }
+`;
+
+export const ImageList = styled.img`
+  background-color: rgba(0, 0, 0, 0.1);
+  width: 168px;
+  height: 168px;
+  border-radius: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-image: url(${({ $url }) => $url});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -34,7 +54,19 @@ export const OptionList = styled.li`
   }
 `;
 
+export const Option = styled.li``;
+
+export const SearchIcon = styled.img`
+  width: 80px;
+  height: 80px;
+  opacity: 0.3;
+`;
+
 export const CheckIcon = styled.img`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 44px;
   height: 44px;
 `;

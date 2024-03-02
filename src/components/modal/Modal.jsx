@@ -1,38 +1,38 @@
 import React from 'react';
 import * as S from '@Components/modal/Modal.style';
-import BadgeRelationship from '@Components/ui/Badge.relationship';
+import { BadgeRelationship } from '@Components/ui/BadgeRelationship';
+import formatDate from 'utils/format';
 
-function Modal() {
+function Modal({ onCloseModal, modalData }) {
+  const { sender, content, createdAt, profileImageURL, relationship, fonts } = modalData;
+
+  // content: '안녕하세요. 동현님 항상 열심히하는 모습 보기 좋습니다.';
+  // createdAt: '2024-02-28T16:50:49.396725Z';
+  // font: 'Pretendard';
+  // id: 5173;
+  // profileImageURL: 'https://i.namu.wiki/i/E5ilzY4X5szwOyXYvlVaMOoeaASvFtmVMuiaRjspJZXfLD-yOdVs-De2eh6ULZhMNBjxqwdlXRxzAgGuPC8ZgtGgyCo_FhLom5jMkEDuJtb2PHIg2OXWK47zNpt2Ge2OhdOD12ZvRdLBSVAE3_3eVd1hmSrTQPlpEFiH8xBoGt0.webp';
+  // recipients: 2872;
+  // relationship: '지인';
+  // sender: '설인아';
   return (
     <S.Container>
       <S.Info>
         <S.Profile>
-          <S.ProfileImg src="/images/icons/logo.svg" />
+          <S.ProfileImg src={profileImageURL} />
           <S.ProfileTitleContainer>
             <S.ProfileTitle>
               <S.ProfileText>From.</S.ProfileText>
-              <S.ProfileName>김동훈</S.ProfileName>
+              <S.ProfileName>{sender}</S.ProfileName>
             </S.ProfileTitle>
-            <BadgeRelationship />
+            <BadgeRelationship relationship={relationship} />
           </S.ProfileTitleContainer>
         </S.Profile>
-        <S.CreatAt>2023.07.08</S.CreatAt>
+        <S.CreatAt>{formatDate(createdAt)}</S.CreatAt>
       </S.Info>
       <S.Contents>
         <S.Line />
-        <S.TextBox>
-          오류나지마오류나지마오류나지마오류나지마
-          오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마
-          오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마
-          오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마
-          오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마
-          오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마
-          오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마
-          오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마
-          오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마
-          오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마오류나지마
-        </S.TextBox>
-        <S.Button>확인</S.Button>
+        <S.TextBox $font={fonts}>{content}</S.TextBox>
+        <S.Button onClick={onCloseModal}>확인</S.Button>
       </S.Contents>
     </S.Container>
   );

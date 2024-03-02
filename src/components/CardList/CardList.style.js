@@ -11,14 +11,32 @@ const TestImgStyle = `
 `;
 
 export const CardList = styled.div`
+  position: relative;
   display: flex;
-  background-color: ${(props) => props.backgroundColor || '#ecd9ff'};
   width: 275px;
+  background-color: ${(props) => (props.$backgroundImageURL ? 'transparent' : props.$backgroundColor || '#ecd9ff')};
   height: 260px;
   border: 1px solid #0000001a;
   border-radius: 16px;
   padding: 20px 30px;
   box-sizing: border-box;
+  overflow: hidden;
+  color: ${(props) => (props.$backgroundImageURL ? 'white' : 'black')};
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: ${(props) => (props.$backgroundImageURL ? `url(${props.$backgroundImageURL})` : 'none')};
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    filter: blur(2px) brightness(0.9);
+    z-index: -1;
+  }
 `;
 
 export const CardWrapper = styled.div`
@@ -66,6 +84,7 @@ export const LastTestImg = styled.div`
   align-items: center;
   justify-content: center;
   font-size: 12px;
+  color: ${(props) => (props.$backgroundImageURL ? 'black' : 'black')};
 `;
 
 export const CardButtonWrapper = styled.div`

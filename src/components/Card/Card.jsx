@@ -1,7 +1,10 @@
+/* eslint-disable max-len */
 import React from 'react';
-import * as S from '@Card/Card.style';
+import * as S from '@Components/card/Card.style';
+import formatDate from 'utils/format';
+import { BadgeRelationship, badges } from '@Components/ui/BadgeRelationship';
 
-function Card({ name, profileImg, label, text, date }) {
+function Card({ name, profileImg, text, date, label }) {
   return (
     <S.Card>
       <S.Wrapper>
@@ -17,14 +20,12 @@ function Card({ name, profileImg, label, text, date }) {
                   <span>{name}</span>
                 </p>
               </S.ProfileName>
-              <S.ProfileLabel>
-                <span>{label}</span>
-              </S.ProfileLabel>
+              <BadgeRelationship relationship={label}>{label.name}</BadgeRelationship>
             </S.ProfileContent>
           </S.Profile>
         </S.ProfoleWrapper>
         <S.Text>{text}</S.Text>
-        <S.Date>{date}</S.Date>
+        <S.Date>{formatDate(date)}</S.Date>
       </S.Wrapper>
     </S.Card>
   );

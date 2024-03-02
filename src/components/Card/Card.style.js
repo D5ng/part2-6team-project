@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from 'styles/breakpoints';
 
 export const Card = styled.div`
   display: flex;
@@ -6,6 +7,10 @@ export const Card = styled.div`
   height: 280px;
   border-radius: 16px;
   background-color: white;
+
+  @media ${device.tablet} {
+    width: 100%;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -19,7 +24,7 @@ export const Wrapper = styled.div`
 
 export const ProfoleWrapper = styled.div`
   display: flex;
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #00000014;
   padding-bottom: 20px;
 `;
 
@@ -53,21 +58,6 @@ export const ProfileName = styled.div`
   }
   span {
     font-weight: 700;
-  }
-`;
-
-export const ProfileLabel = styled.div`
-  background-color: #f8f0ff;
-  width: 41px;
-  height: 20px;
-  border-radius: 4px;
-  padding: 0 8px;
-  gap: 10px;
-  span {
-    font-size: 14px;
-    line-height: 20px;
-    letter-spacing: -0.5%;
-    color: #9935ff;
   }
 `;
 
