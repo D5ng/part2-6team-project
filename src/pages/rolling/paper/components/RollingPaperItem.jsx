@@ -9,14 +9,16 @@ function RollingPaperItem({ data, onClickModal, getPaperData }) {
   };
   return (
     <CardList onClick={handleOpenModal}>
-      <Card
+      {/* <Card
         key={data.id}
         name={data.sender}
         profileImg={data.profileImageURL}
         label={data.relationship}
         text={data.content}
         date={data.createdAt}
-      />
+      /> */}
+
+      <Card key={data.id} data={data} />
     </CardList>
   );
 }

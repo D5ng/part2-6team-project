@@ -2,6 +2,8 @@ import React from 'react';
 import * as S from '@Components/pageCard/PageCard.style';
 import ImageGallery from '@Components/pageCard/ImageGallery';
 import AddCardButton from '@Components/pageCard/AddCardButton';
+import ReactionButton from './ReactionButton';
+import CardContent from './CardContent';
 
 const colorMap = {
   beige: 'var(--orange200)',
@@ -20,31 +22,8 @@ function Card({ list }) {
   return (
     <S.CardList $backgroundColor={backgroundColorDate} $backgroundImageURL={backgroundImageURL}>
       <S.CardWrapper>
-        <S.CardContentWrapper>
-          <S.CardContent>
-            <div>
-              <h2>
-                To.
-                {name}
-              </h2>
-              <ImageGallery
-                imageArray={recentMessages?.map((item) => item.profileImageURL)}
-                imageCount={messageCount}
-              />
-              <p>
-                <span>{messageCount}</span>
-                명이 작성했어요!
-              </p>
-            </div>
-          </S.CardContent>
-        </S.CardContentWrapper>
-        <S.CardButtonWrapper>
-          <S.CardButton>
-            {topReactions.map((reaction) => (
-              <AddCardButton key={reaction.id} icon={reaction.emoji} initialCount={reaction.count} />
-            ))}
-          </S.CardButton>
-        </S.CardButtonWrapper>
+        <CardContent list={list} />
+        <ReactionButton list={list} />
       </S.CardWrapper>
     </S.CardList>
   );

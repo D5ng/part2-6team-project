@@ -10,8 +10,8 @@ function AddCardButton({ icon, initialCount }) {
 
   return (
     <S.AddCardButton onClick={handleClick} type="button">
-      <div>{icon}</div>
-      <div>{count}</div>
+      <span>{icon}</span>
+      <span>{count}</span>
     </S.AddCardButton>
   );
 }

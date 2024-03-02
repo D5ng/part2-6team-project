@@ -2,30 +2,16 @@
 import React from 'react';
 import * as S from '@Components/messageCard/MessageCard.style';
 import formatDate from 'utils/format';
-import { BadgeRelationship } from '@Components/ui/BadgeRelationship';
+import MessageProfile from './MessageProfile';
 
-function Card({ name, profileImg, text, date, label }) {
+function Card({ data }) {
+  const { content, createdAt } = data;
   return (
     <S.Card>
       <S.Wrapper>
-        <S.ProfoleWrapper>
-          <S.Profile>
-            <S.ProfileImg>
-              <img src={profileImg} alt="profileImg" />
-            </S.ProfileImg>
-            <S.ProfileContent>
-              <S.ProfileName>
-                <p>
-                  From.
-                  <span>{name}</span>
-                </p>
-              </S.ProfileName>
-              <BadgeRelationship relationship={label}>{label.name}</BadgeRelationship>
-            </S.ProfileContent>
-          </S.Profile>
-        </S.ProfoleWrapper>
-        <S.Text>{text}</S.Text>
-        <S.Date>{formatDate(date)}</S.Date>
+        <MessageProfile data={data} />
+        <S.Text>{content}</S.Text>
+        <S.Date>{formatDate(createdAt)}</S.Date>
       </S.Wrapper>
     </S.Card>
   );
