@@ -1,0 +1,17 @@
+.quill {
+  border: 1px solid var(--gray300);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ql-toolbar {
+  background: var(--gray200);
+}
+
+.ql-toolbar.ql-snow {
+  border: none;
+}
+
+.ql-container.ql-snow {
+  height: 210px;
+}

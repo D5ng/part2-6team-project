@@ -51,6 +51,10 @@ export const Options = styled.ul`
   border-radius: 8px;
   margin-top: 5px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  background: var(--white);
+  width: 320px;
+  z-index: 1000;
+  position: absolute;
 `;
 
 export const Option = styled.li`
@@ -58,7 +62,6 @@ export const Option = styled.li`
   padding: 0 16px;
   display: flex;
   align-items: center;
-  display: felx;
   &:hover {
     background-color: var(--gray100);
   }
