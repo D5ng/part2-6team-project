@@ -1,6 +1,6 @@
-import Card from '@Components/card/Card';
 import React from 'react';
 import CardList from '@Paper/components/RollingPaperItem.style';
+import Card from '@Components/card/Card';
 
 function RollingPaperItem({ data, onClickModal, getPaperData }) {
   const handleOpenModal = () => {

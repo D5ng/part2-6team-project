@@ -4,8 +4,7 @@ import * as S from '@Components/card/Card.style';
 import formatDate from 'utils/format';
 import { BadgeRelationship, badges } from '@Components/ui/BadgeRelationship';
 
-function Card({ name, profileImg, labelName, text, date }) {
-  const label = badges.filter((relationship) => relationship.relationship === labelName)[0];
+function Card({ name, profileImg, text, date, label }) {
   return (
     <S.Card>
       <S.Wrapper>
@@ -21,9 +20,7 @@ function Card({ name, profileImg, labelName, text, date }) {
                   <span>{name}</span>
                 </p>
               </S.ProfileName>
-              <BadgeRelationship relationship={label.relationship} bgColor={label.bgColor} textColor={label.textColor}>
-                {label.relationship}
-              </BadgeRelationship>
+              <BadgeRelationship relationship={label}>{label.name}</BadgeRelationship>
             </S.ProfileContent>
           </S.Profile>
         </S.ProfoleWrapper>
