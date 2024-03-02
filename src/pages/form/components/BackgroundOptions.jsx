@@ -28,26 +28,26 @@ function BackgroundOptions({ openModal }) {
     <S.BackgroundOptions>
       {selectedBtn === 'color'
         ? COLOR_LIST.map((list) => (
-            <S.OptionList key={list.title} color={list.color} onClick={() => handleBackgroundOptionClick(list.title)}>
-              {selectedBackground === list.title && <S.CheckIcon src="images/icons/check.svg" alt="" />}
-            </S.OptionList>
+            <S.BackgroundOption key={list.title}>
+              <S.ColorList color={list.color} onClick={() => handleBackgroundOptionClick(list.title)} />
+              {selectedBackground === list.title && <S.CheckIcon src="images/icons/check.svg" alt="배경 체크 아이콘" />}
+            </S.BackgroundOption>
           ))
         : backgroundImages.slice(0, 3).map((list) => (
-            <S.OptionList key={list} $url={list} onClick={() => handleBackgroundOptionClick(list)}>
-              {selectedBackground === list && <S.CheckIcon src="images/icons/check.svg" alt="" />}
-            </S.OptionList>
+            <S.BackgroundOption key={list}>
+              <S.ImageList $url={list} onClick={() => handleBackgroundOptionClick(list)} />
+              {selectedBackground === list && <S.CheckIcon src="images/icons/check.svg" alt="배경 체크 아이콘" />}
+            </S.BackgroundOption>
           ))}
       {selectedBtn === 'image' && (
-        <S.OptionList
+        <S.ColorList
           onClick={() => {
-            // handleBackgroundOptionClick(randomBackgroundImages);
             openModal();
           }}
           $isModal
         >
-          {/* {selectedBackground === randomBackgroundImages && <S.CheckIcon src="images/icons/check.svg" alt="" />} */}
-          <S.SearchIcon src="/images/icons/image-search.svg" alt="사진 탐색 아이콘" />
-        </S.OptionList>
+          <S.SearchIcon src="/images/icons/image-search.svg" alt="배경사진 탐색 아이콘" />
+        </S.ColorList>
       )}
     </S.BackgroundOptions>
   );
