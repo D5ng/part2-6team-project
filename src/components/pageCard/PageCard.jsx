@@ -1,22 +1,15 @@
 import React from 'react';
 import * as S from '@Components/pageCard/PageCard.style';
-import ImageGallery from '@Components/pageCard/ImageGallery';
-import AddCardButton from '@Components/pageCard/AddCardButton';
+import colorMap from 'utils/backgroundColor';
 import ReactionButton from './ReactionButton';
 import CardContent from './CardContent';
 
-const colorMap = {
-  beige: 'var(--orange200)',
-  purple: 'var(--primary200)',
-  blue: 'var(--blue200)',
-  green: 'var(--green200)',
-};
 function getColor(color) {
   return colorMap[color];
 }
 
 function Card({ list }) {
-  const { backgroundColor, backgroundImageURL, name, messageCount, recentMessages, topReactions } = list;
+  const { backgroundColor, backgroundImageURL } = list;
   const backgroundColorDate = getColor(backgroundColor);
 
   return (
