@@ -6,9 +6,7 @@ function useIntersectionObserver(onIntersect, options = undefined) {
   const callback = useCallback(
     (entries, observer) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          onIntersect(entry, observer);
-        }
+        if (entry.isIntersecting) onIntersect(entry, observer);
       });
     },
     [onIntersect],

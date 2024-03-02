@@ -6,7 +6,7 @@ import PaperContents from './components/PaperContents';
 function Paper() {
   return (
     <PaperContextProvider>
-      {/* <PostCreate /> */}
+      <PostCreate />
       <PaperContents />
     </PaperContextProvider>
   );

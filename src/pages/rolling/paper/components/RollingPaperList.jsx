@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import * as S from '@Paper/components/RollingPaperList.style';
 import PlusIcon from '@Components/ui/PlusIcon';
 import { PaperContext } from '@Paper/context/PaperContext';
@@ -27,15 +27,21 @@ function RollingPaperList() {
 
   const onIntersect = async (entry, observer) => {
     observer.unobserve(entry.target);
-    // eslint-disable-next-line no-useless-return
-    if ((paperState.isLoading || messageState.isLoading) && !messageState?.data?.next) return;
-    messageFetchRequest({ url: messageState.data.next });
+    if (paperState.isLoading || messageState.isLoading) return;
+    if (messageState?.data?.next) messageFetchRequest({ url: messageState.data.next });
   };
-
-  console.log(messageState?.data?.results);
 
   const ref = useIntersectionObserver(onIntersect, { threshold: 0.1 });
 
+  const renderStartLoadingUI =
+    isLoading && !messageState?.data?.results && Array.from({ length: 11 }).map((_, index) => <Skeleton key={index} />);
+
+  const renderMessageData = messageState?.data?.results?.map((info) => (
+    <RollingPaperItem key={info.id} data={info} onClickModal={handleOpenModal} getPaperData={getModalData} />
+  ));
+
+  const renderEndLoadingUI =
+    messageState?.data?.next && Array.from({ length: 6 }).map((_, index) => <Skeleton key={index} ref={ref} />);
   return (
     <S.GridLayout>
       {modalState.isOpen && backdrop}
@@ -45,22 +51,9 @@ function RollingPaperList() {
           <PlusIcon />
         </S.Button>
       </S.CreatePaperArea>
-      {isLoading && Array.from({ length: 11 }).map((_, index) => <Skeleton key={index} />)}
-      {messageState?.data?.results?.map((info) => (
-        <RollingPaperItem key={info.id} data={info} onClickModal={handleOpenModal} getPaperData={getModalData} />
-      ))}
-      {messageState?.data?.next && (
-        <>
-          {/* {Array.from({ length: 6 }).map((_, index) => (
-            <Skeleton key={index} />
-          ))} */}
-          <S.ObserverTarget ref={ref} />
-          <Skeleton />
-          <Skeleton />
-          <Skeleton />
-          <Skeleton />
-        </>
-      )}
+      {renderStartLoadingUI}
+      {renderMessageData}
+      {renderEndLoadingUI}
     </S.GridLayout>
   );
 }
