@@ -1,7 +1,7 @@
 import React from 'react';
-import * as S from '@Components/cardlist/CardList.style';
-import ImageGallery from '@Components/cardlist/ImageGallery';
-import AddCardButton from '@Components/cardlist/AddCardButton';
+import * as S from '@Components/cardList/CardList.style';
+import ImageGallery from '@Components/cardList/ImageGallery';
+import AddCardButton from '@Components/cardList/AddCardButton';
 
 const colorMap = {
   beige: 'var(--orange200)',
