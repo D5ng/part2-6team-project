@@ -57,6 +57,7 @@ export function MessageFormContextProvider({ children }) {
       setMessage,
       setFromName,
       fromName,
+      currentSelect,
     ],
   );
   return <MessageFormContext.Provider value={values}>{children}</MessageFormContext.Provider>;

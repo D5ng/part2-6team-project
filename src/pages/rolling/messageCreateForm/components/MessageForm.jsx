@@ -9,12 +9,14 @@ import { postCreateMessageData } from '../api';
 import PreviewImg from './PreviewImg';
 import TextEditor from './TextEditor';
 import ProfileImgList from './ProfileImgList';
+import PreviewCard from './PreviewCard';
 
 function MessageForm() {
   const params = useParams();
   const navigate = useNavigate();
   const [messageLength, setMessageLength] = useState(1);
   const { currentSelect, message, currentProfileImg, setFromName, fromName } = useMessageFormContext();
+
   const submitForm = async (e) => {
     e.preventDefault();
     const postMessage = message.ops && message.ops.map((messages) => messages.insert).join('\n');
@@ -64,6 +66,7 @@ function MessageForm() {
         <S.InputTitle>폰트 선택</S.InputTitle>
         <Dropdown type="font" />
       </S.Wrapper>
+      <PreviewCard />
       <PrimaryCreateBtn disabled={!(messageLength !== 1 && fromName.target)} style={{ marginTop: '64px' }}>
         생성하기
       </PrimaryCreateBtn>
