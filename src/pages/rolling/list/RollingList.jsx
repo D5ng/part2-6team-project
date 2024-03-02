@@ -33,14 +33,14 @@ function RollingList() {
       <S.Section>
         <S.Wrapper>
           <S.Title>인기 롤링 페이퍼 🔥</S.Title>
-          <PopularPaper recipients={popularPapers} />
+          <PopularPaper papers={popularPapers} />
         </S.Wrapper>
       </S.Section>
 
       <S.Section>
         <S.Wrapper>
           <S.Title>최근에 만든 롤링 페이퍼 ⭐️️</S.Title>
-          <LatestPaper recipients={recentPapers} />
+          <LatestPaper papers={recentPapers} />
         </S.Wrapper>
       </S.Section>
 

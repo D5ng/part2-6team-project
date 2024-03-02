@@ -13,7 +13,8 @@ function getColor(color) {
   return colorMap[color];
 }
 
-function Card({ backgroundColor, backgroundImageURL, name, members, imageArray, topReactions }) {
+function Card({ list }) {
+  const { backgroundColor, backgroundImageURL, name, members, recentMessages, topReactions } = list;
   const backgroundColorDate = getColor(backgroundColor);
 
   return (
@@ -26,7 +27,7 @@ function Card({ backgroundColor, backgroundImageURL, name, members, imageArray, 
                 To.
                 {name}
               </h2>
-              <ImageGallery imageArray={imageArray} imageCount={members} />
+              <ImageGallery imageArray={recentMessages?.map((item) => item.profileImageURL)} imageCount={members} />
               <p>
                 <span>{members}</span>
                 명이 작성했어요!
@@ -36,8 +37,8 @@ function Card({ backgroundColor, backgroundImageURL, name, members, imageArray, 
         </S.CardContentWrapper>
         <S.CardButtonWrapper>
           <S.CardButton>
-            {topReactions.map((list) => (
-              <AddCardButton key={list.id} icon={list.emoji} initialCount={list.count} />
+            {topReactions.map((reaction) => (
+              <AddCardButton key={reaction.id} icon={reaction.emoji} initialCount={reaction.count} />
             ))}
           </S.CardButton>
         </S.CardButtonWrapper>
