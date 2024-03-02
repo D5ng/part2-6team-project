@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Input from '@Components/form/Input';
 import Dropdown from '@Components/form/Dropdown';
@@ -13,12 +13,13 @@ import ProfileImgList from './ProfileImgList';
 function MessageForm() {
   const params = useParams();
   const navigate = useNavigate();
-  const { currentSelect, message, currentProfileImg } = useMessageFormContext();
+  const [messageLength, setMessageLength] = useState(1);
+  const { currentSelect, message, currentProfileImg, setFromName, fromName } = useMessageFormContext();
   const submitForm = async (e) => {
     e.preventDefault();
-    const postMessage = message.ops.map((messages) => messages.insert).join('\n');
+    const postMessage = message.ops && message.ops.map((messages) => messages.insert).join('\n');
     const rqusetObject = {
-      sender: '박현우',
+      sender: fromName.target.value,
       relationship: currentSelect.relation,
       content: postMessage,
       font: currentSelect.font,
@@ -36,8 +37,10 @@ function MessageForm() {
   return (
     <S.Form onSubmit={submitForm}>
       <S.Wrapper>
-        <S.InputTitle>From.</S.InputTitle>
-        <Input errorMessage="이름을 입력해 주세요">이름을 입력해 주세요</Input>
+        <S.InputTitle>From.{fromName.target ? fromName.target.value : ''}</S.InputTitle>
+        <Input onChange={setFromName} errorMessage="이름을 입력해 주세요">
+          이름을 입력해 주세요
+        </Input>
       </S.Wrapper>
       <S.Wrapper>
         <S.InputTitle>프로필 이미지</S.InputTitle>
@@ -55,13 +58,15 @@ function MessageForm() {
       </S.Wrapper>
       <S.Wrapper>
         <S.InputTitle>내용을 입력해 주세요</S.InputTitle>
-        <TextEditor />
+        <TextEditor messageLength={setMessageLength} />
       </S.Wrapper>
       <S.Wrapper>
         <S.InputTitle>폰트 선택</S.InputTitle>
         <Dropdown type="font" />
       </S.Wrapper>
-      <PrimaryCreateBtn style={{ marginTop: '64px' }}>생성하기</PrimaryCreateBtn>
+      <PrimaryCreateBtn disabled={!(messageLength !== 1 && fromName.target)} style={{ marginTop: '64px' }}>
+        생성하기
+      </PrimaryCreateBtn>
     </S.Form>
   );
 }
