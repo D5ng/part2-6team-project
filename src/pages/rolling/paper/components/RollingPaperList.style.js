@@ -7,6 +7,7 @@ export const GridLayout = styled.ul`
   display: grid;
   grid-template-columns: repeat(3, 384px);
   gap: 24px;
+  position: relative;
 
   @media ${device.tablet} {
     padding: 0 3.125vw;
@@ -41,4 +42,8 @@ export const Button = styled(Link)`
   &:hover ${PlusIcon} {
     background-color: var(--gray600);
   }
+`;
+
+export const ObserverTarget = styled(GridLayout)`
+  margin: 24px 0 0 0;
 `;

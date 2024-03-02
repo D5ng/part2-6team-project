@@ -6,18 +6,18 @@ import Modal from '@Components/modal/Modal';
 import { createPortal } from 'react-dom';
 import Backdrop from '@Components/modal/Backdrop';
 import useIntersectionObserver from 'hooks/useIntersectionObserver';
+import throttle from 'utils/throttle';
 import RollingPaperItem from './RollingPaperItem';
 import Skeleton from './Skeleton';
+// import useDebounce from 'hooks/useDebounce';
 
 function RollingPaperList() {
   const {
     paperState,
     messageState,
     modal: { modalState, handleOpenModal, handleCloseModal, getModalData },
-    // messageFetchRequest,
+    messageFetchRequest,
   } = useContext(PaperContext);
-
-  const [page, setPage] = useState(0);
 
   const backdrop = createPortal(<Backdrop onCloseModal={handleCloseModal} />, document.getElementById('backdrop-root'));
   const modal = createPortal(
@@ -29,26 +29,14 @@ function RollingPaperList() {
 
   const onIntersect = async (entry, observer) => {
     observer.unobserve(entry.target);
-    // 페이퍼가 로딩중이 아니고, 메세지가 로딩중이 아니라면
-    if (paperState.isLoading || messageState.isLoading) return;
-    setPage(page + 1);
+    // eslint-disable-next-line no-useless-return
+    if ((paperState.isLoading || messageState.isLoading) && !messageState?.data?.next) return;
+    messageFetchRequest({ url: messageState.data.next });
   };
 
-  console.log(page);
+  console.log(messageState?.data?.results);
 
-  const ref = useIntersectionObserver(onIntersect);
-
-  // useEffect(() => {
-  //   const options = {
-  //     url: `https://api.thedogapi.com/v1/images/search?size=small&format=json&has_breeds=true&order=ASC&page=${page}&limit=10`,
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'x-api-key': 'live_NEmiLnyujWqLzQtjiaKNe3tLQBIWdh6OGsO5JDgo0BPeoMUBZYyyjtDIS2mCTTPf',
-  //     },
-  //   };
-
-  //   messageFetchRequest(options);
-  // }, [messageFetchRequest, page]);
+  const ref = useIntersectionObserver(onIntersect, { threshold: 0.1 });
 
   return (
     <S.GridLayout>
@@ -59,15 +47,22 @@ function RollingPaperList() {
           <PlusIcon />
         </S.Button>
       </S.CreatePaperArea>
-      {/* {isLoading && Array.from({ length: 8 }).map((_, index) => <Skeleton key={index} />)} */}
-      {Array.from({ length: 8 }).map((_, index) => (
-        <Skeleton key={index} />
-      ))}
+      {isLoading && Array.from({ length: 11 }).map((_, index) => <Skeleton key={index} />)}
       {messageState?.data?.results?.map((info) => (
         <RollingPaperItem key={info.id} data={info} onClickModal={handleOpenModal} getPaperData={getModalData} />
       ))}
-      {/* <div style={{ height: '10px' }} /> */}
-      <div ref={ref} style={{ height: '10px' }} />
+      {messageState?.data?.next && (
+        <>
+          {/* {Array.from({ length: 6 }).map((_, index) => (
+            <Skeleton key={index} />
+          ))} */}
+          <S.ObserverTarget ref={ref} />
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+          <Skeleton />
+        </>
+      )}
     </S.GridLayout>
   );
 }
