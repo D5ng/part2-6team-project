@@ -14,6 +14,6 @@ export const httpReducer = (state, action) => httpReducerMapping[action.type](st
 
 export const httpReducerInitialValues = {
   data: null,
-  isLoading: false,
+  isLoading: true,
   hasError: null,
 };

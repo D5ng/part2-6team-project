@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import * as S from '@Paper/components/RollingPaperList.style';
 import PlusIcon from '@Components/ui/PlusIcon';
 import { PaperContext } from '@Paper/context/PaperContext';
@@ -20,6 +20,9 @@ function RollingPaperList() {
     <Modal onCloseModal={handleCloseModal} modalData={modalState.data} />,
     document.getElementById('modal-root'),
   );
+
+  const isLoading = paperState.isLoading && messageState.isLoading;
+
   return (
     <S.GridLayout>
       {modalState.isOpen && backdrop}
@@ -29,9 +32,7 @@ function RollingPaperList() {
           <PlusIcon />
         </S.Button>
       </S.CreatePaperArea>
-      {paperState.isLoading &&
-        messageState.isLoading &&
-        Array.from({ length: 8 }).map((_, index) => <Skeleton key={index} />)}
+      {isLoading && Array.from({ length: 8 }).map((_, index) => <Skeleton key={index} />)}
       {messageState?.data?.results?.map((info) => (
         <RollingPaperItem key={info.id} data={info} onClickModal={handleOpenModal} getPaperData={getModalData} />
       ))}

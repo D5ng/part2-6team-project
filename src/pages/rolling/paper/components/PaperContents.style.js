@@ -15,7 +15,7 @@ export const PaperWrapper = styled.div`
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  padding: 113px 0 0 0;
+  padding: 113px 0 246px 0;
 
   @media ${device.tablet} {
     padding: 12.1093vw 0 11.8489vw 0;
