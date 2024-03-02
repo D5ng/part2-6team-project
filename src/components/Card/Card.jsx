@@ -1,11 +1,11 @@
 /* eslint-disable max-len */
 import React from 'react';
-import * as S from '@Components/Card/Card.style';
+import * as S from '@Components/card/Card.style';
 import formatDate from 'utils/format';
-import { BadgeItem, badge } from '@Components/ui/Badge.relationship';
+import { BadgeRelationship, badges } from '@Components/ui/BadgeRelationship';
 
 function Card({ name, profileImg, labelName, text, date }) {
-  const label = badge.filter((relationship) => relationship.relationship === labelName)[0];
+  const label = badges.filter((relationship) => relationship.relationship === labelName)[0];
   return (
     <S.Card>
       <S.Wrapper>
@@ -21,9 +21,9 @@ function Card({ name, profileImg, labelName, text, date }) {
                   <span>{name}</span>
                 </p>
               </S.ProfileName>
-              <BadgeItem relationship={label.relationship} bgColor={label.bgColor} textColor={label.textColor}>
+              <BadgeRelationship relationship={label.relationship} bgColor={label.bgColor} textColor={label.textColor}>
                 {label.relationship}
-              </BadgeItem>
+              </BadgeRelationship>
             </S.ProfileContent>
           </S.Profile>
         </S.ProfoleWrapper>

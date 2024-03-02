@@ -2,7 +2,7 @@
 import React from 'react';
 import * as S from '@Components/ui/BadgeRelationship.style';
 
-const badges = [
+export const badges = [
   {
     relationship: '지인',
     bgColor: 'var(--orange100)',
@@ -25,7 +25,7 @@ const badges = [
   },
 ];
 
-function BadgeRelationship({ relationship }) {
+export function BadgeRelationship({ relationship }) {
   const filteredBadge = badges.filter((badge) => badge.relationship === relationship)[0];
   return (
     <S.BadgeContainer>

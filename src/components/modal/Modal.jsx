@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from '@Components/modal/Modal.style';
-import BadgeRelationship from '@Components/ui/BadgeRelationship';
+import { BadgeRelationship } from '@Components/ui/BadgeRelationship';
 import formatDate from 'utils/format';
 
 function Modal({ onCloseModal, modalData }) {

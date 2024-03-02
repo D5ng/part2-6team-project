@@ -1,6 +1,6 @@
 import React from 'react';
-import Card from '@CardList/Card';
-import PROFILE from '@CardList/constant';
+import Card from '@Components/cardlist/Card';
+import PROFILE from '@Components/cardlist/constant';
 
 function CardList() {
   return (
