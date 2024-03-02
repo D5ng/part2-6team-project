@@ -4,6 +4,7 @@ function useAsync(asyncFunction) {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState(null);
 
+  // eslint-disable-next-line consistent-return
   const wrappedFunction = async (...args) => {
     try {
       setPending(true);

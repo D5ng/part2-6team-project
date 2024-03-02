@@ -1,8 +1,9 @@
 const BASE_URL = process.env.REACT_APP_API_KEY;
-const UNSPLASH_URL = process.env.REACT_APP_UNSPLASH_API;
+const IMAGES_URL = process.env.REACT_APP_UNSPLASH_IMAGES_API;
+const UNSPLASH_TOKEN = process.env.REACT_APP_UNSPLASH_TOKEN;
 
-async function fetchData(base, endpoint) {
-  const url = `${base}${endpoint}`;
+async function fetchData(base, endpoint, token) {
+  const url = `${base}${endpoint}?${token}`;
   const response = await fetch(url);
   if (!response.ok) {
     throw new Error(`${endpoint} 요청 중 오류가 발생했습니다.`);
@@ -11,7 +12,11 @@ async function fetchData(base, endpoint) {
 }
 
 export function getRandomBackgroundImages() {
-  return fetchData(UNSPLASH_URL, '');
+  return fetchData(IMAGES_URL, `/photos/random`, UNSPLASH_TOKEN);
+}
+
+export function getUnsplashBackgroundImages(num = 1) {
+  return fetchData(IMAGES_URL, `/photos`, `page=${num}&per_page=6&${UNSPLASH_TOKEN}`);
 }
 
 export function getBackgroundImages() {

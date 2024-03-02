@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import * as S from '@Components/ui/BadgeRelationship.style';
 
@@ -34,5 +35,3 @@ function BadgeRelationship({ relationship }) {
     </S.BadgeContainer>
   );
 }
-
-export default BadgeRelationship;
