@@ -3,14 +3,13 @@ import { useFormContext } from '../context/FormContext';
 import * as S from './ImagePickerMoadl.style';
 import { getUnsplashBackgroundImages } from '../api';
 import useAsync from '../hooks/useAsync';
+import { CheckIcon } from './BackgroundOptions.style';
 
 function ImagePickerModal({ closeModal }) {
-  const { unsplashBackgroundImages, setUnsplashBackgroundImages } = useFormContext();
-
+  const { selectedBackground, setSelectedBackground, unsplashBackgroundImages, setUnsplashBackgroundImages } =
+    useFormContext();
   const [page, setPage] = useState(1);
-
   const [isFetchingImages, fetchingError, onFetchImagesAsync] = useAsync(getUnsplashBackgroundImages);
-
   const modalContentRef = useRef(null);
 
   async function handleLoadUnsplashImages(pageNum) {
@@ -24,6 +23,10 @@ function ImagePickerModal({ closeModal }) {
       setUnsplashBackgroundImages((prevImages) => [...prevImages, ...data]);
     }
   }
+
+  const handleBackgroundOptionClick = (option) => {
+    setSelectedBackground(option);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,9 +64,16 @@ function ImagePickerModal({ closeModal }) {
       ) : (
         <S.ImageLists ref={modalContentRef}>
           {unsplashBackgroundImages?.map((list) => (
-            <li key={list.id}>
-              <S.ImageList src={list.urls.regular} alt="unsplash image" />
-            </li>
+            <S.ImageList key={list.id}>
+              <S.Image
+                src={list.urls.regular}
+                onClick={() => handleBackgroundOptionClick(list.urls.full)}
+                alt="unsplash image"
+              />
+              {selectedBackground === list.urls.full && (
+                <CheckIcon src="images/icons/check.svg" alt="배경사진 탐색 아이콘" />
+              )}
+            </S.ImageList>
           ))}
         </S.ImageLists>
       )}

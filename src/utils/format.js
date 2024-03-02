@@ -1,4 +1,4 @@
-export default function getDate(date) {
+export default function formatDate(date) {
   const transformedDate = new Date(date);
 
   const year = transformedDate.getFullYear();
