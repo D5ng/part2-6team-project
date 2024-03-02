@@ -1,7 +1,7 @@
 import React from 'react';
-import * as S from '@Components/cardList/CardList.style';
-import ImageGallery from '@Components/cardList/ImageGallery';
-import AddCardButton from '@Components/cardList/AddCardButton';
+import * as S from '@Components/pageCard/PageCard.style';
+import ImageGallery from '@Components/pageCard/ImageGallery';
+import AddCardButton from '@Components/pageCard/AddCardButton';
 
 const colorMap = {
   beige: 'var(--orange200)',
@@ -14,7 +14,7 @@ function getColor(color) {
 }
 
 function Card({ list }) {
-  const { backgroundColor, backgroundImageURL, name, members, recentMessages, topReactions } = list;
+  const { backgroundColor, backgroundImageURL, name, messageCount, recentMessages, topReactions } = list;
   const backgroundColorDate = getColor(backgroundColor);
 
   return (
@@ -27,9 +27,12 @@ function Card({ list }) {
                 To.
                 {name}
               </h2>
-              <ImageGallery imageArray={recentMessages?.map((item) => item.profileImageURL)} imageCount={members} />
+              <ImageGallery
+                imageArray={recentMessages?.map((item) => item.profileImageURL)}
+                imageCount={messageCount}
+              />
               <p>
-                <span>{members}</span>
+                <span>{messageCount}</span>
                 명이 작성했어요!
               </p>
             </div>

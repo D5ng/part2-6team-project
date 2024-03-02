@@ -4,7 +4,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import * as S from '@List/components/Paper.style';
 import breakPoints from '@List/utils/swiper.breakpoints';
-import Card from '@Components/cardList/Card';
+import Card from '@Components/pageCard/PageCard';
 
 function PopularPaper({ papers }) {
   const [_, setInit] = useState(false);

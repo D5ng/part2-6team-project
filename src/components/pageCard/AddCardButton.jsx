@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import * as S from '@Components/cardList/CardList.style';
+import * as S from '@Components/pageCard/PageCard.style';
 
 function AddCardButton({ icon, initialCount }) {
   const [count, setCount] = useState(initialCount);

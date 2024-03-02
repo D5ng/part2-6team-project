@@ -1,8 +1,8 @@
 /* eslint-disable max-len */
 import React from 'react';
-import * as S from '@Components/card/Card.style';
+import * as S from '@Components/messageCard/MessageCard.style';
 import formatDate from 'utils/format';
-import { BadgeRelationship, badges } from '@Components/ui/BadgeRelationship';
+import { BadgeRelationship } from '@Components/ui/BadgeRelationship';
 
 function Card({ name, profileImg, text, date, label }) {
   return (
