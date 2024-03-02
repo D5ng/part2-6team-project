@@ -9,8 +9,12 @@ async function fetchData(base, endpoint) {
   return response.json();
 }
 
-function getRecipients() {
-  return fetchData(BASE_URL, '/4-6/recipients/');
+// 최신순 8개
+export function getRecentPapers() {
+  return fetchData(BASE_URL, '/4-6/recipients/?limit=8');
 }
 
-export default getRecipients;
+// 인기순 8개 (이모지 수 기준)
+export function getPopularPapers() {
+  return fetchData(BASE_URL, '/4-6/recipients/?limit=8&sort=like');
+}

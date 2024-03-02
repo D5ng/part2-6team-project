@@ -24,34 +24,19 @@ export function FormProvider({ children }) {
     handleLoadImages();
   }, []);
 
-  // 값 객체
-  const values = useMemo(
-    () => ({
-      selectedBtn,
-      setSelectedBtn,
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
+  const values = {
+    selectedBtn,
+    setSelectedBtn,
 
-      selectedBackground,
-      setSelectedBackground,
+    selectedBackground,
+    setSelectedBackground,
 
-      backgroundImages,
-      randomBackgroundImages,
-      unsplashBackgroundImages,
-      setUnsplashBackgroundImages,
-    }),
-
-    [
-      selectedBtn,
-      setSelectedBtn,
-
-      selectedBackground,
-      setSelectedBackground,
-
-      backgroundImages,
-      randomBackgroundImages,
-      unsplashBackgroundImages,
-      setUnsplashBackgroundImages,
-    ],
-  );
+    backgroundImages,
+    randomBackgroundImages,
+    unsplashBackgroundImages,
+    setUnsplashBackgroundImages,
+  };
 
   return <FormContext.Provider value={values}>{children}</FormContext.Provider>;
 }

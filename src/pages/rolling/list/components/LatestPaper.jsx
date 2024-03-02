@@ -10,7 +10,6 @@ function PopularPaper({ recipients }) {
   const [_, setInit] = useState(false);
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
-  recipients.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   return (
     <S.SwiperWrapper>

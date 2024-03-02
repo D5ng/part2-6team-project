@@ -3,35 +3,44 @@ import PopularPaper from '@List/components/PopularPaper';
 import LatestPaper from '@List/components/LatestPaper';
 import * as S from '@List/RollingList.style';
 import PrimaryLink from '@Components/ui/PrimaryLink';
-import getRecipients from '../api';
+import { getPopularPapers, getRecentPapers } from '../api';
 
 function RollingList() {
-  const [recipients, setRecipients] = useState([]);
+  const [recentPapers, setRecentPapers] = useState([]);
+  const [popularPapers, setPopularPapers] = useState([]);
 
-  const handleLoadRecipients = async () => {
-    const result = await getRecipients();
+  const handleLoadRecentRecipients = async () => {
+    const result = await getRecentPapers();
     if (!result) return;
     const data = result.results;
-    setRecipients(data);
+    setRecentPapers(data);
+  };
+
+  const handleLoadPopularRecipients = async () => {
+    const result = await getPopularPapers();
+    if (!result) return;
+    const data = result.results;
+    setPopularPapers(data);
   };
 
   useEffect(() => {
-    handleLoadRecipients();
+    handleLoadRecentRecipients();
+    handleLoadPopularRecipients();
   }, []);
-  
+
   return (
     <>
       <S.Section>
         <S.Wrapper>
           <S.Title>인기 롤링 페이퍼 🔥</S.Title>
-          <PopularPaper recipients={recipients} />
+          <PopularPaper recipients={popularPapers} />
         </S.Wrapper>
       </S.Section>
 
       <S.Section>
         <S.Wrapper>
           <S.Title>최근에 만든 롤링 페이퍼 ⭐️️</S.Title>
-          <LatestPaper recipients={recipients} />
+          <LatestPaper recipients={recentPapers} />
         </S.Wrapper>
       </S.Section>
 
