@@ -11,21 +11,16 @@ function EmojiChoice() {
         type: 'increase',
         emoji: emoji.emoji,
       };
-
-      console.log(emoji.imageUrl);
-      // https://cdn.jsdelivr.net/npm/emoji-datasource-apple/img/apple/64/1f604.png
       const response = await createReactions(data);
 
-      console.log('이모지 전송 성공:', response);
+      console.log('이모지 전송 성공:', choice, response);
 
       setChoice(emoji);
     } catch (error) {
-      console.log(error);
       console.error('이모지 전송 실패:', error);
     }
   };
 
-  console.log(choice);
   return (
     <div>
       <EmojiPicker onEmojiClick={handleEmojiClick} />

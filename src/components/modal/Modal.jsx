@@ -30,7 +30,6 @@ function Modal({ onCloseModal, modalData }) {
         <S.CreatAt>{formatDate(createdAt)}</S.CreatAt>
       </S.Info>
       <S.Contents>
-        <S.Line />
         <S.TextBox $font={fonts}>{content}</S.TextBox>
         <S.Button onClick={onCloseModal}>확인</S.Button>
       </S.Contents>
