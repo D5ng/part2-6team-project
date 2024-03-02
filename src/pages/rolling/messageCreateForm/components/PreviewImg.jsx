@@ -5,11 +5,7 @@ import { useMessageFormContext } from '../context/MessageFormContext';
 function PreviewImg() {
   const { currentProfileImg } = useMessageFormContext();
 
-  return (
-    <S.Background>
-      <S.Img src={currentProfileImg} />
-    </S.Background>
-  );
+  return <S.Img src={currentProfileImg} />;
 }
 
 export default PreviewImg;
