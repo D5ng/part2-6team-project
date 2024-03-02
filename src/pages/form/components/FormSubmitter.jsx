@@ -40,7 +40,7 @@ function FormSubmitter() {
     }
   };
 
-  const modal = createPortal(<ImagePickerModal closeModal={closeModal} />, document.getElementById('modal'));
+  const modal = createPortal(<ImagePickerModal closeModal={closeModal} />, document.getElementById('modal-root'));
 
   return (
     <S.Wrapper>
