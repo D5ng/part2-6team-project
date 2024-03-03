@@ -57,8 +57,10 @@ function ImagePickerModal({ closeModal }) {
     <S.ImagePickerModal>
       <S.Header>
         <S.CloseButton src="/images/icons/close.svg" onClick={closeModal} />
-
-        <S.ModalTitle>배경화면을 선택해 주세요</S.ModalTitle>
+        <S.ModalTitle>
+          <S.UnsplashIcon src="/images/form/unsplash_icon.png" alt="" />
+          배경화면을 선택해 주세요
+        </S.ModalTitle>
 
         <S.SearchBar>
           <Input
@@ -66,7 +68,7 @@ function ImagePickerModal({ closeModal }) {
               setKeyword(e.target.value);
             }}
           >
-            배경화면을 검색하세요
+            어떤 배경화면을 원하시나요?
           </Input>
           <S.SearchButton type="submit" onClick={handleSearch}>
             검색

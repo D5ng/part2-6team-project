@@ -26,7 +26,7 @@ export async function createPaper(paperData) {
 }
 
 export function getUnsplashBackgroundImages(num = 1) {
-  return fetchData(IMAGES_URL, `/photos`, `page=${num}&per_page=10&${UNSPLASH_TOKEN}`);
+  return fetchData(IMAGES_URL, `/photos`, `page=${num}&per_page=10&order_by=popular&${UNSPLASH_TOKEN}`);
 }
 
 export function getUnsplashSearchedImages(num = 1, key = '') {
