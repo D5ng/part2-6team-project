@@ -1,6 +1,6 @@
 import React from 'react';
-import * as S from '@Components/pageCard/PageCard.style';
-import AddCardButton from '@Components/pageCard/AddCardButton';
+import * as S from '@Components/paperCard/PaperCard.style';
+import AddCardButton from '@Components/paperCard/AddCardButton';
 
 function ReactionButton({ list }) {
   return (

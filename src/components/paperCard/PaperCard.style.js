@@ -10,7 +10,7 @@ const TestImgStyle = `
   margin-right: -10px;
 `;
 
-export const CardList = styled.div`
+export const PaperCard = styled.div`
   position: relative;
   display: flex;
   width: 275px;

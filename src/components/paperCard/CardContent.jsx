@@ -1,6 +1,6 @@
 import React from 'react';
-import * as S from '@Components/pageCard/PageCard.style';
-import ImageGallery from '@Components/pageCard/ImageGallery';
+import * as S from '@Components/paperCard/PaperCard.style';
+import ImageGallery from '@Components/paperCard/ImageGallery';
 
 function CardContent({ list }) {
   const { name, messageCount, recentMessages } = list;

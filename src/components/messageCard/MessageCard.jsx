@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React from 'react';
 import * as S from '@Components/messageCard/MessageCard.style';
 import formatDate from 'utils/format';

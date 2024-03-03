@@ -20,6 +20,27 @@ export function FormProvider({ children }) {
     setBackgroundImages(images);
   };
 
+  // unsplash 배경 이미지 로드 함수
+  const handleLoadUnsplashImages = async (asyncFunction, pageNum) => {
+    const data = await asyncFunction(pageNum);
+    if (!data) {
+      return;
+    }
+    if (pageNum === 1) {
+      setUnsplashBackgroundImages(data);
+    } else {
+      setUnsplashBackgroundImages((prevImages) => [...prevImages, ...data]);
+    }
+  };
+
+  const handleToggleButtonClick = (buttonType) => {
+    setSelectedBtn(buttonType);
+  };
+
+  const handleBackgroundClick = (background) => {
+    setSelectedBackground(background);
+  };
+
   useEffect(() => {
     handleLoadImages();
   }, []);
@@ -27,15 +48,15 @@ export function FormProvider({ children }) {
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const values = {
     selectedBtn,
-    setSelectedBtn,
+    handleToggleButtonClick,
 
     selectedBackground,
-    setSelectedBackground,
+    handleBackgroundClick,
 
     backgroundImages,
     randomBackgroundImages,
     unsplashBackgroundImages,
-    setUnsplashBackgroundImages,
+    handleLoadUnsplashImages,
   };
 
   return <FormContext.Provider value={values}>{children}</FormContext.Provider>;

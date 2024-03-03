@@ -4,7 +4,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import * as S from '@List/components/Paper.style';
 import breakPoints from '@List/utils/swiper.breakpoints';
-import Card from '@Components/pageCard/PageCard';
+import PaperCard from '@Components/paperCard/PaperCard';
 
 function PopularPaper({ papers }) {
   const [_, setInit] = useState(false);
@@ -25,7 +25,7 @@ function PopularPaper({ papers }) {
       >
         {papers.map((list) => (
           <S.StyledSlide key={list.id}>
-            <Card list={list} />
+            <PaperCard list={list} />
           </S.StyledSlide>
         ))}
       </S.StyledSwiper>

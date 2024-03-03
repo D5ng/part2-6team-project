@@ -3,18 +3,14 @@ import * as S from 'pages/form/components/ToggleButton.style';
 import { useFormContext } from '../context/FormContext';
 
 function ToggleButton() {
-  const { selectedBtn, setSelectedBtn } = useFormContext();
-
-  const handleButtonClick = (buttonType) => {
-    setSelectedBtn(buttonType);
-  };
+  const { selectedBtn, handleToggleButtonClick } = useFormContext();
 
   return (
     <S.ToggleButton>
-      <S.Button type="button" $isSelected={selectedBtn === 'color'} onClick={() => handleButtonClick('color')}>
+      <S.Button type="button" $isSelected={selectedBtn === 'color'} onClick={() => handleToggleButtonClick('color')}>
         컬러
       </S.Button>
-      <S.Button type="button" $isSelected={selectedBtn === 'image'} onClick={() => handleButtonClick('image')}>
+      <S.Button type="button" $isSelected={selectedBtn === 'image'} onClick={() => handleToggleButtonClick('image')}>
         이미지
       </S.Button>
     </S.ToggleButton>
