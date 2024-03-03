@@ -21,6 +21,7 @@ export function MessageFormContextProvider({ children }) {
   const [profileImgSrc, setProfileImgSrc] = useState([]);
   const [currentProfileImg, setCurrentProfileImg] = useState('');
   const [currentSelect, dispatch] = useReducer(reducer, { relation: '친구', font: 'Noto Sans' });
+  const [fromName, setFromName] = useState('');
   const [message, setMessage] = useState('');
   const getProfileImgData = async () => {
     const response = await requsetProfileImgData();
@@ -43,9 +44,21 @@ export function MessageFormContextProvider({ children }) {
       dispatch,
       message,
       setMessage,
+      fromName,
+      setFromName,
     }),
-    // eslint-disable-next-line max-len
-    [profileImgSrc, setProfileImgSrc, currentProfileImg, setCurrentProfileImg, dispatch, message, setMessage],
+    [
+      profileImgSrc,
+      setProfileImgSrc,
+      currentProfileImg,
+      setCurrentProfileImg,
+      dispatch,
+      message,
+      setMessage,
+      setFromName,
+      fromName,
+      currentSelect,
+    ],
   );
   return <MessageFormContext.Provider value={values}>{children}</MessageFormContext.Provider>;
 }

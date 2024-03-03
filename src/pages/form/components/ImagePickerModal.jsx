@@ -1,7 +1,9 @@
+/* eslint-disable no-nested-ternary */
 import React, { useEffect, useRef, useState } from 'react';
+import Input from '@Components/form/Input';
 import { useFormContext } from '../context/FormContext';
 import * as S from './ImagePickerMoadl.style';
-import { getUnsplashBackgroundImages } from '../api';
+import { getUnsplashBackgroundImages, getUnsplashSearchedImages } from '../api';
 import useAsync from '../hooks/useAsync';
 import { CheckIcon } from './BackgroundOptions.style';
 
@@ -10,7 +12,26 @@ function ImagePickerModal({ closeModal }) {
     useFormContext();
   const [page, setPage] = useState(1);
   const [isFetchingImages, fetchingError, onFetchImagesAsync] = useAsync(getUnsplashBackgroundImages);
+  const [isSearchImages, searchingError, onSearchImagesAsync] = useAsync(getUnsplashSearchedImages);
+  const [keyword, setKeyword] = useState('');
+  const [searchedImages, setSearchedImages] = useState([]);
   const modalContentRef = useRef(null);
+
+  async function handleLoadSearchedImages(pageNum, key) {
+    const data = await onSearchImagesAsync(pageNum, key);
+    if (!data) return;
+    if (pageNum === 1) {
+      setSearchedImages(data.results);
+    } else {
+      setSearchedImages((prevImages) => [...prevImages, ...data.results]);
+    }
+  }
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setPage(1);
+    handleLoadSearchedImages(1, keyword);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,21 +54,35 @@ function ImagePickerModal({ closeModal }) {
 
   useEffect(() => {
     handleLoadUnsplashImages(onFetchImagesAsync, page);
+
+    handleLoadSearchedImages(page, keyword);
   }, [page]);
 
   return (
     <S.ImagePickerModal>
       <S.Header>
+        <S.CloseButton src="/images/icons/close.svg" onClick={closeModal} />
+
         <S.ModalTitle>배경화면을 선택해 주세요</S.ModalTitle>
-        <S.CloseButton type="button" onClick={closeModal}>
-          x
-        </S.CloseButton>
+
+        <S.SearchBar>
+          <Input
+            onChange={(e) => {
+              setKeyword(e.target.value);
+            }}
+          >
+            배경화면을 검색하세요
+          </Input>
+          <S.SearchButton type="submit" onClick={handleSearch}>
+            검색
+          </S.SearchButton>
+        </S.SearchBar>
       </S.Header>
-      {fetchingError ? (
+      {fetchingError && searchingError ? (
         <div>NO IMAGES</div>
       ) : (
         <S.ImageLists ref={modalContentRef}>
-          {unsplashBackgroundImages?.map((list) => (
+          {(keyword === '' ? unsplashBackgroundImages : searchedImages)?.map((list) => (
             <S.ImageList key={list.id}>
               <S.Image
                 src={list.urls.regular}

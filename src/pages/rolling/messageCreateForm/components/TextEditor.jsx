@@ -15,10 +15,11 @@ const modules = {
 
 const formats = ['bold', 'italic', 'underline', 'bullet', 'indent', 'align', 'color'];
 
-function TextEditor() {
+function TextEditor({ messageLength }) {
   const { message, setMessage } = useMessageFormContext();
   const handleQuillChange = (content, delta, source, editor) => {
     setMessage(editor.getContents());
+    messageLength(editor.getLength());
   };
 
   return (
