@@ -11,22 +11,6 @@ async function fetchData(base, endpoint, token) {
   return response.json();
 }
 
-export function getRandomBackgroundImages() {
-  return fetchData(IMAGES_URL, `/photos/random`, UNSPLASH_TOKEN);
-}
-
-export function getUnsplashBackgroundImages(num = 1) {
-  return fetchData(IMAGES_URL, `/photos`, `page=${num}&per_page=6&${UNSPLASH_TOKEN}`);
-}
-
-export function getBackgroundImages() {
-  return fetchData(BASE_URL, '/background-images/');
-}
-
-export function getProfileImages() {
-  return fetchData(BASE_URL, '/profile-images/');
-}
-
 export async function createPaper(paperData) {
   const response = await fetch(`${BASE_URL}/4-6/recipients/`, {
     method: 'POST',
@@ -39,4 +23,20 @@ export async function createPaper(paperData) {
     throw new Error('Failed to create papaer');
   }
   return response.json();
+}
+
+export function getUnsplashBackgroundImages(num = 1) {
+  return fetchData(IMAGES_URL, `/photos`, `page=${num}&per_page=10&${UNSPLASH_TOKEN}`);
+}
+
+export function getUnsplashSearchedImages(num = 1, key = '') {
+  return fetchData(IMAGES_URL, `/search/photos`, `page=${num}&per_page=10&query=${key}&${UNSPLASH_TOKEN}`);
+}
+
+export function getBackgroundImages() {
+  return fetchData(BASE_URL, '/background-images/');
+}
+
+export function getProfileImages() {
+  return fetchData(BASE_URL, '/profile-images/');
 }

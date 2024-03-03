@@ -8,8 +8,7 @@ export const useFormContext = () => useContext(FormContext);
 export function FormProvider({ children }) {
   const [selectedBtn, setSelectedBtn] = useState('color');
   const [selectedBackground, setSelectedBackground] = useState('');
-  const [backgroundImages, setBackgroundImages] = useState({});
-  const [randomBackgroundImages, setRandomBackgroundImages] = useState({});
+  const [backgroundImages, setBackgroundImages] = useState([]);
   const [unsplashBackgroundImages, setUnsplashBackgroundImages] = useState([]);
 
   // 배경 이미지 로드 함수

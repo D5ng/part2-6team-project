@@ -4,14 +4,14 @@ import { useMessageFormContext } from '../context/MessageFormContext';
 
 function ProfileImgList() {
   const { profileImgSrc, setCurrentProfileImg } = useMessageFormContext();
-  const profileImgList = profileImgSrc.slice(1);
+  const profileImgList = profileImgSrc;
   const handleProfileImgClick = (url) => {
     setCurrentProfileImg(url);
   };
   return (
     <S.ProfileImgList>
       {profileImgList.map((url) => (
-        <li key={url}>
+        <S.ListItem key={url}>
           <S.ProfileImg
             src={url}
             alt="프로필 이미지"
@@ -19,7 +19,7 @@ function ProfileImgList() {
               handleProfileImgClick(url);
             }}
           />
-        </li>
+        </S.ListItem>
       ))}
     </S.ProfileImgList>
   );
