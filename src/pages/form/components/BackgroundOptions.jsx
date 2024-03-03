@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import * as S from 'pages/form/components/BackgroundOptions.style';
-import { useFormContext } from '../context/FormContext';
+import { useFormContext } from '@Form/context/FormContext';
 
 const COLOR_LIST = [
   { title: 'beige', color: 'var(--orange200)' },

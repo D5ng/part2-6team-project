@@ -10,6 +10,7 @@ export function FormProvider({ children }) {
   const [selectedBackground, setSelectedBackground] = useState('');
   const [backgroundImages, setBackgroundImages] = useState([]);
   const [unsplashBackgroundImages, setUnsplashBackgroundImages] = useState([]);
+  const [searchedImages, setSearchedImages] = useState([]);
 
   // 배경 이미지 로드 함수
   const handleLoadImages = async () => {
@@ -32,6 +33,17 @@ export function FormProvider({ children }) {
     }
   };
 
+  // unsplash 검색된 배경 이미지 로드 함수
+  const handleLoadSearchedImages = async (asyncFunction, pageNum, key) => {
+    const data = await asyncFunction(pageNum, key);
+    if (!data) return;
+    if (pageNum === 1) {
+      setSearchedImages(data.results);
+    } else {
+      setSearchedImages((prevImages) => [...prevImages, ...data.results]);
+    }
+  };
+
   const handleToggleButtonClick = (buttonType) => {
     setSelectedBtn(buttonType);
   };
@@ -40,12 +52,10 @@ export function FormProvider({ children }) {
     setSelectedBackground(background);
   };
 
-  useEffect(() => {
-    handleLoadImages();
-  }, []);
-
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const values = {
+    handleLoadImages,
+
     selectedBtn,
     handleToggleButtonClick,
 
@@ -55,6 +65,8 @@ export function FormProvider({ children }) {
     backgroundImages,
     unsplashBackgroundImages,
     handleLoadUnsplashImages,
+    searchedImages,
+    handleLoadSearchedImages,
   };
 
   return <FormContext.Provider value={values}>{children}</FormContext.Provider>;

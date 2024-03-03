@@ -1,6 +1,6 @@
 import React from 'react';
-import * as S from 'pages/form/components/ToggleButton.style';
-import { useFormContext } from '../context/FormContext';
+import * as S from '@Form/components/ToggleButton.style';
+import { useFormContext } from '@Form/context/FormContext';
 
 function ToggleButton() {
   const { selectedBtn, handleToggleButtonClick } = useFormContext();
