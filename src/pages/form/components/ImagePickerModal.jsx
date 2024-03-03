@@ -1,50 +1,32 @@
 /* eslint-disable no-nested-ternary */
 import React, { useEffect, useRef, useState } from 'react';
 import Input from '@Components/form/Input';
-import { useFormContext } from '../context/FormContext';
-import * as S from './ImagePickerMoadl.style';
-import { getUnsplashBackgroundImages, getUnsplashSearchedImages } from '../api';
-import useAsync from '../hooks/useAsync';
+import useAsync from 'hooks/useAsync';
+import { useFormContext } from '@Form/context/FormContext';
+import * as S from '@Form/components/ImagePickerMoadl.style';
+import { getUnsplashBackgroundImages, getUnsplashSearchedImages } from '@Form/api';
 import { CheckIcon } from './BackgroundOptions.style';
 
 function ImagePickerModal({ closeModal }) {
-  const { selectedBackground, setSelectedBackground, unsplashBackgroundImages, setUnsplashBackgroundImages } =
-    useFormContext();
+  const {
+    selectedBackground,
+    handleBackgroundClick,
+    unsplashBackgroundImages,
+    handleLoadUnsplashImages,
+    searchedImages,
+    handleLoadSearchedImages,
+  } = useFormContext();
   const [page, setPage] = useState(1);
   const [isFetchingImages, fetchingError, onFetchImagesAsync] = useAsync(getUnsplashBackgroundImages);
   const [isSearchImages, searchingError, onSearchImagesAsync] = useAsync(getUnsplashSearchedImages);
   const [keyword, setKeyword] = useState('');
-  const [searchedImages, setSearchedImages] = useState([]);
+
   const modalContentRef = useRef(null);
-
-  async function handleLoadUnsplashImages(pageNum) {
-    const data = await onFetchImagesAsync(pageNum);
-    if (!data) return;
-    if (pageNum === 1) {
-      setUnsplashBackgroundImages(data);
-    } else {
-      setUnsplashBackgroundImages((prevImages) => [...prevImages, ...data]);
-    }
-  }
-
-  async function handleLoadSearchedImages(pageNum, key) {
-    const data = await onSearchImagesAsync(pageNum, key);
-    if (!data) return;
-    if (pageNum === 1) {
-      setSearchedImages(data.results);
-    } else {
-      setSearchedImages((prevImages) => [...prevImages, ...data.results]);
-    }
-  }
-
-  const handleBackgroundOptionClick = (option) => {
-    setSelectedBackground(option);
-  };
 
   const handleSearch = (e) => {
     e.preventDefault();
     setPage(1);
-    handleLoadSearchedImages(1, keyword);
+    handleLoadSearchedImages(onSearchImagesAsync, 1, keyword);
   };
 
   useEffect(() => {
@@ -67,8 +49,8 @@ function ImagePickerModal({ closeModal }) {
   }, []);
 
   useEffect(() => {
-    handleLoadUnsplashImages(page);
-    handleLoadSearchedImages(page, keyword);
+    handleLoadUnsplashImages(onFetchImagesAsync, page);
+    handleLoadSearchedImages(onSearchImagesAsync, page, keyword);
   }, [page]);
 
   return (
@@ -99,7 +81,7 @@ function ImagePickerModal({ closeModal }) {
             <S.ImageList key={list.id}>
               <S.Image
                 src={list.urls.regular}
-                onClick={() => handleBackgroundOptionClick(list.urls.full)}
+                onClick={() => handleBackgroundClick(list.urls.full)}
                 alt="unsplash image"
               />
               {selectedBackground === list.urls.full && (

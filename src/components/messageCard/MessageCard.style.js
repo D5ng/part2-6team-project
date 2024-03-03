@@ -2,12 +2,10 @@ import styled from 'styled-components';
 import { device } from 'styles/breakpoints';
 
 export const Card = styled.div`
-  display: flex;
   width: 384px;
   height: 280px;
   border-radius: 16px;
   background-color: white;
-
   @media ${device.tablet} {
     width: 100%;
   }
@@ -15,34 +13,25 @@ export const Card = styled.div`
 
 export const Wrapper = styled.div`
   display: flex;
-  width: 100%;
   height: 100%;
   flex-direction: column;
   justify-content: space-between;
-  padding: 30px 20px;
+  padding: 25px 20px 20px;
 `;
 
-export const ProfoleWrapper = styled.div`
+export const MessageProfile = styled.div`
   display: flex;
+  width: 100%;
+  height: 73px;
+  gap: 14px;
   border-bottom: 1px solid #00000014;
   padding-bottom: 20px;
 `;
 
-export const Profile = styled.div`
-  display: flex;
-  width: 179px;
+export const ProfileImg = styled.img`
+  width: 56px;
   height: 56px;
-  top: 28px;
-  left: 24px;
-  gap: 14px;
-`;
-
-export const ProfileImg = styled.div`
-  div {
-    width: 56px;
-    height: 56px;
-    border-radius: 100px;
-  }
+  border-radius: 100px;
 `;
 
 export const ProfileContent = styled.div`
@@ -52,27 +41,28 @@ export const ProfileContent = styled.div`
 `;
 
 export const ProfileName = styled.div`
-  p {
-    font-size: 20px;
-    line-height: 24px;
-  }
+  font-size: 20px;
+  line-height: 24px;
   span {
     font-weight: 700;
   }
 `;
 
-export const Text = styled.div`
-  display: flex;
+export const Text = styled.p`
+  height: 117px;
   font-size: 18px;
   font-weight: 400;
   line-height: 28px;
   letter-spacing: -1%;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 `;
 
-export const Date = styled.div`
+export const Date = styled.span`
   font-size: 12px;
-  line-height: 18px;
-  font-weight: 400;
   letter-spacing: -0.5%;
   color: #999999;
 `;

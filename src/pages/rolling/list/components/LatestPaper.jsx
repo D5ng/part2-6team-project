@@ -4,13 +4,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import * as S from '@List/components/Paper.style';
 import breakPoints from '@List/utils/swiper.breakpoints';
-import Card from '@Components/cardList/Card';
+import PaperCard from '@Components/paperCard/PaperCard';
 
-function PopularPaper({ recipients }) {
+function PopularPaper({ papers }) {
   const [_, setInit] = useState(false);
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
-  recipients.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   return (
     <S.SwiperWrapper>
@@ -24,16 +23,9 @@ function PopularPaper({ recipients }) {
         modules={[Navigation]}
         className="mySwiper"
       >
-        {recipients.map((list) => (
+        {papers.map((list) => (
           <S.StyledSlide key={list.id}>
-            <Card
-              backgroundColor={list.backgroundColor}
-              backgroundImageURL={list.backgroundImageURL}
-              name={list.name}
-              members={list.messageCount}
-              imageArray={list.recentMessages?.map((item) => item.profileImageURL)}
-              topReactions={list.topReactions}
-            />
+            <PaperCard list={list} />
           </S.StyledSlide>
         ))}
       </S.StyledSwiper>

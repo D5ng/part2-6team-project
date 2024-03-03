@@ -10,6 +10,7 @@ export function FormProvider({ children }) {
   const [selectedBackground, setSelectedBackground] = useState('');
   const [backgroundImages, setBackgroundImages] = useState([]);
   const [unsplashBackgroundImages, setUnsplashBackgroundImages] = useState([]);
+  const [searchedImages, setSearchedImages] = useState([]);
 
   // 배경 이미지 로드 함수
   const handleLoadImages = async () => {
@@ -19,36 +20,54 @@ export function FormProvider({ children }) {
     setBackgroundImages(images);
   };
 
-  useEffect(() => {
-    handleLoadImages();
-  }, []);
+  // unsplash 배경 이미지 로드 함수
+  const handleLoadUnsplashImages = async (asyncFunction, pageNum) => {
+    const data = await asyncFunction(pageNum);
+    if (!data) {
+      return;
+    }
+    if (pageNum === 1) {
+      setUnsplashBackgroundImages(data);
+    } else {
+      setUnsplashBackgroundImages((prevImages) => [...prevImages, ...data]);
+    }
+  };
 
-  // 값 객체
-  const values = useMemo(
-    () => ({
-      selectedBtn,
-      setSelectedBtn,
+  // unsplash 검색된 배경 이미지 로드 함수
+  const handleLoadSearchedImages = async (asyncFunction, pageNum, key) => {
+    const data = await asyncFunction(pageNum, key);
+    if (!data) return;
+    if (pageNum === 1) {
+      setSearchedImages(data.results);
+    } else {
+      setSearchedImages((prevImages) => [...prevImages, ...data.results]);
+    }
+  };
 
-      selectedBackground,
-      setSelectedBackground,
+  const handleToggleButtonClick = (buttonType) => {
+    setSelectedBtn(buttonType);
+  };
 
-      backgroundImages,
-      unsplashBackgroundImages,
-      setUnsplashBackgroundImages,
-    }),
+  const handleBackgroundClick = (background) => {
+    setSelectedBackground(background);
+  };
 
-    [
-      selectedBtn,
-      setSelectedBtn,
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
+  const values = {
+    handleLoadImages,
 
-      selectedBackground,
-      setSelectedBackground,
+    selectedBtn,
+    handleToggleButtonClick,
 
-      backgroundImages,
-      unsplashBackgroundImages,
-      setUnsplashBackgroundImages,
-    ],
-  );
+    selectedBackground,
+    handleBackgroundClick,
+
+    backgroundImages,
+    unsplashBackgroundImages,
+    handleLoadUnsplashImages,
+    searchedImages,
+    handleLoadSearchedImages,
+  };
 
   return <FormContext.Provider value={values}>{children}</FormContext.Provider>;
 }

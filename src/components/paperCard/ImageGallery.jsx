@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from '@Components/cardList/CardList.style';
+import * as S from '@Components/paperCard/PaperCard.style';
 
 function ImageGallery({ imageArray, imageCount }) {
   const imageArrayLength = imageCount > 3 ? imageCount - 3 : null;

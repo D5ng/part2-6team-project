@@ -1,22 +1,22 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import * as S from 'pages/form/components/FormSubmitter.style';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { createPortal } from 'react-dom';
+import * as S from '@Form/components/FormSubmitter.style';
+import { useFormContext } from '@Form/context/FormContext';
+import { createPaper } from '@Form/api';
+import useAsync from 'hooks/useAsync';
 import Input from '@Components/form/Input';
 import PrimaryCreateBtn from '@Components/ui/PrimaryCreateBtn';
 import Loading from '@Components/ui/Loading';
-import { createPortal } from 'react-dom';
-import { useFormContext } from '../context/FormContext';
-import ToggleButton from './ToggleButton';
-import BackgroundOptions from './BackgroundOptions';
-import { createPaper } from '../api';
-import useAsync from '../hooks/useAsync';
+import ToggleButton from '@Form/components/ToggleButton';
+import BackgroundOptions from '@Form/components/BackgroundOptions';
 
 // Moadl
 import ImagePickerModal from './ImagePickerModal';
 
 function FormSubmitter() {
   const navigate = useNavigate();
-  const { selectedBtn, selectedBackground } = useFormContext();
+  const { handleLoadImages, selectedBtn, selectedBackground } = useFormContext();
   const [name, setName] = useState('');
   const [active, setActive] = useState(false);
   const [isSubmitting, submittingError, onSubmitAsync] = useAsync(createPaper);
@@ -34,11 +34,14 @@ function FormSubmitter() {
       newPaperData.backgroundImageURL = selectedBackground;
     }
     const createdPaper = await onSubmitAsync(newPaperData);
-    // console.log('Created Paper:', createdPaper);
     if (createdPaper) {
       navigate(`/post/${createdPaper.id}`);
     }
   };
+
+  useEffect(() => {
+    handleLoadImages();
+  }, []);
 
   const modal = createPortal(<ImagePickerModal closeModal={closeModal} />, document.getElementById('modal-root'));
 
