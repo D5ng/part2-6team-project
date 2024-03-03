@@ -53,7 +53,6 @@ export function FormProvider({ children }) {
     handleBackgroundClick,
 
     backgroundImages,
-    randomBackgroundImages,
     unsplashBackgroundImages,
     handleLoadUnsplashImages,
   };
