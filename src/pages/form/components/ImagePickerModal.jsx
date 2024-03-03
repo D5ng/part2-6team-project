@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Input from '@Components/form/Input';
 import useAsync from 'hooks/useAsync';
 import { useFormContext } from '@Form/context/FormContext';
-import * as S from '@Form/components/ImagePickerMoadl.style';
+import * as S from '@Form/components/ImagePickerModal.style';
 import { getUnsplashBackgroundImages, getUnsplashSearchedImages } from '@Form/api';
 import { CheckIcon } from './BackgroundOptions.style';
 
