@@ -5,21 +5,24 @@ const Outlined = css`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid var(--gray300);
+`;
+
+export const ShareBox = styled.div`
+  ${Outlined}
+  position: relative;
+`;
+
+export const ShareBtn = styled.button`
   padding: 6px 16px;
-  border-radius: 6px;
   outline: none;
+  border: 1px solid var(--gray300);
+  border-radius: 6px;
   &:focus {
     border: 1px solid var(--gray500);
   }
   &:hover {
     background: var(--gray100);
   }
-`;
-
-export const ShareBtn = styled.button`
-  ${Outlined}
-  position: relative;
   @media ${device.mobile} {
     padding: 6px 8px;
   }

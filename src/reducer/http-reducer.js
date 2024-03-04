@@ -1,6 +1,13 @@
 const httpReducerMapping = {
   PENDING: (state) => ({ ...state, isLoading: true }),
-  SUCCESS: (state, action) => ({ ...state, data: action.data, isLoading: false }),
+  SUCCESS: (state, action) => ({
+    ...state,
+    data: {
+      ...action.data,
+      results: state?.data?.results ? [...state.data.results, ...action.data.results] : action.data.results,
+    },
+    isLoading: false,
+  }),
   ERROR: (state, action) => ({ ...state, isLoading: false, hasError: action.message }),
 };
 
@@ -14,6 +21,6 @@ export const httpReducer = (state, action) => httpReducerMapping[action.type](st
 
 export const httpReducerInitialValues = {
   data: null,
-  isLoading: false,
+  isLoading: null,
   hasError: null,
 };

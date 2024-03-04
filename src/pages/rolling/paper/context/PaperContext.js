@@ -25,6 +25,7 @@ export function PaperContextProvider({ children }) {
     messageState,
     reactionState,
     modal: { modalState, handleOpenModal, handleCloseModal, getModalData },
+    messageFetchRequest,
   };
   return <PaperContext.Provider value={value}>{children}</PaperContext.Provider>;
 }
