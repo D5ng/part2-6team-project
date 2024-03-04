@@ -10,11 +10,13 @@ import PrimaryCreateBtn from '@Components/ui/PrimaryCreateBtn';
 import Loading from '@Components/ui/Loading';
 import ToggleButton from '@Form/components/ToggleButton';
 import BackgroundOptions from '@Form/components/BackgroundOptions';
-import ImagePickerModal from './ImagePickerModal';
+import ImagePickerModal from '@Components/imagePickerModal/ImagePickerModal';
+import { useImagePickerModalContext } from '@Components/imagePickerModal/ImagePickerModalContext';
 
 function FormSubmitter() {
   const navigate = useNavigate();
-  const { handleLoadPapersInfo, papersInfo, handleLoadImages, selectedBtn, selectedBackground } = useFormContext();
+  const { handleLoadPapersInfo, papersInfo, handleLoadImages, selectedBtn } = useFormContext();
+  const { selectedImages } = useImagePickerModalContext();
   const [name, setName] = useState('');
   const [active, setActive] = useState(false);
   const [isSubmitting, submittingError, onSubmitAsync] = useAsync(createPaper);
@@ -26,10 +28,10 @@ function FormSubmitter() {
   const handleCreatePaper = async (e) => {
     e.preventDefault();
     if (isSubmitting || name === '') return;
-    const newPaperData = { name, backgroundColor: selectedBackground };
+    const newPaperData = { name, backgroundColor: selectedImages };
     if (selectedBtn === 'image') {
       newPaperData.backgroundColor = 'beige';
-      newPaperData.backgroundImageURL = selectedBackground;
+      newPaperData.backgroundImageURL = selectedImages;
     }
 
     const createdPaper = await onSubmitAsync(newPaperData);

@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import * as S from '@Components/ui/OutlinedComponent.style';
 import copy from 'clipboard-copy';
+import KakaoShareButton from 'pages/post/components/KakaoShareButton';
 import Toast from './Toast';
-import KakaoShareButton from '../../pages/post/components/KakaoShareButton';
+import { SHARE_ICON_PATH } from './constant';
 
 function OutlinedShareBtn() {
-  const [hidden, setHidden] = useState(true);
+  const [isShareVisible, setShareVisibility] = useState(true);
   const [isCopied, setIsCopied] = useState(false);
+
+  const toggleShareButton = () => {
+    setShareVisibility((prevHidden) => !prevHidden);
+  };
 
   const handleCopy = () => {
     const currentUrl = window.location.href;
@@ -14,18 +19,19 @@ function OutlinedShareBtn() {
     copy(currentUrl);
 
     setIsCopied(true);
-    setHidden(true);
+    setShareVisibility(true);
 
     setTimeout(() => {
       setIsCopied(false);
     }, 5000);
   };
+
   return (
     <>
-      <S.ShareBtn onClick={() => setHidden(!hidden)}>
-        <S.ButtonIconImg src="/images/icons/shareIcon.svg" alt="공유버튼 아이콘" />
+      <S.ShareBtn onClick={toggleShareButton}>
+        <S.ButtonIconImg src={SHARE_ICON_PATH} alt="공유버튼 아이콘" />
       </S.ShareBtn>
-      <S.Wrap hidden={hidden}>
+      <S.Wrap hidden={isShareVisible}>
         <KakaoShareButton />
         <S.ShareOption onClick={handleCopy}>URL 공유</S.ShareOption>
       </S.Wrap>

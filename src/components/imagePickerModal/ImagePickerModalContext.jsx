@@ -41,10 +41,6 @@ export function ImagePickerModalProvider({ children }) {
     setSelectedImages(image);
   };
 
-  const handleProfileClick = (image) => {
-    setSelectedImages(image);
-  };
-
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const values = {
     selectedImages,
