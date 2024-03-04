@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
 import * as S from '@Components/ui/OutlinedComponent.style';
 import EmojiChoice from '../../pages/post/components/EmojiChoice';
+import { ADD_EMOJI_ICON_PATH } from './constant';
 
 function OutlinedEmojiBtn() {
-  const [hidden, setHidden] = useState(true);
+  const [isEmojiChoiceHidden, setEmojiChoiceHidden] = useState(true);
+
+  const toggleEmojiChoice = () => {
+    setEmojiChoiceHidden((prevHidden) => !prevHidden);
+  };
+
   return (
     <>
-      <S.EmojiAddBtn
-        onClick={() => {
-          setHidden(!hidden);
-        }}
-      >
-        <S.ButtonIconImg src="/images/icons/addEmoji.svg" alt="이모지 추가버튼 아이콘" />
+      <S.EmojiAddBtn onClick={toggleEmojiChoice}>
+        <S.ButtonIconImg src={ADD_EMOJI_ICON_PATH} alt="이모지 추가 버튼 아이콘" />
         <S.AddText>추가</S.AddText>
       </S.EmojiAddBtn>
-      <S.EmojiChoiceBox hidden={hidden}>
+      <S.EmojiChoiceBox hidden={isEmojiChoiceHidden}>
         <EmojiChoice />
       </S.EmojiChoiceBox>
     </>

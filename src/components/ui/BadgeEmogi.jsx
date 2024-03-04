@@ -3,15 +3,15 @@ import * as S from '@Components/ui/BadgeEmogi.style';
 import fetchapi from './api';
 
 function BadgeEmogi() {
-  const [badge, setBadge] = useState(null);
+  const [badges, setBadges] = useState([]);
 
   useEffect(() => {
     const fetchUserImg = async () => {
       try {
         const data = await fetchapi();
-        setBadge(data);
+        setBadges(data.results || []);
       } catch (error) {
-        throw new Error('error');
+        console.error('Error fetching badges:', error.message);
       }
     };
     fetchUserImg();
@@ -19,10 +19,10 @@ function BadgeEmogi() {
 
   return (
     <S.BadgeContainer>
-      {badge?.results?.map((item) => (
-        <S.BadgeBox key={item.id}>
-          <S.BadgeEmoji>{item?.emoji}</S.BadgeEmoji>
-          <S.BadgeCount>{item?.count}</S.BadgeCount>
+      {badges.map((badge) => (
+        <S.BadgeBox key={badge.id}>
+          <S.BadgeEmoji>{badge?.emoji}</S.BadgeEmoji>
+          <S.BadgeCount>{badge?.count}</S.BadgeCount>
         </S.BadgeBox>
       ))}
     </S.BadgeContainer>
