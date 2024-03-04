@@ -10,7 +10,7 @@ const TestImgStyle = `
   margin-right: -10px;
 `;
 
-export const CardList = styled.div`
+export const PaperCard = styled.div`
   position: relative;
   display: flex;
   width: 275px;
@@ -22,6 +22,7 @@ export const CardList = styled.div`
   box-sizing: border-box;
   overflow: hidden;
   color: ${(props) => (props.$backgroundImageURL ? 'white' : 'black')};
+  cursor: pointer;
 
   &::before {
     content: '';
@@ -45,13 +46,14 @@ export const CardWrapper = styled.div`
   width: 100%;
 `;
 
-export const CardContentWrapper = styled.div`
+export const CardContent = styled.div`
+  padding-top: 10px;
   display: flex;
-  height: 70%;
+  height: 75%;
   width: 100%;
 `;
 
-export const CardContent = styled.div`
+export const CardContentWrapper = styled.div`
   flex-direction: column;
   display: flex;
   gap: 12px;
@@ -87,16 +89,17 @@ export const LastTestImg = styled.div`
   color: ${(props) => (props.$backgroundImageURL ? 'black' : 'black')};
 `;
 
-export const CardButtonWrapper = styled.div`
+export const ReactionButton = styled.div`
+  padding-top: 15px;
+  height: 25%;
   display: flex;
-  height: 30%;
   width: 100%;
   border-top: 1px solid gray;
 `;
 
-export const CardButton = styled.div`
-  flex-direction: row;
+export const ReactionButtonWrapper = styled.div`
   display: flex;
+  flex-direction: row;
   width: 100%;
   padding-right: 40px;
   align-items: center;
@@ -106,13 +109,16 @@ export const AddCardButton = styled.button`
   display: flex;
   align-items: center;
   background-color: #0000008a;
-  width: 65px;
   height: 36px;
   border-radius: 32px;
-  padding: 8px 12px;
-  gap: 10px;
+  padding: 8px 10px;
+  gap: 3px;
   margin-right: 10px;
   color: white;
+  font-size: 16px;
+  span:first-child {
+    padding-bottom: 3px;
+  }
 `;
 
 export const ImgWrapper = styled.div`

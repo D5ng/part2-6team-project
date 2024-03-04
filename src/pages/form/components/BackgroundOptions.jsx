@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import * as S from 'pages/form/components/BackgroundOptions.style';
-import { useFormContext } from '../context/FormContext';
+import { useFormContext } from '@Form/context/FormContext';
 
 const COLOR_LIST = [
   { title: 'beige', color: 'var(--orange200)' },
@@ -10,32 +10,28 @@ const COLOR_LIST = [
 ];
 
 function BackgroundOptions({ openModal }) {
-  const { selectedBtn, selectedBackground, setSelectedBackground, backgroundImages, randomBackgroundImages } =
-    useFormContext();
-
-  const handleBackgroundOptionClick = (option) => {
-    setSelectedBackground(option);
-  };
+  const { selectedBtn, selectedBackground, handleBackgroundClick, backgroundImages } = useFormContext();
 
   useEffect(() => {
     if (selectedBtn === 'color') {
-      setSelectedBackground(COLOR_LIST[0].title);
+      handleBackgroundClick(COLOR_LIST[0].title);
     } else if (selectedBtn === 'image') {
-      setSelectedBackground(backgroundImages[0]);
+      handleBackgroundClick(backgroundImages[0]);
     }
   }, [selectedBtn]);
+
   return (
     <S.BackgroundOptions>
       {selectedBtn === 'color'
         ? COLOR_LIST.map((list) => (
             <S.BackgroundOption key={list.title}>
-              <S.ColorList color={list.color} onClick={() => handleBackgroundOptionClick(list.title)} />
+              <S.ColorList color={list.color} onClick={() => handleBackgroundClick(list.title)} />
               {selectedBackground === list.title && <S.CheckIcon src="images/icons/check.svg" alt="배경 체크 아이콘" />}
             </S.BackgroundOption>
           ))
         : backgroundImages.slice(0, 3).map((list) => (
             <S.BackgroundOption key={list}>
-              <S.ImageList $url={list} onClick={() => handleBackgroundOptionClick(list)} />
+              <S.ImageList $url={list} onClick={() => handleBackgroundClick(list)} />
               {selectedBackground === list && <S.CheckIcon src="images/icons/check.svg" alt="배경 체크 아이콘" />}
             </S.BackgroundOption>
           ))}

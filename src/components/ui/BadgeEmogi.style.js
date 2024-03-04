@@ -24,3 +24,10 @@ export const BadgeCount = styled.span`
   font-weight: 400;
   line-height: 20px;
 `;
+
+export const NoEmogiContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+`;

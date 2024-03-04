@@ -2,10 +2,9 @@ import styled from 'styled-components';
 import { device } from 'styles/breakpoints';
 
 export const ImagePickerModal = styled.div`
-  position: relative;
   border-radius: 4px;
   background-color: white;
-  padding-bottom: 80px;
+  padding-bottom: 160px;
   width: 700px;
   height: 800px;
   position: fixed;
@@ -21,29 +20,57 @@ export const ImagePickerModal = styled.div`
 
   @media ${device.mobile} {
     width: 90%;
+    height: 80%;
   }
 `;
 
 export const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  padding: 18px 20px;
   margin-bottom: 15px;
 `;
 
+export const CloseButton = styled.img`
+  position: absolute;
+  right: 20px;
+  top: 11px;
+  color: rgba(0, 0, 0, 0.8);
+  font-size: 30px;
+  width: 33px;
+  height: 33px;
+  cursor: pointer;
+`;
+
+export const UnsplashIcon = styled.img`
+  width: 28px;
+`;
+
 export const ModalTitle = styled.div`
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 14px 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   font-size: 18px;
   font-weight: 800;
 `;
 
-export const CloseButton = styled.button`
+export const SearchBar = styled.form`
+  position: relative;
+  padding: 13px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+`;
+
+export const SearchButton = styled.button`
+  background-color: rgba(0, 0, 0, 0.8);
   position: absolute;
-  right: 24px;
-  top: 7px;
-  color: rgba(0, 0, 0, 0.8);
-  font-size: 30px;
+  top: 13px;
+  right: 13px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  height: 50px;
+  width: 100px;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
 `;
 
 export const ImageLists = styled.ul`
@@ -64,6 +91,7 @@ export const ImageLists = styled.ul`
 `;
 export const ImageList = styled.li`
   position: relative;
+  cursor: pointer;
 `;
 
 export const Image = styled.img``;

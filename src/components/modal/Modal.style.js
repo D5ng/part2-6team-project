@@ -23,7 +23,7 @@ export const Container = styled.div`
 `;
 export const Info = styled.div`
   display: flex;
-  margin: 40px 45px 36px 39px;
+  margin: 40px 45px 19px 39px;
   align-items: center;
 `;
 
@@ -68,14 +68,11 @@ export const Contents = styled.div`
   flex-direction: column;
   align-items: center;
 `;
-export const Line = styled.div`
-  width: 520px;
-  height: 1px;
-  background: var(--gray200);
-`;
 export const TextBox = styled.div`
+  border-top: 1px solid var(--gray200);
+  padding: 16px 20px 0px 0px;
   color: #5a5a5a;
-  width: 500px;
+  width: 520px;
   height: 240px;
   font-size: 18px;
   font-style: normal;
@@ -100,5 +97,9 @@ export const Button = styled.button`
   color: var(--white);
   padding: 7px 16px;
   border-radius: 6px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px;
   background: var(--primary600);
 `;

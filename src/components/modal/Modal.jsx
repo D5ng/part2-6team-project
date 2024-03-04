@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as S from '@Components/modal/Modal.style';
 import { BadgeRelationship } from '@Components/ui/BadgeRelationship';
 import formatDate from 'utils/format';
+import useKeyEvent from 'hooks/useKeyEvent';
 
 function Modal({ onCloseModal, modalData }) {
   const { sender, content, createdAt, profileImageURL, relationship, fonts } = modalData;
+  useKeyEvent((key) => (key === 'Escape' || key === 'Enter') && onCloseModal());
 
   // content: '안녕하세요. 동현님 항상 열심히하는 모습 보기 좋습니다.';
   // createdAt: '2024-02-28T16:50:49.396725Z';
@@ -30,7 +32,6 @@ function Modal({ onCloseModal, modalData }) {
         <S.CreatAt>{formatDate(createdAt)}</S.CreatAt>
       </S.Info>
       <S.Contents>
-        <S.Line />
         <S.TextBox $font={fonts}>{content}</S.TextBox>
         <S.Button onClick={onCloseModal}>확인</S.Button>
       </S.Contents>

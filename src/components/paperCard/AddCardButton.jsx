@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import * as S from '@Components/cardList/CardList.style';
+import * as S from '@Components/paperCard/PaperCard.style';
 
 function AddCardButton({ icon, initialCount }) {
   const [count, setCount] = useState(initialCount);
@@ -10,8 +10,8 @@ function AddCardButton({ icon, initialCount }) {
 
   return (
     <S.AddCardButton onClick={handleClick} type="button">
-      <div>{icon}</div>
-      <div>{count}</div>
+      <span>{icon}</span>
+      <span>{count}</span>
     </S.AddCardButton>
   );
 }

@@ -7,9 +7,9 @@ export const InputElement = styled.input`
   width: 100%;
   height: 50px;
   border-radius: 8px;
-  display: flex;
   padding: 0 16px;
   font-size: 16px;
+  
   &:hover {
     border-color: var(--gray500);
   }
@@ -19,9 +19,10 @@ export const InputElement = styled.input`
   }
 `;
 
-export const Error = styled.p`
+export const Error = styled.span`
   font-size: 12px;
   color: var(--error);
   height: 0;
-  padding: 5px 0;
+  margin-top: ${({ $error }) => $error && '5px'};
+  display: ${({ $error }) => $error && 'block'};
 `;

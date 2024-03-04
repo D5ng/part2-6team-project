@@ -14,9 +14,9 @@ function OutlinedEmojiBtn() {
         <S.ButtonIconImg src="/images/icons/addEmoji.svg" alt="이모지 추가버튼 아이콘" />
         <S.AddText>추가</S.AddText>
       </S.EmojiAddBtn>
-      <S.Wrap hidden={hidden}>
+      <S.EmojiChoiceBox hidden={hidden}>
         <EmojiChoice />
-      </S.Wrap>
+      </S.EmojiChoiceBox>
     </>
   );
 }

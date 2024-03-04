@@ -1,8 +1,8 @@
 import React from 'react';
 import StyledBackdrop from './Backdrop.style';
 
-function Backdrop() {
-  return <StyledBackdrop />;
+function Backdrop({ onCloseModal }) {
+  return <StyledBackdrop onClick={onCloseModal} />;
 }
 
 export default Backdrop;
