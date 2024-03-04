@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 import { device } from 'styles/breakpoints';
-
-const colors = {
-  green: 'var(--green200)',
-};
+import colorMap from 'utils/backgroundColor';
 
 export const Section = styled.section`
-  background-color: ${({ $bgColor }) => colors[$bgColor] || 'var(--white)'};
+  background: ${({ $background }) =>
+    !colorMap[$background] ? `url(${$background}) no-repeat center / cover` : colorMap[$background]};
   min-height: calc(100vh - 63px);
 `;
 

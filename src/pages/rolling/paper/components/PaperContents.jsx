@@ -6,8 +6,10 @@ import { PaperContext } from '@Paper/context/PaperContext';
 function PaperContents() {
   const { paperState } = useContext(PaperContext);
 
+  const background = paperState?.data?.backgroundImageURL || paperState?.data?.backgroundColor;
+
   return (
-    <S.Section $bgColor={paperState?.data?.backgroundColor}>
+    <S.Section $background={background}>
       <S.PaperWrapper>
         <RollingPaperList />
       </S.PaperWrapper>
