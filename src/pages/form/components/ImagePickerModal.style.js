@@ -4,7 +4,7 @@ import { device } from 'styles/breakpoints';
 export const ImagePickerModal = styled.div`
   border-radius: 4px;
   background-color: white;
-  padding-bottom: 80px;
+  padding-bottom: 160px;
   width: 700px;
   height: 800px;
   position: fixed;
@@ -39,8 +39,15 @@ export const CloseButton = styled.img`
   cursor: pointer;
 `;
 
+export const UnsplashIcon = styled.img`
+  width: 28px;
+`;
+
 export const ModalTitle = styled.div`
-  padding: 18px 20px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 14px 15px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   font-size: 18px;
   font-weight: 800;
@@ -53,7 +60,7 @@ export const SearchBar = styled.form`
 `;
 
 export const SearchButton = styled.button`
-  background-color: var(--primary400);
+  background-color: rgba(0, 0, 0, 0.8);
   position: absolute;
   top: 13px;
   right: 13px;
