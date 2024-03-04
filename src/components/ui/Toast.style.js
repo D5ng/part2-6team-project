@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 export const Toast = styled.div`
   display: flex;
+  position: fixed;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 524px;
   height: 64px;
   padding: 19px 30px;
