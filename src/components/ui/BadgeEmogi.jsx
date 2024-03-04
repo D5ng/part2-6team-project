@@ -6,10 +6,10 @@ function BadgeEmogi() {
   const { reactionState } = useContext(PaperContext);
   return reactionState?.data?.results?.length > 0 ? (
     <S.BadgeContainer>
-      {reactionState?.data?.results?.map((item) => (
-        <S.BadgeBox key={item.id}>
-          <S.BadgeEmoji>{item?.emoji}</S.BadgeEmoji>
-          <S.BadgeCount>{item?.count}</S.BadgeCount>
+      {reactionState?.data?.results?.map((badge) => (
+        <S.BadgeBox key={badge.id}>
+          <S.BadgeEmoji>{badge?.emoji}</S.BadgeEmoji>
+          <S.BadgeCount>{badge?.count}</S.BadgeCount>
         </S.BadgeBox>
       ))}
     </S.BadgeContainer>

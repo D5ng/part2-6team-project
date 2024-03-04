@@ -1,6 +1,6 @@
 import React from 'react';
 import * as S from '@Components/messageCard/MessageCard.style';
-import { BadgeRelationship } from '@Components/ui/BadgeRelationship';
+import BadgeRelationship from '@Components/ui/BadgeRelationship';
 
 function MessageProfile({ data }) {
   const { sender, profileImageURL, relationship } = data;
