@@ -23,8 +23,6 @@ function RollingPaperList() {
     document.getElementById('modal-root'),
   );
 
-  const isLoading = paperState.isLoading || messageState.isLoading;
-
   const onIntersect = async (entry, observer) => {
     observer.unobserve(entry.target);
     if (paperState.isLoading || messageState.isLoading) return;
@@ -34,7 +32,7 @@ function RollingPaperList() {
   const ref = useIntersectionObserver(onIntersect, { threshold: 0.1 });
 
   const renderStartLoadingUI =
-    isLoading && !messageState?.data?.results && Array.from({ length: 11 }).map((_, index) => <Skeleton key={index} />);
+    !messageState?.data?.results && Array.from({ length: 11 }).map((_, index) => <Skeleton key={index} />);
 
   const renderMessageData = messageState?.data?.results?.map((info) => (
     <RollingPaperItem key={info.id} data={info} onClickModal={handleOpenModal} getPaperData={getModalData} />
