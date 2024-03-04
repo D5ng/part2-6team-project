@@ -5,7 +5,6 @@ import { ImagePickerModalProvider } from '@Components/imagePickerModal/ImagePick
 import { MessageFormContextProvider } from './context/MessageFormContext';
 
 import MessageForm from './components/MessageForm';
-import MoreImgModal from './components/MoreImgModal';
 
 function MessageCreateForm() {
   return (
