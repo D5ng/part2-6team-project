@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import * as S from '@Paper/components/Skeleton.style';
 
-function Skeleton() {
+function Skeleton(props, ref) {
   return (
-    <S.SkeletonItem>
+    <S.SkeletonItem ref={ref}>
       <S.SkeletonHeader>
         <S.Image />
         <S.HeaderContents>
@@ -21,4 +21,4 @@ function Skeleton() {
   );
 }
 
-export default Skeleton;
+export default forwardRef(Skeleton);

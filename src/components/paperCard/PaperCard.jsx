@@ -1,6 +1,7 @@
 import React from 'react';
 import * as S from '@Components/paperCard/PaperCard.style';
 import colorMap from 'utils/backgroundColor';
+import { useNavigate } from 'react-router-dom';
 import ReactionButton from './ReactionButton';
 import CardContent from './CardContent';
 
@@ -9,11 +10,16 @@ function getColor(color) {
 }
 
 function PaperCard({ list }) {
-  const { backgroundColor, backgroundImageURL } = list;
-  const backgroundColorDate = getColor(backgroundColor);
+  const navigate = useNavigate();
 
+  const { id, backgroundColor, backgroundImageURL } = list;
+  const backgroundColorDate = getColor(backgroundColor);
   return (
-    <S.PaperCard $backgroundColor={backgroundColorDate} $backgroundImageURL={backgroundImageURL}>
+    <S.PaperCard
+      $backgroundColor={backgroundColorDate}
+      $backgroundImageURL={backgroundImageURL}
+      onClick={() => navigate(`/post/${id}`)}
+    >
       <S.CardWrapper>
         <CardContent list={list} />
         <ReactionButton list={list} />

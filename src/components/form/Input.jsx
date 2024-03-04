@@ -9,7 +9,7 @@ function Input({ children, error, value, onChange }) {
   return (
     <S.Input>
       <S.InputElement placeholder={children} $error={error} value={value} onChange={handleInputChange} />
-      <S.Error>{error && '이름을 입력해 주세요'}</S.Error>
+      <S.Error $error={error}>{error}</S.Error>
     </S.Input>
   );
 }
