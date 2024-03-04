@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import * as S from 'pages/form/components/BackgroundOptions.style';
 import { useFormContext } from '@Form/context/FormContext';
+import { useImagePickerModalContext } from '@Components/imagePickerModal/ImagePickerModalContext';
 
 const COLOR_LIST = [
   { title: 'beige', color: 'var(--orange200)' },
@@ -10,7 +11,8 @@ const COLOR_LIST = [
 ];
 
 function BackgroundOptions({ openModal }) {
-  const { selectedBtn, selectedBackground, handleBackgroundClick, backgroundImages } = useFormContext();
+  const { selectedBtn, backgroundImages } = useFormContext();
+  const { selectedImages, handleBackgroundClick } = useImagePickerModalContext();
 
   useEffect(() => {
     if (selectedBtn === 'color') {
@@ -26,13 +28,13 @@ function BackgroundOptions({ openModal }) {
         ? COLOR_LIST.map((list) => (
             <S.BackgroundOption key={list.title}>
               <S.ColorList color={list.color} onClick={() => handleBackgroundClick(list.title)} />
-              {selectedBackground === list.title && <S.CheckIcon src="images/icons/check.svg" alt="배경 체크 아이콘" />}
+              {selectedImages === list.title && <S.CheckIcon src="images/icons/check.svg" alt="배경 체크 아이콘" />}
             </S.BackgroundOption>
           ))
         : backgroundImages.slice(0, 3).map((list) => (
             <S.BackgroundOption key={list}>
               <S.ImageList $url={list} onClick={() => handleBackgroundClick(list)} />
-              {selectedBackground === list && <S.CheckIcon src="images/icons/check.svg" alt="배경 체크 아이콘" />}
+              {selectedImages === list && <S.CheckIcon src="images/icons/check.svg" alt="배경 체크 아이콘" />}
             </S.BackgroundOption>
           ))}
       {selectedBtn === 'image' && (

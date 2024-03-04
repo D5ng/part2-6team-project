@@ -9,7 +9,6 @@ export function ImagePickerModalProvider({ children }) {
   const [selectedImages, setSelectedImages] = useState('');
 
   const [backgroundImages, setBackgroundImages] = useState([]);
-  const [profileImages, setProfileImages] = useState([]);
 
   const [unsplashBackgroundImages, setUnsplashBackgroundImages] = useState([]);
   const [searchedImages, setSearchedImages] = useState([]);
@@ -39,10 +38,6 @@ export function ImagePickerModalProvider({ children }) {
   };
 
   const handleBackgroundClick = (image) => {
-    setSelectedImages(image);
-  };
-
-  const handleProfileClick = (image) => {
     setSelectedImages(image);
   };
 
