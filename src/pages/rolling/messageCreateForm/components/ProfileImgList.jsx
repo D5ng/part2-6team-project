@@ -1,9 +1,8 @@
 import React from 'react';
 import * as S from 'pages/rolling/messageCreateForm/components/ProfileImgList.style';
 import { useMessageFormContext } from '../context/MessageFormContext';
-import MoreProfileImgBtn from './MoreProfileImgBtn';
 
-function ProfileImgList() {
+function ProfileImgList({ openModal }) {
   const { profileImgSrc, setCurrentProfileImg } = useMessageFormContext();
   const profileImgList = profileImgSrc.slice(1);
   const handleProfileImgClick = (url) => {
@@ -23,7 +22,9 @@ function ProfileImgList() {
         </S.ListItem>
       ))}
       <S.ListItem>
-        <MoreProfileImgBtn />
+        <S.SearchBtb onClick={() => openModal()} type="button">
+          <S.SearchImg src="/images/icons/searchIcon.svg" alt="프로필 이미지 검색" />
+        </S.SearchBtb>
       </S.ListItem>
     </S.ProfileImgList>
   );
