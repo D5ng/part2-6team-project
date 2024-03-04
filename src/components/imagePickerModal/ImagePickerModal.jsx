@@ -2,20 +2,20 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Input from '@Components/form/Input';
 import useAsync from 'hooks/useAsync';
-import { useFormContext } from '@Form/context/FormContext';
 import * as S from '@Form/components/ImagePickerModal.style';
-import { getUnsplashBackgroundImages, getUnsplashSearchedImages } from '@Form/api';
-import { CheckIcon } from './BackgroundOptions.style';
+import { getUnsplashBackgroundImages, getUnsplashSearchedImages } from '@Components/imagePickerModal/api';
+import { CheckIcon } from '@Form/components/BackgroundOptions.style';
+import { useImagePickerModalContext } from './ImagePickerModalContext';
 
 function ImagePickerModal({ closeModal }) {
   const {
-    selectedBackground,
+    selectedImages,
     handleBackgroundClick,
     unsplashBackgroundImages,
     handleLoadUnsplashImages,
     searchedImages,
     handleLoadSearchedImages,
-  } = useFormContext();
+  } = useImagePickerModalContext();
   const [page, setPage] = useState(1);
   const [isFetchingImages, fetchingError, onFetchImagesAsync] = useAsync(getUnsplashBackgroundImages);
   const [isSearchImages, searchingError, onSearchImagesAsync] = useAsync(getUnsplashSearchedImages);
@@ -52,6 +52,7 @@ function ImagePickerModal({ closeModal }) {
     handleLoadUnsplashImages(onFetchImagesAsync, page);
     handleLoadSearchedImages(onSearchImagesAsync, page, keyword);
   }, [page]);
+//   console.log(selectedImages);
 
   return (
     <S.ImagePickerModal>
@@ -83,10 +84,10 @@ function ImagePickerModal({ closeModal }) {
             <S.ImageList key={list.id}>
               <S.Image
                 src={list.urls.regular}
-                onClick={() => handleBackgroundClick(list.urls.regular)}
+                onClick={() => handleBackgroundClick(list.urls.full)}
                 alt="unsplash image"
               />
-              {selectedBackground === list.urls.regular && (
+              {selectedImages === list.urls.full && (
                 <CheckIcon src="images/icons/check.svg" alt="배경사진 탐색 아이콘" />
               )}
             </S.ImageList>

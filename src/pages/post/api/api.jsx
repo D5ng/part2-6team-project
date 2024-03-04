@@ -1,14 +1,9 @@
-export async function fetchApi() {
-  const response = await fetch('https://rolling-api.vercel.app/4-6/recipients/2872/');
-  if (!response.ok) {
-    throw new Error('error');
-  }
-  const body = await response.json();
-  return body;
-}
+const BASE_API_URL = 'https://rolling-api.vercel.app';
 
-export async function createReactions(formData) {
-  const response = await fetch('https://rolling-api.vercel.app/4-6/recipients/2872/reactions/', {
+const TEAM = '4-6';
+
+export default async function createReactions(recipientsId, formData) {
+  const response = await fetch(`${BASE_API_URL}/${TEAM}/recipients/${recipientsId}/reactions/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

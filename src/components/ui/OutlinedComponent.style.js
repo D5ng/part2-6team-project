@@ -36,6 +36,10 @@ export const ButtonIconImg = styled.img`
 `;
 
 export const Wrap = styled.div`
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
   visibility: ${({ hidden }) => (hidden ? 'hidden' : 'visible')};
   padding: 10px 0;
   border-radius: 8px;
@@ -58,6 +62,7 @@ export const ShareOption = styled.button`
   text-align: left;
   color: var(--gray900);
   font-size: 16px;
+
   &:hover {
     background: var(--gray100);
   }
@@ -68,6 +73,14 @@ export const EmojiAddBtn = styled.button`
   position: relative;
   padding: 6px 16px;
   gap: 4px;
+  border: 1px solid var(--gray300);
+  border-radius: 6px;
+  &:focus {
+    border: 1px solid var(--gray500);
+  }
+  &:hover {
+    background: var(--gray100);
+  }
   @media ${device.mobile} {
     padding: 6px 8px;
   }
