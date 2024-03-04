@@ -13,6 +13,7 @@ export const EmojiCountBtn = styled.div`
 `;
 
 export const Wrap = styled.div`
+  z-index: 9999;
   visibility: ${({ hidden }) => (hidden ? 'hidden' : 'visible')};
   padding: 24px;
   border-radius: 8px;

@@ -21,7 +21,7 @@ function EmojiChoice() {
 
   return (
     <div>
-      <EmojiPicker onEmojiClick={handleEmojiClick} />
+      <EmojiPicker style={{ zIndex: '9999' }} onEmojiClick={handleEmojiClick} />
     </div>
   );
 }

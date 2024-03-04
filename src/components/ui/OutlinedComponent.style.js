@@ -36,6 +36,8 @@ export const ButtonIconImg = styled.img`
 `;
 
 export const Wrap = styled.div`
+  z-index: 9999;
+
   display: flex;
   flex-direction: column;
   visibility: ${({ hidden }) => (hidden ? 'hidden' : 'visible')};
