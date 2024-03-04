@@ -3,7 +3,7 @@ import PopularPaper from '@List/components/PopularPaper';
 import LatestPaper from '@List/components/LatestPaper';
 import * as S from '@List/RollingList.style';
 import PrimaryLink from '@Components/ui/PrimaryLink';
-import { getPopularPapers, getRecentPapers } from '../api';
+import { getPopularPapers, getRecentPapers } from '@List/api/api';
 
 function RollingList() {
   const [recentPapers, setRecentPapers] = useState([]);
