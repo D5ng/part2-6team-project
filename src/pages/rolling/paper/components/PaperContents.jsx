@@ -8,9 +8,10 @@ function PaperContents() {
 
   const isBackgroundImage = paperState?.data?.backgroundImageURL;
   const isBackgroundColor = !isBackgroundImage && paperState?.data?.backgroundColor;
+  const defaultBackgroundColor = isBackgroundColor || 'default';
 
   return (
-    <S.Section $backgroundColor={isBackgroundColor} $backgroundImage={isBackgroundImage}>
+    <S.Section $backgroundColor={defaultBackgroundColor} $backgroundImage={isBackgroundImage}>
       <S.PaperWrapper>
         <RollingPaperList />
       </S.PaperWrapper>
