@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Toast = styled.div`
+  z-index: 9999;
   display: flex;
   position: fixed;
   bottom: 120px;

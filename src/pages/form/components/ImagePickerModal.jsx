@@ -83,10 +83,10 @@ function ImagePickerModal({ closeModal }) {
             <S.ImageList key={list.id}>
               <S.Image
                 src={list.urls.regular}
-                onClick={() => handleBackgroundClick(list.urls.full)}
+                onClick={() => handleBackgroundClick(list.urls.regular)}
                 alt="unsplash image"
               />
-              {selectedBackground === list.urls.full && (
+              {selectedBackground === list.urls.regular && (
                 <CheckIcon src="images/icons/check.svg" alt="배경사진 탐색 아이콘" />
               )}
             </S.ImageList>
