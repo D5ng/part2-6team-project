@@ -29,7 +29,7 @@ function RollingPaperList() {
     if (messageState?.data?.next) messageFetchRequest({ url: messageState.data.next });
   };
 
-  const ref = useIntersectionObserver(onIntersect, { threshold: 0.1 });
+  const ref = useIntersectionObserver(onIntersect, { threshold: 1 });
 
   const renderStartLoadingUI =
     !messageState?.data?.results && Array.from({ length: 11 }).map((_, index) => <Skeleton key={index} />);
@@ -38,8 +38,14 @@ function RollingPaperList() {
     <RollingPaperItem key={info.id} data={info} onClickModal={handleOpenModal} getPaperData={getModalData} />
   ));
 
-  const renderEndLoadingUI =
-    messageState?.data?.next && Array.from({ length: 6 }).map((_, index) => <Skeleton key={index} ref={ref} />);
+  const renderEndLoadingUI = messageState?.data?.next && (
+    <>
+      <Skeleton ref={ref} />
+      {Array.from({ length: 6 }).map((_, index) => (
+        <Skeleton key={index} />
+      ))}
+    </>
+  );
   return (
     <S.GridLayout>
       {modalState.isOpen && backdrop}
