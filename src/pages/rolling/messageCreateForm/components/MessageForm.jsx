@@ -40,7 +40,11 @@ function MessageForm() {
     <S.Form onSubmit={submitForm}>
       <S.Wrapper>
         <S.InputTitle>From.{fromName.target ? fromName.target.value : ''}</S.InputTitle>
-        <Input onChange={setFromName} errorMessage="이름을 입력해 주세요">
+        <Input
+          onChange={setFromName}
+          value={fromName.target ? fromName.target.value : ''}
+          errorMessage="이름을 입력해 주세요"
+        >
           이름을 입력해 주세요
         </Input>
       </S.Wrapper>

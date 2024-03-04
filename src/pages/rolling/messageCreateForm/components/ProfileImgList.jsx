@@ -1,10 +1,11 @@
 import React from 'react';
 import * as S from 'pages/rolling/messageCreateForm/components/ProfileImgList.style';
 import { useMessageFormContext } from '../context/MessageFormContext';
+import MoreProfileImgBtn from './MoreProfileImgBtn';
 
 function ProfileImgList() {
   const { profileImgSrc, setCurrentProfileImg } = useMessageFormContext();
-  const profileImgList = profileImgSrc;
+  const profileImgList = profileImgSrc.slice(1);
   const handleProfileImgClick = (url) => {
     setCurrentProfileImg(url);
   };
@@ -21,6 +22,9 @@ function ProfileImgList() {
           />
         </S.ListItem>
       ))}
+      <S.ListItem>
+        <MoreProfileImgBtn />
+      </S.ListItem>
     </S.ProfileImgList>
   );
 }

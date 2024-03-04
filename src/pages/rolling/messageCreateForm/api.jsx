@@ -1,5 +1,5 @@
 const BASE_URL_PATH = 'https://rolling-api.vercel.app/';
-
+const UNSPLASH_API_KEY = `fgJWmCOHIRKbOxi82y6luVa0aW2nLT2SQkbknuDJ2vQ`;
 async function RequestAPI(base, endpoint) {
   const requestURL = `${base}${endpoint}`;
   try {
@@ -31,5 +31,16 @@ export async function postCreateMessageData(id, messageInformation) {
     return postAPI;
   } catch (e) {
     console.log(e);
+  }
+}
+
+export async function getUnsplashProfileImg() {
+  try {
+    const request = await fetch(`https://api.unsplash.com/photos/random?count=15&client_id=${UNSPLASH_API_KEY}`);
+    const data = await request.json();
+
+    return data.map((v) => v.urls.small);
+  } catch (error) {
+    console.log(error);
   }
 }

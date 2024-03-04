@@ -23,6 +23,7 @@ export function MessageFormContextProvider({ children }) {
   const [currentSelect, dispatch] = useReducer(reducer, { relation: '친구', font: 'Noto Sans' });
   const [fromName, setFromName] = useState('');
   const [message, setMessage] = useState('');
+  const [toggleModal, setToggleModal] = useState(false);
   const getProfileImgData = async () => {
     const response = await requsetProfileImgData();
     setProfileImgSrc([...response.imageUrls]);
@@ -46,6 +47,8 @@ export function MessageFormContextProvider({ children }) {
       setMessage,
       fromName,
       setFromName,
+      toggleModal,
+      setToggleModal,
     }),
     [
       profileImgSrc,
@@ -58,6 +61,8 @@ export function MessageFormContextProvider({ children }) {
       setFromName,
       fromName,
       currentSelect,
+      toggleModal,
+      setToggleModal,
     ],
   );
   return <MessageFormContext.Provider value={values}>{children}</MessageFormContext.Provider>;
