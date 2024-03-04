@@ -17,6 +17,10 @@ function useHttp() {
       const responseData = await response.json();
 
       dispatch({ type: Reducer.httpActionType.SUCCESS, data: responseData });
+      // dispatch({
+      //   type: Reducer.httpActionType.SUCCESS,
+      //   data: state.data ? [...state.data, responseData] : responseData,
+      // });
     } catch (error) {
       if (error instanceof TypeError) {
         dispatch({ type: Reducer.httpActionType.ERROR, message: '네트워크 에러 또는 요청이 취소되었습니다.' });

@@ -10,6 +10,7 @@
     "sourceType": "module"
   },
   "rules": {
+    "no-useless-return": "off",
     "react/jsx-no-bind": "off",
     "consistent-return": "off",
     "no-unused-vars": "off",
