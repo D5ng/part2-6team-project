@@ -3,10 +3,10 @@
     "baseUrl": "src",
     "paths": {
       "@Components/*": ["./components/*"],
-      "@List/*": ["./pages/rolling/list/*"],
-      "@Paper/*": ["./pages/rolling/paper/*"],
+      "@List/*": ["./pages/list/*"],
+      "@Paper/*": ["./pages/paper/*"],
+      "@Form/*": ["./pages/form/*"],
       "@Font/*": ["./assets/fonts/*"],
-      "@Form/*": ["./pages/form/*"]
     }
   }
 }

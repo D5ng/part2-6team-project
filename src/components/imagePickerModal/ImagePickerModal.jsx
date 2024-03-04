@@ -54,7 +54,7 @@ function ImagePickerModal({ closeModal }) {
     handleLoadUnsplashImages(onFetchImagesAsync, page);
     handleLoadSearchedImages(onSearchImagesAsync, page, keyword);
   }, [page]);
-  //   console.log(selectedImages);
+
 
   return (
     <S.ImagePickerModal>
