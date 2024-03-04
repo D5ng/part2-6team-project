@@ -12,7 +12,7 @@ export const ShareBox = styled.div`
   position: relative;
 `;
 
-export const ShareBtn = styled.div`
+export const ShareBtn = styled.button`
   padding: 6px 16px;
   outline: none;
   border: 1px solid var(--gray300);
@@ -62,6 +62,7 @@ export const ShareOption = styled.button`
   text-align: left;
   color: var(--gray900);
   font-size: 16px;
+
   &:hover {
     background: var(--gray100);
   }
@@ -72,6 +73,14 @@ export const EmojiAddBtn = styled.button`
   position: relative;
   padding: 6px 16px;
   gap: 4px;
+  border: 1px solid var(--gray300);
+  border-radius: 6px;
+  &:focus {
+    border: 1px solid var(--gray500);
+  }
+  &:hover {
+    background: var(--gray100);
+  }
   @media ${device.mobile} {
     padding: 6px 8px;
   }
