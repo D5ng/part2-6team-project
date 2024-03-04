@@ -22,6 +22,7 @@ export const PaperCard = styled.div`
   box-sizing: border-box;
   overflow: hidden;
   color: ${(props) => (props.$backgroundImageURL ? 'white' : 'black')};
+  cursor: pointer;
 
   &::before {
     content: '';
