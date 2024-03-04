@@ -14,6 +14,7 @@ function OutlinedShareBtn() {
     copy(currentUrl);
 
     setIsCopied(true);
+    setHidden(true);
 
     setTimeout(() => {
       setIsCopied(false);
@@ -23,11 +24,11 @@ function OutlinedShareBtn() {
     <>
       <S.ShareBtn onClick={() => setHidden(!hidden)}>
         <S.ButtonIconImg src="/images/icons/shareIcon.svg" alt="공유버튼 아이콘" />
-        <S.Wrap hidden={hidden}>
-          <KakaoShareButton />
-          <S.ShareOption onClick={handleCopy}>URL 공유</S.ShareOption>
-        </S.Wrap>
       </S.ShareBtn>
+      <S.Wrap hidden={hidden}>
+        <KakaoShareButton />
+        <S.ShareOption onClick={handleCopy}>URL 공유</S.ShareOption>
+      </S.Wrap>
       {isCopied && <Toast />}
     </>
   );

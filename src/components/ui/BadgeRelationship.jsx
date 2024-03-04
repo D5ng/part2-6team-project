@@ -29,7 +29,7 @@ export function BadgeRelationship({ relationship }) {
   const filteredBadge = badges.filter((badge) => badge.relationship === relationship)[0];
   return (
     <S.BadgeContainer>
-      <S.BadgeItem bgColor={filteredBadge.bgColor} textColor={filteredBadge.textColor}>
+      <S.BadgeItem $bgColor={filteredBadge.bgColor} $textColor={filteredBadge.textColor}>
         {filteredBadge.relationship}
       </S.BadgeItem>
     </S.BadgeContainer>

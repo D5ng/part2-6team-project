@@ -28,7 +28,7 @@ function PostCreate() {
         <S.BadgeContainer>
           {paperState?.data?.topReactions?.length > 0 ? (
             paperState?.data?.topReactions?.map((item) => (
-              <S.BadgeBox ket={item.id}>
+              <S.BadgeBox key={item.id}>
                 <p>
                   {item.emoji}
                   <span>{item.count}</span>

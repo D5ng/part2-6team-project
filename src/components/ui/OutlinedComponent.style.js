@@ -12,7 +12,7 @@ export const ShareBox = styled.div`
   position: relative;
 `;
 
-export const ShareBtn = styled.button`
+export const ShareBtn = styled.div`
   padding: 6px 16px;
   outline: none;
   border: 1px solid var(--gray300);
@@ -36,6 +36,8 @@ export const ButtonIconImg = styled.img`
 `;
 
 export const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
   visibility: ${({ hidden }) => (hidden ? 'hidden' : 'visible')};
   padding: 10px 0;
   border-radius: 8px;
