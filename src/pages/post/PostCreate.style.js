@@ -23,7 +23,7 @@ export const Nav = styled.nav`
 `;
 export const UserName = styled.h1`
   color: var(--gray800);
-  width: 227px;
+  width: 380px;
   font-size: 28px;
   font-style: normal;
   font-weight: 700;

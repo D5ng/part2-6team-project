@@ -1,31 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import * as S from '@Components/ui/BadgeEmogi.style';
-import fetchapi from './api';
+import { PaperContext } from '@Paper/context/PaperContext';
 
 function BadgeEmogi() {
-  const [badge, setBadge] = useState(null);
-
-  useEffect(() => {
-    const fetchUserImg = async () => {
-      try {
-        const data = await fetchapi();
-        setBadge(data);
-      } catch (error) {
-        throw new Error('error');
-      }
-    };
-    fetchUserImg();
-  }, []);
-
-  return (
+  const { reactionState } = useContext(PaperContext);
+  return reactionState?.data?.results?.length > 0 ? (
     <S.BadgeContainer>
-      {badge?.results?.map((item) => (
+      {reactionState?.data?.results?.map((item) => (
         <S.BadgeBox key={item.id}>
           <S.BadgeEmoji>{item?.emoji}</S.BadgeEmoji>
           <S.BadgeCount>{item?.count}</S.BadgeCount>
         </S.BadgeBox>
       ))}
     </S.BadgeContainer>
+  ) : (
+    <S.NoEmogiContainer>
+      <p>이모지가 없습니다.</p>
+    </S.NoEmogiContainer>
   );
 }
 
