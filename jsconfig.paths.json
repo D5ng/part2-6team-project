@@ -4,7 +4,8 @@
     "paths": {
       "@Components/*": ["./components/*"],
       "@List/*": ["./pages/rolling/list/*"],
-      "@Paper/*": ["./pages/rolling/paper/*"]
+      "@Paper/*": ["./pages/rolling/paper/*"],
+      "@Font/*": ["./assets/fonts/*"]
     }
   }
 }

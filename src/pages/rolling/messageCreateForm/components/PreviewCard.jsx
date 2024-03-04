@@ -20,6 +20,12 @@ const badgeStyle = {
     textColor: 'var(--blue500)',
   },
 };
+const fontStyle = {
+  'Noto Sans': 'Noto Sans KR',
+  Pretendard: 'Pretendard',
+  나눔명조: 'NanumMyeongjo',
+  '나눔손글씨 손편지체': 'NanumBaeEunHyeCe',
+};
 const DATE = new Date();
 const TODAY = `${DATE.getFullYear()}.${DATE.getMonth() + 1}.${DATE.getDate()}`;
 function PreviewCard() {
@@ -36,7 +42,7 @@ function PreviewCard() {
           <S.Badge style={badgeStyle[currentSelect.relation]}>{currentSelect.relation}</S.Badge>
         </S.Wrap>
       </S.SenderBox>
-      <S.MessageBox>{innerMessage}</S.MessageBox>
+      <S.MessageBox font={fontStyle[currentSelect.font]}>{innerMessage}</S.MessageBox>
       <S.CreateDate>{TODAY}</S.CreateDate>
     </S.Card>
   );
