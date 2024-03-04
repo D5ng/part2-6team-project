@@ -3,8 +3,7 @@ import { device } from 'styles/breakpoints';
 import colorMap from 'utils/backgroundColor';
 
 export const Section = styled.section`
-  background: ${({ $background }) =>
-    !colorMap[$background] ? `url(${$background}) no-repeat center / cover` : colorMap[$background]};
+  background: ${({ $background }) => colorMap[$background] || `url(${$background}) no-repeat center / cover`};
   min-height: calc(100vh - 63px);
 `;
 
