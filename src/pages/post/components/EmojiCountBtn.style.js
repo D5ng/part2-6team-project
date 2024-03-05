@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from 'styles/breakpoints';
 
 export const EmojiCountBtn = styled.div`
   width: 36px;
@@ -9,6 +10,9 @@ export const EmojiCountBtn = styled.div`
   img {
     width: 24px;
     height: 24px;
+  }
+  @media ${device.mobile} {
+    margin: 0px auto;
   }
 `;
 

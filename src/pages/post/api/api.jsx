@@ -1,6 +1,6 @@
-const BASE_API_URL = 'https://rolling-api.vercel.app';
+export const BASE_API_URL = 'https://rolling-api.vercel.app';
 
-const TEAM = '4-6';
+export const TEAM = '4-6';
 
 export default async function createReactions(recipientsId, formData) {
   const response = await fetch(`${BASE_API_URL}/${TEAM}/recipients/${recipientsId}/reactions/`, {

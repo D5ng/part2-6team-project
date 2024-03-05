@@ -24,6 +24,7 @@ export const ShareBtn = styled.button`
     background: var(--gray100);
   }
   @media ${device.mobile} {
+    margin-left: auto;
     padding: 6px 8px;
   }
 `;
@@ -83,6 +84,7 @@ export const EmojiAddBtn = styled.button`
   }
   @media ${device.mobile} {
     padding: 6px 8px;
+    margin: 0px auto;
   }
 `;
 

@@ -5,7 +5,7 @@ import OutlinedShareBtn from '@Components/ui/OutlinedShareBtn';
 import { PaperContext } from '@Paper/context/PaperContext';
 import EmojiCountBtn from './components/EmojiCountBtn';
 
-function PostCreate() {
+function PostCreate({ onUpdateEmoji, emojis, topReactions }) {
   const { paperState } = useContext(PaperContext);
 
   return (
@@ -26,8 +26,8 @@ function PostCreate() {
         </S.Compose>
         <S.Line1 />
         <S.BadgeContainer>
-          {paperState?.data?.topReactions?.length > 0 ? (
-            paperState?.data?.topReactions?.map((item) => (
+          {topReactions.length > 0 ? (
+            topReactions.map((item) => (
               <S.BadgeBox key={item.id}>
                 <p>
                   {item.emoji}
@@ -39,8 +39,8 @@ function PostCreate() {
             <p>이모지를 추가해주세요!</p>
           )}
         </S.BadgeContainer>
-        <EmojiCountBtn />
-        <OutlinedEmojiBtn />
+        <EmojiCountBtn emojis={emojis} />
+        <OutlinedEmojiBtn onUpdateEmoji={onUpdateEmoji} />
         <S.Line2 />
         <OutlinedShareBtn />
       </S.Navservice>

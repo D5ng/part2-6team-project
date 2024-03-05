@@ -1,9 +1,9 @@
 import EmojiPicker from 'emoji-picker-react';
-import React, { useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import createReactions from '../api/api';
 
-function EmojiChoice() {
+function EmojiChoice({ onUpdateEmoji }) {
   const { recipientsId } = useParams();
   const handleEmojiClick = async (emoji) => {
     try {
@@ -11,9 +11,9 @@ function EmojiChoice() {
         type: 'increase',
         emoji: emoji.emoji,
       };
-      const response = await createReactions(recipientsId, data);
 
-      console.log('이모지 전송 성공:', response);
+      const response = await createReactions(recipientsId, data);
+      onUpdateEmoji(emoji.emoji);
     } catch (error) {
       console.error('이모지 전송 실패:', error);
     }
