@@ -3,12 +3,10 @@ import * as S from '@Components/ui/BadgeEmogi.style';
 import { PaperContext } from '@Paper/context/PaperContext';
 
 function BadgeEmogi({ emojis }) {
-  console.log(emojis);
-
   return emojis.length > 0 ? (
     <S.BadgeContainer>
       {emojis.map((badge) => (
-        <S.BadgeBox>
+        <S.BadgeBox key={badge?.emoji}>
           <S.BadgeEmoji>{badge?.emoji}</S.BadgeEmoji>
           <S.BadgeCount>{badge?.count}</S.BadgeCount>
         </S.BadgeBox>
