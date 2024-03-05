@@ -6,6 +6,7 @@ import { PrimaryCreateBtn } from '@Components/ui/PrimaryComponent.style';
 import { createPortal } from 'react-dom';
 import ImagePickerModal from '@Components/imagePickerModal/ImagePickerModal';
 import { useImagePickerModalContext } from '@Components/imagePickerModal/ImagePickerModalContext';
+import Loading from '@Components/ui/Loading';
 import * as S from './MessageForm.style';
 import { useMessageFormContext } from '../context/MessageFormContext';
 import { postCreateMessageData } from '../api';
@@ -21,6 +22,7 @@ function MessageForm() {
   const [messageLength, setMessageLength] = useState(1);
   const { currentSelect, message, currentProfileImg, setFromName, fromName, setCurrentProfileImg } =
     useMessageFormContext();
+  const [isLoading, setIsLoading] = useState(false);
   const [active, setActive] = useState(false);
   const openModal = () => setActive(true);
   const closeModal = () => setActive(false);
@@ -35,12 +37,15 @@ function MessageForm() {
       profileImageURL: currentProfileImg,
     };
     try {
+      setIsLoading(true);
       const requestState = await postCreateMessageData(params.id, rqusetObject);
       if (requestState.status === 201) {
         navigate(`/post/${params.id}`);
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   };
   useEffect(() => {
@@ -82,8 +87,8 @@ function MessageForm() {
         <Dropdown type="font" />
       </S.Wrapper>
       <PreviewCard />
-      <PrimaryCreateBtn disabled={!(messageLength !== 1 && fromName.target)} style={{ marginTop: '64px' }}>
-        생성하기
+      <PrimaryCreateBtn disabled={!(messageLength !== 1 && fromName.target) || isLoading}>
+        {isLoading ? <Loading /> : '생성하기'}
       </PrimaryCreateBtn>
       {active && modal}
     </S.Form>
