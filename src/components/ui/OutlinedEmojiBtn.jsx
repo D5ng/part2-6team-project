@@ -3,7 +3,7 @@ import * as S from '@Components/ui/OutlinedComponent.style';
 import EmojiChoice from '../../pages/post/components/EmojiChoice';
 import { ADD_EMOJI_ICON_PATH } from './constant';
 
-function OutlinedEmojiBtn() {
+function OutlinedEmojiBtn({ onUpdateEmoji }) {
   const [isEmojiChoiceHidden, setEmojiChoiceHidden] = useState(true);
 
   const toggleEmojiChoice = () => {
@@ -17,7 +17,7 @@ function OutlinedEmojiBtn() {
         <S.AddText>추가</S.AddText>
       </S.EmojiAddBtn>
       <S.EmojiChoiceBox hidden={isEmojiChoiceHidden}>
-        <EmojiChoice />
+        <EmojiChoice onUpdateEmoji={onUpdateEmoji} />
       </S.EmojiChoiceBox>
     </>
   );
