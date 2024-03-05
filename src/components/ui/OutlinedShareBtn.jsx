@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as S from '@Components/ui/OutlinedComponent.style';
 import copy from 'clipboard-copy';
-import KakaoShareButton from 'pages/post/components/KakaoShareButton';
+import KakaoShareButton from '@Components/PaperHeader/KakaoShareButton';
 import Toast from './Toast';
 import { SHARE_ICON_PATH } from './constant';
 

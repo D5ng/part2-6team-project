@@ -4,6 +4,7 @@ import BadgeRelationship from '@Components/ui/BadgeRelationship';
 
 function MessageProfile({ data }) {
   const { sender, profileImageURL, relationship } = data;
+
   return (
     <S.MessageProfile>
       <S.ProfileImg src={profileImageURL} alt="profileImg" />
