@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from 'styles/breakpoints';
 
 const fontsMapping = {
   Pretendard: 'Pretendard',
@@ -8,6 +9,7 @@ const fontsMapping = {
 };
 
 export const Container = styled.div`
+  padding: 40px;
   position: fixed;
   left: 50%;
   top: 50%;
@@ -20,11 +22,20 @@ export const Container = styled.div`
   border-radius: 16px;
   box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.1);
   z-index: 100;
+  @media ${device.mobile} {
+    width: 80%;
+    padding: 20px;
+  }
 `;
 export const Info = styled.div`
   display: flex;
-  margin: 40px 45px 19px 39px;
   align-items: center;
+  padding-bottom: 19px;
+  border-bottom: 1px solid var(--gray200);
+  @media ${device.mobile} {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 export const Profile = styled.div`
@@ -62,24 +73,29 @@ export const CreatAt = styled.span`
   font-weight: 400;
   line-height: 20px;
   margin-left: auto;
+  @media ${device.mobile} {
+    position: absolute;
+    bottom: 85px;
+    right: 40px;
+  }
 `;
 export const Contents = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
 `;
 export const TextBox = styled.div`
-  border-top: 1px solid var(--gray200);
+  width: 100%;
   padding: 16px 20px 0px 0px;
   color: #5a5a5a;
-  width: 520px;
-  height: 240px;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: 28px;
   overflow-y: scroll;
   font-family: ${({ $font }) => fontsMapping[$font] || 'Pretendard'};
+  flex: 1;
 
   &::-webkit-scrollbar {
     width: 4px;
