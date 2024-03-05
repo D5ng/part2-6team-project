@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import * as S from '@Components/ui/BadgeEmogi.style';
-import { PaperContext } from '@Paper/context/PaperContext';
 
 function BadgeEmogi({ emojis }) {
   return emojis.length > 0 ? (
