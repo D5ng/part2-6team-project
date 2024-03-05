@@ -4,8 +4,9 @@ import Input from '@Components/form/Input';
 import useAsync from 'hooks/useAsync';
 import * as S from '@Form/components/ImagePickerModal.style';
 import { getUnsplashBackgroundImages, getUnsplashSearchedImages } from '@Components/imagePickerModal/api';
+
 import { CheckIcon } from '@Form/components/BackgroundOptions.style';
-import { useImagePickerModalContext } from './ImagePickerModalContext';
+import { ImagePickerModalProvider, useImagePickerModalContext } from './ImagePickerModalContext';
 
 function ImagePickerModal({ closeModal }) {
   const {
@@ -16,6 +17,7 @@ function ImagePickerModal({ closeModal }) {
     searchedImages,
     handleLoadSearchedImages,
   } = useImagePickerModalContext();
+
   const [page, setPage] = useState(1);
   const [isFetchingImages, fetchingError, onFetchImagesAsync] = useAsync(getUnsplashBackgroundImages);
   const [isSearchImages, searchingError, onSearchImagesAsync] = useAsync(getUnsplashSearchedImages);
@@ -53,6 +55,7 @@ function ImagePickerModal({ closeModal }) {
     handleLoadSearchedImages(onSearchImagesAsync, page, keyword);
   }, [page]);
 
+
   return (
     <S.ImagePickerModal>
       <S.Header>
@@ -87,7 +90,7 @@ function ImagePickerModal({ closeModal }) {
                 alt="unsplash image"
               />
               {selectedImages === list.urls.full && (
-                <CheckIcon src="images/icons/check.svg" alt="배경사진 탐색 아이콘" />
+                <CheckIcon src="/images/icons/check.svg" alt="배경사진 탐색 아이콘" />
               )}
             </S.ImageList>
           ))}

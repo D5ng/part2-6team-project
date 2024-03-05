@@ -1,6 +1,7 @@
 import React from 'react';
 import * as S from 'pages/rolling/messageCreateForm/MessageCreateForm.style';
 
+import { ImagePickerModalProvider } from '@Components/imagePickerModal/ImagePickerModalContext';
 import { MessageFormContextProvider } from './context/MessageFormContext';
 
 import MessageForm from './components/MessageForm';
@@ -8,9 +9,11 @@ import MessageForm from './components/MessageForm';
 function MessageCreateForm() {
   return (
     <MessageFormContextProvider>
-      <S.FormContainer>
-        <MessageForm />
-      </S.FormContainer>
+      <ImagePickerModalProvider>
+        <S.FormContainer>
+          <MessageForm />
+        </S.FormContainer>
+      </ImagePickerModalProvider>
     </MessageFormContextProvider>
   );
 }

@@ -5,7 +5,8 @@
       "@Components/*": ["./components/*"],
       "@List/*": ["./pages/list/*"],
       "@Paper/*": ["./pages/paper/*"],
-      "@Form/*": ["./pages/form/*"]
+      "@Form/*": ["./pages/form/*"],
+      "@Font/*": ["./assets/fonts/*"],
     }
   }
 }

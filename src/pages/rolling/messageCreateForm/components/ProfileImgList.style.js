@@ -25,3 +25,19 @@ export const ProfileImg = styled.img`
     transform: scale(1.3);
   }
 `;
+
+export const SearchBtb = styled.button`
+  width: 56px;
+  height: 56px;
+  border-radius: 100px;
+  background-color: var(--gray300);
+  padding: 8px;
+`;
+
+export const SearchImg = styled.img`
+  width: 100%;
+  transition: 0.5s;
+  &:hover {
+    transform: scale(1.2);
+  }
+`;
