@@ -5,7 +5,7 @@ import OutlinedShareBtn from '@Components/ui/OutlinedShareBtn';
 import { PaperContext } from '@Paper/context/PaperContext';
 import EmojiCountBtn from './components/EmojiCountBtn';
 
-function PostCreate() {
+function PostCreate({ onUpdateEmoji, emojis }) {
   const { paperState } = useContext(PaperContext);
 
   return (
@@ -39,8 +39,8 @@ function PostCreate() {
             <p>이모지를 추가해주세요!</p>
           )}
         </S.BadgeContainer>
-        <EmojiCountBtn />
-        <OutlinedEmojiBtn />
+        <EmojiCountBtn emojis={emojis} />
+        <OutlinedEmojiBtn onUpdateEmoji={onUpdateEmoji} />
         <S.Line2 />
         <OutlinedShareBtn />
       </S.Navservice>

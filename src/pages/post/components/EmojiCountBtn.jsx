@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as S from 'pages/post/components/EmojiCountBtn.style';
 import BadgeEmogi from '@Components/ui/BadgeEmogi';
 
-function EmojiCountBtn() {
+function EmojiCountBtn({ onUpdateEmoji, emojis }) {
   const [hidden, setHidden] = useState(true);
   return (
     <S.EmojiCountBtn>
@@ -10,7 +10,7 @@ function EmojiCountBtn() {
         <img src="/images/icons/arrow_down.svg" alt="이모지추천카운트" />
       </button>
       <S.Wrap hidden={hidden}>
-        <BadgeEmogi />
+        <BadgeEmogi onUpdateEmoji={onUpdateEmoji} emojis={emojis} />
       </S.Wrap>
     </S.EmojiCountBtn>
   );
