@@ -11,28 +11,27 @@ export const Nav = styled.nav`
   margin-right: auto;
   align-items: center;
   justify-content: center;
-  @media (max-width: 1280px) {
+  @media ${device.tablet} {
     padding: 13px 24px;
   }
 
   @media (max-width: 767px) {
-    padding: 12px 20px;
+    padding: 12px 0px;
     flex-direction: column;
     height: 104px;
   }
 `;
 export const UserName = styled.h1`
   color: var(--gray800);
-  width: 380px;
   font-size: 28px;
   font-style: normal;
   font-weight: 700;
   line-height: 42px;
-  margin-right: auto;
-  @media (max-width: 767px) {
+  @media ${device.mobile} {
+    width: 100%;
     min-width: 384px;
     height: 52px;
-    padding: 12px 20px;
+    padding: 12px 35px;
     display: flex;
     align-items: center;
   }
@@ -42,9 +41,10 @@ export const Navservice = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-  @media (max-width: 767px) {
+  margin-left: auto;
+  @media ${device.mobile} {
     width: 100%;
-    padding: 8px 0;
+    padding: 8px 30px 8px 35px;
     height: 52px;
     border-top: 1px solid #ededed;
   }
@@ -111,21 +111,25 @@ export const Line1 = styled.div`
   height: 28px;
   background: var(--gray200);
   margin: 0 28px;
-  @media ${device.mobile} {
+  @media ${device.tablet} {
     display: none;
   }
 `;
 export const BadgeContainer = styled.div`
   display: flex;
   align-items: center;
+  margin-right: auto;
   gap: 8px;
+  @media ${device.mobile} {
+    justify-content: space-between;
+    gap: 16px;
+  }
 `;
 export const BadgeBox = styled.div`
   display: flex;
   background: rgba(0, 0, 0, 0.54);
   padding: 8px 12px;
   border-radius: 32px;
-  gap: 4px;
   p {
     font-size: 16px;
     font-weight: 400;
@@ -148,10 +152,16 @@ export const EmojiCount = styled.div`
     width: 24px;
     height: 24px;
   }
+  @media ${device.mobile} {
+    margin: 0px auto;
+  }
 `;
 export const Line2 = styled.div`
   width: 1px;
   height: 28px;
   background: var(--gray200);
   margin: 0 13px;
+  @media ${device.mobile} {
+    margin: 0px auto;
+  }
 `;

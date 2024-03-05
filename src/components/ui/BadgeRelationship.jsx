@@ -8,7 +8,7 @@ function BadgeRelationship({ relationship }) {
 
   return (
     <S.BadgeContainer>
-      <S.BadgeItem bgColor={badge.bgColor} textColor={badge.textColor}>
+      <S.BadgeItem bgColor={badge.$bgColor} textColor={badge.$textColor}>
         {relationship}
       </S.BadgeItem>
     </S.BadgeContainer>

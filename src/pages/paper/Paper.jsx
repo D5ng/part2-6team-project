@@ -9,13 +9,17 @@ import PaperContents from './components/PaperContents';
 function Paper() {
   const { recipientsId } = useParams();
   const [emojis, setEmojis] = useState([]);
+  const [topReactions, setTopReactions] = useState([]);
   // const { state: emojiState, fetchRequest: emojiFetchRequest } = useHttp();
 
   const fetchRequest = async () => {
     try {
       const response = await fetch(`${BASE_API_URL}/${TEAM}/recipients/${recipientsId}/reactions/`);
+      const data = await fetch(`${BASE_API_URL}/${TEAM}/recipients/${recipientsId}/`);
       const responseData = await response.json();
+      const reactiondata = await data.json();
       setEmojis(responseData.results);
+      setTopReactions(reactiondata.topReactions);
     } catch (error) {
       console.log(error);
     }
@@ -24,18 +28,19 @@ function Paper() {
   useEffect(() => {
     fetchRequest();
   }, []);
-  //   setEmoji(emojiState?.data?.results);
 
   const updateEmoji = (emojiIcon) => {
     const newEmojis = emojis.map((emoji) => (emoji.emoji === emojiIcon ? { ...emoji, count: emoji.count + 1 } : emoji));
+    const newReactions = topReactions.map((emoji) =>
+      emoji.emoji === emojiIcon ? { ...emoji, count: emoji.count + 1 } : emoji,
+    );
     setEmojis(newEmojis);
+    setTopReactions(newReactions);
   };
-
-  console.log(emojis);
 
   return (
     <PaperContextProvider>
-      <PostCreate onUpdateEmoji={updateEmoji} emojis={emojis} />
+      <PostCreate onUpdateEmoji={updateEmoji} emojis={emojis} topReactions={topReactions} />
       <PaperContents />
     </PaperContextProvider>
   );
