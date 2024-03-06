@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { PaperContextProvider } from '@Paper/context/PaperContext';
-import PostCreate from 'pages/post/PostCreate';
+import { PaperHeaderContextProvider } from '@Components/PaperHeader/context/PaperHeaderContext';
+import PaperHeader from '@Components/PaperHeader/PaperHeader';
 import PaperContents from './components/PaperContents';
 
 function Paper() {
   return (
     <PaperContextProvider>
-      <PostCreate />
-      <PaperContents />
+      <PaperHeaderContextProvider>
+        <PaperHeader />
+        <PaperContents />
+      </PaperHeaderContextProvider>
     </PaperContextProvider>
   );
 }

@@ -6,7 +6,7 @@ function ImageGallery({ imageArray, imageCount }) {
 
   return (
     <S.ImgWrapper>
-      {imageArray.map((image, index) => (
+      {imageArray?.map((image, index) => (
         <S.TestImg key={index} src={image} alt={`Image ${index}`} />
       ))}
       {imageArrayLength && (

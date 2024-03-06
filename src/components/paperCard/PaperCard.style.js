@@ -6,7 +6,7 @@ const TestImgStyle = `
   height: 28px;
   border-radius: 50px;
   border: 1.5px solid white;
-  margin-bottom: 10px;
+
   margin-right: -10px;
 `;
 
@@ -69,6 +69,7 @@ export const CardContentWrapper = styled.div`
     font-size: 16px;
     line-height: 26px;
     letter-spacing: -1%;
+    margin-top: 10px;
   }
 
   span {
@@ -87,6 +88,7 @@ export const LastTestImg = styled.div`
   justify-content: center;
   font-size: 12px;
   color: ${(props) => (props.$backgroundImageURL ? 'black' : 'black')};
+  border: 1px solid var(--gray200);
 `;
 
 export const ReactionButton = styled.div`

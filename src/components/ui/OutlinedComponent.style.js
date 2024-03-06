@@ -17,6 +17,7 @@ export const ShareBtn = styled.button`
   outline: none;
   border: 1px solid var(--gray300);
   border-radius: 6px;
+  margin-left: 13px;
   &:focus {
     border: 1px solid var(--gray500);
   }
@@ -24,6 +25,7 @@ export const ShareBtn = styled.button`
     background: var(--gray100);
   }
   @media ${device.mobile} {
+    margin-left: auto;
     padding: 6px 8px;
   }
 `;
@@ -37,7 +39,6 @@ export const ButtonIconImg = styled.img`
 
 export const Wrap = styled.div`
   z-index: 9999;
-
   display: flex;
   flex-direction: column;
   visibility: ${({ hidden }) => (hidden ? 'hidden' : 'visible')};
@@ -75,6 +76,7 @@ export const EmojiAddBtn = styled.button`
   gap: 4px;
   border: 1px solid var(--gray300);
   border-radius: 6px;
+  margin-right: 13px;
   &:focus {
     border: 1px solid var(--gray500);
   }
@@ -83,6 +85,17 @@ export const EmojiAddBtn = styled.button`
   }
   @media ${device.mobile} {
     padding: 6px 8px;
+    margin: 0px auto;
+  }
+  &::after {
+    content: '';
+    width: 1px;
+    height: 28px;
+    background: var(--gray200);
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 `;
 
