@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
 import * as S from '@Components/ui/OutlinedComponent.style';
-import EmojiChoice from '../../pages/post/components/EmojiChoice';
+import EmojiChoice from '../PaperHeader/EmojiChoice';
 import { ADD_EMOJI_ICON_PATH } from './constant';
 
-function OutlinedEmojiBtn({ onUpdateEmoji, uptateReactions }) {
+function OutlinedEmojiBtn() {
   const [isEmojiChoiceHidden, setEmojiChoiceHidden] = useState(true);
   const emojiChoiceRef = useRef(null);
 
@@ -30,8 +30,9 @@ function OutlinedEmojiBtn({ onUpdateEmoji, uptateReactions }) {
         <S.ButtonIconImg src={ADD_EMOJI_ICON_PATH} alt="이모지 추가 버튼 아이콘" />
         <S.AddText>추가</S.AddText>
       </S.EmojiAddBtn>
+
       <S.EmojiChoiceBox hidden={isEmojiChoiceHidden} ref={emojiChoiceRef}>
-        <EmojiChoice onUpdateEmoji={onUpdateEmoji} uptateReactions={uptateReactions} />
+        <EmojiChoice />
       </S.EmojiChoiceBox>
     </>
   );
