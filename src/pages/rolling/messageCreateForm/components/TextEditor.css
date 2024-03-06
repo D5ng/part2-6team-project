@@ -2,6 +2,7 @@
   border: 1px solid var(--gray300);
   border-radius: 8px;
   overflow: hidden;
+  height: 250px;
 }
 
 .ql-toolbar {

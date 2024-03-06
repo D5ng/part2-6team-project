@@ -1,16 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import * as S from 'pages/rolling/messageCreateForm/components/ProfileImgList.style';
 import { useMessageFormContext } from '../context/MessageFormContext';
+import { requsetProfileImgData } from '../api';
 
 function ProfileImgList({ openModal }) {
-  const { profileImgSrc, setCurrentProfileImg } = useMessageFormContext();
-  const profileImgList = profileImgSrc.slice(1);
+  const [profileImgSrc, setProfileImgSrc] = useState([]);
+  const { setCurrentProfileImg } = useMessageFormContext();
   const handleProfileImgClick = (url) => {
     setCurrentProfileImg(url);
   };
+
+  useEffect(() => {
+    const getProfileImgData = async () => {
+      const response = await requsetProfileImgData();
+      setProfileImgSrc([...response.imageUrls]);
+    };
+    getProfileImgData();
+  }, []);
+  useEffect(() => {
+    setCurrentProfileImg(profileImgSrc[0]);
+  }, [profileImgSrc]);
   return (
     <S.ProfileImgList>
-      {profileImgList.map((url) => (
+      {profileImgSrc.slice(1).map((url) => (
         <S.ListItem key={url}>
           <S.ProfileImg
             src={url}
