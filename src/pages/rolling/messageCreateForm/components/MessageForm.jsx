@@ -1,15 +1,20 @@
+// React 관련 패키지
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { createPortal } from 'react-dom';
+// 공통 컴포넌트
 import Input from '@Components/form/Input';
 import Dropdown from '@Components/form/Dropdown';
-import { PrimaryCreateBtn } from '@Components/ui/PrimaryComponent.style';
-import { createPortal } from 'react-dom';
+import PrimaryCreateBtn from '@Components/ui/PrimaryCreateBtn';
 import ImagePickerModal from '@Components/imagePickerModal/ImagePickerModal';
-import { useImagePickerModalContext } from '@Components/imagePickerModal/ImagePickerModalContext';
 import Loading from '@Components/ui/Loading';
-import * as S from './MessageForm.style';
+// context, api, style
+import { useImagePickerModalContext } from '@Components/imagePickerModal/ImagePickerModalContext';
 import { useMessageFormContext } from '../context/MessageFormContext';
-import { postCreateMessageData } from '../api';
+// eslint-disable-next-line import/named
+import { errorHandling, createMessage } from '../api';
+import * as S from './MessageForm.style';
+// 현재 페이지에서만 사용하는 컴포넌트
 import PreviewImg from './PreviewImg';
 import TextEditor from './TextEditor';
 import ProfileImgList from './ProfileImgList';
@@ -38,12 +43,12 @@ function MessageForm() {
     };
     try {
       setIsLoading(true);
-      const requestState = await postCreateMessageData(params.id, rqusetObject);
-      if (requestState.status === 201) {
+      const requestState = await createMessage(params.id, rqusetObject);
+      errorHandling(requestState.ok, requestState.status, () => {
         navigate(`/post/${params.id}`);
-      }
+      });
     } catch (error) {
-      console.log(error);
+      alert(error);
     } finally {
       setIsLoading(false);
     }

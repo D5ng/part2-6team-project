@@ -1,11 +1,9 @@
-import React, { createContext, useContext, useEffect, useMemo, useReducer, useState } from 'react';
-import { requsetProfileImgData } from '../api';
+import React, { createContext, useContext, useMemo, useReducer, useState } from 'react';
 
 const MessageFormContext = createContext();
 
 export const useMessageFormContext = () => useContext(MessageFormContext);
 
-// eslint-disable-next-line consistent-return
 const reducer = (state, actions) => {
   // eslint-disable-next-line default-case
   switch (actions.type) {
@@ -18,27 +16,14 @@ const reducer = (state, actions) => {
 };
 
 export function MessageFormContextProvider({ children }) {
-  const [profileImgSrc, setProfileImgSrc] = useState([]);
   const [currentProfileImg, setCurrentProfileImg] = useState('');
   const [currentSelect, dispatch] = useReducer(reducer, { relation: '친구', font: 'Noto Sans' });
   const [fromName, setFromName] = useState('');
   const [message, setMessage] = useState('');
   const [toggleModal, setToggleModal] = useState(false);
-  const getProfileImgData = async () => {
-    const response = await requsetProfileImgData();
-    setProfileImgSrc([...response.imageUrls]);
-  };
 
-  useEffect(() => {
-    getProfileImgData();
-  }, []);
-  useEffect(() => {
-    setCurrentProfileImg(profileImgSrc[0]);
-  }, [profileImgSrc]);
   const values = useMemo(
     () => ({
-      profileImgSrc,
-      setProfileImgSrc,
       currentProfileImg,
       setCurrentProfileImg,
       currentSelect,
@@ -51,8 +36,6 @@ export function MessageFormContextProvider({ children }) {
       setToggleModal,
     }),
     [
-      profileImgSrc,
-      setProfileImgSrc,
       currentProfileImg,
       setCurrentProfileImg,
       dispatch,
