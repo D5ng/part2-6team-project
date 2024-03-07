@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import * as S from '@Components/ui/OutlinedComponent.style';
 import copy from 'clipboard-copy';
-import KakaoShareButton from '@Components/PaperHeader/KakaoShareButton';
+import KakaoShareButton from '@Pages/paper/components/paperHeader/KakaoShareButton';
 import Toast from './Toast';
 import { SHARE_ICON_PATH } from './constant';
 

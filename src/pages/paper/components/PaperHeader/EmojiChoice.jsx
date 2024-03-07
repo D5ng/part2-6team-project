@@ -1,7 +1,7 @@
 import EmojiPicker from 'emoji-picker-react';
 import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { PaperHeaderContext } from '@Components/PaperHeader/context/PaperHeaderContext';
+import { PaperHeaderContext } from '@Pages/paper/components/paperHeader/context/PaperHeaderContext';
 import createReactions from '@Pages/paper/api';
 
 function EmojiChoice() {

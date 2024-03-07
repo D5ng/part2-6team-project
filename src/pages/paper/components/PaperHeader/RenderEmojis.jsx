@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from '@Components/PaperHeader/TopEmojis.style';
+import * as S from '@Pages/paper/components/paperHeader/TopEmojis.style';
 
 const RenderEmojis = (reactions) =>
   reactions.map((item) => (

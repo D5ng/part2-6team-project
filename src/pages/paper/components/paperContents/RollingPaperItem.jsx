@@ -1,5 +1,5 @@
 import React from 'react';
-import CardList from '@Paper/components/RollingPaperItem.style';
+import CardList from '@Pages/paper/components/paperContents/RollingPaperItem.style';
 import Card from '@Components/messageCard/MessageCard';
 
 function RollingPaperItem({ data, onClickModal, getPaperData }) {

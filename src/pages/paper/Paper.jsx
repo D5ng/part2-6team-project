@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { PaperContextProvider } from '@Paper/context/PaperContext';
-import { PaperHeaderContextProvider } from '@Components/PaperHeader/context/PaperHeaderContext';
-import PaperHeader from '@Components/PaperHeader/PaperHeader';
-import PaperContents from './components/PaperContents';
+import { PaperHeaderContextProvider } from '@Pages/paper/components/paperHeader/context/PaperHeaderContext';
+import PaperHeader from '@Pages/paper/components/paperHeader/PaperHeader';
+import PaperContents from './components/paperContents/PaperContents';
 
 function Paper() {
   return (

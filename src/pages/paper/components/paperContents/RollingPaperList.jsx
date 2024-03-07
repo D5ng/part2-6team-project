@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import * as S from '@Paper/components/RollingPaperList.style';
+import * as S from '@Pages/paper/components/paperContents/RollingPaperList.style';
 import PlusIcon from '@Components/ui/PlusIcon';
 import { PaperContext } from '@Paper/context/PaperContext';
 import Modal from '@Components/modal/Modal';

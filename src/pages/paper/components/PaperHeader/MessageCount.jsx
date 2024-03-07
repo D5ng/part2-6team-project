@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import * as S from '@Components/PaperHeader/MessageCount.style';
+import * as S from '@Pages/paper/components/paperHeader/MessageCount.style';
 
 import { PaperContext } from '@Paper/context/PaperContext';
 import ImageGallery from '@Components/paperCard/ImageGallery';

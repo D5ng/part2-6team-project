@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import * as S from '@Components/ui/OutlinedComponent.style';
-import { KAKAO_SDK_URL, KAKAO_APP_KEY, LOGO_ICON_PATH } from '@Components/PaperHeader/constant';
+import { KAKAO_SDK_URL, KAKAO_APP_KEY, LOGO_ICON_PATH } from '@Pages/paper/components/paperHeader/constant';
 
 function KakaoShareButton() {
   useEffect(() => {

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
-import * as S from '@Components/PaperHeader/EmojiCountBtn.style';
-import { PaperHeaderContext } from '@Components/PaperHeader/context/PaperHeaderContext';
+import * as S from '@Pages/paper/components/paperHeader/EmojiCountBtn.style';
+import { PaperHeaderContext } from '@Pages/paper/components/paperHeader/context/PaperHeaderContext';
 import { BadgeBox, BadgeContainer, BadgeCount, BadgeEmoji, NoEmogiContainer } from '@Components/ui/BadgeEmogi.style';
-import { ARROW_DOWN_ICON_PATH } from '@Components/PaperHeader/constant';
+import { ARROW_DOWN_ICON_PATH } from '@Pages/paper/components/paperHeader/constant';
 
 function EmojiCountBtn() {
   const { emojis } = useContext(PaperHeaderContext);

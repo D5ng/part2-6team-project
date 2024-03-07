@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import * as S from '@Components/PaperHeader/TopEmojis.style';
-import { PaperHeaderContext } from '@Components/PaperHeader/context/PaperHeaderContext';
-import RenderEmojis from '@Components/PaperHeader/RenderEmojis';
+import * as S from '@Pages/paper/components/paperHeader/TopEmojis.style';
+import { PaperHeaderContext } from '@Pages/paper/components/paperHeader/context/PaperHeaderContext';
+import RenderEmojis from '@Pages/paper/components/paperHeader/RenderEmojis';
 
 function TopEmojis() {
   const { topReactions } = useContext(PaperHeaderContext);

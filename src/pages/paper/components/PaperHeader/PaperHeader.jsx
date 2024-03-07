@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import * as S from '@Components/PaperHeader/PaperHeader.style';
+import * as S from '@Pages/paper/components/paperHeader/PaperHeader.style';
 import OutlinedEmojiBtn from '@Components/ui/OutlinedEmojiBtn';
 import OutlinedShareBtn from '@Components/ui/OutlinedShareBtn';
 import { PaperContext } from '@Paper/context/PaperContext';

@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import * as S from '@Paper/components/Skeleton.style';
+import * as S from '@Pages/paper/components/paperContents/Skeleton.style';
 
 function Skeleton(props, ref) {
   return (

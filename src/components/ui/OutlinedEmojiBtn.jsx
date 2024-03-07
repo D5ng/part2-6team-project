@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import * as S from '@Components/ui/OutlinedComponent.style';
-import EmojiChoice from '../PaperHeader/EmojiChoice';
+import EmojiChoice from '../../pages/paper/components/paperHeader/EmojiChoice';
 import { ADD_EMOJI_ICON_PATH } from './constant';
 
 function OutlinedEmojiBtn() {

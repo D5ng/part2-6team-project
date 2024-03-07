@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import * as S from '@Paper/components/PaperContents.style';
-import RollingPaperList from '@Paper/components/RollingPaperList';
+import * as S from '@Pages/paper/components/paperContents/PaperContents.style';
+import RollingPaperList from '@Pages/paper/components/paperContents/RollingPaperList';
 import { PaperContext } from '@Paper/context/PaperContext';
 
 function PaperContents() {
