@@ -3,13 +3,16 @@ import * as S from '@Components/PaperHeader/PaperHeader.style';
 import { PaperContext } from '@Paper/context/PaperContext';
 import OutlinedEmojiButton from '@Components/ui/OutlinedEmojiButton';
 import OutlinedShareBtn from '@Components/ui/OutlinedShareBtn';
+import Skeleton from '@Components/PaperHeader/Skeleton';
 import ViewReactionsButton from '@Components/PaperHeader/ViewReactionsButton';
 import BadgeEmogi from '@Components/ui/BadgeEmogi';
-import { PaperHeaderContext } from './context/PaperHeaderContext';
 import MessageCount from './MessageCount';
+import { PaperHeaderContext } from './context/PaperHeaderContext';
 
 function PaperHeader() {
   const { paperState } = useContext(PaperContext);
+  const { isLoading } = paperState;
+
   const { topReactions, fetchRequest } = useContext(PaperHeaderContext);
   const recipientName = paperState?.data?.name;
 
@@ -17,6 +20,9 @@ function PaperHeader() {
     fetchRequest();
   }, []);
 
+  if (isLoading) {
+    return <Skeleton />;
+  }
   return (
     <S.PaperHeader>
       <S.RecipientName>{`To. ${recipientName}`}</S.RecipientName>
