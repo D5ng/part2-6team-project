@@ -1,12 +1,12 @@
 import React, { createContext, useContext, useState } from 'react';
 // import { getAllPapersInfo, getBackgroundImages } from '../../pages/imagePickerApi';
 
-const ImagePickerModalContext = createContext();
+const UnsplashModalContext = createContext();
 
-export const useImagePickerModalContext = () => useContext(ImagePickerModalContext);
+export const useUnsplashModalContext = () => useContext(UnsplashModalContext);
 
-export function ImagePickerModalProvider({ children }) {
-  const [selectedImages, setSelectedImages] = useState('');
+export function UnsplashModalContextProvider({ children }) {
+  const [selectedItem, setSelectedItem] = useState('');
 
   const [backgroundImages, setBackgroundImages] = useState([]);
 
@@ -16,9 +16,8 @@ export function ImagePickerModalProvider({ children }) {
   // unsplash 배경 이미지 로드 함수
   const handleLoadUnsplashImages = async (asyncFunction, pageNum) => {
     const data = await asyncFunction(pageNum);
-    if (!data) {
-      return;
-    }
+    if (!data) return;
+
     if (pageNum === 1) {
       setUnsplashBackgroundImages(data);
     } else {
@@ -31,19 +30,19 @@ export function ImagePickerModalProvider({ children }) {
     const data = await asyncFunction(pageNum, key);
     if (!data) return;
     if (pageNum === 1) {
-      setSearchedImages(data.results);
+      setSearchedImages(data);
     } else {
-      setSearchedImages((prevImages) => [...prevImages, ...data.results]);
+      setSearchedImages((prevImages) => [...prevImages, ...data]);
     }
   };
 
   const handleBackgroundClick = (image) => {
-    setSelectedImages(image);
+    setSelectedItem(image);
   };
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const values = {
-    selectedImages,
+    selectedItem,
     handleBackgroundClick,
 
     backgroundImages,
@@ -55,5 +54,5 @@ export function ImagePickerModalProvider({ children }) {
     handleLoadSearchedImages,
   };
 
-  return <ImagePickerModalContext.Provider value={values}>{children}</ImagePickerModalContext.Provider>;
+  return <UnsplashModalContext.Provider value={values}>{children}</UnsplashModalContext.Provider>;
 }

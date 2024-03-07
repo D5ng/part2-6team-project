@@ -1,82 +1,83 @@
 /* eslint-disable no-nested-ternary */
 import React, { useEffect, useRef, useState } from 'react';
-import Input from '@Components/form/Input';
 import useAsync from 'hooks/useAsync';
-import * as S from '@Form/components/ImagePickerModal.style';
+import * as S from '@Components/unsplashModal/UnsplashModal.style';
 
-import { CheckIcon } from '@Form/components/BackgroundOptions.style';
+import UnsplashHeader from '@Components/unsplashModal/UnsplashHeader';
+import UnsplashCategory from '@Components/unsplashModal/UnsplashCategory';
+import UnsplashMasonry from '@Components/unsplashModal/UnsplashMasonry';
 import { fetchUnsplashPopularImage, fetchUnsplashSearchImage } from 'service/unplash';
-import useIntersectionObserver from 'hooks/useIntersectionObserver';
-import { ImagePickerModalProvider, useImagePickerModalContext } from './UnsplashModalContext';
+import { useUnsplashModalContext } from './UnsplashModalContext';
 
-function ImagePickerModal({ closeModal }) {
+function UnsplashModal({ closeModal }) {
   const {
-    selectedImages,
+    selectedItem,
     handleBackgroundClick,
     unsplashBackgroundImages,
     handleLoadUnsplashImages,
     searchedImages,
     handleLoadSearchedImages,
-  } = useImagePickerModalContext();
+  } = useUnsplashModalContext();
 
   const [page, setPage] = useState(1);
+  const [searchPage, setSearchPage] = useState(1);
   const [isPopularLoading, fetchingError, onFetchImagesAsync] = useAsync(fetchUnsplashPopularImage);
   const [isSearchLoading, searchingError, onSearchImagesAsync] = useAsync(fetchUnsplashSearchImage);
-  const [keyword, setKeyword] = useState('');
 
-  const handleChangeKeyword = (event) => setKeyword(event.target.value);
+  const searchRef = useRef();
+  const ImageListRef = useRef();
+  const searchValue = searchRef.current?.value.trim();
 
-  const modalContentRef = useRef(null);
+  const isLoading = isSearchLoading || isPopularLoading;
+
+  const handleIncreasePage = () => setPage(page + 1);
+  const handleSearchIncreasePage = () => setSearchPage(searchPage + 1);
 
   const handleSearch = (e) => {
     e.preventDefault();
-    setPage(1);
-    handleLoadSearchedImages(onSearchImagesAsync, 1, keyword);
+    ImageListRef.current.scrollTop = 0;
+    handleLoadSearchedImages(onSearchImagesAsync, searchPage, searchRef?.current?.value);
   };
 
-  const onIntersect = async (entry, observer) => {
-    observer.unobserve(entry.target);
-    if (isPopularLoading) return;
-    setPage(page + 1);
+  const handleCategory = (value) => {
+    setSearchPage(1);
+    searchRef.current.value = value;
+    ImageListRef.current.scrollTop = 0;
+    handleLoadSearchedImages(onSearchImagesAsync, searchPage, searchRef.current.value);
   };
-
-  const ref = useIntersectionObserver(onIntersect, { threshold: 0.3 });
 
   useEffect(() => {
     handleLoadUnsplashImages(onFetchImagesAsync, page);
-    handleLoadSearchedImages(onSearchImagesAsync, page, keyword);
   }, [page]);
 
-  return (
-    <S.ImagePickerModal>
-      <S.Header>
-        <S.CloseButton src="/images/icons/close.svg" onClick={closeModal} />
-        <S.ModalTitle>
-          <S.UnsplashIcon src="/images/form/unsplash_icon.png" alt="" />
-          배경화면을 선택해 주세요
-        </S.ModalTitle>
+  useEffect(() => {
+    handleLoadSearchedImages(onSearchImagesAsync, searchPage, searchRef?.current?.value);
+  }, [searchPage]);
 
+  return (
+    <S.UnsplashModal onSubmit={handleSearch}>
+      <UnsplashHeader onCloseModal={closeModal} />
+      <S.Body>
         <S.SearchBar>
-          <Input onChange={handleChangeKeyword}>어떤 배경화면을 원하시나요?</Input>
-          <S.SearchButton type="submit" onClick={handleSearch}>
-            검색
-          </S.SearchButton>
+          <S.Input ref={searchRef} placeholder="어떤 배경화면을 원하시나요?" />
+          <S.SearchButton type="submit">검색</S.SearchButton>
         </S.SearchBar>
-      </S.Header>
-      <S.ImageLists ref={modalContentRef}>
-        {(keyword === '' ? unsplashBackgroundImages : searchedImages)?.map((image) => (
-          <S.ImageList key={image.id} $isSelected={selectedImages === image.urls.regular}>
-            <S.Image
-              src={image.urls.small}
-              $aspectRatio={`${image.width} / ${image.height}`}
-              onClick={() => handleBackgroundClick(image.urls.regular)}
-              alt="unsplash image"
-            />
-          </S.ImageList>
-        ))}
-      </S.ImageLists>
-    </S.ImagePickerModal>
+
+        <UnsplashCategory onCategory={handleCategory} />
+        <UnsplashMasonry
+          ref={ImageListRef}
+          handleSearchIncreasePage={handleSearchIncreasePage}
+          handleSearch={handleSearch}
+          handleIncreasePage={handleIncreasePage}
+          isLoading={isLoading}
+          data={searchRef.current?.value.trim().length !== 0 ? searchedImages : unsplashBackgroundImages}
+          isSearchMode={searchRef.current?.value.trim().length !== 0}
+          onBackground={handleBackgroundClick}
+          selectedItem={selectedItem}
+        />
+      </S.Body>
+    </S.UnsplashModal>
   );
 }
 
-export default ImagePickerModal;
+export default UnsplashModal;

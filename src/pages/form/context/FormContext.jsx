@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
+import { GET_RANDOM_IMAGE, fetchUnsplashRandomImage } from 'service/unplash';
 import { getAllPapersInfo, getBackgroundImages } from '../api';
 
 const FormContext = createContext();
@@ -10,7 +11,9 @@ export function FormProvider({ children }) {
 
   const [selectedBtn, setSelectedBtn] = useState('color');
   const [selectedBackground, setSelectedBackground] = useState('');
+
   const [backgroundImages, setBackgroundImages] = useState([]);
+
   const [unsplashBackgroundImages, setUnsplashBackgroundImages] = useState([]);
   const [searchedImages, setSearchedImages] = useState([]);
 
@@ -24,10 +27,8 @@ export function FormProvider({ children }) {
 
   // 배경 이미지 로드 함수
   const handleLoadImages = async () => {
-    const result = await getBackgroundImages();
-    if (!result) return;
-    const images = result.imageUrls;
-    setBackgroundImages(images);
+    const result = await fetchUnsplashRandomImage();
+    setBackgroundImages(result);
   };
 
   const handleToggleButtonClick = (buttonType) => {

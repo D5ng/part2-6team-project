@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { createPortal } from 'react-dom';
 import * as S from '@Form/components/FormSubmitter.style';
 import { useFormContext } from '@Form/context/FormContext';
-import { createPaper } from '@Form/api';
 import useAsync from 'hooks/useAsync';
 import Input from '@Components/form/Input';
 import PrimaryCreateBtn from '@Components/ui/PrimaryCreateBtn';
@@ -11,12 +9,15 @@ import Loading from '@Components/ui/Loading';
 import ToggleButton from '@Form/components/ToggleButton';
 import BackgroundOptions from '@Form/components/BackgroundOptions';
 import ImagePickerModal from '@Components/unsplashModal/UnsplashModal';
-import { useImagePickerModalContext } from '@Components/unsplashModal/UnsplashModalContext';
+import { useUnsplashModalContext } from '@Components/unsplashModal/UnsplashModalContext';
+import { createPaper } from '@Form/services';
+import * as Portal from '@Components/portal';
+import Backdrop from '@Components/modal/Backdrop';
 
 function FormSubmitter() {
   const navigate = useNavigate();
   const { handleLoadPapersInfo, papersInfo, handleLoadImages, selectedBtn } = useFormContext();
-  const { selectedImages } = useImagePickerModalContext();
+  const { selectedImages } = useUnsplashModalContext();
   const [name, setName] = useState('');
   const [active, setActive] = useState(false);
   const [isSubmitting, submittingError, onSubmitAsync] = useAsync(createPaper);
@@ -50,17 +51,20 @@ function FormSubmitter() {
 
   useEffect(() => {
     handleLoadImages();
-    handleLoadPapersInfo();
+    // handleLoadPapersInfo();
   }, []);
 
   useEffect(() => {
     handleDuplicateName();
   }, [name, papersInfo]);
 
-  const modal = createPortal(<ImagePickerModal closeModal={closeModal} />, document.getElementById('modal-root'));
+  const backdrop = Portal.Backdrop(<Backdrop />);
+  const modal = Portal.Modal(<ImagePickerModal closeModal={closeModal} />);
 
   return (
     <S.Wrapper>
+      {backdrop}
+      {modal}
       <S.Title>To. {name}</S.Title>
       <Input error={errorMessage} value={name} onChange={(e) => setName(e.target.value)}>
         받는 사람 이름을 입력해 주세요
@@ -73,7 +77,6 @@ function FormSubmitter() {
       <PrimaryCreateBtn onClick={handleCreatePaper} disabled={name === '' || errorMessage}>
         {isSubmitting ? <Loading /> : '생성하기'}
       </PrimaryCreateBtn>
-      {active && modal}
     </S.Wrapper>
   );
 }
