@@ -20,12 +20,12 @@ export function PaperContextProvider({ children }) {
   }, []);
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
-  const value = {
+  const constextValue = {
     paperState,
     messageState,
     reactionState,
     modal: { modalState, handleOpenModal, handleCloseModal, getModalData },
     messageFetchRequest,
   };
-  return <PaperContext.Provider value={value}>{children}</PaperContext.Provider>;
+  return <PaperContext.Provider value={constextValue}>{children}</PaperContext.Provider>;
 }
