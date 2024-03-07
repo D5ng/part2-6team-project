@@ -6,7 +6,6 @@ const TestImgStyle = `
   height: 28px;
   border-radius: 50px;
   border: 1.5px solid white;
-
   margin-right: -10px;
 `;
 
@@ -77,6 +76,13 @@ export const CardContentWrapper = styled.div`
   }
 `;
 
+export const BadgeEmogiWrapper = styled.div`
+  display: flex;
+  gap: 8px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  padding-top: 17px;
+`;
+
 export const TestImg = styled.img`
   ${TestImgStyle}
 `;
@@ -89,22 +95,6 @@ export const LastTestImg = styled.div`
   font-size: 12px;
   color: ${(props) => (props.$backgroundImageURL ? 'black' : 'black')};
   border: 1px solid var(--gray200);
-`;
-
-export const ReactionButton = styled.div`
-  padding-top: 15px;
-  height: 25%;
-  display: flex;
-  width: 100%;
-  border-top: 1px solid gray;
-`;
-
-export const ReactionButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  padding-right: 40px;
-  align-items: center;
 `;
 
 export const AddCardButton = styled.button`

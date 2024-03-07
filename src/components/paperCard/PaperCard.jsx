@@ -2,7 +2,7 @@ import React from 'react';
 import * as S from '@Components/paperCard/PaperCard.style';
 import colorMap from 'utils/backgroundColor';
 import { useNavigate } from 'react-router-dom';
-import ReactionButton from './ReactionButton';
+import BadgeEmogi from '@Components/ui/BadgeEmogi';
 import CardContent from './CardContent';
 
 function getColor(color) {
@@ -22,7 +22,9 @@ function PaperCard({ list }) {
     >
       <S.CardWrapper>
         <CardContent list={list} />
-        <ReactionButton list={list} />
+        <S.BadgeEmogiWrapper>
+          <BadgeEmogi emojis={list.topReactions} />
+        </S.BadgeEmogiWrapper>
       </S.CardWrapper>
     </S.PaperCard>
   );

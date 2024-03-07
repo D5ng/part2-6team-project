@@ -11,16 +11,18 @@ export const PaperHeader = styled.nav`
   margin-right: auto;
   align-items: center;
   justify-content: center;
+
   @media ${device.tablet} {
     padding: 13px 24px;
   }
-
-  @media (max-width: 767px) {
+  @media ${device.mobile} {
+    min-width: 360px;
     padding: 12px 0px;
     flex-direction: column;
     height: 104px;
   }
 `;
+
 export const RecipientName = styled.h1`
   color: var(--gray800);
   font-size: 28px;
@@ -36,16 +38,24 @@ export const RecipientName = styled.h1`
     align-items: center;
   }
 `;
+
 export const PaperUtility = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
   position: relative;
   margin-left: auto;
+
   @media ${device.mobile} {
+    justify-content: flex-end;
+    min-width: 400px;
     width: 100%;
-    padding: 8px 30px 8px 35px;
+    padding: 12px 20px;
     height: 52px;
-    border-top: 1px solid #ededed;
+    border-top: 1px solid var(--gray200);
   }
+`;
+
+export const TopReactionsWrapper = styled.div`
+  display: flex;
+  gap: 8px;
 `;
