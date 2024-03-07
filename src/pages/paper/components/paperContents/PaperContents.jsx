@@ -5,9 +5,10 @@ import { PaperContext } from '@Paper/context/PaperContext';
 
 function PaperContents() {
   const { paperState } = useContext(PaperContext);
+  const { data } = paperState || {};
 
-  const isBackgroundImage = paperState?.data?.backgroundImageURL;
-  const isBackgroundColor = !isBackgroundImage && paperState?.data?.backgroundColor;
+  const isBackgroundImage = data?.backgroundImageURL;
+  const isBackgroundColor = !isBackgroundImage && data?.backgroundColor;
   const defaultBackgroundColor = isBackgroundColor || 'default';
 
   return (

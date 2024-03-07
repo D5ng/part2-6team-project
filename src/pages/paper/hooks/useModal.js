@@ -12,7 +12,6 @@ function useModal() {
 
   const handleCloseModal = () => setModalState((prevModalState) => ({ ...prevModalState, isOpen: false }));
 
-  // 모달의 상태
   return {
     modalState,
     getModalData,
