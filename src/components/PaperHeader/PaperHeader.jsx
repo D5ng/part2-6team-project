@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import * as S from '@Components/PaperHeader/PaperHeader.style';
 import { PaperContext } from '@Paper/context/PaperContext';
 import OutlinedEmojiButton from '@Components/ui/OutlinedEmojiButton';
@@ -10,8 +10,12 @@ import MessageCount from './MessageCount';
 
 function PaperHeader() {
   const { paperState } = useContext(PaperContext);
-  const { topReactions } = useContext(PaperHeaderContext);
+  const { topReactions, fetchRequest } = useContext(PaperHeaderContext);
   const recipientName = paperState?.data?.name;
+
+  useEffect(() => {
+    fetchRequest();
+  }, []);
 
   return (
     <S.PaperHeader>
@@ -24,7 +28,7 @@ function PaperHeader() {
           <BadgeEmogi emojis={topReactions} />
         </S.TopReactionsWrapper>
         <ViewReactionsButton />
-        
+
         <OutlinedEmojiButton />
         <OutlinedShareBtn />
       </S.PaperUtility>

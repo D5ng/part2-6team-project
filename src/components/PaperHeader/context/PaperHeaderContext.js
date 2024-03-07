@@ -32,17 +32,11 @@ export function PaperHeaderContextProvider({ children }) {
   };
 
   const updateEmoji = (emojiIcon) => {
-    const newEmojis = emojis.map((emoji) => (emoji.emoji === emojiIcon ? { ...emoji, count: emoji.count + 1 } : emoji));
-    const newReactions = topReactions.map((emoji) =>
-      emoji.emoji === emojiIcon ? { ...emoji, count: emoji.count + 1 } : emoji,
-    );
-    setEmojis(newEmojis);
-    setTopReactions(newReactions);
-  };
+    emojis.map((emoji) => (emoji.emoji === emojiIcon ? { ...emoji, count: emoji.count + 1 } : emoji));
+    topReactions.map((emoji) => (emoji.emoji === emojiIcon ? { ...emoji, count: emoji.count + 1 } : emoji));
 
-  useEffect(() => {
     fetchRequest();
-  }, []);
+  };
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const value = {

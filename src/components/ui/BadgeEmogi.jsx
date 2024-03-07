@@ -2,7 +2,7 @@ import React from 'react';
 import * as S from '@Components/ui/BadgeEmogi.style';
 
 function BadgeEmogi({ emojis }) {
-  return emojis.length > 0 ? (
+  return emojis?.length > 0 ? (
     <>
       {emojis.map((badge) => (
         <S.BadgeBox key={badge?.emoji}>
