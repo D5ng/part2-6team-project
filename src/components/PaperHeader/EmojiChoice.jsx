@@ -17,7 +17,6 @@ function EmojiChoice() {
 
       await createReactions(recipientsId, data);
       updateEmoji(emoji.emoji);
-      console.log(emojis);
     } catch (error) {
       console.error('이모지 전송 실패:', error);
     }

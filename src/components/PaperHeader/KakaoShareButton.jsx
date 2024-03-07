@@ -1,20 +1,25 @@
 import React, { useEffect } from 'react';
 import * as S from '@Components/ui/OutlinedComponent.style';
+import { KAKAO_SDK_URL, KAKAO_APP_KEY, LOGO_ICON_PATH } from '@Components/PaperHeader/constant';
 
 function KakaoShareButton() {
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://developers.kakao.com/sdk/js/kakao.js';
-    script.async = true;
-    document.head.appendChild(script);
+    const loadKakaoScript = () => {
+      const script = document.createElement('script');
+      script.src = KAKAO_SDK_URL;
+      script.async = true;
+      document.head.appendChild(script);
 
-    script.onload = () => {
-      window.Kakao.init('d11b4903076e86d84c122f16d9b2e6ff');
+      script.onload = () => {
+        window.Kakao.init(KAKAO_APP_KEY);
+      };
+
+      return () => {
+        document.head.removeChild(script);
+      };
     };
 
-    return () => {
-      document.head.removeChild(script);
-    };
+    loadKakaoScript();
   }, []);
 
   const handleKakaoShare = () => {
@@ -23,7 +28,7 @@ function KakaoShareButton() {
       content: {
         title: '카카오톡 공유하기 테스트',
         description: '카카오톡 공유하기 테스트입니다.',
-        imageUrl: '이미지 URL',
+        imageUrl: LOGO_ICON_PATH,
         link: {
           mobileWebUrl: window.location.href,
           webUrl: window.location.href,

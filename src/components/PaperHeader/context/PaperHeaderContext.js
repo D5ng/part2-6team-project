@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { createContext, useEffect, useState, useMemo } from 'react';
 import * as API from '@Paper/api';
 import { useParams } from 'react-router-dom';
 
@@ -19,7 +19,7 @@ export function PaperHeaderContextProvider({ children }) {
       setEmojis(reactiondata.results);
       setTopReactions(responseData.topReactions);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -32,27 +32,31 @@ export function PaperHeaderContextProvider({ children }) {
   };
 
   const updateEmoji = (emojiIcon) => {
-    const newEmojis = emojis.map((emoji) => (emoji.emoji === emojiIcon ? { ...emoji, count: emoji.count + 1 } : emoji));
-    const newReactions = topReactions.map((emoji) =>
-      emoji.emoji === emojiIcon ? { ...emoji, count: emoji.count + 1 } : emoji,
-    );
+    const updateArray = (array) =>
+      array.map((emoji) => (emoji.emoji === emojiIcon ? { ...emoji, count: emoji.count + 1 } : emoji));
+
+    const newEmojis = updateArray(emojis);
+    const newReactions = updateArray(topReactions);
+
     setEmojis(newEmojis);
     setTopReactions(newReactions);
   };
 
   useEffect(() => {
     fetchRequest();
-  }, []);
+  }, [recipientsId]);
 
-  // eslint-disable-next-line react/jsx-no-constructed-context-values
-  const value = {
-    emojis,
-    handleSetEmojis,
-    topReactions,
-    handleSetTopReactions,
-    fetchRequest,
+  const contextValue = useMemo(
+    () => ({
+      emojis,
+      handleSetEmojis,
+      topReactions,
+      handleSetTopReactions,
+      fetchRequest,
+      updateEmoji,
+    }),
+    [emojis, handleSetEmojis, topReactions, handleSetTopReactions, fetchRequest, updateEmoji],
+  );
 
-    updateEmoji,
-  };
-  return <PaperHeaderContext.Provider value={value}>{children}</PaperHeaderContext.Provider>;
+  return <PaperHeaderContext.Provider value={contextValue}>{children}</PaperHeaderContext.Provider>;
 }
