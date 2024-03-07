@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import * as S from 'pages/form/components/BackgroundOptions.style';
 import { useFormContext } from '@Form/context/FormContext';
-import { useImagePickerModalContext } from '@Components/unsplashModal/ImagePickerModalContext';
+import { useImagePickerModalContext } from '@Components/unsplashModal/UnsplashModalContext';
 
 const COLOR_LIST = [
   { title: 'beige', color: 'var(--orange200)' },

@@ -73,7 +73,7 @@ export const SearchButton = styled.button`
   color: white;
 `;
 
-export const ImageLists = styled.ul`
+export const ImageLists = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10px;
@@ -89,9 +89,26 @@ export const ImageLists = styled.ul`
     border-radius: 10px;
   }
 `;
-export const ImageList = styled.li`
+export const ImageList = styled.div`
   position: relative;
   cursor: pointer;
+
+  &::after {
+    ${({ $isSelected }) =>
+      $isSelected &&
+      `
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
+      background: url("/images/icons/check.svg") no-repeat center;
+    `}
+  }
 `;
 
-export const Image = styled.img``;
+export const Image = styled.img`
+  aspect-ratio: ${({ $aspectRatio }) => $aspectRatio || 1};
+`;

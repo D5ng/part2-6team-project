@@ -7,6 +7,8 @@ export const GET_POPULAR_IMAGE = (pageNumber) =>
 export const GET_SEARCH_IMAGE = (pageNumber, searchValue) =>
   `${IMAGES_URL}/search/photospage=${pageNumber}&per_page=10&query=${searchValue}&order_by=popular&${UNSPLASH_TOKEN}`;
 
+export const GET_RANDOM_IMAGE = (num = 3) => `${IMAGES_URL}/photos/random?count=${num}&${UNSPLASH_TOKEN}`;
+
 export const fetchUnsplashPopularImage = async (pageNumber) => {
   const result = await fetchRequest({ url: GET_POPULAR_IMAGE(pageNumber) });
   return result;
@@ -14,5 +16,10 @@ export const fetchUnsplashPopularImage = async (pageNumber) => {
 
 export const fetchUnsplashSearchImage = async (pageNumber, searchValue) => {
   const result = await fetchRequest({ url: GET_POPULAR_IMAGE(pageNumber, searchValue) });
+  return result;
+};
+
+export const fetchUnsplashRandomImage = async () => {
+  const result = await fetchRequest({ url: GET_RANDOM_IMAGE() });
   return result;
 };
