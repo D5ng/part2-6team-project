@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import * as S from '@Components/ui/OutlinedComponent.style';
-import EmojiChoice from '../PaperHeader/EmojiChoice';
+import ReactionModal from '../PaperHeader/ReactionModal';
 import { ADD_EMOJI_ICON_PATH } from './constant';
 
 function OutlinedEmojiButton() {
@@ -32,7 +32,7 @@ function OutlinedEmojiButton() {
       </S.EmojiAddBtn>
 
       <S.EmojiChoiceBox hidden={!isOpen} ref={ref}>
-        <EmojiChoice />
+        <ReactionModal />
       </S.EmojiChoiceBox>
     </>
   );

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { PaperHeaderContext } from '@Components/PaperHeader/context/PaperHeaderContext';
 import createReactions from '@Pages/paper/api';
 
-function EmojiChoice() {
+function ReactionModal() {
   const { updateEmoji } = useContext(PaperHeaderContext);
 
   const { recipientsId } = useParams();
@@ -22,11 +22,7 @@ function EmojiChoice() {
     }
   };
 
-  return (
-    <div>
-      <EmojiPicker style={{ zIndex: '9999' }} onEmojiClick={handleEmojiClick} />
-    </div>
-  );
+  return <EmojiPicker style={{ zIndex: '9999' }} onEmojiClick={handleEmojiClick} />;
 }
 
-export default EmojiChoice;
+export default ReactionModal;
