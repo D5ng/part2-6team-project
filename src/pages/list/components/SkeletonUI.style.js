@@ -37,7 +37,7 @@ const After = css`
 export const SkeletonItem = styled.div`
   width: 275px;
   height: 260px;
-  background: var(--white);
+  background: var(--gray100);
   padding: 30px 30px 20px;
   border: 1px solid var(--gray200);
 
