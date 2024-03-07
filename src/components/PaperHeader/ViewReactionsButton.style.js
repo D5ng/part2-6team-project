@@ -1,7 +1,10 @@
 import styled from 'styled-components';
-import { device } from 'styles/breakpoints';
 
-export const EmojiCountBtn = styled.div`
+export const ViewReactionsContainer = styled.div`
+  position: relative;
+`;
+
+export const ViewReactionsButton = styled.button`
   width: 36px;
   height: 36px;
   padding: 6px;
@@ -11,12 +14,9 @@ export const EmojiCountBtn = styled.div`
     width: 24px;
     height: 24px;
   }
-  @media ${device.mobile} {
-    margin: 0px auto;
-  }
 `;
 
-export const Wrap = styled.div`
+export const ReactionsWrapper = styled.div`
   z-index: 9999;
   visibility: ${({ hidden }) => (hidden ? 'hidden' : 'visible')};
   padding: 24px;
@@ -26,5 +26,9 @@ export const Wrap = styled.div`
   background: var(--white);
   position: absolute;
   top: calc(100% + 12px);
-  right: 0px;
+  right: 20px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
 `;
