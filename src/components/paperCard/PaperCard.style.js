@@ -22,6 +22,7 @@ export const PaperCard = styled.div`
   overflow: hidden;
   color: ${(props) => (props.$backgroundImageURL ? 'white' : 'black')};
   cursor: pointer;
+  z-index: -1;
 
   &::before {
     content: '';
@@ -30,12 +31,23 @@ export const PaperCard = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: ${(props) => (props.$backgroundImageURL ? `url(${props.$backgroundImageURL})` : 'none')};
+    background-image: ${(props) => props.$backgroundImageURL && `url(${props.$backgroundImageURL})`};
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     filter: blur(2px) brightness(0.9);
     z-index: -1;
+  }
+
+  &::after {
+    content: '';
+    background-image: ${(props) => !props.$backgroundImageURL && `url(${props.$pattern})`};
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    width: 142px;
+    height: 142px;
   }
 `;
 
