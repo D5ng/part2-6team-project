@@ -19,7 +19,7 @@ export function PaperHeaderContextProvider({ children }) {
       setEmojis(reactiondata.results);
       setTopReactions(responseData.topReactions);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -45,7 +45,6 @@ export function PaperHeaderContextProvider({ children }) {
     topReactions,
     handleSetTopReactions,
     fetchRequest,
-
     updateEmoji,
   };
   return <PaperHeaderContext.Provider value={value}>{children}</PaperHeaderContext.Provider>;

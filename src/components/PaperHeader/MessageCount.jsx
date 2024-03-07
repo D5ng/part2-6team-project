@@ -6,18 +6,16 @@ import ImageGallery from '@Components/paperCard/ImageGallery';
 
 function MessageCount() {
   const { paperState } = useContext(PaperContext);
-  const recentMessagesData = paperState?.data?.recentMessages;
-  const messageCountData = paperState?.data?.messageCount;
+
+  const { recentMessages, messageCount } = paperState?.data || {};
+  const profileImages = recentMessages?.map((item) => item.profileImageURL) || [];
 
   return (
     <S.MessageCount>
-      <ImageGallery
-        imageArray={recentMessagesData?.map((item) => item.profileImageURL)}
-        imageCount={messageCountData}
-      />
+      <ImageGallery imageArray={profileImages} imageCount={messageCount} />
 
       <S.MessageCountText>
-        {messageCountData}
+        {messageCount}
         <span>명이 작성했어요!</span>
       </S.MessageCountText>
     </S.MessageCount>

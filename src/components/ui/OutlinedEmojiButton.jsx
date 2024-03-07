@@ -4,16 +4,21 @@ import ReactionModal from '../PaperHeader/ReactionModal';
 import { ADD_EMOJI_ICON_PATH } from './constant';
 
 function OutlinedEmojiButton() {
-  const [isOpen, setIsOpen] = useState(false);
-  const ref = useRef(null);
+  const [isHidden, setIsHidden] = useState(true);
+  const emojiChoiceRef = useRef(null);
+  const buttonRef = useRef(null);
 
   const handleSetIsOpen = () => {
-    setIsOpen(!isOpen);
+    setIsHidden(!isHidden);
   };
 
   const handleClickOutside = (event) => {
-    if (ref.current && !ref.current.contains(event.target) && !event.target.closest('.ReactionAddBtn')) {
-      setIsOpen(false);
+    if (
+      emojiChoiceRef.current &&
+      !emojiChoiceRef.current.contains(event.target) &&
+      !buttonRef.current.contains(event.target)
+    ) {
+      setIsHidden(true);
     }
   };
 
@@ -22,16 +27,16 @@ function OutlinedEmojiButton() {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [ref]);
+  }, [emojiChoiceRef]);
 
   return (
     <>
-      <S.EmojiAddBtn onClick={handleSetIsOpen} className="ReactionAddBtn">
+      <S.EmojiAddBtn onClick={handleSetIsOpen} ref={buttonRef}>
         <S.ButtonIconImg src={ADD_EMOJI_ICON_PATH} alt="이모지 추가 버튼 아이콘" />
         <S.AddText>추가</S.AddText>
       </S.EmojiAddBtn>
 
-      <S.EmojiChoiceBox hidden={!isOpen} ref={ref}>
+      <S.EmojiChoiceBox hidden={isHidden} ref={emojiChoiceRef}>
         <ReactionModal />
       </S.EmojiChoiceBox>
     </>

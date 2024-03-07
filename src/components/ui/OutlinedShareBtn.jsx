@@ -6,17 +6,18 @@ import Toast from './Toast';
 import { SHARE_ICON_PATH } from './constant';
 
 function OutlinedShareBtn() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isHidden, setIsHidden] = useState(true);
   const [isCopied, setIsCopied] = useState(false);
-  const ref = useRef(null);
+  const wrapRef = useRef(null);
+  const buttonRef = useRef(null);
 
   const handleSetIsOpen = () => {
-    setIsOpen(!isOpen);
+    setIsHidden(!isHidden);
   };
 
   const handleClickOutside = (event) => {
-    if (ref.current && !ref.current.contains(event.target) && !event.target.closest('.shareBtn')) {
-      setIsOpen(false);
+    if (wrapRef.current && !wrapRef.current.contains(event.target) && !buttonRef.current.contains(event.target)) {
+      setIsHidden(true);
     }
   };
 
@@ -25,7 +26,7 @@ function OutlinedShareBtn() {
     copy(currentUrl);
 
     setIsCopied(true);
-    setIsOpen(false);
+    setIsHidden(true);
     setTimeout(() => {
       setIsCopied(false);
     }, 5000);
@@ -40,11 +41,11 @@ function OutlinedShareBtn() {
 
   return (
     <>
-      <S.ShareBtn onClick={handleSetIsOpen} className="shareBtn">
+      <S.ShareBtn onClick={handleSetIsOpen} ref={buttonRef}>
         <S.ButtonIconImg src={SHARE_ICON_PATH} alt="공유버튼 아이콘" />
       </S.ShareBtn>
 
-      <S.Wrap hidden={!isOpen} ref={ref}>
+      <S.Wrap hidden={isHidden} ref={wrapRef}>
         <KakaoShareButton />
         <S.ShareOption onClick={handleCopy}>URL 공유</S.ShareOption>
       </S.Wrap>

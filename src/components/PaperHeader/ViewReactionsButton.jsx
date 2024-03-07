@@ -2,19 +2,21 @@ import React, { useState, useEffect, useRef, useContext } from 'react';
 import * as S from '@Components/PaperHeader/ViewReactionsButton.style';
 import { PaperHeaderContext } from '@Components/PaperHeader/context/PaperHeaderContext';
 import BadgeEmogi from '@Components/ui/BadgeEmogi';
+import { ARROW_DOWN_ICON_PATH } from './constant';
 
 function ViewReactionsButton() {
   const { emojis } = useContext(PaperHeaderContext);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isHidden, setIsHidden] = useState(true);
   const wrapRef = useRef(null);
+  const buttonRef = useRef(null);
 
   const handleSetIsOpen = () => {
-    setIsOpen(!isOpen);
+    setIsHidden(!isHidden);
   };
 
   const handleClickOutside = (event) => {
-    if (wrapRef.current && !wrapRef.current.contains(event.target) && !event.target.closest('.emojiCountButton')) {
-      setIsOpen(false);
+    if (wrapRef.current && !wrapRef.current.contains(event.target) && !buttonRef.current.contains(event.target)) {
+      setIsHidden(true);
     }
   };
 
@@ -27,11 +29,11 @@ function ViewReactionsButton() {
 
   return (
     <S.ViewReactionsContainer>
-      <S.ViewReactionsButton type="button" onClick={handleSetIsOpen} className="emojiCountButton">
-        <img src="/images/icons/arrow_down.svg" alt="이모지추천카운트" />
+      <S.ViewReactionsButton type="button" onClick={handleSetIsOpen} ref={buttonRef}>
+        <img src={ARROW_DOWN_ICON_PATH} alt="이모지추천카운트" />
       </S.ViewReactionsButton>
 
-      <S.ReactionsWrapper hidden={!isOpen} ref={wrapRef}>
+      <S.ReactionsWrapper hidden={isHidden} ref={wrapRef}>
         <BadgeEmogi emojis={emojis} $isGrid />
       </S.ReactionsWrapper>
     </S.ViewReactionsContainer>
