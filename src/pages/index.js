@@ -3,6 +3,6 @@ import Paper from '@Paper/Paper';
 import Home from './home/Home';
 import Root from './Root';
 import FormCreatePage from './form/FormCreatePage';
-import MessageCreate from './rolling/messageCreateForm/MessageCreateForm';
+import MessageCreate from './messageCreateForm/MessageCreateForm';
 
 export { Root, Home, RollingList, FormCreatePage, Paper, MessageCreate };

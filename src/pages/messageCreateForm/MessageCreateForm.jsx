@@ -1,5 +1,5 @@
 import React from 'react';
-import * as S from 'pages/rolling/messageCreateForm/MessageCreateForm.style';
+import * as S from 'pages/messageCreateForm/MessageCreateForm.style';
 
 import { ImagePickerModalProvider } from '@Components/imagePickerModal/ImagePickerModalContext';
 import { MessageFormContextProvider } from './context/MessageFormContext';
