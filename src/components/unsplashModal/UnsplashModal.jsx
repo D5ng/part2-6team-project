@@ -19,15 +19,15 @@ function UnsplashModal({ closeModal }) {
     handleLoadSearchedImages,
   } = useUnsplashModalContext();
 
-  const [page, setPage] = useState(1);
-  const [searchPage, setSearchPage] = useState(1);
   const [isPopularLoading, fetchingError, onFetchImagesAsync] = useAsync(fetchUnsplashPopularImage);
   const [isSearchLoading, searchingError, onSearchImagesAsync] = useAsync(fetchUnsplashSearchImage);
+  const [page, setPage] = useState(1);
+  const [searchPage, setSearchPage] = useState(1);
 
   const searchRef = useRef();
   const ImageListRef = useRef();
-  const searchValue = searchRef.current?.value.trim();
 
+  const isSearch = searchRef.current?.value.trim().length !== 0;
   const isLoading = isSearchLoading || isPopularLoading;
 
   const handleIncreasePage = () => setPage(page + 1);
@@ -66,14 +66,11 @@ function UnsplashModal({ closeModal }) {
         <UnsplashCategory onCategory={handleCategory} />
         <UnsplashMasonry
           ref={ImageListRef}
-          handleSearchIncreasePage={handleSearchIncreasePage}
-          handleSearch={handleSearch}
-          handleIncreasePage={handleIncreasePage}
+          onSearchIncreasePage={handleSearchIncreasePage}
+          onIncreasePage={handleIncreasePage}
           isLoading={isLoading}
-          data={searchRef.current?.value.trim().length !== 0 ? searchedImages : unsplashBackgroundImages}
-          isSearchMode={searchRef.current?.value.trim().length !== 0}
-          onBackground={handleBackgroundClick}
-          selectedItem={selectedItem}
+          imageList={isSearch ? searchedImages : unsplashBackgroundImages}
+          isSearch={isSearch}
         />
       </S.Body>
     </S.UnsplashModal>

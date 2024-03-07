@@ -6,17 +6,16 @@ import * as S from './UnsplashMasonry.style';
 import { useUnsplashModalContext } from './UnsplashModalContext';
 
 function UnsplashMasonry(props, ref) {
-  const { handleSearchIncreasePage, handleIncreasePage, isLoading, isSearchMode, data } = props;
+  const { onSearchIncreasePage, onIncreasePage, isLoading, isSearch, data } = props;
   const { selectedItem, handleBackgroundClick } = useUnsplashModalContext();
 
   const onIntersect = async (entry, observer) => {
     observer.unobserve(entry.target);
     if (isLoading) return;
-
-    if (isSearchMode) {
-      handleSearchIncreasePage();
+    if (isSearch) {
+      onSearchIncreasePage();
     } else {
-      handleIncreasePage();
+      onIncreasePage();
     }
   };
 

@@ -1,10 +1,6 @@
 import { BASE_URL, TEAM } from 'config';
 import { sendRequest, POST_OPTION } from 'utils/request-util';
 
-// const BASE_URL = process.env.REACT_APP_API_KEY;
-// const IMAGES_URL = process.env.REACT_APP_UNSPLASH_IMAGES_API;
-// const UNSPLASH_TOKEN = process.env.REACT_APP_UNSPLASH_TOKEN;
-
 export const CREATE_PAPER_API = `${BASE_URL}/${TEAM}/recipients/`;
 
 export const createPaper = async (paperData) => {
