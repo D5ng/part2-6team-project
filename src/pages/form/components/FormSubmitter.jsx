@@ -10,8 +10,8 @@ import PrimaryCreateBtn from '@Components/ui/PrimaryCreateBtn';
 import Loading from '@Components/ui/Loading';
 import ToggleButton from '@Form/components/ToggleButton';
 import BackgroundOptions from '@Form/components/BackgroundOptions';
-import ImagePickerModal from '@Components/imagePickerModal/ImagePickerModal';
-import { useImagePickerModalContext } from '@Components/imagePickerModal/ImagePickerModalContext';
+import ImagePickerModal from '@Components/unsplashModal/ImagePickerModal';
+import { useImagePickerModalContext } from '@Components/unsplashModal/ImagePickerModalContext';
 
 function FormSubmitter() {
   const navigate = useNavigate();

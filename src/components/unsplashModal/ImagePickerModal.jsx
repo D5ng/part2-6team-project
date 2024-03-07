@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Input from '@Components/form/Input';
 import useAsync from 'hooks/useAsync';
 import * as S from '@Form/components/ImagePickerModal.style';
-import { getUnsplashBackgroundImages, getUnsplashSearchedImages } from '@Components/imagePickerModal/api';
+import { getUnsplashBackgroundImages, getUnsplashSearchedImages } from '@Components/unsplashModal/api';
 
 import { CheckIcon } from '@Form/components/BackgroundOptions.style';
 import { ImagePickerModalProvider, useImagePickerModalContext } from './ImagePickerModalContext';
@@ -54,7 +54,6 @@ function ImagePickerModal({ closeModal }) {
     handleLoadUnsplashImages(onFetchImagesAsync, page);
     handleLoadSearchedImages(onSearchImagesAsync, page, keyword);
   }, [page]);
-
 
   return (
     <S.ImagePickerModal>
