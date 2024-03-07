@@ -4,12 +4,17 @@ import OutlinedEmojiBtn from '@Components/ui/OutlinedEmojiBtn';
 import OutlinedShareBtn from '@Components/ui/OutlinedShareBtn';
 import { PaperContext } from '@Paper/context/PaperContext';
 import EmojiCountBtn from '@Components/PaperHeader/EmojiCountBtn';
+import Skeleton from '@Components/PaperHeader/Skeleton';
 import MessageCount from './MessageCount';
 import TopEmojis from './TopEmojis';
 
 function PaperHeader() {
   const { paperState } = useContext(PaperContext);
+  const { isLoading } = paperState;
 
+  if (isLoading) {
+    return <Skeleton />;
+  }
   return (
     <S.PaperHeader>
       <S.RecipientName>{`to ${paperState?.data?.name}`}</S.RecipientName>

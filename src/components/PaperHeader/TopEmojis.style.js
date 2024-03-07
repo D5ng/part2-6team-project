@@ -9,6 +9,7 @@ export const TopEmojis = styled.div`
   gap: 8px;
   @media ${device.mobile} {
     justify-content: space-between;
+    margin-left: 0px;
     gap: 16px;
   }
 `;
