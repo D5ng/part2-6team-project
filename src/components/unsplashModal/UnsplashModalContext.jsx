@@ -28,6 +28,7 @@ export function UnsplashModalContextProvider({ children }) {
   // unsplash 검색된 배경 이미지 로드 함수
   const handleLoadSearchedImages = async (asyncFunction, pageNum, key) => {
     const data = await asyncFunction(pageNum, key);
+    console.log(data);
     if (!data) return;
     if (pageNum === 1) {
       setSearchedImages(data);

@@ -43,7 +43,7 @@ function UnsplashModal({ closeModal }) {
     setSearchPage(1);
     searchRef.current.value = value;
     ImageListRef.current.scrollTop = 0;
-    handleLoadSearchedImages(onSearchImagesAsync, searchPage, searchRef.current.value);
+    handleLoadSearchedImages(onSearchImagesAsync, 1, searchRef.current.value);
   };
 
   useEffect(() => {
