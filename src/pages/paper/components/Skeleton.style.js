@@ -11,7 +11,7 @@ export const SkeletonAnimation = keyframes`
   }
 `;
 
-const PseudoElement = css`
+export const PseudoElement = css`
   content: '';
   position: absolute;
   top: 0;
@@ -22,7 +22,7 @@ const PseudoElement = css`
   animation: ${SkeletonAnimation} 2s infinite linear;
 `;
 
-const animationCSS = css`
+export const animationCSS = css`
   position: relative;
   overflow: hidden;
   background-color: var(--gray200);

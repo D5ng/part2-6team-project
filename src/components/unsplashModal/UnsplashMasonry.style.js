@@ -39,6 +39,5 @@ export const Image = styled.img`
 `;
 
 export const Observer = styled.div`
-  height: 500px;
-  background-color: red;
+  height: 1px;
 `;

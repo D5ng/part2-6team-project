@@ -15,24 +15,30 @@ export function UnsplashModalContextProvider({ children }) {
 
   // unsplash 배경 이미지 로드 함수
   const handleLoadUnsplashImages = async (asyncFunction, pageNum) => {
-    const data = await asyncFunction(pageNum);
-    if (!data) return;
+    try {
+      const data = await asyncFunction(pageNum);
+      if (!data) return;
 
-    if (pageNum === 1) {
-      setUnsplashBackgroundImages(data);
-    } else {
-      setUnsplashBackgroundImages((prevImages) => [...prevImages, ...data]);
+      if (pageNum === 1) {
+        setUnsplashBackgroundImages(data);
+      } else {
+        setUnsplashBackgroundImages((prevImages) => [...prevImages, ...data]);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
   // unsplash 검색된 배경 이미지 로드 함수
-  const handleLoadSearchedImages = async (asyncFunction, pageNum, key) => {
-    const data = await asyncFunction(pageNum, key);
+  // data 뒤에 넣은게 문제. 이것을 초기화 해주어양함.
+  const handleLoadSearchedImages = async ({ asyncFunction, page, searchValue }) => {
+    const data = await asyncFunction(page, searchValue);
     if (!data) return;
-    if (pageNum === 1) {
+
+    if (page === 1) {
       setSearchedImages(data);
     } else {
-      setSearchedImages((prevImages) => [...prevImages, ...data]);
+      setSearchedImages((prevData) => (prevData ? [...prevData, ...data] : data));
     }
   };
 

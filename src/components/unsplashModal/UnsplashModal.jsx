@@ -9,7 +9,7 @@ import UnsplashMasonry from '@Components/unsplashModal/UnsplashMasonry';
 import { fetchUnsplashPopularImage, fetchUnsplashSearchImage } from 'service/unplash';
 import { useUnsplashModalContext } from './UnsplashModalContext';
 
-function UnsplashModal({ closeModal }) {
+function UnsplashModal({ onCloseModal }) {
   const {
     selectedItem,
     handleBackgroundClick,
@@ -36,27 +36,41 @@ function UnsplashModal({ closeModal }) {
   const handleSearch = (e) => {
     e.preventDefault();
     ImageListRef.current.scrollTop = 0;
-    handleLoadSearchedImages(onSearchImagesAsync, searchPage, searchRef?.current?.value);
+    handleLoadSearchedImages({
+      asyncFunction: onSearchImagesAsync,
+      page: 1,
+      searchValue: searchRef?.current?.value,
+    });
   };
 
   const handleCategory = (value) => {
     setSearchPage(1);
     searchRef.current.value = value;
     ImageListRef.current.scrollTop = 0;
-    handleLoadSearchedImages(onSearchImagesAsync, 1, searchRef.current.value);
+
+    handleLoadSearchedImages({
+      asyncFunction: onSearchImagesAsync,
+      page: 1,
+      searchValue: searchRef.current.value,
+    });
   };
 
   useEffect(() => {
-    handleLoadUnsplashImages(onFetchImagesAsync, page);
+    if (!isPopularLoading) handleLoadUnsplashImages(onFetchImagesAsync, page);
   }, [page]);
 
   useEffect(() => {
-    handleLoadSearchedImages(onSearchImagesAsync, searchPage, searchRef?.current?.value);
+    if (!isSearchLoading)
+      handleLoadSearchedImages({
+        asyncFunction: onSearchImagesAsync,
+        page: searchPage,
+        searchValue: searchRef.current.value,
+      });
   }, [searchPage]);
 
   return (
     <S.UnsplashModal onSubmit={handleSearch}>
-      <UnsplashHeader onCloseModal={closeModal} />
+      <UnsplashHeader onCloseModal={onCloseModal} />
       <S.Body>
         <S.SearchBar>
           <S.Input ref={searchRef} placeholder="어떤 배경화면을 원하시나요?" />

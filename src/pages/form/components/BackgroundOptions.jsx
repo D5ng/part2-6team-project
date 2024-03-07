@@ -10,7 +10,7 @@ const COLOR_LIST = [
   { title: 'green', color: 'var(--green200)' },
 ];
 
-function BackgroundOptions({ openModal }) {
+function BackgroundOptions({ onOpenModal }) {
   const { selectedBtn, backgroundImages } = useFormContext();
   const { selectedItem, handleBackgroundClick } = useUnsplashModalContext();
 
@@ -34,7 +34,7 @@ function BackgroundOptions({ openModal }) {
         ))
       ) : (
         <>
-          {backgroundImages.map((image) => (
+          {backgroundImages?.map((image) => (
             <li key={image.id}>
               <S.Button $isSelected={selectedItem?.urls?.regular === image.urls.regular} key={image.id} type="button">
                 <S.ImageItem src={image.urls.thumb} onClick={handleBackgroundClick.bind(this, image.urls.regular)} />
@@ -42,7 +42,7 @@ function BackgroundOptions({ openModal }) {
             </li>
           ))}
           <li>
-            <S.Button onClick={openModal} $isModal type="button">
+            <S.Button onClick={onOpenModal} $isModal type="button">
               <S.BoxLayout>
                 <S.SearchIcon src="/images/icons/image-search.svg" alt="배경사진 탐색 아이콘" />
               </S.BoxLayout>

@@ -4,7 +4,7 @@ import * as S from './UnsplashHeader.style';
 function UnsplashHeader({ onCloseModal }) {
   return (
     <S.Header>
-      <S.Logo to="/">
+      <S.Logo to="https://unsplash.com/ko" target="_blank" rel="noopener noreferrer">
         <S.UnsplashIcon src="/images/form/unsplash_icon.png" alt="" />
         Unsplash
       </S.Logo>

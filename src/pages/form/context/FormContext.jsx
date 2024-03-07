@@ -8,13 +8,9 @@ export const useFormContext = () => useContext(FormContext);
 
 export function FormProvider({ children }) {
   const [papersInfo, setPapersInfo] = useState([]);
-
   const [selectedBtn, setSelectedBtn] = useState('color');
   const [selectedBackground, setSelectedBackground] = useState('');
-
   const [backgroundImages, setBackgroundImages] = useState([]);
-
-  const [unsplashBackgroundImages, setUnsplashBackgroundImages] = useState([]);
   const [searchedImages, setSearchedImages] = useState([]);
 
   // 전체 Paper 로드 함수(중복 확인용)
@@ -48,7 +44,6 @@ export function FormProvider({ children }) {
     selectedBackground,
 
     backgroundImages,
-    unsplashBackgroundImages,
     searchedImages,
   };
 

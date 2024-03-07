@@ -8,23 +8,21 @@ import PrimaryCreateBtn from '@Components/ui/PrimaryCreateBtn';
 import Loading from '@Components/ui/Loading';
 import ToggleButton from '@Form/components/ToggleButton';
 import BackgroundOptions from '@Form/components/BackgroundOptions';
-import ImagePickerModal from '@Components/unsplashModal/UnsplashModal';
 import { useUnsplashModalContext } from '@Components/unsplashModal/UnsplashModalContext';
 import { createPaper } from '@Form/services';
 import * as Portal from '@Components/portal';
 import Backdrop from '@Components/modal/Backdrop';
+import useModal from 'hooks/useModal';
+import UnsplashModal from '@Components/unsplashModal/UnsplashModal';
 
 function FormSubmitter() {
   const navigate = useNavigate();
   const { handleLoadPapersInfo, papersInfo, handleLoadImages, selectedBtn } = useFormContext();
   const { selectedImages } = useUnsplashModalContext();
   const [name, setName] = useState('');
-  const [active, setActive] = useState(false);
   const [isSubmitting, submittingError, onSubmitAsync] = useAsync(createPaper);
   const [errorMessage, setErrorMessage] = useState('');
-
-  const openModal = () => setActive(true);
-  const closeModal = () => setActive(false);
+  const { modalState, handleOpenModal, handleCloseModal } = useModal();
 
   const handleCreatePaper = async (e) => {
     e.preventDefault();
@@ -59,12 +57,15 @@ function FormSubmitter() {
   }, [name, papersInfo]);
 
   const backdrop = Portal.Backdrop(<Backdrop />);
-  const modal = Portal.Modal(<ImagePickerModal closeModal={closeModal} />);
+  const modal = Portal.Modal(<UnsplashModal onCloseModal={handleCloseModal} />);
 
   return (
     <S.Wrapper>
+      {/* {modalState.isOpen && backdrop}
+      {modalState.isOpen && modal} */}
       {backdrop}
       {modal}
+
       <S.Title>To. {name}</S.Title>
       <Input error={errorMessage} value={name} onChange={(e) => setName(e.target.value)}>
         받는 사람 이름을 입력해 주세요
@@ -72,7 +73,7 @@ function FormSubmitter() {
       <S.BackgroundTitle>배경화면을 선택해 주세요.</S.BackgroundTitle>
       <S.Description>컬러를 선택하거나, 이미지를 선택할 수 있습니다.</S.Description>
       <ToggleButton />
-      <BackgroundOptions openModal={openModal} />
+      <BackgroundOptions onOpenModal={handleOpenModal} />
 
       <PrimaryCreateBtn onClick={handleCreatePaper} disabled={name === '' || errorMessage}>
         {isSubmitting ? <Loading /> : '생성하기'}

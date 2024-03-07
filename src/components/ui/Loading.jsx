@@ -1,9 +1,9 @@
 import React from 'react';
 import * as S from './Loading.style';
 
-function Loading({ isCenter = true, size = 35 }) {
+function Loading({ isCenter = true, size = 35, top }) {
   return (
-    <S.Loader $isCenter={isCenter} $size={size}>
+    <S.Loader $isCenter={isCenter} $top={top} $size={size}>
       <S.Circular viewBox="25 25 50 50">
         <circle
           className="path"
