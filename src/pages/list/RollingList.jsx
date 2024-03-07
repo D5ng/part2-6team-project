@@ -24,7 +24,7 @@ function RollingList() {
     } finally {
       setTimeout(() => {
         setIsLoading(false);
-      }, 300);
+      }, 500);
     }
   };
 
@@ -40,7 +40,7 @@ function RollingList() {
     } finally {
       setTimeout(() => {
         setIsLoading2(false);
-      }, 300);
+      }, 500);
     }
   };
 

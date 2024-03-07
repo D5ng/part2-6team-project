@@ -1,7 +1,9 @@
 import styled, { css, keyframes } from 'styled-components';
 
 export const SkeletonContainer = styled.div`
-  width: 1160px;
+  max-width: 1160px;
+  width: 100%;
+  min-height: 260px;
   margin: 16px auto 0;
   display: flex;
   justify-content: space-between;

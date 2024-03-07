@@ -1,16 +1,13 @@
 import React from 'react';
 import * as S from './SkeletonUI.style';
 
-const deveice = window.innerWidth;
-const N = deveice > 1160 ? 4 : 2;
-
 function SkeletonList() {
   return (
     <S.SkeletonContainer>
       {Array(4)
         .fill()
-        .map(() => (
-          <S.SkeletonItem>
+        .map((_, i) => (
+          <S.SkeletonItem key={i}>
             <S.SkeletonBox>
               <S.SkeletonRectangle width={70} height={30} />
               <S.SkeletonRectangle width={45} height={20} />
