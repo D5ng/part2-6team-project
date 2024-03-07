@@ -12,13 +12,13 @@ const formats = ['bold', 'italic', 'underline', 'bullet', 'indent', 'align', 'co
 
 function TextEditor({ messageLength }) {
   const { message, setMessage } = useMessageFormContext();
-  const handleQuillChange = (content, delta, source, editor) => {
+  const handleOnChange = (content, delta, source, editor) => {
     setMessage(editor.getContents());
     messageLength(editor.getLength());
   };
 
   return (
-    <ReactQuill theme="snow" modules={modules} formats={formats} value={message || ''} onChange={handleQuillChange} />
+    <ReactQuill theme="snow" modules={modules} formats={formats} value={message || ''} onChange={handleOnChange} />
   );
 }
 

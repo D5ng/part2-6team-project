@@ -2,7 +2,7 @@ import React from 'react';
 import * as S from './PreviewCard.style';
 import { useMessageFormContext } from '../context/MessageFormContext';
 
-const badgeStyle = {
+const BADGE_STYLE = {
   지인: {
     bgColor: 'var(--orange100)',
     textColor: 'var(--orange500)',
@@ -20,7 +20,7 @@ const badgeStyle = {
     textColor: 'var(--blue500)',
   },
 };
-const fontStyle = {
+const FONT_STYLE = {
   'Noto Sans': 'Noto Sans KR',
   Pretendard: 'Pretendard',
   나눔명조: 'NanumMyeongjo',
@@ -39,10 +39,10 @@ function PreviewCard() {
           <S.Sender>
             From. <strong>{fromName.target && fromName.target.value}</strong>
           </S.Sender>
-          <S.Badge style={badgeStyle[currentSelect.relation]}>{currentSelect.relation}</S.Badge>
+          <S.Badge style={BADGE_STYLE[currentSelect.relation]}>{currentSelect.relation}</S.Badge>
         </S.Wrap>
       </S.SenderBox>
-      <S.MessageBox font={fontStyle[currentSelect.font]}>{innerMessage}</S.MessageBox>
+      <S.MessageBox font={FONT_STYLE[currentSelect.font]}>{innerMessage}</S.MessageBox>
       <S.CreateDate>{TODAY}</S.CreateDate>
     </S.Card>
   );

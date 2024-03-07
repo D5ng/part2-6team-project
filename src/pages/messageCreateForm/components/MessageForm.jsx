@@ -34,7 +34,7 @@ function MessageForm() {
   const submitForm = async (e) => {
     e.preventDefault();
     const postMessage = message.ops && message.ops.map((messages) => messages.insert).join('\n');
-    const rqusetObject = {
+    const messageInformation = {
       sender: fromName.target.value,
       relationship: currentSelect.relation,
       content: postMessage,
@@ -43,7 +43,7 @@ function MessageForm() {
     };
     try {
       setIsLoading(true);
-      const requestState = await createMessage(params.id, rqusetObject);
+      const requestState = await createMessage(params.id, messageInformation);
       errorHandling(requestState.ok, requestState.status, () => {
         navigate(`/post/${params.id}`);
       });

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import * as S from 'pages/rolling/messageCreateForm/components/ProfileImgList.style';
+import * as S from 'pages/messageCreateForm/components/ProfileImgList.style';
 import { useMessageFormContext } from '../context/MessageFormContext';
 import { requsetProfileImgData } from '../api';
 

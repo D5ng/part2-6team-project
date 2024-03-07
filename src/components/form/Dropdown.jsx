@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import * as S from '@Components/form/Dropdown.style';
-import { useMessageFormContext } from 'pages/rolling/messageCreateForm/context/MessageFormContext';
+import { useMessageFormContext } from 'pages/messageCreateForm/context/MessageFormContext';
 
 const OPTION_LISTS = [
   {
