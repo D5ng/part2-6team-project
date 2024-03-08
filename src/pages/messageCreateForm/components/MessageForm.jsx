@@ -48,7 +48,7 @@ function MessageForm() {
     profileImageURL: '',
   });
 
-  const [messageLength, setMessageLength] = useState(1);
+  const [editorLength, setEditorLength] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [active, setActive] = useState(false);
   const openModal = () => setActive(true);
@@ -98,14 +98,14 @@ function MessageForm() {
       </S.Wrapper>
       <S.Wrapper>
         <S.InputTitle>내용을 입력해 주세요</S.InputTitle>
-        <TextEditor dispatch={dispatch} messageLength={setMessageLength} />
+        <TextEditor dispatch={dispatch} messageLength={setEditorLength} />
       </S.Wrapper>
       <S.Wrapper>
         <S.InputTitle>폰트 선택</S.InputTitle>
         <Dropdown dispatch={dispatch} type="font" />
       </S.Wrapper>
       <PreviewCard information={inputInformation} />
-      <PrimaryCreateBtn disabled={!(messageLength !== 1 && inputInformation.sender) || isLoading}>
+      <PrimaryCreateBtn disabled={!(editorLength !== 1 && inputInformation.sender) || isLoading}>
         {isLoading ? <Loading /> : '생성하기'}
       </PrimaryCreateBtn>
       {active && modal}

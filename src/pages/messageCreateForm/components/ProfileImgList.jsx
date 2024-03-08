@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as S from 'pages/messageCreateForm/components/ProfileImgList.style';
 
-import { requsetProfileImgData } from '../api';
+import { getRequestAPI, errorHandling } from '../api';
 
 function ProfileImgList({ openModal, dispatch }) {
   const [profileImgSrc, setProfileImgSrc] = useState([]);
@@ -12,8 +12,15 @@ function ProfileImgList({ openModal, dispatch }) {
 
   useEffect(() => {
     const getProfileImgData = async () => {
-      const response = await requsetProfileImgData();
-      setProfileImgSrc([...response.imageUrls]);
+      try {
+        const response = await getRequestAPI('profile-images/');
+        errorHandling(response.ok, response.status, async () => {
+          const successData = await response.json();
+          setProfileImgSrc([...successData.imageUrls]);
+        });
+      } catch (error) {
+        alert(error);
+      }
     };
     getProfileImgData();
   }, []);
