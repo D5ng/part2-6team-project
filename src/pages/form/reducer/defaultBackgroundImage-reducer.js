@@ -2,10 +2,7 @@ const defaultImageReducerMapping = {
   PENDING: (state) => ({ ...state, isLoading: true }),
   SUCCESS: (state, action) => ({
     ...state,
-    data: {
-      ...action.data,
-      results: state?.data?.results ? [...state.data.results, ...action.data.results] : action.data.results,
-    },
+    data: state.data ? [...state.data, ...action.data] : action.data,
     isLoading: false,
   }),
   ERROR: (state, action) => ({ ...state, isLoading: false, hasError: action.message }),

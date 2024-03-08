@@ -18,7 +18,7 @@ import useInput from 'hooks/useInput';
 
 function FormSubmitter() {
   const navigate = useNavigate();
-  const { handleLoadPapersInfo, papersInfo, handleLoadImages, selectedBtn, unsplashImageState } = useFormContext();
+  const { handleLoadPapersInfo, papersInfo, selectedBtn, unsplashImageState } = useFormContext();
   const { selectedItem } = useUnsplashModalContext();
   const [isSubmitting, submittingError, onSubmitAsync] = useAsync(createPaper);
   const { modalState, handleOpenModal, handleCloseModal } = useModal();
@@ -49,10 +49,10 @@ function FormSubmitter() {
   //   }
   // };
 
-  useEffect(() => {
-    handleLoadImages();
-    // handleLoadPapersInfo();
-  }, []);
+  // useEffect(() => {
+  //   handleLoadImages();
+  //   handleLoadPapersInfo();
+  // }, []);
 
   // useEffect(() => {
   //   handleDuplicateName();

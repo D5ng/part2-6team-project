@@ -20,7 +20,7 @@ function UnsplashModal({ onCloseModal }) {
     handleLoadSearchedImages,
   } = useUnsplashModalContext();
 
-  const { backgroundImages } = useFormContext();
+  const { unsplashImageState } = useFormContext();
 
   const [isPopularLoading, fetchingError, onFetchImagesAsync] = useAsync(fetchUnsplashPopularImage);
   const [isSearchLoading, searchingError, onSearchImagesAsync] = useAsync(fetchUnsplashSearchImage);
@@ -75,7 +75,7 @@ function UnsplashModal({ onCloseModal }) {
       });
   }, [searchPage]);
 
-  const existingSelectedImage = backgroundImages.filter((image) => image.urls.regular === selectedItem).length;
+  const existingSelectedImage = unsplashImageState.data?.filter((image) => image.urls.regular === selectedItem).length;
 
   return (
     <S.UnsplashModal onSubmit={handleSearch}>

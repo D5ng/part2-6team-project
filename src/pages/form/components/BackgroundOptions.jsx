@@ -11,14 +11,14 @@ const COLOR_LIST = [
 ];
 
 function BackgroundOptions({ onOpenModal }) {
-  const { selectedBtn, backgroundImages } = useFormContext();
+  const { selectedBtn, unsplashImageState } = useFormContext();
   const { selectedItem, handleBackgroundClick } = useUnsplashModalContext();
 
   useEffect(() => {
     if (selectedBtn === 'color') {
       handleBackgroundClick(COLOR_LIST[0].title);
     } else if (selectedBtn === 'image') {
-      handleBackgroundClick(backgroundImages[0].urls.regular);
+      handleBackgroundClick(unsplashImageState.data[0].urls.regular);
     }
   }, [selectedBtn]);
 
@@ -34,7 +34,7 @@ function BackgroundOptions({ onOpenModal }) {
         ))
       ) : (
         <>
-          {backgroundImages?.map((image) => (
+          {unsplashImageState.data?.map((image) => (
             <li key={image.id}>
               <S.Button
                 $isSelected={selectedItem === image.urls.regular}

@@ -6,11 +6,7 @@ function useIntersectionObserver(onIntersect, options = undefined) {
   const callback = useCallback(
     (entries, observer) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          console.log('실행 횟수');
-          onIntersect(entry, observer);
-          return;
-        }
+        if (entry.isIntersecting) onIntersect(entry, observer);
       });
     },
     [onIntersect],
