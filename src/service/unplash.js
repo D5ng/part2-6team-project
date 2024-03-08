@@ -19,7 +19,7 @@ export const fetchUnsplashSearchImage = async (pageNumber, searchValue) => {
   return result.results;
 };
 
-export const fetchUnsplashRandomImage = async () => {
-  const result = await sendRequest({ url: GET_RANDOM_IMAGE() });
+export const fetchUnsplashRandomImage = async (num = 3) => {
+  const result = await sendRequest({ url: GET_RANDOM_IMAGE(num) });
   return result;
 };

@@ -10,7 +10,7 @@ import { fetchUnsplashPopularImage, fetchUnsplashSearchImage } from 'service/unp
 import { useFormContext } from '@Pages/form/context/FormContext';
 import { useUnsplashModalContext } from './UnsplashModalContext';
 
-function UnsplashModal({ onCloseModal }) {
+function UnsplashModal({ onCloseModal, unsplashImageState }) {
   const {
     selectedItem,
     handleBackgroundClick,
@@ -20,7 +20,8 @@ function UnsplashModal({ onCloseModal }) {
     handleLoadSearchedImages,
   } = useUnsplashModalContext();
 
-  const { unsplashImageState } = useFormContext();
+  // const { unsplashImageState } = useFormContext();
+  console.log(unsplashImageState);
 
   const [isPopularLoading, fetchingError, onFetchImagesAsync] = useAsync(fetchUnsplashPopularImage);
   const [isSearchLoading, searchingError, onSearchImagesAsync] = useAsync(fetchUnsplashSearchImage);
