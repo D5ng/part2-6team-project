@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { PaperContextProvider } from '@Paper/context/PaperContext';
 import { PaperHeaderContextProvider } from '@Components/PaperHeader/context/PaperHeaderContext';
 import PaperHeader from '@Components/PaperHeader/PaperHeader';

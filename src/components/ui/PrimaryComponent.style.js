@@ -23,6 +23,28 @@ export const PrimaryLink = styled(Link)`
   border-radius: 12px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  z-index: 3;
+
+  &:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 0;
+    background-color: var(--primary800);
+    left: 0;
+    top: 0;
+    transition: 0.7s cubic-bezier(0.67, 0.07, 0.34, 0.98);
+    transform: skew(10deg);
+    z-index: -1;
+  }
+
+  &:hover:before {
+    width: 100%;
+    transform: skew(0deg);
+  }
+
   @media ${device.tablet} {
     width: 100%;
   }
