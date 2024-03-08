@@ -66,7 +66,7 @@ function RollingList() {
       </S.Section>
 
       <S.LinkArea>
-        <PrimaryLink>나도 만들어보기</PrimaryLink>
+        <PrimaryLink url="/post">나도 만들어보기</PrimaryLink>
       </S.LinkArea>
     </>
   );
