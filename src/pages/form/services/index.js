@@ -4,7 +4,8 @@ import { sendRequest, POST_OPTION } from 'utils/request-util';
 export const CREATE_PAPER_API = `${BASE_URL}/${TEAM}/recipients/`;
 
 export const createPaper = async (paperData) => {
-  const result = await sendRequest(CREATE_PAPER_API, POST_OPTION);
+  const result = await sendRequest({ url: CREATE_PAPER_API, options: POST_OPTION(paperData) });
+  console.log(result);
   return result;
 };
 
