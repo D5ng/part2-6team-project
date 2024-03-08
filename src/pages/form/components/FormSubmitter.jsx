@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as S from '@Form/components/FormSubmitter.style';
 import { useFormContext } from '@Form/context/FormContext';
@@ -40,23 +40,6 @@ function FormSubmitter() {
       navigate(`/post/${createdPaper.id}`);
     }
   };
-
-  // const handleDuplicateName = () => {
-  //   if (papersInfo.includes(nameState.value)) {
-  //     setErrorMessage('중복된 이름입니다');
-  //   } else {
-  //     setErrorMessage('');
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   handleLoadImages();
-  //   handleLoadPapersInfo();
-  // }, []);
-
-  // useEffect(() => {
-  //   handleDuplicateName();
-  // }, [name, papersInfo]);
 
   const backdrop = Portal.Backdrop(<Backdrop onCloseModal={handleCloseModal} />);
   const modal = Portal.Modal(<UnsplashModal onCloseModal={handleCloseModal} unsplashImageState={unsplashImageState} />);
