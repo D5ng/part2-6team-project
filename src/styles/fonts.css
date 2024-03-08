@@ -1,0 +1,66 @@
+/*=============================================
+=                  Pretendard                 =
+=============================================*/
+@font-face {
+  font-family: 'Pretendard';
+  src: url('../assets/fonts/Pretendard-Bold.subset.woff2');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('../assets/fonts/Pretendard-SemiBold.subset.woff2');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('../assets/fonts/Pretendard-Medium.subset.woff2');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  src: url('../assets/fonts/Pretendard-Regular.subset.woff2');
+  font-weight: 400;
+}
+
+/*=============================================
+=                  NanumMyeongjo              =
+=============================================*/
+
+@font-face {
+  font-family: 'NanumMyeongjo';
+  src: url('../assets/fonts/NanumMyeongjoBold.woff2');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'NanumMyeongjo';
+  src: url('../assets/fonts/NanumMyeongjo.woff2');
+  font-weight: 400;
+}
+
+/*=============================================
+=                  NotoSansKR                 =
+=============================================*/
+@font-face {
+  font-family: 'NotoSansKR';
+  src: url('../assets/fonts/NotoSansKR-Bold.woff2');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'NotoSansKR';
+  src: url('../assets/fonts/NotoSansKR-Regular.woff2');
+  font-weight: 400;
+}
+
+/*=============================================
+=               NanumBaeEunHyeCe              =
+=============================================*/
+@font-face {
+  font-family: 'NanumBaeEunHyeCe';
+  src: url('../assets/fonts/NanumBaeEunHyeCe.woff2');
+  font-weight: 400;
+}

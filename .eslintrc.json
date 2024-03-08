@@ -4,15 +4,24 @@
     "es2021": true,
     "node": true
   },
-  "extends": ["airbnb"],
+  "extends": ["airbnb", "prettier", "eslint:recommended"],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
   "rules": {
+    "no-useless-return": "off",
+    "react/jsx-no-bind": "off",
+    "consistent-return": "off",
+    "no-unused-vars": "off",
+    "react/no-array-index-key": "off",
+    "max-len": "off",
+    "react/prop-types": "off",
     "linebreak-style": 0,
+    "operator-linebreak": "off",
     "object-curly-newline": 0,
-    "import/no-unresolved": [2, { "devDependencies": true }],
+    "import/no-unresolved": "off",
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   },
   "settings": {
