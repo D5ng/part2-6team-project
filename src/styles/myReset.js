@@ -36,6 +36,7 @@ const myReset = css`
     border: 0;
     background: none;
     cursor: pointer;
+    font-family: 'Pretendard';
   }
 
   input {

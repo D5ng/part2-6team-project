@@ -53,3 +53,16 @@ export const SearchButton = styled.button`
   font-weight: 600;
   color: white;
 `;
+
+export const SelectButton = styled.button`
+  width: 100%;
+  height: 48px;
+  border-radius: 7px;
+  background-color: var(--black);
+  color: var(--white);
+
+  &:disabled {
+    background: var(--gray300);
+    cursor: not-allowed;
+  }
+`;

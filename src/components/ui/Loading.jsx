@@ -1,7 +1,7 @@
 import React from 'react';
 import * as S from './Loading.style';
 
-function Loading({ isCenter = true, size = 35, top }) {
+function Loading({ isCenter = true, size = 35, top, color = 'white' }) {
   return (
     <S.Loader $isCenter={isCenter} $top={top} $size={size}>
       <S.Circular viewBox="25 25 50 50">
@@ -13,7 +13,7 @@ function Loading({ isCenter = true, size = 35, top }) {
           fill="none"
           strokeWidth="4"
           strokeMiterlimit="10"
-          stroke="white"
+          stroke={color}
         />
       </S.Circular>
     </S.Loader>

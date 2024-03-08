@@ -14,12 +14,12 @@ export function UnsplashModalContextProvider({ children }) {
   const [searchedImages, setSearchedImages] = useState([]);
 
   // unsplash 배경 이미지 로드 함수
-  const handleLoadUnsplashImages = async (asyncFunction, pageNum) => {
+  const handleLoadUnsplashImages = async ({ asyncFunction, page }) => {
     try {
-      const data = await asyncFunction(pageNum);
+      const data = await asyncFunction(page);
       if (!data) return;
 
-      if (pageNum === 1) {
+      if (page === 1) {
         setUnsplashBackgroundImages(data);
       } else {
         setUnsplashBackgroundImages((prevImages) => [...prevImages, ...data]);
@@ -42,9 +42,7 @@ export function UnsplashModalContextProvider({ children }) {
     }
   };
 
-  const handleBackgroundClick = (image) => {
-    setSelectedItem(image);
-  };
+  const handleBackgroundClick = (image) => setSelectedItem(image);
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const values = {

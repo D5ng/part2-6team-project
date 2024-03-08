@@ -7,6 +7,7 @@ import UnsplashHeader from '@Components/unsplashModal/UnsplashHeader';
 import UnsplashCategory from '@Components/unsplashModal/UnsplashCategory';
 import UnsplashMasonry from '@Components/unsplashModal/UnsplashMasonry';
 import { fetchUnsplashPopularImage, fetchUnsplashSearchImage } from 'service/unplash';
+import { useFormContext } from '@Pages/form/context/FormContext';
 import { useUnsplashModalContext } from './UnsplashModalContext';
 
 function UnsplashModal({ onCloseModal }) {
@@ -18,6 +19,8 @@ function UnsplashModal({ onCloseModal }) {
     searchedImages,
     handleLoadSearchedImages,
   } = useUnsplashModalContext();
+
+  const { backgroundImages } = useFormContext();
 
   const [isPopularLoading, fetchingError, onFetchImagesAsync] = useAsync(fetchUnsplashPopularImage);
   const [isSearchLoading, searchingError, onSearchImagesAsync] = useAsync(fetchUnsplashSearchImage);
@@ -56,7 +59,11 @@ function UnsplashModal({ onCloseModal }) {
   };
 
   useEffect(() => {
-    if (!isPopularLoading) handleLoadUnsplashImages(onFetchImagesAsync, page);
+    if (!isPopularLoading)
+      handleLoadUnsplashImages({
+        asyncFunction: onFetchImagesAsync,
+        page,
+      });
   }, [page]);
 
   useEffect(() => {
@@ -67,6 +74,8 @@ function UnsplashModal({ onCloseModal }) {
         searchValue: searchRef.current.value,
       });
   }, [searchPage]);
+
+  const existingSelectedImage = backgroundImages.filter((image) => image.urls.regular === selectedItem).length;
 
   return (
     <S.UnsplashModal onSubmit={handleSearch}>
@@ -80,12 +89,17 @@ function UnsplashModal({ onCloseModal }) {
         <UnsplashCategory onCategory={handleCategory} />
         <UnsplashMasonry
           ref={ImageListRef}
+          hasError={fetchingError || searchingError}
           onSearchIncreasePage={handleSearchIncreasePage}
           onIncreasePage={handleIncreasePage}
           isLoading={isLoading}
           imageList={isSearch ? searchedImages : unsplashBackgroundImages}
           isSearch={isSearch}
         />
+
+        <S.SelectButton type="button" onClick={onCloseModal} disabled={!!existingSelectedImage}>
+          이 이미지로 선택할래요 😀
+        </S.SelectButton>
       </S.Body>
     </S.UnsplashModal>
   );

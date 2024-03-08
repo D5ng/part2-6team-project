@@ -18,7 +18,7 @@ function BackgroundOptions({ onOpenModal }) {
     if (selectedBtn === 'color') {
       handleBackgroundClick(COLOR_LIST[0].title);
     } else if (selectedBtn === 'image') {
-      handleBackgroundClick(backgroundImages[0]);
+      handleBackgroundClick(backgroundImages[0].urls.regular);
     }
   }, [selectedBtn]);
 
@@ -36,8 +36,13 @@ function BackgroundOptions({ onOpenModal }) {
         <>
           {backgroundImages?.map((image) => (
             <li key={image.id}>
-              <S.Button $isSelected={selectedItem?.urls?.regular === image.urls.regular} key={image.id} type="button">
-                <S.ImageItem src={image.urls.thumb} onClick={handleBackgroundClick.bind(this, image.urls.regular)} />
+              <S.Button
+                $isSelected={selectedItem === image.urls.regular}
+                key={image.id}
+                type="button"
+                onClick={handleBackgroundClick.bind(this, image.urls.regular)}
+              >
+                <S.ImageItem src={image.urls.thumb} />
               </S.Button>
             </li>
           ))}
