@@ -18,15 +18,13 @@ import useInput from 'hooks/useInput';
 
 function FormSubmitter() {
   const navigate = useNavigate();
-  const { handleLoadPapersInfo, papersInfo, handleLoadImages, selectedBtn } = useFormContext();
+  const { handleLoadPapersInfo, papersInfo, handleLoadImages, selectedBtn, unsplashImageState } = useFormContext();
   const { selectedItem } = useUnsplashModalContext();
   const [isSubmitting, submittingError, onSubmitAsync] = useAsync(createPaper);
   const { modalState, handleOpenModal, handleCloseModal } = useModal();
 
   const { state: nameState, hasError, handleChange: handleChangeName, handleBlur: handleBlurName } = useInput();
   const errorMessage = hasError && '이름을 입력해주세요 🙏';
-  // console.log(nameState, hasError);
-  // 터치를 했고, 값이 입력되지 않았으면 에러.
 
   const handleCreatePaper = async (e) => {
     e.preventDefault();
@@ -75,6 +73,7 @@ function FormSubmitter() {
 
       <S.BackgroundTitle>배경화면을 선택해 주세요.</S.BackgroundTitle>
       <S.Description>컬러를 선택하거나, 이미지를 선택할 수 있습니다.</S.Description>
+      {unsplashImageState.hasError && <S.ErrorInfo>지금은 이미지를 사용할 수 없어요 😂</S.ErrorInfo>}
       <ToggleButton />
       <BackgroundOptions onOpenModal={handleOpenModal} />
 

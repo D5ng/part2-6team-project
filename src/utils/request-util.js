@@ -11,11 +11,7 @@ async function sendRequest({ url, options }) {
     const response = await fetch(url, options);
 
     if (!response.ok) {
-      if (response.status === 403) {
-        throw new Error('Unsplash API 호출 횟수를 초과했어요 😂');
-      }
-
-      throw new Error(response);
+      throw new Error('Fetch failed...');
     }
 
     const responseData = await response.json();

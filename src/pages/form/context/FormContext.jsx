@@ -1,6 +1,7 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { GET_RANDOM_IMAGE, fetchUnsplashRandomImage } from 'service/unplash';
 import { getAllPapersInfo, getBackgroundImages } from '../api';
+import useDefaultBackgroundImage from '../hooks/useDefaultBackgroundImage';
 
 const FormContext = createContext();
 
@@ -10,8 +11,18 @@ export function FormProvider({ children }) {
   const [papersInfo, setPapersInfo] = useState([]);
   const [selectedBtn, setSelectedBtn] = useState('color');
   const [selectedBackground, setSelectedBackground] = useState('');
-  const [backgroundImages, setBackgroundImages] = useState([]);
   const [searchedImages, setSearchedImages] = useState([]);
+
+  const [backgroundImages, setBackgroundImages] = useState([]);
+  const [backgroundImageError, setBackgroundImageError] = useState(null);
+
+  const { state: unsplashImageState, fetchRequest: unsplashFetchRequest } = useDefaultBackgroundImage();
+
+  console.log(unsplashImageState);
+
+  useEffect(() => {
+    unsplashFetchRequest({ url: GET_RANDOM_IMAGE(3) });
+  }, []);
 
   // 전체 Paper 로드 함수(중복 확인용)
   const handleLoadPapersInfo = async () => {
@@ -24,6 +35,11 @@ export function FormProvider({ children }) {
   // 배경 이미지 로드 함수
   const handleLoadImages = async () => {
     const result = await fetchUnsplashRandomImage();
+    if (!result.result) {
+      setBackgroundImageError(result.message);
+      return;
+    }
+
     setBackgroundImages(result);
   };
 
@@ -33,6 +49,8 @@ export function FormProvider({ children }) {
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const values = {
+    unsplashImageState,
+
     papersInfo,
     handleLoadPapersInfo,
 

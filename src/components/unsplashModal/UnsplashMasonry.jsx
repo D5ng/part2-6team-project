@@ -38,6 +38,7 @@ function UnsplashMasonry(props, ref) {
             </S.ImageItem>
           ))}
           <S.Observer ref={observerRef} />
+          <S.Observer ref={observerRef} />
         </Masonry>
       </ResponsiveMasonry>
     </S.ImageList>
