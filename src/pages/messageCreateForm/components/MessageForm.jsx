@@ -6,12 +6,18 @@ import { createPortal } from 'react-dom';
 import Input from '@Components/form/Input';
 import Dropdown from '@Components/form/Dropdown';
 import PrimaryCreateBtn from '@Components/ui/PrimaryCreateBtn';
-import ImagePickerModal from '@Components/imagePickerModal/ImagePickerModal';
+
 import Loading from '@Components/ui/Loading';
 // context, api, style
-import { useImagePickerModalContext } from '@Components/imagePickerModal/ImagePickerModalContext';
 
 // eslint-disable-next-line import/named
+import { useUnsplashModalContext } from '@Components/unsplashModal/UnsplashModalContext';
+import UnsplashModal from '@Components/unsplashModal/UnsplashModal';
+import useModal from 'hooks/useModal';
+import useDefaultBackgroundImage from '@Pages/form/hooks/useDefaultBackgroundImage';
+import { GET_RANDOM_IMAGE } from 'service/unplash';
+import * as Portal from '@Components/portal';
+import Backdrop from '@Components/modal/Backdrop';
 import { errorHandling, createMessage } from '../api';
 import * as S from './MessageForm.style';
 // 현재 페이지에서만 사용하는 컴포넌트
@@ -39,7 +45,7 @@ const reducer = (state, action) => {
 function MessageForm() {
   const params = useParams();
   const navigate = useNavigate();
-  const { selectedImages } = useImagePickerModalContext();
+  const { selectedItem } = useUnsplashModalContext();
   const [inputInformation, dispatch] = useReducer(reducer, {
     sender: '',
     relationship: '친구',
@@ -47,12 +53,10 @@ function MessageForm() {
     font: 'Noto Sans',
     profileImageURL: '',
   });
-
   const [messageLength, setMessageLength] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
-  const [active, setActive] = useState(false);
-  const openModal = () => setActive(true);
-  const closeModal = () => setActive(false);
+  const { modalState, handleOpenModal, handleCloseModal } = useModal();
+
   const submitForm = async (e) => {
     e.preventDefault();
     try {
@@ -70,12 +74,24 @@ function MessageForm() {
   const handleOnChangeInput = (e) => {
     dispatch({ type: 'sender', sender: e.target.value });
   };
+
+  const { state: unsplashImageState, fetchRequest: unsplashFetchRequest } = useDefaultBackgroundImage();
+
   useEffect(() => {
-    dispatch({ type: 'profileImageURL', profileImageURL: selectedImages });
-  }, [selectedImages]);
-  const modal = createPortal(<ImagePickerModal closeModal={closeModal} />, document.getElementById('modal-root'));
+    unsplashFetchRequest({ url: GET_RANDOM_IMAGE(9) });
+  }, []);
+  useEffect(() => {
+    dispatch({ type: 'profileImageURL', profileImageURL: selectedItem });
+  }, [selectedItem]);
+  console.log(selectedItem);
+
+  const backdrop = Portal.Backdrop(<Backdrop onCloseModal={handleCloseModal} />);
+  const modal = Portal.Modal(<UnsplashModal onCloseModal={handleCloseModal} unsplashImageState={unsplashImageState} />);
+
   return (
     <S.Form onSubmit={submitForm}>
+      {modalState.isOpen && backdrop}
+      {modalState.isOpen && modal}
       <S.Wrapper>
         <S.InputTitle>From.{inputInformation.sender}</S.InputTitle>
         <Input onChange={handleOnChangeInput} value={inputInformation.sender} errorMessage="이름을 입력해 주세요">
@@ -88,7 +104,7 @@ function MessageForm() {
           <PreviewImg currentImg={inputInformation.profileImageURL} />
           <S.ProfileImgListWrap>
             <S.ProfileListTitle>프로필 이미지를 선택해주세요!</S.ProfileListTitle>
-            <ProfileImgList openModal={openModal} dispatch={dispatch} />
+            <ProfileImgList unsplashImageState={unsplashImageState} openModal={handleOpenModal} dispatch={dispatch} />
           </S.ProfileImgListWrap>
         </S.ProfileImgBox>
       </S.Wrapper>
@@ -108,7 +124,6 @@ function MessageForm() {
       <PrimaryCreateBtn disabled={!(messageLength !== 1 && inputInformation.sender) || isLoading}>
         {isLoading ? <Loading /> : '생성하기'}
       </PrimaryCreateBtn>
-      {active && modal}
     </S.Form>
   );
 }

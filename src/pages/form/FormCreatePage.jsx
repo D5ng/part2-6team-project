@@ -1,17 +1,25 @@
 import React from 'react';
-import * as S from 'pages/form/FormCreatePage.style';
 import { FormProvider } from '@Form/context/FormContext';
 import FormSubmitter from '@Form/components/FormSubmitter';
-import { ImagePickerModalProvider } from '@Components/imagePickerModal/ImagePickerModalContext';
+import { UnsplashModalContextProvider } from '@Components/unsplashModal/UnsplashModalContext';
+
+import styled from 'styled-components';
+
+const S = {
+  Section: styled.section`
+    display: flex;
+    justify-content: center;
+  `,
+};
 
 function FormCreate() {
   return (
     <FormProvider>
-      <ImagePickerModalProvider>
-        <S.FormCreate>
+      <UnsplashModalContextProvider>
+        <S.Section>
           <FormSubmitter />
-        </S.FormCreate>
-      </ImagePickerModalProvider>
+        </S.Section>
+      </UnsplashModalContextProvider>
     </FormProvider>
   );
 }

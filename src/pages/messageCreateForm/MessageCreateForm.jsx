@@ -1,15 +1,15 @@
 import React from 'react';
 import * as S from 'pages/messageCreateForm/MessageCreateForm.style';
-import { ImagePickerModalProvider } from '@Components/imagePickerModal/ImagePickerModalContext';
+import { UnsplashModalContextProvider } from '@Components/unsplashModal/UnsplashModalContext';
 import MessageForm from './components/MessageForm';
 
 function MessageCreateForm() {
   return (
-    <ImagePickerModalProvider>
+    <UnsplashModalContextProvider>
       <S.FormContainer>
         <MessageForm />
       </S.FormContainer>
-    </ImagePickerModalProvider>
+    </UnsplashModalContextProvider>
   );
 }
 
