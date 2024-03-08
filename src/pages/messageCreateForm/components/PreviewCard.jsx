@@ -1,6 +1,5 @@
 import React from 'react';
 import * as S from './PreviewCard.style';
-import { useMessageFormContext } from '../context/MessageFormContext';
 
 const BADGE_STYLE = {
   지인: {
@@ -28,21 +27,20 @@ const FONT_STYLE = {
 };
 const DATE = new Date();
 const TODAY = `${DATE.getFullYear()}.${DATE.getMonth() + 1}.${DATE.getDate()}`;
-function PreviewCard() {
-  const { currentProfileImg, fromName, currentSelect, message } = useMessageFormContext();
-  const innerMessage = message.ops && message.ops.map((messages) => messages.insert).join('\n');
+function PreviewCard({ information }) {
+  const { sender, relationship, content, font, profileImageURL } = information;
   return (
     <S.Card>
       <S.SenderBox>
-        <S.ProfileImg src={currentProfileImg} />
+        <S.ProfileImg src={profileImageURL} />
         <S.Wrap>
           <S.Sender>
-            From. <strong>{fromName.target && fromName.target.value}</strong>
+            From. <strong>{sender}</strong>
           </S.Sender>
-          <S.Badge style={BADGE_STYLE[currentSelect.relation]}>{currentSelect.relation}</S.Badge>
+          <S.Badge style={BADGE_STYLE[relationship]}>{relationship}</S.Badge>
         </S.Wrap>
       </S.SenderBox>
-      <S.MessageBox font={FONT_STYLE[currentSelect.font]}>{innerMessage}</S.MessageBox>
+      <S.MessageBox font={FONT_STYLE[font]}>{content}</S.MessageBox>
       <S.CreateDate>{TODAY}</S.CreateDate>
     </S.Card>
   );

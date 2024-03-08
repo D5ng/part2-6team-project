@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import * as S from 'pages/messageCreateForm/components/ProfileImgList.style';
-import { useMessageFormContext } from '../context/MessageFormContext';
+
 import { requsetProfileImgData } from '../api';
 
-function ProfileImgList({ openModal }) {
+function ProfileImgList({ openModal, dispatch }) {
   const [profileImgSrc, setProfileImgSrc] = useState([]);
-  const { setCurrentProfileImg } = useMessageFormContext();
+
   const handleProfileImgClick = (url) => {
-    setCurrentProfileImg(url);
+    dispatch({ type: 'profileImageURL', profileImageURL: url });
   };
 
   useEffect(() => {
@@ -18,7 +18,7 @@ function ProfileImgList({ openModal }) {
     getProfileImgData();
   }, []);
   useEffect(() => {
-    setCurrentProfileImg(profileImgSrc[0]);
+    dispatch({ type: 'profileImageURL', profileImageURL: profileImgSrc[0] });
   }, [profileImgSrc]);
   return (
     <S.ProfileImgList>

@@ -1,20 +1,15 @@
 import React from 'react';
 import * as S from 'pages/messageCreateForm/MessageCreateForm.style';
-
 import { ImagePickerModalProvider } from '@Components/imagePickerModal/ImagePickerModalContext';
-import { MessageFormContextProvider } from './context/MessageFormContext';
-
 import MessageForm from './components/MessageForm';
 
 function MessageCreateForm() {
   return (
-    <MessageFormContextProvider>
-      <ImagePickerModalProvider>
-        <S.FormContainer>
-          <MessageForm />
-        </S.FormContainer>
-      </ImagePickerModalProvider>
-    </MessageFormContextProvider>
+    <ImagePickerModalProvider>
+      <S.FormContainer>
+        <MessageForm />
+      </S.FormContainer>
+    </ImagePickerModalProvider>
   );
 }
 
