@@ -1,3 +1,4 @@
+/* eslint-disable no-new */
 import React, { useContext } from 'react';
 import * as S from '@Paper/components/RollingPaperList.style';
 import PlusIcon from '@Components/ui/PlusIcon';
@@ -6,6 +7,7 @@ import Modal from '@Components/modal/Modal';
 import { createPortal } from 'react-dom';
 import Backdrop from '@Components/modal/Backdrop';
 import useIntersectionObserver from 'hooks/useIntersectionObserver';
+import Sortable from 'sortablejs';
 import RollingPaperItem from './RollingPaperItem';
 import Skeleton from './Skeleton';
 
@@ -44,11 +46,20 @@ function RollingPaperList() {
     </>
   );
 
+  const columns = document.querySelectorAll('.column');
+  columns.forEach((column) => {
+    new Sortable(column, {
+      filter: '.filtered',
+      animation: 150,
+      ghostClass: 'sortable-ghost',
+    });
+  });
+
   return (
-    <S.GridLayout>
+    <S.GridLayout className="column">
       {modalState.isOpen && backdrop}
       {modalState.isOpen && modal}
-      <S.CreatePaperArea>
+      <S.CreatePaperArea className="filtered">
         <S.Button to={`/post/${paperState?.data?.id}/message`}>
           <PlusIcon />
         </S.Button>
