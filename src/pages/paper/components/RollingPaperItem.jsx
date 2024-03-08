@@ -9,7 +9,7 @@ function RollingPaperItem({ data, onClickModal, getPaperData }) {
   };
 
   return (
-    <CardList onClick={handleOpenModal}>
+    <CardList onClick={handleOpenModal} >
       <Card key={data.id} data={data} />
     </CardList>
   );

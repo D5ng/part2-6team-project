@@ -1,20 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import * as S from '@Components/ui/BadgeEmogi.style';
 
 function BadgeEmogi({ emojis }) {
-  return emojis.length > 0 ? (
-    <S.BadgeContainer>
+  return emojis?.length > 0 ? (
+    <>
       {emojis.map((badge) => (
         <S.BadgeBox key={badge?.emoji}>
           <S.BadgeEmoji>{badge?.emoji}</S.BadgeEmoji>
           <S.BadgeCount>{badge?.count}</S.BadgeCount>
         </S.BadgeBox>
       ))}
-    </S.BadgeContainer>
+    </>
   ) : (
-    <S.NoEmogiContainer>
-      <p>이모지가 없습니다.</p>
-    </S.NoEmogiContainer>
+    <S.NoEmogiText>이모지를 추가해주세요</S.NoEmogiText>
   );
 }
 

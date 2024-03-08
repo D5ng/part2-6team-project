@@ -1,3 +1,4 @@
+/* eslint-disable no-new */
 import React, { useContext } from 'react';
 import * as S from '@Paper/components/RollingPaperList.style';
 import PlusIcon from '@Components/ui/PlusIcon';
@@ -6,6 +7,7 @@ import Modal from '@Components/modal/Modal';
 import { createPortal } from 'react-dom';
 import Backdrop from '@Components/modal/Backdrop';
 import useIntersectionObserver from 'hooks/useIntersectionObserver';
+import Sortable from 'sortablejs';
 import RollingPaperItem from './RollingPaperItem';
 import Skeleton from './Skeleton';
 
@@ -31,32 +33,38 @@ function RollingPaperList() {
 
   const ref = useIntersectionObserver(onIntersect, { threshold: 1 });
 
-  const renderStartLoadingUI =
-    !messageState?.data?.results && Array.from({ length: 11 }).map((_, index) => <Skeleton key={index} />);
+  const renderSkeletons = (count) => Array.from({ length: count }).map((_, index) => <Skeleton key={index} />);
 
-  const renderMessageData = messageState?.data?.results?.map((info) => (
+  const renderMessageItems = messageState?.data?.results?.map((info) => (
     <RollingPaperItem key={info.id} data={info} onClickModal={handleOpenModal} getPaperData={getModalData} />
   ));
 
   const renderEndLoadingUI = messageState?.data?.next && (
     <>
       <Skeleton ref={ref} />
-      {Array.from({ length: 6 }).map((_, index) => (
-        <Skeleton key={index} />
-      ))}
+      {renderSkeletons(6)}
     </>
   );
+
+  const columns = document.querySelectorAll('.column');
+  columns.forEach((column) => {
+    new Sortable(column, {
+      filter: '.filtered',
+      animation: 150,
+      ghostClass: 'sortable-ghost',
+    });
+  });
+
   return (
-    <S.GridLayout>
+    <S.GridLayout className="column">
       {modalState.isOpen && backdrop}
       {modalState.isOpen && modal}
-      <S.CreatePaperArea>
+      <S.CreatePaperArea className="filtered">
         <S.Button to={`/post/${paperState?.data?.id}/message`}>
           <PlusIcon />
         </S.Button>
       </S.CreatePaperArea>
-      {renderStartLoadingUI}
-      {renderMessageData}
+      {messageState?.data?.results ? renderMessageItems : renderSkeletons(11)}
       {renderEndLoadingUI}
     </S.GridLayout>
   );

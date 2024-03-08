@@ -6,7 +6,6 @@ const TestImgStyle = `
   height: 28px;
   border-radius: 50px;
   border: 1.5px solid white;
-
   margin-right: -10px;
 `;
 
@@ -23,6 +22,7 @@ export const PaperCard = styled.div`
   overflow: hidden;
   color: ${(props) => (props.$backgroundImageURL ? 'white' : 'black')};
   cursor: pointer;
+  z-index: -1;
 
   &::before {
     content: '';
@@ -31,12 +31,23 @@ export const PaperCard = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: ${(props) => (props.$backgroundImageURL ? `url(${props.$backgroundImageURL})` : 'none')};
+    background-image: ${(props) => props.$backgroundImageURL && `url(${props.$backgroundImageURL})`};
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     filter: blur(2px) brightness(0.9);
     z-index: -1;
+  }
+
+  &::after {
+    content: '';
+    background-image: ${(props) => !props.$backgroundImageURL && `url(${props.$pattern})`};
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    width: 142px;
+    height: 142px;
   }
 `;
 
@@ -77,6 +88,13 @@ export const CardContentWrapper = styled.div`
   }
 `;
 
+export const BadgeEmogiWrapper = styled.div`
+  display: flex;
+  gap: 8px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  padding-top: 17px;
+`;
+
 export const TestImg = styled.img`
   ${TestImgStyle}
 `;
@@ -89,22 +107,6 @@ export const LastTestImg = styled.div`
   font-size: 12px;
   color: ${(props) => (props.$backgroundImageURL ? 'black' : 'black')};
   border: 1px solid var(--gray200);
-`;
-
-export const ReactionButton = styled.div`
-  padding-top: 15px;
-  height: 25%;
-  display: flex;
-  width: 100%;
-  border-top: 1px solid gray;
-`;
-
-export const ReactionButtonWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  padding-right: 40px;
-  align-items: center;
 `;
 
 export const AddCardButton = styled.button`

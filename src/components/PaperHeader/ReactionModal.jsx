@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom';
 import { PaperHeaderContext } from '@Components/PaperHeader/context/PaperHeaderContext';
 import createReactions from '@Pages/paper/api';
 
-function EmojiChoice() {
-  const { updateEmoji, emojis } = useContext(PaperHeaderContext);
+function ReactionModal() {
+  const { updateEmoji } = useContext(PaperHeaderContext);
 
   const { recipientsId } = useParams();
   const handleEmojiClick = async (emoji) => {
@@ -17,17 +17,12 @@ function EmojiChoice() {
 
       await createReactions(recipientsId, data);
       updateEmoji(emoji.emoji);
-      console.log(emojis);
     } catch (error) {
       console.error('이모지 전송 실패:', error);
     }
   };
 
-  return (
-    <div>
-      <EmojiPicker style={{ zIndex: '9999' }} onEmojiClick={handleEmojiClick} />
-    </div>
-  );
+  return <EmojiPicker style={{ zIndex: '9999' }} onEmojiClick={handleEmojiClick} />;
 }
 
-export default EmojiChoice;
+export default ReactionModal;

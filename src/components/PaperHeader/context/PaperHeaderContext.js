@@ -19,7 +19,7 @@ export function PaperHeaderContextProvider({ children }) {
       setEmojis(reactiondata.results);
       setTopReactions(responseData.topReactions);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -32,17 +32,11 @@ export function PaperHeaderContextProvider({ children }) {
   };
 
   const updateEmoji = (emojiIcon) => {
-    const newEmojis = emojis.map((emoji) => (emoji.emoji === emojiIcon ? { ...emoji, count: emoji.count + 1 } : emoji));
-    const newReactions = topReactions.map((emoji) =>
-      emoji.emoji === emojiIcon ? { ...emoji, count: emoji.count + 1 } : emoji,
-    );
-    setEmojis(newEmojis);
-    setTopReactions(newReactions);
-  };
+    emojis.map((emoji) => (emoji.emoji === emojiIcon ? { ...emoji, count: emoji.count + 1 } : emoji));
+    topReactions.map((emoji) => (emoji.emoji === emojiIcon ? { ...emoji, count: emoji.count + 1 } : emoji));
 
-  useEffect(() => {
     fetchRequest();
-  }, []);
+  };
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const value = {
@@ -51,7 +45,6 @@ export function PaperHeaderContextProvider({ children }) {
     topReactions,
     handleSetTopReactions,
     fetchRequest,
-
     updateEmoji,
   };
   return <PaperHeaderContext.Provider value={value}>{children}</PaperHeaderContext.Provider>;
