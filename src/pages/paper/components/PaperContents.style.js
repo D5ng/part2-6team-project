@@ -14,7 +14,7 @@ const PseudoStyle = css`
 
 export const Section = styled.section`
   background: ${({ $backgroundColor, $backgroundImage }) =>
-    $backgroundImage ? `url(${$backgroundImage}) no-repeat center / cover` : colorMap[$backgroundColor]};
+    $backgroundImage ? `url(${$backgroundImage}) no-repeat center / cover` : $backgroundColor};
   min-height: calc(100vh - 63px);
   position: relative;
 

@@ -6,18 +6,27 @@ import BadgeEmogi from '@Components/ui/BadgeEmogi';
 import CardContent from './CardContent';
 
 function getColor(color) {
-  return colorMap[color];
+  const backgroundColor = colorMap.find((item) => item.key === color);
+  return backgroundColor.color;
+}
+
+function getColorPattenr(color) {
+  const backgroundColor = colorMap.find((item) => item.key === color);
+  return backgroundColor.pattern;
 }
 
 function PaperCard({ list }) {
   const navigate = useNavigate();
 
   const { id, backgroundColor, backgroundImageURL } = list;
-  const backgroundColorDate = getColor(backgroundColor);
+  const backgroundColorData = getColor(backgroundColor);
+  const backgroundPatternData = getColorPattenr(backgroundColor);
+
   return (
     <S.PaperCard
-      $backgroundColor={backgroundColorDate}
+      $backgroundColor={backgroundColorData}
       $backgroundImageURL={backgroundImageURL}
+      $pattern={backgroundPatternData}
       onClick={() => navigate(`/post/${id}`)}
     >
       <S.CardWrapper>

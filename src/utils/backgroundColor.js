@@ -1,9 +1,8 @@
-const colorMap = {
-  beige: 'var(--orange200)',
-  purple: 'var(--primary200)',
-  blue: 'var(--blue200)',
-  green: 'var(--green200)',
-  default: 'var(--gray200)',
-};
+const colorMap = [
+  { key: 'beige', color: 'var(--orange200)', pattern: '/images/card/pattern_beige.svg' },
+  { key: 'purple', color: 'var(--primary200)', pattern: '/images/card/pattern_purple.svg' },
+  { key: 'blue', color: 'var(--blue200)', pattern: '/images/card/pattern_blue.svg' },
+  { key: 'green', color: 'var(--green200)', pattern: '/images/card/pattern_green.svg' },
+];
 
 export default colorMap;
