@@ -4,7 +4,15 @@ import * as S from 'pages/home/Home.style';
 function Home() {
   return (
     <>
-      <S.Section>
+      <S.Section
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          ease: [0.67, 0.07, 0.34, 0.98],
+          duration: 0.7,
+          staggerChildren: 0.5,
+        }}
+      >
         <S.Wrapper>
           <div>
             <S.Point>Point. 01</S.Point>
@@ -22,7 +30,16 @@ function Home() {
         </S.Wrapper>
       </S.Section>
 
-      <S.Section>
+      <S.Section
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          ease: [0.67, 0.07, 0.34, 0.98],
+          delay: 0.4,
+          duration: 0.7,
+          staggerChildren: 0.5,
+        }}
+      >
         <S.EmojiWrapper>
           <figure>
             <S.SecondSectionImage src="/images/home/home-manual-2.png" alt="롤링페이퍼 사용 이미지" />
@@ -40,7 +57,18 @@ function Home() {
         </S.EmojiWrapper>
       </S.Section>
 
-      <S.StyleButton to="/list">구경해보기</S.StyleButton>
+      <S.MotionWrapper
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          ease: [0.67, 0.07, 0.34, 0.98],
+          delay: 0.8,
+          duration: 0.7,
+          staggerChildren: 0.5,
+        }}
+      >
+        <S.StyleButton to="/list">구경해보기</S.StyleButton>
+      </S.MotionWrapper>
     </>
   );
 }

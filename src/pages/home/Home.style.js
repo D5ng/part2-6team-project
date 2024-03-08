@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { device } from 'styles/breakpoints';
+import { motion } from 'framer-motion';
 
-export const Section = styled.section`
+export const Section = styled(motion.section)`
   margin-top: 60px;
 
   & + & {
@@ -103,6 +104,8 @@ export const SecondSectionImage = styled.img`
   }
 `;
 
+export const MotionWrapper = styled(motion.div)``;
+
 export const StyleButton = styled(Link)`
   display: flex;
   justify-content: center;
@@ -115,6 +118,27 @@ export const StyleButton = styled(Link)`
   border-radius: 12px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  z-index: 3;
+
+  &:before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 0;
+    background-color: var(--primary800);
+    left: 0;
+    top: 0;
+    transition: 0.7s cubic-bezier(0.67, 0.07, 0.34, 0.98);
+    transform: skew(10deg);
+    z-index: -1;
+  }
+
+  &:hover:before {
+    width: 100%;
+    transform: skew(0deg);
+  }
 
   @media ${device.tablet} {
     width: calc(100% - 48px);
