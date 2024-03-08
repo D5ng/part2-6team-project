@@ -29,3 +29,8 @@ export const Description = styled.div`
 `;
 
 export const Section = styled.div``;
+
+export const ErrorInfo = styled.p`
+  color: var(--error);
+  font-size: 16px;
+`;

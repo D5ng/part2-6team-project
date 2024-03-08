@@ -1,5 +1,7 @@
-import React, { createContext, useContext, useState } from 'react';
-import { getAllPapersInfo, getBackgroundImages } from '../api';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { GET_RANDOM_IMAGE } from 'service/unplash';
+import { getAllPapersInfo } from '../api';
+import useDefaultBackgroundImage from '../hooks/useDefaultBackgroundImage';
 
 const FormContext = createContext();
 
@@ -7,12 +9,15 @@ export const useFormContext = () => useContext(FormContext);
 
 export function FormProvider({ children }) {
   const [papersInfo, setPapersInfo] = useState([]);
-
   const [selectedBtn, setSelectedBtn] = useState('color');
   const [selectedBackground, setSelectedBackground] = useState('');
-  const [backgroundImages, setBackgroundImages] = useState([]);
-  const [unsplashBackgroundImages, setUnsplashBackgroundImages] = useState([]);
   const [searchedImages, setSearchedImages] = useState([]);
+
+  const { state: unsplashImageState, fetchRequest: unsplashFetchRequest } = useDefaultBackgroundImage();
+
+  useEffect(() => {
+    unsplashFetchRequest({ url: GET_RANDOM_IMAGE(3) });
+  }, []);
 
   // 전체 Paper 로드 함수(중복 확인용)
   const handleLoadPapersInfo = async () => {
@@ -22,32 +27,18 @@ export function FormProvider({ children }) {
     setPapersInfo(papers);
   };
 
-  // 배경 이미지 로드 함수
-  const handleLoadImages = async () => {
-    const result = await getBackgroundImages();
-    if (!result) return;
-    const images = result.imageUrls;
-    setBackgroundImages(images);
-  };
-
   const handleToggleButtonClick = (buttonType) => {
     setSelectedBtn(buttonType);
   };
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const values = {
+    unsplashImageState,
     papersInfo,
     handleLoadPapersInfo,
-
-    handleLoadImages,
-
     selectedBtn,
     handleToggleButtonClick,
-
     selectedBackground,
-
-    backgroundImages,
-    unsplashBackgroundImages,
     searchedImages,
   };
 

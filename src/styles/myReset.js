@@ -5,6 +5,7 @@ const myReset = css`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: inherit;
   }
 
   html,
@@ -35,6 +36,7 @@ const myReset = css`
     border: 0;
     background: none;
     cursor: pointer;
+    font-family: 'Pretendard';
   }
 
   input {

@@ -4,8 +4,8 @@ import Input from '@Components/form/Input';
 import Dropdown from '@Components/form/Dropdown';
 import { PrimaryCreateBtn } from '@Components/ui/PrimaryComponent.style';
 import { createPortal } from 'react-dom';
-import ImagePickerModal from '@Components/imagePickerModal/ImagePickerModal';
-import { useImagePickerModalContext } from '@Components/imagePickerModal/ImagePickerModalContext';
+import ImagePickerModal from '@Components/unsplashModal/UnsplashModal';
+import { useUnsplashModalContext } from '@Components/unsplashModal/UnsplashModalContext';
 import * as S from './MessageForm.style';
 import { useMessageFormContext } from '../context/MessageFormContext';
 import { postCreateMessageData } from '../api';
@@ -17,7 +17,7 @@ import PreviewCard from './PreviewCard';
 function MessageForm() {
   const params = useParams();
   const navigate = useNavigate();
-  const { selectedImages } = useImagePickerModalContext();
+  const { selectedImages } = useUnsplashModalContext();
   const [messageLength, setMessageLength] = useState(1);
   const { currentSelect, message, currentProfileImg, setFromName, fromName, setCurrentProfileImg } =
     useMessageFormContext();
