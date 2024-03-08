@@ -59,7 +59,7 @@ function FormSubmitter() {
   // }, [name, papersInfo]);
 
   const backdrop = Portal.Backdrop(<Backdrop onCloseModal={handleCloseModal} />);
-  const modal = Portal.Modal(<UnsplashModal onCloseModal={handleCloseModal} />);
+  const modal = Portal.Modal(<UnsplashModal onCloseModal={handleCloseModal} unsplashImageState={unsplashImageState} />);
 
   return (
     <S.Wrapper>

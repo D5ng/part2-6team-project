@@ -7,7 +7,6 @@ import UnsplashHeader from '@Components/unsplashModal/UnsplashHeader';
 import UnsplashCategory from '@Components/unsplashModal/UnsplashCategory';
 import UnsplashMasonry from '@Components/unsplashModal/UnsplashMasonry';
 import { fetchUnsplashPopularImage, fetchUnsplashSearchImage } from 'service/unplash';
-import { useFormContext } from '@Pages/form/context/FormContext';
 import { useUnsplashModalContext } from './UnsplashModalContext';
 
 function UnsplashModal({ onCloseModal, unsplashImageState }) {
