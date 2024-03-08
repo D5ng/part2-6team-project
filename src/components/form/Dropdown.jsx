@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import * as S from '@Components/form/Dropdown.style';
-import { useMessageFormContext } from 'pages/messageCreateForm/context/MessageFormContext';
 
 const OPTION_LISTS = [
   {
@@ -31,11 +30,11 @@ const FONT_OPTION_LIST = [
     title: '나눔손글씨 손편지체',
   },
 ];
-function Dropdown({ disabled, type }) {
+function Dropdown({ disabled, type, dispatch }) {
   const Default = type === 'relation' ? OPTION_LISTS[0] : FONT_OPTION_LIST[0];
   const [isdrop, setIsdrop] = useState(false);
   const [selected, setSelected] = useState(Default);
-  const { dispatch } = useMessageFormContext();
+  // const { dispatch } = useMessageFormContext();
   const handleDropdownClick = () => {
     setIsdrop(!isdrop);
   };
@@ -45,7 +44,7 @@ function Dropdown({ disabled, type }) {
     setIsdrop(false);
     // eslint-disable-next-line no-unused-expressions
     type === 'relation'
-      ? dispatch({ type: 'relation', relation: option.title })
+      ? dispatch({ type: 'relationship', relationship: option.title })
       : dispatch({ type: 'font', font: option.title });
   };
 

@@ -1,5 +1,5 @@
 // React 관련 패키지
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { createPortal } from 'react-dom';
 // 공통 컴포넌트
@@ -10,7 +10,7 @@ import ImagePickerModal from '@Components/imagePickerModal/ImagePickerModal';
 import Loading from '@Components/ui/Loading';
 // context, api, style
 import { useImagePickerModalContext } from '@Components/imagePickerModal/ImagePickerModalContext';
-import { useMessageFormContext } from '../context/MessageFormContext';
+
 // eslint-disable-next-line import/named
 import { errorHandling, createMessage } from '../api';
 import * as S from './MessageForm.style';
@@ -20,30 +20,44 @@ import TextEditor from './TextEditor';
 import ProfileImgList from './ProfileImgList';
 import PreviewCard from './PreviewCard';
 
+const reducer = (state, action) => {
+  // eslint-disable-next-line default-case
+  switch (action.type) {
+    case 'sender':
+      return { ...state, sender: action.sender };
+    case 'relationship':
+      return { ...state, relationship: action.relationship };
+    case 'content':
+      return { ...state, content: action.content };
+    case 'font':
+      return { ...state, font: action.font };
+    case 'profileImageURL':
+      return { ...state, profileImageURL: action.profileImageURL };
+  }
+};
+
 function MessageForm() {
   const params = useParams();
   const navigate = useNavigate();
   const { selectedImages } = useImagePickerModalContext();
+  const [inputInformation, dispatch] = useReducer(reducer, {
+    sender: '',
+    relationship: '친구',
+    content: '',
+    font: 'Noto Sans',
+    profileImageURL: '',
+  });
+
   const [messageLength, setMessageLength] = useState(1);
-  const { currentSelect, message, currentProfileImg, setFromName, fromName, setCurrentProfileImg } =
-    useMessageFormContext();
   const [isLoading, setIsLoading] = useState(false);
   const [active, setActive] = useState(false);
   const openModal = () => setActive(true);
   const closeModal = () => setActive(false);
   const submitForm = async (e) => {
     e.preventDefault();
-    const postMessage = message.ops && message.ops.map((messages) => messages.insert).join('\n');
-    const messageInformation = {
-      sender: fromName.target.value,
-      relationship: currentSelect.relation,
-      content: postMessage,
-      font: currentSelect.font,
-      profileImageURL: currentProfileImg,
-    };
     try {
       setIsLoading(true);
-      const requestState = await createMessage(params.id, messageInformation);
+      const requestState = await createMessage(params.id, inputInformation);
       errorHandling(requestState.ok, requestState.status, () => {
         navigate(`/post/${params.id}`);
       });
@@ -53,46 +67,45 @@ function MessageForm() {
       setIsLoading(false);
     }
   };
+  const handleOnChangeInput = (e) => {
+    dispatch({ type: 'sender', sender: e.target.value });
+  };
   useEffect(() => {
-    setCurrentProfileImg(selectedImages);
+    dispatch({ type: 'profileImageURL', profileImageURL: selectedImages });
   }, [selectedImages]);
   const modal = createPortal(<ImagePickerModal closeModal={closeModal} />, document.getElementById('modal-root'));
   return (
     <S.Form onSubmit={submitForm}>
       <S.Wrapper>
-        <S.InputTitle>From.{fromName.target ? fromName.target.value : ''}</S.InputTitle>
-        <Input
-          onChange={setFromName}
-          value={fromName.target ? fromName.target.value : ''}
-          errorMessage="이름을 입력해 주세요"
-        >
+        <S.InputTitle>From.{inputInformation.sender}</S.InputTitle>
+        <Input onChange={handleOnChangeInput} value={inputInformation.sender} errorMessage="이름을 입력해 주세요">
           이름을 입력해 주세요
         </Input>
       </S.Wrapper>
       <S.Wrapper>
         <S.InputTitle>프로필 이미지</S.InputTitle>
         <S.ProfileImgBox>
-          <PreviewImg />
+          <PreviewImg currentImg={inputInformation.profileImageURL} />
           <S.ProfileImgListWrap>
             <S.ProfileListTitle>프로필 이미지를 선택해주세요!</S.ProfileListTitle>
-            <ProfileImgList openModal={openModal} />
+            <ProfileImgList openModal={openModal} dispatch={dispatch} />
           </S.ProfileImgListWrap>
         </S.ProfileImgBox>
       </S.Wrapper>
       <S.Wrapper>
         <S.InputTitle>상대와의 관계</S.InputTitle>
-        <Dropdown type="relation" />
+        <Dropdown dispatch={dispatch} type="relation" />
       </S.Wrapper>
       <S.Wrapper>
         <S.InputTitle>내용을 입력해 주세요</S.InputTitle>
-        <TextEditor messageLength={setMessageLength} />
+        <TextEditor dispatch={dispatch} messageLength={setMessageLength} />
       </S.Wrapper>
       <S.Wrapper>
         <S.InputTitle>폰트 선택</S.InputTitle>
-        <Dropdown type="font" />
+        <Dropdown dispatch={dispatch} type="font" />
       </S.Wrapper>
-      <PreviewCard />
-      <PrimaryCreateBtn disabled={!(messageLength !== 1 && fromName.target) || isLoading}>
+      <PreviewCard information={inputInformation} />
+      <PrimaryCreateBtn disabled={!(messageLength !== 1 && inputInformation.sender) || isLoading}>
         {isLoading ? <Loading /> : '생성하기'}
       </PrimaryCreateBtn>
       {active && modal}
