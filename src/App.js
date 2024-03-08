@@ -12,7 +12,7 @@ function App() {
           <Route path="list" element={<Page.RollingList />} />
           <Route path="post/:id/message" element={<Page.MessageCreate />} />
           <Route path="post/:recipientsId" element={<Page.Paper />} />
-          <Route path="*" element={<p>Page Not Found</p>} />
+          <Route path="*" element={<p>Page Not Found!</p>} />
         </Route>
       </Routes>
     </BrowserRouter>
