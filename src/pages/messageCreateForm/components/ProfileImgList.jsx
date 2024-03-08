@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import * as S from 'pages/messageCreateForm/components/ProfileImgList.style';
-
-import { requsetProfileImgData } from '../api';
 
 function ProfileImgList({ unsplashImageState, openModal, dispatch }) {
   // const [profileImgSrc, setProfileImgSrc] = useState([]);

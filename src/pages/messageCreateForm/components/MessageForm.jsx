@@ -81,9 +81,14 @@ function MessageForm() {
     unsplashFetchRequest({ url: GET_RANDOM_IMAGE(9) });
   }, []);
   useEffect(() => {
+    dispatch({
+      type: 'profileImageURL',
+      profileImageURL: unsplashImageState.data ? unsplashImageState.data[0].urls.thumb : '',
+    });
+  }, [unsplashImageState.data]);
+  useEffect(() => {
     dispatch({ type: 'profileImageURL', profileImageURL: selectedItem });
   }, [selectedItem]);
-  console.log(selectedItem);
 
   const backdrop = Portal.Backdrop(<Backdrop onCloseModal={handleCloseModal} />);
   const modal = Portal.Modal(<UnsplashModal onCloseModal={handleCloseModal} unsplashImageState={unsplashImageState} />);
