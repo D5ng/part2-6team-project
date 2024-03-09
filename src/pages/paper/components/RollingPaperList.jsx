@@ -57,8 +57,8 @@ function RollingPaperList() {
 
   return (
     <S.GridLayout className="column">
-      {modalState.isOpen && backdrop}
-      {modalState.isOpen && modal}
+      {/* {modalState.isOpen && backdrop}
+      {modalState.isOpen && modal} */}
       <S.CreatePaperArea className="filtered">
         <S.Button to={`/post/${paperState?.data?.id}/message`}>
           <PlusIcon />
