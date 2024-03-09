@@ -9,6 +9,13 @@ function ProfileImgList({ unsplashImageState, openModal, dispatch }) {
 
   return (
     <S.ProfileImgList>
+      <S.ListItem>
+        <S.ProfileImg
+          src="/images/form/defaultimg.svg"
+          alt="프로필 이미지"
+          onClick={handleProfileImgClick.bind(this, '/images/form/defaultimg.svg')}
+        />
+      </S.ListItem>
       {unsplashImageState.data
         ? unsplashImageState.data?.map((image) => (
             <S.ListItem key={image.id}>

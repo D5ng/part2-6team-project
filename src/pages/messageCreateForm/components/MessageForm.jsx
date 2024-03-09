@@ -79,12 +79,12 @@ function MessageForm() {
   const { state: unsplashImageState, fetchRequest: unsplashFetchRequest } = useDefaultBackgroundImage();
 
   useEffect(() => {
-    unsplashFetchRequest({ url: GET_RANDOM_IMAGE(9) });
+    unsplashFetchRequest({ url: GET_RANDOM_IMAGE(8) });
   }, []);
   useEffect(() => {
     dispatch({
       type: 'profileImageURL',
-      profileImageURL: unsplashImageState.data ? unsplashImageState.data[0].urls.thumb : '',
+      profileImageURL: '/images/form/defaultimg.svg',
     });
   }, [unsplashImageState.data]);
   useEffect(() => {

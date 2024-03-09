@@ -26,7 +26,7 @@ const After = css`
 // eslint-disable-next-line import/prefer-default-export
 export const SkeletonItem = styled.div`
   width: ${({ width }) => width}px;
-  aspect-ratio: 1/1;
+  height: ${({ width }) => width}px;
   background: var(--gray200);
   border-radius: 100px;
   ${SkeletonCss}
