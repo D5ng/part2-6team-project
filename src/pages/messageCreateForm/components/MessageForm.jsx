@@ -61,6 +61,7 @@ function MessageForm() {
     e.preventDefault();
     try {
       setIsLoading(true);
+      console.log(inputInformation);
       const requestState = await createMessage(params.id, inputInformation);
       errorHandling(requestState.ok, requestState.status, () => {
         navigate(`/post/${params.id}`);
@@ -83,7 +84,6 @@ function MessageForm() {
   useEffect(() => {
     dispatch({ type: 'profileImageURL', profileImageURL: selectedItem });
   }, [selectedItem]);
-  console.log(selectedItem);
 
   const backdrop = Portal.Backdrop(<Backdrop onCloseModal={handleCloseModal} />);
   const modal = Portal.Modal(<UnsplashModal onCloseModal={handleCloseModal} unsplashImageState={unsplashImageState} />);

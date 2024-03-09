@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as S from './PreviewCard.style';
 
 const BADGE_STYLE = {
@@ -29,6 +29,11 @@ const DATE = new Date();
 const TODAY = `${DATE.getFullYear()}.${DATE.getMonth() + 1}.${DATE.getDate()}`;
 function PreviewCard({ information }) {
   const { sender, relationship, content, font, profileImageURL } = information;
+  const messageBox = useRef(null);
+  useEffect(() => {
+    messageBox.current.innerHTML = content;
+  }, [content]);
+
   return (
     <S.Card>
       <S.SenderBox>
@@ -40,7 +45,7 @@ function PreviewCard({ information }) {
           <S.Badge style={BADGE_STYLE[relationship]}>{relationship}</S.Badge>
         </S.Wrap>
       </S.SenderBox>
-      <S.MessageBox font={FONT_STYLE[font]}>{content}</S.MessageBox>
+      <S.MessageBox ref={messageBox} font={FONT_STYLE[font]} />
       <S.CreateDate>{TODAY}</S.CreateDate>
     </S.Card>
   );
