@@ -25,6 +25,7 @@ import PreviewImg from './PreviewImg';
 import TextEditor from './TextEditor';
 import ProfileImgList from './ProfileImgList';
 import PreviewCard from './PreviewCard';
+import SkeletonProfileImg from './SkeletonPreviewImg';
 
 const reducer = (state, action) => {
   // eslint-disable-next-line default-case
@@ -106,7 +107,12 @@ function MessageForm() {
       <S.Wrapper>
         <S.InputTitle>프로필 이미지</S.InputTitle>
         <S.ProfileImgBox>
-          <PreviewImg currentImg={inputInformation.profileImageURL} />
+          {unsplashImageState.isLoading ? (
+            <SkeletonProfileImg width={80} />
+          ) : (
+            <PreviewImg currentImg={inputInformation.profileImageURL} />
+          )}
+
           <S.ProfileImgListWrap>
             <S.ProfileListTitle>프로필 이미지를 선택해주세요!</S.ProfileListTitle>
             <ProfileImgList unsplashImageState={unsplashImageState} openModal={handleOpenModal} dispatch={dispatch} />
