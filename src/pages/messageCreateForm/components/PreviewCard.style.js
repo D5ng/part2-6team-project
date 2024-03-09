@@ -1,9 +1,5 @@
 import styled from 'styled-components';
 import { device } from 'styles/breakpoints';
-import '@Font/NotoSansKR-Regular.woff2';
-import '@Font/NanumMyeongjo.woff2';
-import '@Font/NanumBaeEunHyeCe.woff2';
-import '@Font/Pretendard-Regular.subset.woff2';
 
 export const Card = styled.div`
   width: 384px;
