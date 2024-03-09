@@ -48,7 +48,7 @@ export const ProfileName = styled.div`
   }
 `;
 
-export const Text = styled.p`
+export const Text = styled.div`
   height: 117px;
   font-size: 18px;
   font-weight: 400;

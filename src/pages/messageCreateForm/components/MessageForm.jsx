@@ -1,7 +1,9 @@
+/* eslint-disable import/no-extraneous-dependencies */
 // React 관련 패키지
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useEffect, useReducer, useState, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { createPortal } from 'react-dom';
+import ReCAPTCHA from 'react-google-recaptcha';
+
 // 공통 컴포넌트
 import Input from '@Components/form/Input';
 import Dropdown from '@Components/form/Dropdown';
@@ -44,6 +46,7 @@ const reducer = (state, action) => {
 };
 
 function MessageForm() {
+  const recaptcha = useRef();
   const params = useParams();
   const navigate = useNavigate();
   const { selectedItem } = useUnsplashModalContext();
@@ -52,16 +55,23 @@ function MessageForm() {
     relationship: '친구',
     content: '',
     font: 'Noto Sans',
-    profileImageURL: '',
+    profileImageURL: '/images/form/defaultimg.svg',
   });
   const [messageLength, setMessageLength] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
+  const [isCapcha, setIsCapcha] = useState(null);
   const { modalState, handleOpenModal, handleCloseModal } = useModal();
+
+  const handleCapcha = () => {
+    const captchaValue = recaptcha.current?.getValue();
+    setIsCapcha(captchaValue);
+  };
 
   const submitForm = async (e) => {
     e.preventDefault();
     try {
       setIsLoading(true);
+      if (!isCapcha) return;
       const requestState = await createMessage(params.id, inputInformation);
       errorHandling(requestState.ok, requestState.status, () => {
         navigate(`/post/${params.id}`);
@@ -79,16 +89,13 @@ function MessageForm() {
   const { state: unsplashImageState, fetchRequest: unsplashFetchRequest } = useDefaultBackgroundImage();
 
   useEffect(() => {
-    unsplashFetchRequest({ url: GET_RANDOM_IMAGE(9) });
+    unsplashFetchRequest({ url: GET_RANDOM_IMAGE(8) });
   }, []);
+
   useEffect(() => {
-    dispatch({
-      type: 'profileImageURL',
-      profileImageURL: unsplashImageState.data ? unsplashImageState.data[0].urls.thumb : '',
-    });
-  }, [unsplashImageState.data]);
-  useEffect(() => {
-    dispatch({ type: 'profileImageURL', profileImageURL: selectedItem });
+    if (selectedItem) {
+      dispatch({ type: 'profileImageURL', profileImageURL: selectedItem });
+    }
   }, [selectedItem]);
 
   const backdrop = Portal.Backdrop(<Backdrop onCloseModal={handleCloseModal} />);
@@ -107,12 +114,7 @@ function MessageForm() {
       <S.Wrapper>
         <S.InputTitle>프로필 이미지</S.InputTitle>
         <S.ProfileImgBox>
-          {unsplashImageState.isLoading ? (
-            <SkeletonProfileImg width={80} />
-          ) : (
-            <PreviewImg currentImg={inputInformation.profileImageURL} />
-          )}
-
+          <PreviewImg currentImg={inputInformation.profileImageURL} />
           <S.ProfileImgListWrap>
             <S.ProfileListTitle>프로필 이미지를 선택해주세요!</S.ProfileListTitle>
             <ProfileImgList unsplashImageState={unsplashImageState} openModal={handleOpenModal} dispatch={dispatch} />
@@ -131,8 +133,12 @@ function MessageForm() {
         <S.InputTitle>폰트 선택</S.InputTitle>
         <Dropdown dispatch={dispatch} type="font" />
       </S.Wrapper>
-      <PreviewCard information={inputInformation} />
-      <PrimaryCreateBtn disabled={!(messageLength !== 1 && inputInformation.sender) || isLoading}>
+      <S.Wrapper>
+        <S.InputTitle>카드 미리보기</S.InputTitle>
+        <PreviewCard information={inputInformation} />
+      </S.Wrapper>
+      <ReCAPTCHA ref={recaptcha} onChange={handleCapcha} sitekey={process.env.REACT_APP_SITEKEY} />
+      <PrimaryCreateBtn disabled={!(messageLength !== 1 && inputInformation.sender) || isLoading || !isCapcha}>
         {isLoading ? <Loading /> : '생성하기'}
       </PrimaryCreateBtn>
     </S.Form>
