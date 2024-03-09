@@ -23,7 +23,7 @@ function ProfileImgList({ unsplashImageState, openModal, dispatch }) {
             .fill()
             .map((_, i) => (
               <S.ListItem key={i}>
-                <SkeletonProfileImg width={56} />
+                <SkeletonProfileImg />
               </S.ListItem>
             ))}
       <S.ListItem>
