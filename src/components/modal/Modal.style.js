@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { device } from 'styles/breakpoints';
+import { motion } from 'framer-motion';
 
 const fontsMapping = {
   Pretendard: 'Pretendard',
@@ -8,12 +9,21 @@ const fontsMapping = {
   NanumBaeEunHyeCe: 'NanumBaeEunHyeCe',
 };
 
-export const Container = styled.div`
-  padding: 40px;
+export const Animation = styled.div`
   position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+`;
+
+export const Container = styled(motion.div)`
+  position: relative;
+  padding: 40px;
   background-color: var(--white);
   display: flex;
   flex-direction: column;
@@ -21,12 +31,12 @@ export const Container = styled.div`
   height: 476px;
   border-radius: 16px;
   box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.1);
-  z-index: 100;
   @media ${device.mobile} {
     width: 80%;
     padding: 20px;
   }
 `;
+
 export const Info = styled.div`
   display: flex;
   align-items: center;
