@@ -13,7 +13,6 @@ export const Form = styled.form`
   }
 `;
 export const Wrapper = styled.div``;
-
 export const InputTitle = styled.h1`
   font-size: 24px;
   font-weight: 700;
