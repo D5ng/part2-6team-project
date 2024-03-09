@@ -3,6 +3,7 @@
   border-radius: 8px;
   overflow: hidden;
   height: 250px;
+  font: initial;
 }
 
 .ql-toolbar {
@@ -15,4 +16,11 @@
 
 .ql-container.ql-snow {
   height: 210px;
+}
+
+.quill strong {
+  font-weight: bold;
+}
+.quill em {
+  font-style: italic;
 }
