@@ -4,6 +4,7 @@ import LatestPaper from '@List/components/LatestPaper';
 import * as S from '@List/RollingList.style';
 import PrimaryLink from '@Components/ui/PrimaryLink';
 import { getPopularPapers, getRecentPapers } from '@List/api/api';
+import MetaTag from '@Pages/SEOMetaTag';
 import SkeletonList from './components/SkeletonUI';
 
 function RollingList() {
@@ -51,6 +52,8 @@ function RollingList() {
 
   return (
     <>
+      <MetaTag title="롤링 페이퍼 - 목록" description="다양한 롤링 페이퍼를 인기순, 최신순으로 구경해 보세요." />
+      
       <S.Section>
         <S.Wrapper>
           <S.Title>인기 롤링 페이퍼 🔥</S.Title>
@@ -66,7 +69,7 @@ function RollingList() {
       </S.Section>
 
       <S.LinkArea>
-        <PrimaryLink>나도 만들어보기</PrimaryLink>
+        <PrimaryLink url="/post">나도 만들어보기</PrimaryLink>
       </S.LinkArea>
     </>
   );

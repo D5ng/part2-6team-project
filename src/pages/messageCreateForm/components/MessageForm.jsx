@@ -25,6 +25,7 @@ import PreviewImg from './PreviewImg';
 import TextEditor from './TextEditor';
 import ProfileImgList from './ProfileImgList';
 import PreviewCard from './PreviewCard';
+import SkeletonProfileImg from './SkeletonPreviewImg';
 
 const reducer = (state, action) => {
   // eslint-disable-next-line default-case
@@ -51,7 +52,7 @@ function MessageForm() {
     relationship: '친구',
     content: '',
     font: 'Noto Sans',
-    profileImageURL: '',
+    profileImageURL: '/images/form/defaultimg.svg',
   });
   const [messageLength, setMessageLength] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -78,12 +79,14 @@ function MessageForm() {
   const { state: unsplashImageState, fetchRequest: unsplashFetchRequest } = useDefaultBackgroundImage();
 
   useEffect(() => {
-    unsplashFetchRequest({ url: GET_RANDOM_IMAGE(9) });
+    unsplashFetchRequest({ url: GET_RANDOM_IMAGE(8) });
   }, []);
+
   useEffect(() => {
-    dispatch({ type: 'profileImageURL', profileImageURL: selectedItem });
+    if (selectedItem) {
+      dispatch({ type: 'profileImageURL', profileImageURL: selectedItem });
+    }
   }, [selectedItem]);
-  console.log(selectedItem);
 
   const backdrop = Portal.Backdrop(<Backdrop onCloseModal={handleCloseModal} />);
   const modal = Portal.Modal(<UnsplashModal onCloseModal={handleCloseModal} unsplashImageState={unsplashImageState} />);
@@ -120,7 +123,10 @@ function MessageForm() {
         <S.InputTitle>폰트 선택</S.InputTitle>
         <Dropdown dispatch={dispatch} type="font" />
       </S.Wrapper>
-      <PreviewCard information={inputInformation} />
+      <S.Wrapper>
+        <S.InputTitle>카드 미리보기</S.InputTitle>
+        <PreviewCard information={inputInformation} />
+      </S.Wrapper>
       <PrimaryCreateBtn disabled={!(messageLength !== 1 && inputInformation.sender) || isLoading}>
         {isLoading ? <Loading /> : '생성하기'}
       </PrimaryCreateBtn>

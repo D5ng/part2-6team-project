@@ -9,6 +9,7 @@ const Primary = css`
   justify-content: center;
   align-items: center;
   outline: none;
+  z-index: 9999;
   &:focus {
     border: 2px solid var(--primary900);
     background: var(--primary800);
@@ -23,8 +24,20 @@ export const PrimaryLink = styled(Link)`
   border-radius: 12px;
   margin-left: auto;
   margin-right: auto;
+  &:active {
+    background: var(--primary800);
+  }
   @media ${device.tablet} {
-    width: 100%;
+    position: fixed;
+    bottom: 24px;
+    left: 20px;
+    width: calc(100% - 40px);
+  }
+  @media ${device.mobile} {
+    position: fixed;
+    bottom: 24px;
+    left: 20px;
+    width: calc(100% - 40px);
   }
 `;
 

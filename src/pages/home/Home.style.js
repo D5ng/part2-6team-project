@@ -7,7 +7,7 @@ export const Section = styled.section`
 
   & + & {
     margin-top: 30px;
-  }
+      }
 
   @media ${device.tablet} {
     padding: 0 24px;
@@ -140,5 +140,14 @@ export const EmojiWrapper = styled(Wrapper)`
     ${Title} br {
       display: block;
     }
+  }
+`;
+
+export const LinkArea = styled.div`
+  text-align: center;
+  margin-top: 64px;
+
+  @media ${device.tablet} {
+    padding: 0 24px;
   }
 `;
