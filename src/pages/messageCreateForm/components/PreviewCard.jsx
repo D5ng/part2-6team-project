@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as S from './PreviewCard.style';
 
 const BADGE_STYLE = {
@@ -29,13 +29,25 @@ const DATE = new Date();
 const TODAY = `${DATE.getFullYear()}.${DATE.getMonth() + 1}.${DATE.getDate()}`;
 function PreviewCard({ information }) {
   const { sender, relationship, content, font, profileImageURL } = information;
+  const [isVisible, setIsVisible] = useState(false);
   const messageBox = useRef(null);
+  const card = useRef(null);
   useEffect(() => {
     messageBox.current.innerHTML = content;
   }, [content]);
-
+  useEffect(() => {
+    const io = new IntersectionObserver(
+      (entries, obseve) => {
+        setIsVisible(entries[0].isIntersecting);
+      },
+      {
+        threshold: 0.6,
+      },
+    );
+    io.observe(card.current);
+  }, []);
   return (
-    <S.Card>
+    <S.Card ref={card} visible={isVisible}>
       <S.SenderBox>
         <S.ProfileImg src={profileImageURL} />
         <S.Wrap>

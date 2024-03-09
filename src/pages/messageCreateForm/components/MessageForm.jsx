@@ -61,7 +61,6 @@ function MessageForm() {
     e.preventDefault();
     try {
       setIsLoading(true);
-      console.log(inputInformation);
       const requestState = await createMessage(params.id, inputInformation);
       errorHandling(requestState.ok, requestState.status, () => {
         navigate(`/post/${params.id}`);
@@ -120,7 +119,10 @@ function MessageForm() {
         <S.InputTitle>폰트 선택</S.InputTitle>
         <Dropdown dispatch={dispatch} type="font" />
       </S.Wrapper>
-      <PreviewCard information={inputInformation} />
+      <S.Wrapper>
+        <S.InputTitle>카드 미리보기</S.InputTitle>
+        <PreviewCard information={inputInformation} />
+      </S.Wrapper>
       <PrimaryCreateBtn disabled={!(messageLength !== 1 && inputInformation.sender) || isLoading}>
         {isLoading ? <Loading /> : '생성하기'}
       </PrimaryCreateBtn>

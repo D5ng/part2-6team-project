@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { device } from 'styles/breakpoints';
 
 const ReactQuillCss = css`
@@ -15,7 +15,16 @@ const ReactQuillCss = css`
     text-align: right;
   }
 `;
-
+const CardShow = keyframes`
+  0%{
+    opacity : 0;
+    transform : translateY(-50px);
+  }
+  100%{
+    opacity : 1;
+    transform : translateY(0);
+  }
+`;
 export const Card = styled.div`
   width: 384px;
   height: 280px;
@@ -25,6 +34,12 @@ export const Card = styled.div`
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   margin: auto;
   position: relative;
+  visibility: ${({ visible }) => (visible ? 'visible' : 'hidden')};
+  ${({ visible }) =>
+    visible &&
+    css`
+      animation: ${CardShow} 1s;
+    `}
   @media ${device.tablet} {
     width: 352px;
     height: 284px;
