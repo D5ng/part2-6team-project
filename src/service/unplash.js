@@ -1,4 +1,4 @@
-import { IMAGES_URL, TEAM, UNSPLASH_TOKEN } from 'config';
+import { IMAGES_URL, UNSPLASH_TOKEN } from 'config';
 import { sendRequest } from 'utils/request-util';
 
 export const GET_POPULAR_IMAGE = (pageNumber) =>
