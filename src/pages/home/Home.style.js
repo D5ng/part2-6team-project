@@ -7,7 +7,7 @@ export const Section = styled.section`
 
   & + & {
     margin-top: 30px;
-  }
+      }
 
   @media ${device.tablet} {
     padding: 0 24px;
