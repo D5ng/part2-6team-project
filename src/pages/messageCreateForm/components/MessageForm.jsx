@@ -52,7 +52,7 @@ function MessageForm() {
     relationship: '친구',
     content: '',
     font: 'Noto Sans',
-    profileImageURL: '',
+    profileImageURL: '/images/form/defaultimg.svg',
   });
   const [messageLength, setMessageLength] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
@@ -79,16 +79,13 @@ function MessageForm() {
   const { state: unsplashImageState, fetchRequest: unsplashFetchRequest } = useDefaultBackgroundImage();
 
   useEffect(() => {
-    unsplashFetchRequest({ url: GET_RANDOM_IMAGE(9) });
+    unsplashFetchRequest({ url: GET_RANDOM_IMAGE(8) });
   }, []);
+
   useEffect(() => {
-    dispatch({
-      type: 'profileImageURL',
-      profileImageURL: unsplashImageState.data ? unsplashImageState.data[0].urls.thumb : '',
-    });
-  }, [unsplashImageState.data]);
-  useEffect(() => {
-    dispatch({ type: 'profileImageURL', profileImageURL: selectedItem });
+    if (selectedItem) {
+      dispatch({ type: 'profileImageURL', profileImageURL: selectedItem });
+    }
   }, [selectedItem]);
 
   const backdrop = Portal.Backdrop(<Backdrop onCloseModal={handleCloseModal} />);
@@ -107,12 +104,7 @@ function MessageForm() {
       <S.Wrapper>
         <S.InputTitle>프로필 이미지</S.InputTitle>
         <S.ProfileImgBox>
-          {unsplashImageState.isLoading ? (
-            <SkeletonProfileImg width={80} />
-          ) : (
-            <PreviewImg currentImg={inputInformation.profileImageURL} />
-          )}
-
+          <PreviewImg currentImg={inputInformation.profileImageURL} />
           <S.ProfileImgListWrap>
             <S.ProfileListTitle>프로필 이미지를 선택해주세요!</S.ProfileListTitle>
             <ProfileImgList unsplashImageState={unsplashImageState} openModal={handleOpenModal} dispatch={dispatch} />
