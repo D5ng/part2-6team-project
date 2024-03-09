@@ -25,8 +25,8 @@ const After = css`
 `;
 // eslint-disable-next-line import/prefer-default-export
 export const SkeletonItem = styled.div`
-  width: ${({ width }) => width}px;
-  height: ${({ width }) => width}px;
+  width: 56px;
+  height: 56px;
   background: var(--gray200);
   border-radius: 100px;
   ${SkeletonCss}
