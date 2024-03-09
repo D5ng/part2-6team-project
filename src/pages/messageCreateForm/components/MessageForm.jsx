@@ -25,6 +25,7 @@ import PreviewImg from './PreviewImg';
 import TextEditor from './TextEditor';
 import ProfileImgList from './ProfileImgList';
 import PreviewCard from './PreviewCard';
+import SkeletonProfileImg from './SkeletonPreviewImg';
 
 const reducer = (state, action) => {
   // eslint-disable-next-line default-case
@@ -81,9 +82,14 @@ function MessageForm() {
     unsplashFetchRequest({ url: GET_RANDOM_IMAGE(9) });
   }, []);
   useEffect(() => {
+    dispatch({
+      type: 'profileImageURL',
+      profileImageURL: unsplashImageState.data ? unsplashImageState.data[0].urls.thumb : '',
+    });
+  }, [unsplashImageState.data]);
+  useEffect(() => {
     dispatch({ type: 'profileImageURL', profileImageURL: selectedItem });
   }, [selectedItem]);
-  console.log(selectedItem);
 
   const backdrop = Portal.Backdrop(<Backdrop onCloseModal={handleCloseModal} />);
   const modal = Portal.Modal(<UnsplashModal onCloseModal={handleCloseModal} unsplashImageState={unsplashImageState} />);
@@ -101,7 +107,12 @@ function MessageForm() {
       <S.Wrapper>
         <S.InputTitle>프로필 이미지</S.InputTitle>
         <S.ProfileImgBox>
-          <PreviewImg currentImg={inputInformation.profileImageURL} />
+          {unsplashImageState.isLoading ? (
+            <SkeletonProfileImg width={80} />
+          ) : (
+            <PreviewImg currentImg={inputInformation.profileImageURL} />
+          )}
+
           <S.ProfileImgListWrap>
             <S.ProfileListTitle>프로필 이미지를 선택해주세요!</S.ProfileListTitle>
             <ProfileImgList unsplashImageState={unsplashImageState} openModal={handleOpenModal} dispatch={dispatch} />

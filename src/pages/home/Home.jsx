@@ -1,10 +1,12 @@
 import React from 'react';
 import * as S from 'pages/home/Home.style';
 import PrimaryLink from '@Components/ui/PrimaryLink';
+import MetaTag from '@Pages/SEOMetaTag';
 
 function Home() {
   return (
     <>
+      <MetaTag title="롤링 페이퍼" description="롤링 페이퍼를 작성해 친구들에게 공유 해보세요." />
       <S.Section>
         <S.Wrapper>
           <div>
