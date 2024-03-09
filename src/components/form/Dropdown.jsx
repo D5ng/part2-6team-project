@@ -34,7 +34,6 @@ function Dropdown({ disabled, type, dispatch }) {
   const Default = type === 'relation' ? OPTION_LISTS[0] : FONT_OPTION_LIST[0];
   const [isdrop, setIsdrop] = useState(false);
   const [selected, setSelected] = useState(Default);
-  // const { dispatch } = useMessageFormContext();
   const handleDropdownClick = () => {
     setIsdrop(!isdrop);
   };
