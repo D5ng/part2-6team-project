@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { useEffect, useReducer, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as S from '@Form/components/FormSubmitter.style';
 import { useFormContext } from '@Form/context/FormContext';
@@ -21,7 +21,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 function FormSubmitter() {
   const recaptcha = useRef();
   const navigate = useNavigate();
-  const { handleLoadPapersInfo, papersInfo, selectedBtn, unsplashImageState } = useFormContext();
+  const { selectedBtn, unsplashImageState } = useFormContext();
   const { selectedItem } = useUnsplashModalContext();
   const [isSubmitting, submittingError, onSubmitAsync] = useAsync(createPaper);
   const { modalState, handleOpenModal, handleCloseModal } = useModal();
@@ -29,15 +29,13 @@ function FormSubmitter() {
   const { state: nameState, hasError, handleChange: handleChangeName, handleBlur: handleBlurName } = useInput();
   const errorMessage = hasError && '이름을 입력해주세요 🙏';
 
-
-  const [isCapcha, setIsCapcha] = useState(null)
+  const [isCapcha, setIsCapcha] = useState(null);
 
   const handleCapcha = () => {
     const captchaValue = recaptcha.current?.getValue();
-    setIsCapcha(captchaValue)
-  }
-  
-  
+    setIsCapcha(captchaValue);
+  };
+
   const handleCreatePaper = async (e) => {
     e.preventDefault();
     if (isSubmitting || nameState.value === '' || !isCapcha) return;
@@ -74,10 +72,7 @@ function FormSubmitter() {
 
       <ReCAPTCHA ref={recaptcha} onChange={handleCapcha} sitekey={process.env.REACT_APP_SITEKEY} />
 
-      <PrimaryCreateBtn
-        onClick={handleCreatePaper}
-        disabled={nameState.value === '' || errorMessage || !isCapcha}
-      >
+      <PrimaryCreateBtn onClick={handleCreatePaper} disabled={nameState.value === '' || errorMessage || !isCapcha}>
         {isSubmitting ? <Loading /> : '생성하기'}
       </PrimaryCreateBtn>
     </S.Wrapper>
