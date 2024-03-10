@@ -153,3 +153,12 @@ export const EmojiWrapper = styled(Wrapper)`
     }
   }
 `;
+
+export const LinkArea = styled(motion.div)`
+  text-align: center;
+  margin-top: 64px;
+
+  @media ${device.tablet} {
+    padding: 0 24px;
+  }
+`;

@@ -29,13 +29,14 @@ export const StyledSlide = styled(SwiperSlide)`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-right: 20px;
 
   @media ${device.tablet} {
+    margin-right: 0;
     margin-left: 20px;
   }
 
   @media ${device.mobile} {
-    width: 208px;
     margin-left: 12px;
   }
 `;

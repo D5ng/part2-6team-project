@@ -1,10 +1,30 @@
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { device } from 'styles/breakpoints';
-import '@Font/NotoSansKR-Regular.woff2';
-import '@Font/NanumMyeongjo.woff2';
-import '@Font/NanumBaeEunHyeCe.woff2';
-import '@Font/Pretendard-Regular.subset.woff2';
 
+const ReactQuillCss = css`
+  strong {
+    font-weight: bold;
+  }
+  em {
+    font-style: italic;
+  }
+  .ql-align-center {
+    text-align: center;
+  }
+  .ql-align-right {
+    text-align: right;
+  }
+`;
+const CardShow = keyframes`
+  0%{
+    opacity : 0;
+    transform : translateY(-50px);
+  }
+  100%{
+    opacity : 1;
+    transform : translateY(0);
+  }
+`;
 export const Card = styled.div`
   width: 384px;
   height: 280px;
@@ -14,12 +34,19 @@ export const Card = styled.div`
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   margin: auto;
   position: relative;
+  visibility: ${({ visible }) => (visible ? 'visible' : 'hidden')};
+  ${({ visible }) =>
+    visible &&
+    css`
+      animation: ${CardShow} 1s;
+    `}
   @media ${device.tablet} {
     width: 352px;
     height: 284px;
   }
   @media ${device.mobile} {
-    width: 320px;
+    width: 100%;
+    max-width: 320px;
     height: 230px;
   }
 `;
@@ -32,15 +59,16 @@ export const SenderBox = styled.div`
 `;
 
 export const MessageBox = styled.div`
-  font-size: ${({ font }) => (font === 'NanumBaeEunHyeCe' ? '24px' : '18px')};
+  font-size: ${({ font }) => (font === 'NanumBaeEunHyeCe' ? '28px' : '18px')};
   color: var(--gray600);
   font-family: ${({ font }) => `${font}`};
-  padding-top: 16px;
+  padding-top: 8px;
   white-space: normal;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  ${ReactQuillCss}
   @media ${device.mobile} {
     font-size: 14px;
   }

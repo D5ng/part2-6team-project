@@ -9,6 +9,7 @@ const Primary = css`
   justify-content: center;
   align-items: center;
   outline: none;
+  z-index: 9999;
   &:focus {
     border: 2px solid var(--primary900);
     background: var(--primary800);
@@ -32,8 +33,20 @@ export const PrimaryLink = styled(Link)`
     background: var(--primary800);
   }
 
+  &:active {
+    background: var(--primary800);
+  }
   @media ${device.tablet} {
-    width: 100%;
+    position: fixed;
+    bottom: 24px;
+    left: 20px;
+    width: calc(100% - 40px);
+  }
+  @media ${device.mobile} {
+    position: fixed;
+    bottom: 24px;
+    left: 20px;
+    width: calc(100% - 40px);
   }
 `;
 
@@ -44,6 +57,7 @@ export const PrimaryCreateBtn = styled.button`
   font-size: 18px;
   border-radius: 12px;
   position: relative;
+  z-index: 0;
   &:active {
     background: var(--primary800);
   }

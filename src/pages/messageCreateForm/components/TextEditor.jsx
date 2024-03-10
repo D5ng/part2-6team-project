@@ -4,17 +4,15 @@ import './TextEditor.css';
 import 'react-quill/dist/quill.snow.css';
 
 const modules = {
-  toolbar: [['bold', 'italic', 'underline'], [{ align: [] }, { color: [] }], ['clean']],
+  toolbar: [['bold', 'italic', 'underline'], [{ color: [] }], ['clean']],
 };
 
-const formats = ['bold', 'italic', 'underline', 'bullet', 'indent', 'align', 'color'];
+const formats = ['bold', 'italic', 'underline', 'bullet', 'indent', 'color'];
 
 function TextEditor({ messageLength, dispatch }) {
   const handleOnChange = (content, delta, source, editor) => {
-    const allText = editor.getContents();
-    const text = allText.ops.map((messages) => messages.insert).join('\n');
     messageLength(editor.getLength());
-    dispatch({ type: 'content', content: text });
+    dispatch({ type: 'content', content });
   };
 
   return <ReactQuill theme="snow" modules={modules} formats={formats} onChange={handleOnChange} />;

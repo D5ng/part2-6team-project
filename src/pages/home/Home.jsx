@@ -1,9 +1,12 @@
 import React from 'react';
 import * as S from 'pages/home/Home.style';
+import PrimaryLink from '@Components/ui/PrimaryLink';
+import MetaTag from '@Pages/SEOMetaTag';
 
 function Home() {
   return (
     <>
+      <MetaTag title="롤링 페이퍼" description="롤링 페이퍼를 작성해 친구들에게 공유 해보세요." />
       <S.Section
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -57,7 +60,7 @@ function Home() {
         </S.EmojiWrapper>
       </S.Section>
 
-      <S.MotionWrapper
+      <S.LinkArea
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{
@@ -67,8 +70,8 @@ function Home() {
           staggerChildren: 0.5,
         }}
       >
-        <S.StyleButton to="/list">구경해보기</S.StyleButton>
-      </S.MotionWrapper>
+        <PrimaryLink url="/list">구경해보기</PrimaryLink>
+      </S.LinkArea>
     </>
   );
 }
