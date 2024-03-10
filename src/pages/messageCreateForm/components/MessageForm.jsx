@@ -25,6 +25,7 @@ import * as S from './MessageForm.style';
 // 현재 페이지에서만 사용하는 컴포넌트
 import PreviewImg from './PreviewImg';
 import TextEditor from './TextEditor';
+// eslint-disable-next-line import/no-cycle
 import ProfileImgList from './ProfileImgList';
 import PreviewCard from './PreviewCard';
 import SkeletonProfileImg from './SkeletonPreviewImg';
