@@ -60,7 +60,7 @@
 2. Swiper : 슬라이드를 쉽게 구현해주는 라이브러리
 3. React-Emoji-Picker : 완성된 이모지창을 제공하는 라이브러리
 4. React-Google-Recaptcha : 비정상적인 사용자 여부를 판단해주는 라이브러리
-5. React-Helmet-Async : 
+5. React-Helmet-Async : 상단 페이지 탭 쪽에 현재 페이지의 이름을 띄워주는 라이브러리
 
 
 # 🗂️ 폴더 구조
