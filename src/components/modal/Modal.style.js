@@ -9,7 +9,7 @@ const fontsMapping = {
   NanumBaeEunHyeCe: 'NanumBaeEunHyeCe',
 };
 
-export const Animation = styled.div`
+export const Backdrop = styled.div`
   position: fixed;
   left: 0;
   top: 0;
@@ -19,10 +19,10 @@ export const Animation = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 100;
+  background: rgba(0, 0, 0, 0.5);
 `;
 
 export const Container = styled(motion.div)`
-  position: relative;
   padding: 40px;
   background-color: var(--white);
   display: flex;
@@ -89,12 +89,14 @@ export const CreatAt = styled.span`
     right: 40px;
   }
 `;
+
 export const Contents = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
 `;
+
 export const TextBox = styled.div`
   width: 100%;
   padding: 16px 20px 0px 0px;
@@ -118,7 +120,6 @@ export const TextBox = styled.div`
   }
 `;
 export const Button = styled.button`
-  margin-top: 24px;
   width: 120px;
   color: var(--white);
   padding: 7px 16px;
@@ -128,4 +129,37 @@ export const Button = styled.button`
   font-weight: 400;
   line-height: 26px;
   background: var(--primary600);
+  transition: 0.3s cubic-bezier(0.67, 0.07, 0.34, 0.98);
+
+  &:hover {
+    background: var(--primary800);
+  }
+`;
+
+export const EditButton = styled(Button)`
+  border: 1px solid var(--primary600);
+  background: var(--white);
+  color: var(--primary600);
+
+  &:hover {
+    background: var(--primary100);
+  }
+`;
+
+export const DeleteButton = styled(Button)`
+  background: var(--error);
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  &:hover {
+    background: var(--error500);
+  }
+`;
+
+export const Buttons = styled.div`
+  margin-top: 24px;
+  display: flex;
+  gap: 10px;
+  position: relative;
 `;

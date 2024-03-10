@@ -41,23 +41,6 @@ function FormSubmitter() {
     }
   };
 
-  // const handleDuplicateName = () => {
-  //   if (papersInfo.includes(nameState.value)) {
-  //     setErrorMessage('중복된 이름입니다');
-  //   } else {
-  //     setErrorMessage('');
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   handleLoadImages();
-  //   handleLoadPapersInfo();
-  // }, []);
-
-  // useEffect(() => {
-  //   handleDuplicateName();
-  // }, [name, papersInfo]);
-
   const backdrop = Portal.Backdrop(<Backdrop onCloseModal={handleCloseModal} />);
   const modal = Portal.Modal(<UnsplashModal onCloseModal={handleCloseModal} unsplashImageState={unsplashImageState} />);
 

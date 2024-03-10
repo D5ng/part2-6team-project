@@ -121,23 +121,10 @@ export const StyleButton = styled(Link)`
   position: relative;
   overflow: hidden;
   z-index: 3;
+  transition: 0.3s cubic-bezier(0.67, 0.07, 0.34, 0.98);
 
-  &:before {
-    content: '';
-    position: absolute;
-    height: 100%;
-    width: 0;
-    background-color: var(--primary800);
-    left: 0;
-    top: 0;
-    transition: 0.7s cubic-bezier(0.67, 0.07, 0.34, 0.98);
-    transform: skew(10deg);
-    z-index: -1;
-  }
-
-  &:hover:before {
-    width: 100%;
-    transform: skew(0deg);
+  &:hover {
+    background: var(--primary800);
   }
 
   @media ${device.tablet} {

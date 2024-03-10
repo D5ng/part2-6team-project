@@ -47,14 +47,3 @@ export const Button = styled(Link)`
 export const ObserverTarget = styled.div`
   margin: 24px 0 0 0;
 `;
-
-export const Animation = styled.div`
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;

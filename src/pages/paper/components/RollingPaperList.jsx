@@ -4,11 +4,9 @@ import * as S from '@Paper/components/RollingPaperList.style';
 import PlusIcon from '@Components/ui/PlusIcon';
 import { PaperContext } from '@Paper/context/PaperContext';
 import Modal from '@Components/modal/Modal';
-import { createPortal } from 'react-dom';
-import Backdrop from '@Components/modal/Backdrop';
 import useIntersectionObserver from 'hooks/useIntersectionObserver';
 import Sortable from 'sortablejs';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import * as Portal from '@Components/portal';
 import RollingPaperItem from './RollingPaperItem';
 import Skeleton from './Skeleton';
@@ -23,10 +21,6 @@ function RollingPaperList() {
 
   const [selectedMessage, setSelectedMessage] = useState(null);
   const handleSelectedMessage = (messageId) => setSelectedMessage(messageId);
-
-  const backdrop = Portal.Backdrop(
-    <Backdrop onCloseModal={handleCloseModal} onSelectedMessage={handleSelectedMessage} />,
-  );
 
   const modal = Portal.Modal(
     <Modal
@@ -78,10 +72,8 @@ function RollingPaperList() {
     <S.GridLayout className="column">
       <AnimatePresence>
         {selectedMessage && (
-          <>
-            {backdrop}
-            {modal}
-          </>
+          // eslint-disable-next-line react/jsx-no-useless-fragment
+          <>{modal}</>
         )}
       </AnimatePresence>
 
