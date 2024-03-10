@@ -1,5 +1,5 @@
 /* eslint-disable no-new */
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import * as S from '@Paper/components/RollingPaperList.style';
 import PlusIcon from '@Components/ui/PlusIcon';
 import { PaperContext } from '@Paper/context/PaperContext';
@@ -20,16 +20,8 @@ function RollingPaperList() {
   } = useContext(PaperContext);
 
   const [selectedMessage, setSelectedMessage] = useState(null);
-  const handleSelectedMessage = (messageId) => setSelectedMessage(messageId);
 
-  const modal = Portal.Modal(
-    <Modal
-      onCloseModal={handleCloseModal}
-      modalData={modalState.data}
-      layoutId={selectedMessage}
-      onSelectedMessage={handleSelectedMessage}
-    />,
-  );
+  const handleSelectedMessage = (messageId) => setSelectedMessage(messageId);
 
   const onIntersect = async (entry, observer) => {
     observer.unobserve(entry.target);
@@ -68,6 +60,14 @@ function RollingPaperList() {
     });
   });
 
+  const modal = Portal.Modal(
+    <Modal
+      onCloseModal={handleCloseModal}
+      modalData={modalState.data}
+      layoutId={selectedMessage}
+      onSelectedMessage={handleSelectedMessage}
+    />,
+  );
   return (
     <S.GridLayout className="column">
       <AnimatePresence>

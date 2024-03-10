@@ -1,14 +1,25 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import * as S from '@Components/modal/Modal.style';
 import BadgeRelationship from '@Components/ui/BadgeRelationship';
 import formatDate from 'utils/format';
 import useKeyEvent from 'hooks/useKeyEvent';
+import { createPortal } from 'react-dom';
+import { PaperContext } from '@Pages/paper/context/PaperContext';
+import DeleteModal from './DeleteModal';
 
 function Modal({ onCloseModal, modalData, layoutId, onSelectedMessage }) {
   const { sender, content, createdAt, profileImageURL, relationship, fonts } = modalData;
+  const { paperState } = useContext(PaperContext);
+  const [active, setActive] = useState(false);
   useKeyEvent((key) => (key === 'Escape' || key === 'Enter') && onCloseModal());
-
   const backdropRef = useRef(null);
+
+  const handleOpenModal = () => setActive(true);
+  const handleCloseModal = () => setActive(false);
+  const modal = createPortal(
+    <DeleteModal onCloseModal={handleCloseModal} paperState={paperState} modalData={modalData} />,
+    document.getElementById('modal-root'),
+  );
 
   const onClick = () => onSelectedMessage(null);
 
@@ -23,6 +34,7 @@ function Modal({ onCloseModal, modalData, layoutId, onSelectedMessage }) {
 
   return (
     <S.Backdrop ref={backdropRef}>
+      {active && modal}
       <S.Container
         layoutId={layoutId}
         transition={{
@@ -49,7 +61,7 @@ function Modal({ onCloseModal, modalData, layoutId, onSelectedMessage }) {
         <S.Buttons>
           <S.Button onClick={onClick}>확인</S.Button>
           <S.EditButton>수정 할래요</S.EditButton>
-          <S.DeleteButton>삭제 할래요</S.DeleteButton>
+          <S.DeleteButton onClick={handleOpenModal}>삭제 할래요</S.DeleteButton>
         </S.Buttons>
       </S.Container>
     </S.Backdrop>
