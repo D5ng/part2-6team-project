@@ -26,14 +26,43 @@ function KakaoShareButton() {
     window.Kakao.Link.sendDefault({
       objectType: 'feed',
       content: {
-        title: '카카오톡 공유하기 테스트',
-        description: '카카오톡 공유하기 테스트입니다.',
+        title: 'Rolling Paper',
+        description: '롤링 페이퍼를 작성해 보세요!!😊',
         imageUrl: LOGO_ICON_PATH,
         link: {
           mobileWebUrl: window.location.href,
           webUrl: window.location.href,
         },
       },
+      social: {
+        likeCount: 999,
+        commentCount: 999,
+        sharedCount: 999,
+      },
+      buttons: [
+        {
+          title: '구경해보기',
+          link: {
+            mobileWebUrl: window.location.href,
+            webUrl: window.location.href,
+          },
+        },
+        // {
+        //   title: '나도 하나 써주기',
+        //   link: {
+        //     mobileWebUrl: `${window.location.href}/message`,
+        //     webUrl: `${window.location.href}/message`,
+        //   },
+        // },
+        // {
+        //   title: '나도 롤링페이퍼 만들기',
+        //   link: {
+        //     mobileWebUrl: 'https://part2-6team-project.vercel.app/post',
+        //     webUrl: 'https://part2-6team-project.vercel.app/post',
+        //   },
+        // },
+      ],
+      installTalk: true,
     });
   };
 
