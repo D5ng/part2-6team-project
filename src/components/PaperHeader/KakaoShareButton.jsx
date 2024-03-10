@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import * as S from '@Components/ui/OutlinedComponent.style';
-import { KAKAO_SDK_URL, KAKAO_APP_KEY } from '@Components/PaperHeader/constant';
+import { KAKAO_SDK_URL, KAKAO_APP_KEY, LOGO_ICON_PATH } from '@Components/PaperHeader/constant';
 
 function KakaoShareButton() {
   useEffect(() => {
@@ -28,7 +28,7 @@ function KakaoShareButton() {
       content: {
         title: 'Rolling Paper',
         description: '롤링 페이퍼를 작성해 보세요!!😊',
-        imageUrl: '/images/icons/logo.svg',
+        imageUrl: LOGO_ICON_PATH,
         link: {
           mobileWebUrl: window.location.href,
           webUrl: window.location.href,
@@ -47,20 +47,20 @@ function KakaoShareButton() {
             webUrl: window.location.href,
           },
         },
-        {
-          title: '나도 하나 써주기',
-          link: {
-            mobileWebUrl: `${window.location.href}/message`,
-            webUrl: `${window.location.href}/message`,
-          },
-        },
-        {
-          title: '나도 롤링페이퍼 만들기',
-          link: {
-            mobileWebUrl: 'https://part2-6team-project.vercel.app/post',
-            webUrl: 'https://part2-6team-project.vercel.app/post',
-          },
-        },
+        // {
+        //   title: '나도 하나 써주기',
+        //   link: {
+        //     mobileWebUrl: `${window.location.href}/message`,
+        //     webUrl: `${window.location.href}/message`,
+        //   },
+        // },
+        // {
+        //   title: '나도 롤링페이퍼 만들기',
+        //   link: {
+        //     mobileWebUrl: 'https://part2-6team-project.vercel.app/post',
+        //     webUrl: 'https://part2-6team-project.vercel.app/post',
+        //   },
+        // },
       ],
       installTalk: true,
     });
