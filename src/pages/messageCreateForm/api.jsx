@@ -1,7 +1,6 @@
 const BASE_URL_PATH = 'https://rolling-api.vercel.app/';
 
 const ERROR_STATUS_CODE_MESSAGE = {
-  400: '잘못된 요청입니다. 다시 시도해주세요.',
   404: '해당 페이지, 유저를 찾을 수 없습니다.',
   500: '서버에 문제가 발생했습니다. 잠시후 다시 시도해주세요.',
 };
