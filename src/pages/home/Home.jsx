@@ -9,10 +9,10 @@ function Home() {
       <MetaTag title="롤링 페이퍼" description="롤링 페이퍼를 작성해 친구들에게 공유 해보세요." />
       <S.Section
         initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{
           ease: [0.67, 0.07, 0.34, 0.98],
           duration: 0.7,
-          staggerChildren: 0.5,
         }}
       >
         <S.Wrapper>
@@ -34,11 +34,11 @@ function Home() {
 
       <S.Section
         initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{
           ease: [0.67, 0.07, 0.34, 0.98],
           delay: 0.4,
           duration: 0.7,
-          staggerChildren: 0.5,
         }}
       >
         <S.EmojiWrapper>
@@ -58,16 +58,7 @@ function Home() {
         </S.EmojiWrapper>
       </S.Section>
 
-      <S.LinkArea
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          ease: [0.67, 0.07, 0.34, 0.98],
-          delay: 0.8,
-          duration: 0.7,
-          staggerChildren: 0.5,
-        }}
-      >
+      <S.LinkArea>
         <PrimaryLink url="/list">구경해보기</PrimaryLink>
       </S.LinkArea>
     </>

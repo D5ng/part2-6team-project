@@ -154,7 +154,7 @@ export const EmojiWrapper = styled(Wrapper)`
   }
 `;
 
-export const LinkArea = styled(motion.div)`
+export const LinkArea = styled.div`
   text-align: center;
   margin-top: 64px;
 
