@@ -9,12 +9,14 @@ const httpReducerMapping = {
     isLoading: false,
   }),
   ERROR: (state, action) => ({ ...state, isLoading: false, hasError: action.message }),
+  DELETE: (state, action) => ({ ...state, data: { ...state.data, results: [...action.data] }}),
 };
 
 export const httpActionType = {
   PENDING: 'PENDING',
   SUCCESS: 'SUCCESS',
   ERROR: 'ERROR',
+  DELETE: 'DELETE',
 };
 
 export const httpReducer = (state, action) => httpReducerMapping[action.type](state, action) || state;
