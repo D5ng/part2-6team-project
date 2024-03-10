@@ -8,7 +8,7 @@ export const BadgeContainer = styled.div`
 
 export const BadgeItem = styled.span`
   border-radius: 4px;
-  padding: 0px 8px;
+  text-align: center;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
