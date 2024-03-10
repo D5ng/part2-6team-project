@@ -56,17 +56,34 @@
 </p>
 
 ### 라이브러리
-1. React-Quill :
-2. Swiper :
-3. React-Emoji-Picker :
-4. React-Google-Recaptcha :
+1. React-Quill : textEditor를 페이지에 쉽게 추가하고 입력 내용을 얻을 수 있는 기능을 제공하는 라이브러리
+2. Swiper : 슬라이드를 쉽게 구현해주는 라이브러리
+3. React-Emoji-Picker : 완성된 이모지창을 제공하는 라이브러리
+4. React-Google-Recaptcha : 비정상적인 사용자 여부를 판단해주는 라이브러리
 5. React-Helmet-Async : 
 
 
 # 🗂️ 폴더 구조
+<br/>
 
 
++ public폴더
+   + images : 페이지에 고정적인 이미지들을 담는 폴더
+   + font :  페이지에 사용되는 폰트 정보를 담는 폴더
+<br/>
 
++ src폴더
+   + components : 각 페이지에 사용된 공통된 컴포넌트를 담는 폴더
+   + hooks : 각 페이지에 사용된 커스텀 훅을 담는 폴더
+   + pages : 각 페이지를 담는 폴더
+   + reducer : 데이터를 전역적으로 관리하기 위한 폴더
+   + service :
+   + styles : 전역적인 styled가 담긴 폴더
+   + utils : 자주 사용되는 로직을 담는 폴더
+  
+  
+
+<br/>
 
 
 
