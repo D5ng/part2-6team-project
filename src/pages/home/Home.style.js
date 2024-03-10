@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { device } from 'styles/breakpoints';
+import { motion } from 'framer-motion';
 
-export const Section = styled.section`
+export const Section = styled(motion.section)`
   margin-top: 60px;
 
   & + & {
     margin-top: 30px;
-      }
+  }
 
   @media ${device.tablet} {
     padding: 0 24px;
@@ -103,6 +104,8 @@ export const SecondSectionImage = styled.img`
   }
 `;
 
+export const MotionWrapper = styled(motion.div)``;
+
 export const StyleButton = styled(Link)`
   display: flex;
   justify-content: center;
@@ -115,6 +118,14 @@ export const StyleButton = styled(Link)`
   border-radius: 12px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  z-index: 3;
+  transition: 0.3s cubic-bezier(0.67, 0.07, 0.34, 0.98);
+
+  &:hover {
+    background: var(--primary800);
+  }
 
   @media ${device.tablet} {
     width: calc(100% - 48px);
@@ -143,7 +154,7 @@ export const EmojiWrapper = styled(Wrapper)`
   }
 `;
 
-export const LinkArea = styled.div`
+export const LinkArea = styled(motion.div)`
   text-align: center;
   margin-top: 64px;
 

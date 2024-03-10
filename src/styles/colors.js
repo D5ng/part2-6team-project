@@ -44,6 +44,8 @@ const colors = css`
     --black: #000000;
     --error: #dc3a3a;
     --surface: #f6f8ff;
+
+    --error500: #bc1414;
   }
 `;
 
