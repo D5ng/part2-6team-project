@@ -1,6 +1,8 @@
 import React from 'react';
 import * as S from 'pages/messageCreateForm/components/ProfileImgList.style';
 import SkeletonProfileImg from './SkeletonPreviewImg';
+// eslint-disable-next-line import/no-cycle
+import { DEFAULT_PROFILE_IMG } from './MessageForm';
 
 function ProfileImgList({ unsplashImageState, openModal, dispatch }) {
   const handleProfileImgClick = (url) => {
@@ -11,9 +13,9 @@ function ProfileImgList({ unsplashImageState, openModal, dispatch }) {
     <S.ProfileImgList>
       <S.ListItem>
         <S.ProfileImg
-          src="/images/form/defaultimg.svg"
+          src={DEFAULT_PROFILE_IMG}
           alt="프로필 이미지"
-          onClick={handleProfileImgClick.bind(this, '/images/form/defaultimg.svg')}
+          onClick={handleProfileImgClick.bind(this, DEFAULT_PROFILE_IMG)}
         />
       </S.ListItem>
       {unsplashImageState.data
@@ -26,7 +28,7 @@ function ProfileImgList({ unsplashImageState, openModal, dispatch }) {
               />
             </S.ListItem>
           ))
-        : Array(9)
+        : Array(8)
             .fill()
             .map((_, i) => (
               <S.ListItem key={i}>

@@ -44,7 +44,8 @@ const reducer = (state, action) => {
       return { ...state, profileImageURL: action.profileImageURL };
   }
 };
-
+export const DEFAULT_PROFILE_IMG =
+  'https://learn-codeit-kr-static.s3.ap-northeast-2.amazonaws.com/sprint-proj-image/default_avatar.png';
 function MessageForm() {
   const recaptcha = useRef();
   const params = useParams();
@@ -55,7 +56,7 @@ function MessageForm() {
     relationship: '친구',
     content: '',
     font: 'Noto Sans',
-    profileImageURL: '/images/form/defaultimg.svg',
+    profileImageURL: DEFAULT_PROFILE_IMG,
   });
   const [messageLength, setMessageLength] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
