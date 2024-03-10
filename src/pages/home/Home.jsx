@@ -58,7 +58,15 @@ function Home() {
         </S.EmojiWrapper>
       </S.Section>
 
-      <S.LinkArea>
+      <S.LinkArea
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{
+          ease: [0.67, 0.07, 0.34, 0.98],
+          delay: 0.7,
+          duration: 0.7,
+        }}
+      >
         <PrimaryLink url="/list">구경해보기</PrimaryLink>
       </S.LinkArea>
     </>
