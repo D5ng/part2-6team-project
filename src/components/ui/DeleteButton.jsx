@@ -1,11 +1,11 @@
 import React from 'react';
 import * as S from '@Components/ui/DeleteButton.style';
-import { DELETE_ICON_PATH, DISABLED_DELETE_ICON_PATH } from './constant';
+import { DELETE_ICON_PATH } from '@Components/ui/constant';
 
-function DeleteButton({ disabled }) {
+function DeleteButton({ onOpenModal }) {
   return (
-    <S.DeleteButton disabled={disabled}>
-      <S.DeleteIcon src={disabled ? DISABLED_DELETE_ICON_PATH : DELETE_ICON_PATH} alt="Delete Icon" />
+    <S.DeleteButton onClick={onOpenModal}>
+      <S.DeleteIcon src={DELETE_ICON_PATH} alt="Delete Icon" />
     </S.DeleteButton>
   );
 }

@@ -57,6 +57,7 @@ export const ImageItem = styled.img`
 `;
 
 export const Button = styled.button`
+  width: 100%;
   position: relative;
 
   &::after {

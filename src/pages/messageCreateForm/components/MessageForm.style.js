@@ -18,6 +18,9 @@ export const InputTitle = styled.h1`
   font-weight: 700;
   color: var(--gray900);
   margin-bottom: 12px;
+  @media ${device.mobile} {
+    font-size: 16px;
+  }
 `;
 
 export const ProfileImgBox = styled.div`
@@ -42,5 +45,6 @@ export const ProfileListTitle = styled.h2`
   color: var(--gray500);
   @media ${device.mobile} {
     text-align: center;
+    font-size: 10px;
   }
 `;

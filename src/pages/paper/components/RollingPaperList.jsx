@@ -1,13 +1,13 @@
 /* eslint-disable no-new */
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import * as S from '@Paper/components/RollingPaperList.style';
 import PlusIcon from '@Components/ui/PlusIcon';
 import { PaperContext } from '@Paper/context/PaperContext';
 import Modal from '@Components/modal/Modal';
-import { createPortal } from 'react-dom';
-import Backdrop from '@Components/modal/Backdrop';
 import useIntersectionObserver from 'hooks/useIntersectionObserver';
 import Sortable from 'sortablejs';
+import { AnimatePresence } from 'framer-motion';
+import * as Portal from '@Components/portal';
 import RollingPaperItem from './RollingPaperItem';
 import Skeleton from './Skeleton';
 
@@ -19,11 +19,9 @@ function RollingPaperList() {
     messageFetchRequest,
   } = useContext(PaperContext);
 
-  const backdrop = createPortal(<Backdrop onCloseModal={handleCloseModal} />, document.getElementById('backdrop-root'));
-  const modal = createPortal(
-    <Modal onCloseModal={handleCloseModal} modalData={modalState.data} />,
-    document.getElementById('modal-root'),
-  );
+  const [selectedMessage, setSelectedMessage] = useState(null);
+
+  const handleSelectedMessage = (messageId) => setSelectedMessage(messageId);
 
   const onIntersect = async (entry, observer) => {
     observer.unobserve(entry.target);
@@ -36,7 +34,14 @@ function RollingPaperList() {
   const renderSkeletons = (count) => Array.from({ length: count }).map((_, index) => <Skeleton key={index} />);
 
   const renderMessageItems = messageState?.data?.results?.map((info) => (
-    <RollingPaperItem key={info.id} data={info} onClickModal={handleOpenModal} getPaperData={getModalData} />
+    <RollingPaperItem
+      key={info.id}
+      data={info}
+      onClickModal={handleOpenModal}
+      getPaperData={getModalData}
+      isOpen={modalState.isOpen}
+      onSelectedMessage={handleSelectedMessage}
+    />
   ));
 
   const renderEndLoadingUI = messageState?.data?.next && (
@@ -55,15 +60,29 @@ function RollingPaperList() {
     });
   });
 
+  const modal = Portal.Modal(
+    <Modal
+      onCloseModal={handleCloseModal}
+      modalData={modalState.data}
+      layoutId={selectedMessage}
+      onSelectedMessage={handleSelectedMessage}
+    />,
+  );
   return (
     <S.GridLayout className="column">
-      {modalState.isOpen && backdrop}
-      {modalState.isOpen && modal}
+      <AnimatePresence>
+        {selectedMessage && (
+          // eslint-disable-next-line react/jsx-no-useless-fragment
+          <>{modal}</>
+        )}
+      </AnimatePresence>
+
       <S.CreatePaperArea className="filtered">
         <S.Button to={`/post/${paperState?.data?.id}/message`}>
           <PlusIcon />
         </S.Button>
       </S.CreatePaperArea>
+
       {messageState?.data?.results ? renderMessageItems : renderSkeletons(11)}
       {renderEndLoadingUI}
     </S.GridLayout>

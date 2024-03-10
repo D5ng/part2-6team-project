@@ -12,6 +12,24 @@ async function fetchData(base, endpoint, token) {
   return response.json();
 }
 
+export async function deletePaper(paperId) {
+  const response = await fetch(`${BASE_URL}/4-6/recipients/${paperId}/`, {
+    method: 'DELETE',
+  });
+  if (!response.ok) {
+    throw new Error('Failed to delete paper');
+  }
+}
+
+export async function deleteMessage(messageId) {
+  const response = await fetch(`${BASE_URL}/4-6/messages/${messageId}/`, {
+    method: 'DELETE',
+  });
+  if (!response.ok) {
+    throw new Error('Failed to delete message');
+  }
+}
+
 export async function createPaper(paperData) {
   const response = await fetch(`${BASE_URL}/4-6/recipients/`, {
     method: 'POST',
@@ -21,7 +39,7 @@ export async function createPaper(paperData) {
     body: JSON.stringify(paperData),
   });
   if (!response.ok) {
-    throw new Error('Failed to create papaer');
+    throw new Error('Failed to create paper');
   }
   return response.json();
 }

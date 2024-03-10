@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { device } from 'styles/breakpoints';
 
 const baseBorder = css`
   border: 1px solid var(--gray300);
@@ -7,6 +8,11 @@ const baseBorder = css`
 export const Dropdown = styled.div`
   width: 320px;
   cursor: pointer;
+  position: relative;
+  @media ${device.mobile} {
+    max-width: 320px;
+    width: 100%;
+  }
 `;
 
 export const DropdownElement = styled.div`
@@ -20,6 +26,11 @@ export const DropdownElement = styled.div`
   justify-content: space-between;
   padding: 0 16px;
   font-size: 16px;
+
+  @media ${device.mobile} {
+    max-width: 320px;
+    width: 100%;
+  }
 
   &:hover {
     border-color: var(--gray500);
@@ -55,6 +66,10 @@ export const Options = styled.ul`
   width: 320px;
   z-index: 1000;
   position: absolute;
+  @media ${device.mobile} {
+    max-width: 320px;
+    width: 100%;
+  }
 `;
 
 export const Option = styled.li`
@@ -64,6 +79,10 @@ export const Option = styled.li`
   align-items: center;
   &:hover {
     background-color: var(--gray100);
+  }
+  @media ${device.mobile} {
+    max-width: 320px;
+    width: 100%;
   }
 `;
 

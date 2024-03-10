@@ -34,3 +34,9 @@ export const ErrorInfo = styled.p`
   color: var(--error);
   font-size: 16px;
 `;
+
+export const SubmitterWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+`;

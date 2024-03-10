@@ -26,5 +26,7 @@ export const ADD_EMOJI_ICON_PATH = '/images/icons/addEmoji.svg';
 export const SHARE_ICON_PATH = '/images/icons/shareIcon.svg';
 
 export const PLUS_ICON_PATH = '/images/icons/plus.svg';
+
 export const ICON_COMPLETED_PATH = '/images/icons/completed.svg';
+
 export const ICON_CLOSE_PATH = '/images/icons/close.svg';

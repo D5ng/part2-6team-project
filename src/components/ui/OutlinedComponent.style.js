@@ -13,10 +13,12 @@ export const ShareBox = styled.div`
 `;
 
 export const ShareBtn = styled.button`
+  position: relative;
   padding: 6px 16px;
   outline: none;
   border: 1px solid var(--gray300);
   border-radius: 6px;
+  margin-right: 13px;
   &:focus {
     border: 1px solid var(--gray500);
   }

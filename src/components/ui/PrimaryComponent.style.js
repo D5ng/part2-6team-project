@@ -24,6 +24,15 @@ export const PrimaryLink = styled(Link)`
   border-radius: 12px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  z-index: 3;
+  transition: 0.3s cubic-bezier(0.67, 0.07, 0.34, 0.98);
+
+  &:hover {
+    background: var(--primary800);
+  }
+
   &:active {
     background: var(--primary800);
   }
@@ -48,6 +57,7 @@ export const PrimaryCreateBtn = styled.button`
   font-size: 18px;
   border-radius: 12px;
   position: relative;
+  z-index: 0;
   &:active {
     background: var(--primary800);
   }

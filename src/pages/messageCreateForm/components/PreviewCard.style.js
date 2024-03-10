@@ -45,7 +45,8 @@ export const Card = styled.div`
     height: 284px;
   }
   @media ${device.mobile} {
-    width: 320px;
+    width: 100%;
+    max-width: 320px;
     height: 230px;
   }
 `;

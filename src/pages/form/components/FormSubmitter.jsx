@@ -70,11 +70,13 @@ function FormSubmitter() {
       <ToggleButton />
       <BackgroundOptions onOpenModal={handleOpenModal} />
 
-      <ReCAPTCHA ref={recaptcha} onChange={handleCapcha} sitekey={process.env.REACT_APP_SITEKEY} />
+      <S.SubmitterWrapper>
+        <ReCAPTCHA ref={recaptcha} onChange={handleCapcha} sitekey={process.env.REACT_APP_SITEKEY} />
 
-      <PrimaryCreateBtn onClick={handleCreatePaper} disabled={nameState.value === '' || errorMessage || !isCapcha}>
-        {isSubmitting ? <Loading /> : '생성하기'}
-      </PrimaryCreateBtn>
+        <PrimaryCreateBtn onClick={handleCreatePaper} disabled={nameState.value === '' || errorMessage || !isCapcha}>
+          {isSubmitting ? <Loading /> : '생성하기'}
+        </PrimaryCreateBtn>
+      </S.SubmitterWrapper>
     </S.Wrapper>
   );
 }
