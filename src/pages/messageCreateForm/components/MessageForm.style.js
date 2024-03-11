@@ -9,7 +9,7 @@ export const Form = styled.form`
   gap: 50px;
   @media ${device.tablet} {
     width: 100%;
-    margin-bottom: 300px;
+    margin-bottom: 100px;
   }
 `;
 export const Wrapper = styled.div``;
@@ -43,16 +43,9 @@ export const ProfileListTitle = styled.h2`
   font-size: 16px;
   font-weight: 400;
   color: var(--gray500);
+
   @media ${device.mobile} {
     text-align: center;
     font-size: 10px;
   }
-`;
-
-export const ValidMessage = styled.p`
-  font-size: 12px;
-  color: red;
-  font-weight: bold;
-  margin-bottom: 8px;
-  min-height: 12px;
 `;

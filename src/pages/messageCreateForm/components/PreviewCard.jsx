@@ -22,8 +22,8 @@ const BADGE_STYLE = {
 const FONT_STYLE = {
   'Noto Sans': 'Noto Sans KR',
   Pretendard: 'Pretendard',
-  나눔명조: 'NanumMyeongjo',
-  '나눔손글씨 손편지체': 'NanumBaeEunHyeCe',
+  나눔명조: 'Nanum Myeongjo',
+  '나눔손글씨 손편지체': 'Nanum Brush Script',
 };
 const DATE = new Date();
 const TODAY = `${DATE.getFullYear()}.${DATE.getMonth() + 1}.${DATE.getDate()}`;
@@ -32,6 +32,7 @@ function PreviewCard({ information }) {
   const [isVisible, setIsVisible] = useState(false);
   const messageBox = useRef(null);
   const card = useRef(null);
+
   useEffect(() => {
     messageBox.current.innerHTML = content;
   }, [content]);
@@ -47,7 +48,7 @@ function PreviewCard({ information }) {
     io.observe(card.current);
   }, []);
   return (
-    <S.Card ref={card} visible={isVisible}>
+    <S.Card ref={card} $visible={isVisible}>
       <S.SenderBox>
         <S.ProfileImg src={profileImageURL} />
         <S.Wrap>
@@ -57,7 +58,7 @@ function PreviewCard({ information }) {
           <S.Badge style={BADGE_STYLE[relationship]}>{relationship}</S.Badge>
         </S.Wrap>
       </S.SenderBox>
-      <S.MessageBox ref={messageBox} font={FONT_STYLE[font]} />
+      <S.MessageBox ref={messageBox} $font={FONT_STYLE[font]} />
       <S.CreateDate>{TODAY}</S.CreateDate>
     </S.Card>
   );
