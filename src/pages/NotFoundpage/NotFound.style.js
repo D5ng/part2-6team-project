@@ -4,23 +4,16 @@ import { device } from 'styles/breakpoints';
 
 export const NotFound = styled.div`
   display: flex;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   justify-content: center;
   align-items: center;
-  gap: 50px;
+  margin-top: 40px;
   @media ${device.tablet} {
     padding: 0 24px;
   }
 
-  @media ${device.mobile} {
-    display: grid;
-    gap: 0px;
-    padding: 0 20px;
-    grid-template-areas:
-      'Img'
-      'Title';
-  }
   &::after {
     content: '';
     position: absolute;
@@ -36,39 +29,27 @@ export const NotFoundContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 200px 0px;
   h1 {
-    font-size: 60px;
+    font-size: 45px;
     font-weight: 900;
   }
   p {
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 600;
     margin-top: 20px;
   }
-  @media ${device.mobile} {
-    margin-top: 10px;
-    margin-bottom: 100px;
-    grid-area: Title;
-    h1 {
-      font-size: 40px;
-    }
-  }
 `;
 export const Button = styled(Link)`
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 400;
   color: var(--white);
-  padding: 10px 20px;
+  padding: 10px 30px;
   border-radius: 10px;
   background: var(--primary500);
-  margin-top: 40px;
+  margin-top: 25px;
 `;
 export const Image = styled.img`
-  width: 300px;
-  height: 200px;
+  width: 450px;
+  height: 250px;
   object-fit: contain;
-  @media ${device.mobile} {
-    grid-area: Img;
-  }
 `;
