@@ -28,8 +28,8 @@ function KakaoShareButton() {
       objectType: 'feed',
       content: {
         title: 'Rolling Paper',
-        description: '롤링 페이퍼를 작성해 보세요!!😊  #롤링 #페이퍼 #작성하기',
-        imageUrl: 'https://part2-6team-project.vercel.app/images/home/rolling.jpg',
+        description: '나만의 롤링페이퍼를 작성해 보세요!!😊 #롤링 #페이퍼 #작성하기',
+        imageUrl: 'https://part2-6team-project.vercel.app/images/home/rolling2.jpg',
         link: {
           mobileWebUrl: window.location.href,
           webUrl: window.location.href,
