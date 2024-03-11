@@ -28,28 +28,28 @@ function KakaoShareButton() {
       objectType: 'feed',
       content: {
         title: 'Rolling Paper',
-        description: '롤링 페이퍼를 작성해 보세요!!😊',
-        imageUrl: 'https://part2-6team-project.vercel.app/images/home/rolling2.jpg',
+        description: '롤링 페이퍼를 작성해 보세요!!😊  #롤링 #페이퍼 #작성하기',
+        imageUrl: 'https://part2-6team-project.vercel.app/images/home/rolling.jpg',
         link: {
           mobileWebUrl: window.location.href,
           webUrl: window.location.href,
         },
       },
       social: {
-        likeCount: 999,
-        commentCount: 999,
-        sharedCount: 999,
+        likeCount: 736,
+        commentCount: 24,
+        sharedCount: 1563,
       },
       buttons: [
         {
-          title: '나도 하나 써주기',
+          title: '글 추가하기',
           link: {
             mobileWebUrl: `${window.location.href}/message`,
             webUrl: `${window.location.href}/message`,
           },
         },
         {
-          title: '나도 롤링페이퍼 만들기',
+          title: '롤페 만들기',
           link: {
             mobileWebUrl: createRollingPaperUrl,
             webUrl: createRollingPaperUrl,
