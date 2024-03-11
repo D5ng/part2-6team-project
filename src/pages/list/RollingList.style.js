@@ -42,9 +42,9 @@ export const Title = styled.h2`
 
 export const LinkArea = styled.div`
   display: flex;
-  gap: 20px;
-  flex-direction: column;
+  gap: 55px;
   align-items: center;
+  justify-content: center;
   text-align: center;
   margin-top: 64px;
 
@@ -65,7 +65,6 @@ export const AllPaperLink = styled(Link)`
   border-radius: 12px;
   border: 1px solid var(--gray300);
   margin-left: auto;
-  margin-right: auto;
   z-index: 3;
   transition: 0.3s cubic-bezier(0.67, 0.07, 0.34, 0.98);
 
