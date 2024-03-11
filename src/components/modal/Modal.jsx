@@ -16,11 +16,12 @@ function Modal({ onCloseModal, modalData, layoutId, onSelectedMessage }) {
 
   const handleOpenModal = () => setActive(true);
   const handleCloseModal = () => setActive(false);
+
   const modal = createPortal(
     <DeleteModal onCloseModal={handleCloseModal} paperState={paperState} modalData={modalData} />,
     document.getElementById('modal-root'),
   );
-
+  const messageBox = useRef(null);
   const onClick = () => onSelectedMessage(null);
 
   const backdropHandler = (event) => {
@@ -29,6 +30,7 @@ function Modal({ onCloseModal, modalData, layoutId, onSelectedMessage }) {
 
   useEffect(() => {
     document.addEventListener('click', backdropHandler);
+    messageBox.current.innerHTML = content;
     return () => document.removeEventListener('click', backdropHandler);
   }, []);
 
@@ -56,7 +58,7 @@ function Modal({ onCloseModal, modalData, layoutId, onSelectedMessage }) {
           <S.CreatAt>{formatDate(createdAt)}</S.CreatAt>
         </S.Info>
         <S.Contents>
-          <S.TextBox $font={fonts}>{content}</S.TextBox>
+          <S.TextBox $font={fonts} ref={messageBox} />
         </S.Contents>
         <S.Buttons>
           <S.Button onClick={onClick}>확인</S.Button>

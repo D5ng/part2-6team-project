@@ -106,6 +106,7 @@ export const TextBox = styled.div`
   font-weight: 400;
   line-height: 28px;
   overflow-y: scroll;
+  word-wrap: break-word;
   font-family: ${({ $font }) => fontsMapping[$font] || 'Pretendard'};
   flex: 1;
 
