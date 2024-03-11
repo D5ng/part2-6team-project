@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import * as S from '@Components/modal/DeleteModal.style';
 import { useParams, useNavigate } from 'react-router-dom';
-import { deleteMessage, deletePaper } from '@Pages/form/api';
+import { deletePaper } from '@Pages/form/api';
+import { PaperContext } from '@Pages/paper/context/PaperContext';
+import { DELETE_PAPER_MESSAGE } from 'service/message';
 
 function DeleteModal({ onCloseModal, paperState, modalData, renderMessageItems }) {
+  const { messageFetchRequest } = useContext(PaperContext);
+
   const navigate = useNavigate();
   const paperId = useParams();
   const mainText = modalData?.sender
@@ -16,8 +20,11 @@ function DeleteModal({ onCloseModal, paperState, modalData, renderMessageItems }
   };
 
   const handleMessagePaper = async () => {
-    await deleteMessage(modalData.id);
-    window.location.reload();
+    await messageFetchRequest({
+      url: DELETE_PAPER_MESSAGE(modalData.id),
+      options: { method: 'DELETE' },
+      id: modalData.id,
+    });
   };
 
   const handleConfirmClick = async () => {
