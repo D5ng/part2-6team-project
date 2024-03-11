@@ -62,6 +62,7 @@ const Button = styled.button`
 
   &.swiper-button-disabled {
     opacity: 0.5;
+    cursor: not-allowed;
   }
 
   @media ${device.tablet} {
@@ -71,7 +72,6 @@ const Button = styled.button`
 
 export const PrevButton = styled(Button)`
   left: 0;
-  cursor: not-allowed;
   img {
     transform: scale(-1);
   }
@@ -79,5 +79,4 @@ export const PrevButton = styled(Button)`
 
 export const NextButton = styled(Button)`
   right: 0;
-  cursor: not-allowed;
 `;
