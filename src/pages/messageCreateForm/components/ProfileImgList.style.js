@@ -19,6 +19,7 @@ export const ListItem = styled.li`
   aspect-ratio: 1/1;
   border-radius: 50%;
   overflow: hidden;
+  isolation: isolate;
   cursor: pointer;
   isolation: isolate;
   &:last-child {
@@ -29,6 +30,7 @@ export const ListItem = styled.li`
     width: 100%;
   }
 `;
+
 export const ProfileImg = styled.img`
   width: 100%;
   transition: 0.5s;
