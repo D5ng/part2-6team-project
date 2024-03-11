@@ -20,7 +20,7 @@ import useDefaultBackgroundImage from '@Pages/form/hooks/useDefaultBackgroundIma
 import { GET_RANDOM_IMAGE } from 'service/unplash';
 import * as Portal from '@Components/portal';
 import Backdrop from '@Components/modal/Backdrop';
-import { errorHandling, createMessage } from '../api';
+import { errorHandling, createMessage, formValidCheck } from '../api';
 import * as S from './MessageForm.style';
 // 현재 페이지에서만 사용하는 컴포넌트
 import PreviewImg from './PreviewImg';
@@ -28,7 +28,6 @@ import TextEditor from './TextEditor';
 // eslint-disable-next-line import/no-cycle
 import ProfileImgList from './ProfileImgList';
 import PreviewCard from './PreviewCard';
-import SkeletonProfileImg from './SkeletonPreviewImg';
 
 const reducer = (state, action) => {
   // eslint-disable-next-line default-case
@@ -62,6 +61,7 @@ function MessageForm() {
   const [messageLength, setMessageLength] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   const [isCapcha, setIsCapcha] = useState(null);
+
   const { modalState, handleOpenModal, handleCloseModal } = useModal();
 
   const handleCapcha = () => {
@@ -100,8 +100,14 @@ function MessageForm() {
     }
   }, [selectedItem]);
 
+  const disabled = !(messageLength !== 1 && inputInformation.sender) || isLoading || !isCapcha;
   const backdrop = Portal.Backdrop(<Backdrop onCloseModal={handleCloseModal} />);
   const modal = Portal.Modal(<UnsplashModal onCloseModal={handleCloseModal} unsplashImageState={unsplashImageState} />);
+  const validMessage = formValidCheck({
+    '이름을 입력해주세요': inputInformation.sender,
+    '메세지를 입력해주세요': messageLength !== 1,
+    '봇이 아님을 체크해주세요': isCapcha,
+  });
 
   return (
     <S.Form onSubmit={submitForm}>
@@ -109,7 +115,7 @@ function MessageForm() {
       {modalState.isOpen && modal}
       <S.Wrapper>
         <S.InputTitle>From.{inputInformation.sender}</S.InputTitle>
-        <Input onChange={handleOnChangeInput} value={inputInformation.sender} errorMessage="이름을 입력해 주세요">
+        <Input onChange={handleOnChangeInput} value={inputInformation.sender}>
           이름을 입력해 주세요
         </Input>
       </S.Wrapper>
@@ -140,9 +146,10 @@ function MessageForm() {
         <PreviewCard information={inputInformation} />
       </S.Wrapper>
       <ReCAPTCHA ref={recaptcha} onChange={handleCapcha} sitekey={process.env.REACT_APP_SITEKEY} />
-      <PrimaryCreateBtn disabled={!(messageLength !== 1 && inputInformation.sender) || isLoading || !isCapcha}>
-        {isLoading ? <Loading /> : '생성하기'}
-      </PrimaryCreateBtn>
+      <S.Wrapper>
+        <S.ValidMessage>{validMessage}</S.ValidMessage>
+        <PrimaryCreateBtn disabled={disabled}>{isLoading ? <Loading /> : '생성하기'}</PrimaryCreateBtn>
+      </S.Wrapper>
     </S.Form>
   );
 }
