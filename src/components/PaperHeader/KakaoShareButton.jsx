@@ -47,20 +47,20 @@ function KakaoShareButton() {
             webUrl: window.location.href,
           },
         },
-        // {
-        //   title: '나도 하나 써주기',
-        //   link: {
-        //     mobileWebUrl: `${window.location.href}/message`,
-        //     webUrl: `${window.location.href}/message`,
-        //   },
-        // },
-        // {
-        //   title: '나도 롤링페이퍼 만들기',
-        //   link: {
-        //     mobileWebUrl: 'https://part2-6team-project.vercel.app/post',
-        //     webUrl: 'https://part2-6team-project.vercel.app/post',
-        //   },
-        // },
+        {
+          title: '나도 하나 써주기',
+          link: {
+            mobileWebUrl: `${window.location.href}message`,
+            webUrl: `${window.location.href}message`,
+          },
+        },
+        {
+          title: '나도 롤링페이퍼 만들기',
+          link: {
+            mobileWebUrl: 'https://part2-6team-project.vercel.app/post',
+            webUrl: 'https://part2-6team-project.vercel.app/post',
+          },
+        },
       ],
       installTalk: true,
     });
