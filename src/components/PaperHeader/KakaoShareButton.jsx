@@ -42,13 +42,6 @@ function KakaoShareButton() {
       },
       buttons: [
         {
-          title: '구경해보기',
-          link: {
-            mobileWebUrl: window.location.href,
-            webUrl: window.location.href,
-          },
-        },
-        {
           title: '나도 하나 써주기',
           link: {
             mobileWebUrl: `${window.location.href}/message`,
