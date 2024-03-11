@@ -9,6 +9,8 @@ import { SHARE_ICON_PATH } from './constant';
 function OutlinedShareBtn({ emojiCount }) {
   const [isHidden, setIsHidden] = useState(true);
   const [isCopied, setIsCopied] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
   const wrapRef = useRef(null);
   const buttonRef = useRef(null);
   const { paperState } = useContext(PaperContext);
@@ -30,9 +32,16 @@ function OutlinedShareBtn({ emojiCount }) {
 
     setIsCopied(true);
     setIsHidden(true);
+    setIsOpen(true);
     setTimeout(() => {
       setIsCopied(false);
+      setIsOpen(false);
     }, 5000);
+  };
+
+  const handleCloseToast = () => {
+    setIsCopied(false);
+    setIsOpen(false);
   };
 
   useEffect(() => {
@@ -52,7 +61,7 @@ function OutlinedShareBtn({ emojiCount }) {
         <KakaoShareButton emojiCount={emojiCount} messageCount={messageCount} />
         <S.ShareOption onClick={handleCopy}>URL 공유</S.ShareOption>
       </S.Wrap>
-      {isCopied && <Toast />}
+      {isCopied && <Toast onClose={handleCloseToast} isOpen={isOpen} />}
     </>
   );
 }

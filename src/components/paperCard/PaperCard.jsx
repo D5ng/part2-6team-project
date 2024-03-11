@@ -31,7 +31,7 @@ function PaperCard({ list }) {
       <S.CardWrapper>
         <CardContent list={list} />
         <S.BadgeEmogiWrapper>
-          <BadgeEmogi emojis={list.topReactions} />
+          <BadgeEmogi emojis={list.topReactions} parent="PaperCard" />
         </S.BadgeEmogiWrapper>
       </S.CardWrapper>
     </S.PaperCard>
