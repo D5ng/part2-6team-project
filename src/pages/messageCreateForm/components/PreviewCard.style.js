@@ -28,9 +28,9 @@ export const Card = styled.div`
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
   margin: auto;
   position: relative;
-  visibility: ${({ visible }) => (visible ? 'visible' : 'hidden')};
-  ${({ visible }) =>
-    visible &&
+  visibility: ${({ $visible }) => ($visible ? 'visible' : 'hidden')};
+  ${({ $visible }) =>
+    $visible &&
     css`
       animation: ${CardShow} 1s;
     `}
@@ -53,7 +53,7 @@ export const SenderBox = styled.div`
 `;
 
 export const MessageBox = styled.div`
-  font-size: ${({ font }) => (font === 'NanumBaeEunHyeCe' ? '28px' : '18px')};
+  font-size: ${({ $font }) => ($font === 'NanumBaeEunHyeCe' ? '24px' : '18px')};
   color: var(--gray600);
   padding-top: 8px;
   word-wrap: break-word;
@@ -62,10 +62,8 @@ export const MessageBox = styled.div`
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  font-family: ${({ $font }) => `${$font}`}, sans-serif;
   ${ReactQuillCss}
-  & > p {
-    font-family: ${({ font }) => `${font}`};
-  }
   @media ${device.mobile} {
     font-size: 14px;
   }

@@ -17,9 +17,10 @@ export const ProfileImgList = styled.ul`
 export const ListItem = styled.li`
   width: 56px;
   aspect-ratio: 1/1;
-  border-radius: 100px;
+  border-radius: 50%;
   overflow: hidden;
   cursor: pointer;
+  isolation: isolate;
   &:last-child {
     overflow: visible;
   }
@@ -40,7 +41,7 @@ export const ProfileImg = styled.img`
 export const SearchBtb = styled.button`
   width: 56px;
   height: 56px;
-  border-radius: 100px;
+  border-radius: 50%;
   background-color: var(--gray300);
   padding: 8px;
   position: relative;
