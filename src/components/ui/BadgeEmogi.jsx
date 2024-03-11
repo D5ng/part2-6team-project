@@ -5,7 +5,7 @@ function BadgeEmogi({ emojis }) {
   return emojis?.length > 0 ? (
     <>
       {emojis.map((badge) => (
-        <S.BadgeBox key={badge?.emoji}>
+        <S.BadgeBox key={badge?.emoji} $>
           <S.BadgeEmoji>{badge?.emoji}</S.BadgeEmoji>
           <S.BadgeCount>{badge?.count}</S.BadgeCount>
         </S.BadgeBox>

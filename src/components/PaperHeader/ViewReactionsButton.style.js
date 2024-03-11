@@ -29,9 +29,10 @@ export const ReactionsWrapper = styled.div`
   top: calc(100% + 12px);
   right: 10px;
 
-  display: ${({ $isGrid }) => ($isGrid ? 'grid' : 'flex')};
+  display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  grid-column-gap: 8px;
+  grid-row-gap: 8px;
 
   @media ${device.mobile} {
     right: -40px;

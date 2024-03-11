@@ -28,5 +28,7 @@ export const BadgeCount = styled.span`
 `;
 
 export const NoEmogiText = styled.p`
-  width: 170px;
+  width: 155px;
+  grid-column: 1 / 5;
+  text-align: center;
 `;
