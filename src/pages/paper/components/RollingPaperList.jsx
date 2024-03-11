@@ -51,14 +51,19 @@ function RollingPaperList() {
     </>
   );
 
-  const columns = document.querySelectorAll('.column');
-  columns.forEach((column) => {
-    new Sortable(column, {
-      filter: '.filtered',
-      animation: 150,
-      ghostClass: 'sortable-ghost',
-    });
-  });
+  useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    if (!isMobile) {
+      const columns = document.querySelectorAll('.column');
+      columns.forEach((column) => {
+        new Sortable(column, {
+          filter: '.filtered',
+          animation: 150,
+          ghostClass: 'sortable-ghost',
+        });
+      });
+    }
+  }, []);
 
   const modal = Portal.Modal(
     <Modal
