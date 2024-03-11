@@ -4,10 +4,15 @@ import * as Reducer from 'reducer/http-reducer';
 function useHttp() {
   const [state, dispatch] = useReducer(Reducer.httpReducer, Reducer.httpReducerInitialValues);
 
-  const fetchRequest = useCallback(async ({ url, options }) => {
+  const fetchRequest = useCallback(async ({ url, options, id }) => {
     dispatch({ type: Reducer.httpActionType.PENDING });
     try {
       const response = await fetch(url, options);
+
+      if (response.status === 204) {
+        dispatch({ type: Reducer.httpActionType.DELETE, id });
+        return;
+      }
 
       const responseData = await response.json();
 

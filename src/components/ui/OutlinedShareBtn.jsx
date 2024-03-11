@@ -1,15 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useContext } from 'react';
 import * as S from '@Components/ui/OutlinedComponent.style';
 import copy from 'clipboard-copy';
 import KakaoShareButton from '@Components/PaperHeader/KakaoShareButton';
+import { PaperContext } from '@Paper/context/PaperContext';
 import Toast from './Toast';
 import { SHARE_ICON_PATH } from './constant';
 
-function OutlinedShareBtn() {
+function OutlinedShareBtn({ emojiCount }) {
   const [isHidden, setIsHidden] = useState(true);
   const [isCopied, setIsCopied] = useState(false);
   const wrapRef = useRef(null);
   const buttonRef = useRef(null);
+  const { paperState } = useContext(PaperContext);
+  const { messageCount } = paperState?.data || {};
 
   const handleSetIsOpen = () => {
     setIsHidden(!isHidden);
@@ -46,7 +49,7 @@ function OutlinedShareBtn() {
       </S.ShareBtn>
 
       <S.Wrap hidden={isHidden} ref={wrapRef}>
-        <KakaoShareButton />
+        <KakaoShareButton emojiCount={emojiCount} messageCount={messageCount} />
         <S.ShareOption onClick={handleCopy}>URL 공유</S.ShareOption>
       </S.Wrap>
       {isCopied && <Toast />}

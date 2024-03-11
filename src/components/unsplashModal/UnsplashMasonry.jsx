@@ -26,7 +26,7 @@ function UnsplashMasonry(props, ref) {
     <S.ImageList ref={ref}>
       {hasError && <div>Error</div>}
       <ResponsiveMasonry columnsCountBreakPoints={{ 350: 1, 750: 2 }}>
-        <Masonry gutter="20px">
+        <Masonry gutter="10px">
           {isLoading && <Loading size={50} color="black" />}
           {imageList?.map((image) => (
             <S.ImageItem

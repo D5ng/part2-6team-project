@@ -18,7 +18,7 @@ export const Backdrop = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100;
+  z-index: 80;
   background: rgba(0, 0, 0, 0.5);
 `;
 
@@ -106,6 +106,7 @@ export const TextBox = styled.div`
   font-weight: 400;
   line-height: 28px;
   overflow-y: scroll;
+  word-wrap: break-word;
   font-family: ${({ $font }) => fontsMapping[$font] || 'Pretendard'};
   flex: 1;
 

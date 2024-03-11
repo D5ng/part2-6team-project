@@ -5,7 +5,8 @@ import { device } from 'styles/breakpoints';
 export const UnsplashModal = styled.div`
   border-radius: 5px;
   background-color: white;
-  width: 40vw;
+  max-width: 600px;
+  width: 90%;
   position: fixed;
   left: 50%;
   top: 50%;
@@ -14,12 +15,15 @@ export const UnsplashModal = styled.div`
 
   @media ${device.mobile} {
     width: 90%;
-    height: 80%;
   }
 `;
 
 export const Body = styled.div`
-  padding: 20px;
+  padding: 15px;
+
+  @media (${device.mobile}) {
+    padding: 10px;
+  }
 `;
 
 export const ModalTitle = styled.div`
@@ -29,18 +33,31 @@ export const ModalTitle = styled.div`
   padding: 14px 15px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   font-size: 18px;
-  font-weight: 800;
+  font-weight: 700;
 `;
 
 export const SearchBar = styled.form`
   position: relative;
   display: flex;
+  height: 48px;
+
+  @media (${device.mobile}) {
+    height: 40px;
+  }
 `;
 
 export const Input = styled(InputElement)`
   width: 80%;
+  height: 100%;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
+
+  @media (${device.mobile}) {
+    font-size: 14px;
+    border-radius: 5px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
 `;
 
 export const SearchButton = styled.button`
@@ -48,10 +65,16 @@ export const SearchButton = styled.button`
   background-color: rgba(0, 0, 0, 0.8);
   border-top-right-radius: 8px;
   border-bottom-right-radius: 8px;
-  height: 50px;
-  font-size: 18px;
-  font-weight: 600;
+  height: 100%;
+  font-size: 16px;
+  font-weight: 500;
   color: white;
+
+  @media (${device.mobile}) {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    font-size: 14px;
+  }
 `;
 
 export const SelectButton = styled.button`

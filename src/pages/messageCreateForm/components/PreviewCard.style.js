@@ -8,12 +8,6 @@ const ReactQuillCss = css`
   em {
     font-style: italic;
   }
-  .ql-align-center {
-    text-align: center;
-  }
-  .ql-align-right {
-    text-align: right;
-  }
 `;
 const CardShow = keyframes`
   0%{
@@ -61,14 +55,17 @@ export const SenderBox = styled.div`
 export const MessageBox = styled.div`
   font-size: ${({ font }) => (font === 'NanumBaeEunHyeCe' ? '28px' : '18px')};
   color: var(--gray600);
-  font-family: ${({ font }) => `${font}`};
   padding-top: 8px;
+  word-wrap: break-word;
   white-space: normal;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
   ${ReactQuillCss}
+  & > p {
+    font-family: ${({ font }) => `${font}`};
+  }
   @media ${device.mobile} {
     font-size: 14px;
   }
@@ -79,6 +76,7 @@ export const ProfileImg = styled.img`
   height: 56px;
   object-fit: cover;
   border-radius: 100px;
+  -webkit-user-drag: none;
 `;
 
 export const Wrap = styled.div``;

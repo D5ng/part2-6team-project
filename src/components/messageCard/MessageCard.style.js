@@ -54,7 +54,7 @@ export const Text = styled.div`
   font-weight: 400;
   line-height: 28px;
   letter-spacing: -1%;
-
+  word-wrap: break-word;
   display: -webkit-box;
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;

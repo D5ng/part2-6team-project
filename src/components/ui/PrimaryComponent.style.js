@@ -63,6 +63,7 @@ export const PrimaryCreateBtn = styled.button`
   }
   &:disabled {
     background: var(--gray300);
+    cursor: not-allowed;
   }
   @media ${device.tablet} {
     position: fixed;
