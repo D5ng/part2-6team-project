@@ -81,8 +81,7 @@ function Modal({ onCloseMessage, modalData, layoutId }) {
         </S.Contents>
         <S.Buttons>
           <S.Button onClick={onCloseMessage}>확인</S.Button>
-          <S.EditButton>수정 할래요</S.EditButton>
-          <S.DeleteButton onClick={handleOpenModal}>삭제 할래요</S.DeleteButton>
+          <S.DeleteButton onClick={handleOpenModal}>삭제</S.DeleteButton>
         </S.Buttons>
       </S.Container>
     </S.Backdrop>
