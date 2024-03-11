@@ -17,7 +17,7 @@ export const Container = styled.div`
   z-index: 100;
   @media ${device.mobile} {
     width: 80%;
-    padding: 20px;
+    padding-bottom: 20px;
   }
 `;
 
@@ -34,7 +34,6 @@ export const Contents = styled.div`
 `;
 
 export const TextBox = styled.div`
-  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -65,13 +64,14 @@ export const Button = styled.button`
   border-radius: 6px;
   font-size: 18px;
   font-style: normal;
-  font-weight: 400;
   line-height: 26px;
   background: rgba(0, 0, 0, 0.1);
-  font-weight: 900;
+  font-weight: 500;
+  @media ${device.mobile} {
+    width: 120px;
+  }
 `;
 export const DeleteButton = styled(Button)`
-  /* 추가하려는 스타일 */
   background: #f24646;
   color: white;
 `;
@@ -79,4 +79,7 @@ export const DeleteButton = styled(Button)`
 export const ButtonWrapper = styled.div`
   display: flex;
   gap: 20px;
+  @media ${device.mobile} {
+    gap: 10px;
+  }
 `;
