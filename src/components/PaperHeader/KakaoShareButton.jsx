@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import * as S from '@Components/ui/OutlinedComponent.style';
-import { KAKAO_SDK_URL, KAKAO_APP_KEY, LOGO_ICON_PATH } from '@Components/PaperHeader/constant';
+import { KAKAO_SDK_URL, KAKAO_APP_KEY } from '@Components/PaperHeader/constant';
 
 function KakaoShareButton() {
   useEffect(() => {
@@ -29,8 +29,7 @@ function KakaoShareButton() {
       content: {
         title: 'Rolling Paper',
         description: '롤링 페이퍼를 작성해 보세요!!😊',
-        // eslint-disable-next-line prefer-template
-        imageUrl: process.env.PUBLIC_URL + '/images/home/home-manual-2.png',
+        imageUrl: 'https://part2-6team-project.vercel.app/images/home/home-manual-2.png',
         link: {
           mobileWebUrl: window.location.href,
           webUrl: window.location.href,
