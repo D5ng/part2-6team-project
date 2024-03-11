@@ -19,9 +19,6 @@ function UnsplashModal({ onCloseModal, unsplashImageState }) {
     handleLoadSearchedImages,
   } = useUnsplashModalContext();
 
-  // const { unsplashImageState } = useFormContext();
-  console.log(unsplashImageState);
-
   const [isPopularLoading, fetchingError, onFetchImagesAsync] = useAsync(fetchUnsplashPopularImage);
   const [isSearchLoading, searchingError, onSearchImagesAsync] = useAsync(fetchUnsplashSearchImage);
   const [page, setPage] = useState(1);
