@@ -2,13 +2,6 @@ import styled from 'styled-components';
 import { device } from 'styles/breakpoints';
 import { motion } from 'framer-motion';
 
-const fontsMapping = {
-  Pretendard: 'Pretendard',
-  NanumMyeongjo: 'NanumMyeongjo',
-  NotoSansKR: 'NotoSansKR',
-  NanumBaeEunHyeCe: 'NanumBaeEunHyeCe',
-};
-
 export const Backdrop = styled.div`
   position: fixed;
   left: 0;
@@ -102,7 +95,7 @@ export const TextBox = styled.div`
   line-height: 28px;
   overflow-y: scroll;
   word-wrap: break-word;
-  font-family: ${({ $font }) => fontsMapping[$font] || 'Pretendard'};
+  font-family: ${({ $font }) => $font};
   flex: 1;
   scrollbar-width: thin;
 
