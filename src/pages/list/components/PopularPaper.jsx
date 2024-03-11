@@ -22,6 +22,7 @@ function PopularPaper({ papers }) {
         breakpoints={breakPoints}
         modules={[Navigation, Virtual]}
         className="mySwiper"
+        virtual
       >
         {papers.map((list) => (
           <S.StyledSlide key={list.id}>
