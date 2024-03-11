@@ -46,7 +46,7 @@
 
 </br>
 
-### 스킬
+### 기본 스킬, 라이브러리
 
 <p align='center'>
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=ffffff"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=ffffff"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=ffffff"> <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=ffffff"> 
@@ -55,12 +55,12 @@
   <img src="https://img.shields.io/badge/ReactRouter-CA4245?style=for-the-badge&logo=reactrouter&logoColor=ffffff"> <img src="https://img.shields.io/badge/ESlint-4B32C3?style=for-the-badge&logo=eslint&logoColor=ffffff"> <img src="https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=ffffff">
 </p>
 
-### 라이브러리
+### 추가 라이브러리
 1. React-Quill : textEditor를 페이지에 쉽게 추가하고 입력 내용을 얻을 수 있는 기능을 제공하는 라이브러리
 2. Swiper : 슬라이드를 쉽게 구현해주는 라이브러리
 3. React-Emoji-Picker : 완성된 이모지창을 제공하는 라이브러리
 4. React-Google-Recaptcha : 비정상적인 사용자 여부를 판단해주는 라이브러리
-5. React-Helmet-Async : 
+5. React-Helmet-Async : 상단 페이지 탭 쪽에 현재 페이지의 이름을 띄워주는 라이브러리
 
 
 # 🗂️ 폴더 구조
@@ -77,7 +77,7 @@
    + hooks : 각 페이지에 사용된 커스텀 훅을 담는 폴더
    + pages : 각 페이지를 담는 폴더
    + reducer : 데이터를 전역적으로 관리하기 위한 폴더
-   + service :
+   + service : unsplash API에 관련된 함수가 담긴 폴더
    + styles : 전역적인 styled가 담긴 폴더
    + utils : 자주 사용되는 로직을 담는 폴더
   
@@ -110,7 +110,7 @@
   ex ) user_content_cache_topic
 - Topic Branch의 커밋은 기능이 완성되지 않았더라도 팀원들간 원할한 소통을 위해 꾸준히 Push합니다.
 - 새로운 기능을 개발하기 위해 Topic Branch를 생성하기전 Develop Branch에서 Pull을 해야합니다. 
-
+- 해당 Branch에서 기능개발을 완료 후 PR이 승인되어 develop에 merge되면 remote 저장소에 있는  해당 기능 Branch는 삭제해야 합니다.
 
 
 
