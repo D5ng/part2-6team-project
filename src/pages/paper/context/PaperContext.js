@@ -2,7 +2,7 @@ import useHttp from 'hooks/useHttp';
 import React, { createContext, useEffect } from 'react';
 import * as API from '@Paper/api';
 import { useParams } from 'react-router-dom';
-import useModal from '@Paper/hooks/useModal';
+import useModal from 'hooks/useModal';
 
 export const PaperContext = createContext();
 
@@ -18,6 +18,8 @@ export function PaperContextProvider({ children }) {
     messageFetchRequest({ url: API.getRollingPaperMessage(recipientsId) });
     reactionFetchRequest({ url: API.getreactions(recipientsId) });
   }, []);
+
+  console.log(modalState.isOpen);
 
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const constextValue = {
