@@ -76,6 +76,7 @@ export const ProfileImg = styled.img`
   height: 56px;
   object-fit: cover;
   border-radius: 100px;
+  -webkit-user-drag: none;
 `;
 
 export const Wrap = styled.div``;

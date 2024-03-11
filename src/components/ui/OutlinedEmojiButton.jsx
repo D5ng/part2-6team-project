@@ -35,10 +35,11 @@ function OutlinedEmojiButton() {
         <S.ButtonIconImg src={ADD_EMOJI_ICON_PATH} alt="이모지 추가 버튼 아이콘" />
         <S.AddText>추가</S.AddText>
       </S.EmojiAddBtn>
-
-      <S.EmojiChoiceBox hidden={isHidden} ref={emojiChoiceRef}>
-        <ReactionModal />
-      </S.EmojiChoiceBox>
+      {!isHidden && (
+        <S.EmojiChoiceBox hidden={isHidden} ref={emojiChoiceRef}>
+          <ReactionModal />
+        </S.EmojiChoiceBox>
+      )}
     </>
   );
 }

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { device } from 'styles/breakpoints';
 
 export const Form = styled.form`
@@ -47,4 +47,12 @@ export const ProfileListTitle = styled.h2`
     text-align: center;
     font-size: 10px;
   }
+`;
+
+export const ValidMessage = styled.p`
+  font-size: 12px;
+  color: red;
+  font-weight: bold;
+  margin-bottom: 8px;
+  min-height: 12px;
 `;

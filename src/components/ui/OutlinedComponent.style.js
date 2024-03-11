@@ -13,7 +13,6 @@ export const ShareBox = styled.div`
 `;
 
 export const ShareBtn = styled.button`
-  position: relative;
   padding: 6px 16px;
   outline: none;
   border: 1px solid var(--gray300);
@@ -27,6 +26,9 @@ export const ShareBtn = styled.button`
   }
   @media ${device.mobile} {
     padding: 6px 8px;
+    position: absolute;
+    top: 8px;
+    right: 55px;
   }
 `;
 
@@ -83,9 +85,6 @@ export const EmojiAddBtn = styled.button`
   &:hover {
     background: var(--gray100);
   }
-  @media ${device.mobile} {
-    padding: 6px 8px;
-  }
   &::after {
     content: '';
     width: 1px;
@@ -95,6 +94,13 @@ export const EmojiAddBtn = styled.button`
     right: -15px;
     top: 50%;
     transform: translate(-50%, -50%);
+  }
+  @media ${device.mobile} {
+    padding: 6px 8px;
+    margin-right: 0px;
+    &::after {
+      right: 0px;
+    }
   }
 `;
 

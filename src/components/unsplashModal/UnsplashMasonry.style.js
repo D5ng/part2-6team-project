@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from 'styles/breakpoints';
 
 export const ImageList = styled.div`
   margin: 20px 0;
@@ -11,6 +12,11 @@ export const ImageList = styled.div`
   &::-webkit-scrollbar-thumb {
     background-color: var(--gray300);
     border-radius: 10px;
+  }
+
+  @media (${device.mobile}) {
+    margin: 10px 0;
+    height: 55vh;
   }
 `;
 export const ImageItem = styled.div`
