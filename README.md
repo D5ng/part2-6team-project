@@ -46,7 +46,7 @@
 
 </br>
 
-### 스킬
+### 기본 스킬, 라이브러리
 
 <p align='center'>
 <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=ffffff"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=ffffff"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=ffffff"> <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=ffffff"> 
@@ -55,7 +55,7 @@
   <img src="https://img.shields.io/badge/ReactRouter-CA4245?style=for-the-badge&logo=reactrouter&logoColor=ffffff"> <img src="https://img.shields.io/badge/ESlint-4B32C3?style=for-the-badge&logo=eslint&logoColor=ffffff"> <img src="https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=prettier&logoColor=ffffff">
 </p>
 
-### 라이브러리
+### 추가 라이브러리
 1. React-Quill : textEditor를 페이지에 쉽게 추가하고 입력 내용을 얻을 수 있는 기능을 제공하는 라이브러리
 2. Swiper : 슬라이드를 쉽게 구현해주는 라이브러리
 3. React-Emoji-Picker : 완성된 이모지창을 제공하는 라이브러리
