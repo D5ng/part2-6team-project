@@ -23,3 +23,14 @@ export function errorHandling(boolean, status, callback) {
     throw new Error(`${ERROR_STATUS_CODE_MESSAGE[status]} 오류코드 ${status}`);
   }
 }
+
+export function formValidCheck(caseList) {
+  let message = '';
+  // eslint-disable-next-line no-restricted-syntax
+  for (const list in caseList) {
+    if (!caseList[list]) {
+      message += `${list}. `;
+    }
+  }
+  return message;
+}
