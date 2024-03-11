@@ -29,7 +29,7 @@ function Modal({ onCloseMessage, modalData, layoutId }) {
     onCloseMessage();
     handleCloseModal();
   };
-
+  const messageBox = useRef(null);
   const modal = createPortal(
     <DeleteModal
       onCloseModal={handleCloseModal}
@@ -46,6 +46,7 @@ function Modal({ onCloseMessage, modalData, layoutId }) {
 
   useEffect(() => {
     document.addEventListener('click', backdropHandler);
+    messageBox.current.innerHTML = content;
     return () => document.removeEventListener('click', backdropHandler);
   }, []);
 
@@ -76,7 +77,7 @@ function Modal({ onCloseMessage, modalData, layoutId }) {
           <S.CreatAt>{formatDate(createdAt)}</S.CreatAt>
         </S.Info>
         <S.Contents>
-          <S.TextBox $font={fonts}>{content}</S.TextBox>
+          <S.TextBox $font={fonts} ref={messageBox} />
         </S.Contents>
         <S.Buttons>
           <S.Button onClick={onCloseMessage}>확인</S.Button>
