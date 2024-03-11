@@ -61,7 +61,7 @@ function PaperHeader() {
         <ViewReactionsButton />
 
         <OutlinedEmojiButton />
-        <OutlinedShareBtn />
+        <OutlinedShareBtn emojiCount={topReactions} />
         <DeleteButton onOpenModal={handleOpenModal} />
       </S.PaperUtility>
     </S.PaperHeader>
