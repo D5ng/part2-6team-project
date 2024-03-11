@@ -8,11 +8,12 @@ import { PaperContext } from '@Pages/paper/context/PaperContext';
 import useModal from 'hooks/useModal';
 import { DELETE_PAPER_MESSAGE } from 'service/message';
 import * as Portal from '@Components/portal';
+import FONT_STYLE from 'utils/font';
 import DeleteModal from './DeleteModal';
 import Backdrop from './Backdrop';
 
 function Modal({ onCloseMessage, modalData, layoutId }) {
-  const { sender, content, createdAt, profileImageURL, relationship, fonts, id } = modalData;
+  const { sender, content, createdAt, profileImageURL, relationship, font, id } = modalData;
   const { messageFetchRequest } = useContext(PaperContext);
   const { modalState, handleOpenModal, handleCloseModal } = useModal();
 
@@ -77,7 +78,7 @@ function Modal({ onCloseMessage, modalData, layoutId }) {
           <S.CreatAt>{formatDate(createdAt)}</S.CreatAt>
         </S.Info>
         <S.Contents>
-          <S.TextBox $font={fonts} ref={messageBox} />
+          <S.TextBox $font={FONT_STYLE[font]} ref={messageBox} />
         </S.Contents>
         <S.Buttons>
           <S.Button onClick={onCloseMessage}>확인</S.Button>

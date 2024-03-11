@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import FONT_STYLE from 'utils/font';
 import * as S from './PreviewCard.style';
 
 const BADGE_STYLE = {
@@ -19,12 +20,7 @@ const BADGE_STYLE = {
     textColor: 'var(--blue500)',
   },
 };
-const FONT_STYLE = {
-  'Noto Sans': 'Noto Sans KR',
-  Pretendard: 'Pretendard',
-  나눔명조: 'Nanum Myeongjo',
-  '나눔손글씨 손편지체': 'Nanum Brush Script',
-};
+
 const DATE = new Date();
 const TODAY = `${DATE.getFullYear()}.${DATE.getMonth() + 1}.${DATE.getDate()}`;
 function PreviewCard({ information }) {
