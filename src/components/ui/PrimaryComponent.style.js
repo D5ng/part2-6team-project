@@ -22,7 +22,6 @@ export const PrimaryLink = styled(Link)`
   height: 56px;
   font-size: 18px;
   border-radius: 12px;
-  margin-left: auto;
   margin-right: auto;
   position: relative;
   overflow: hidden;
