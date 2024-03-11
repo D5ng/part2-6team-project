@@ -6,20 +6,25 @@ import createReactions from '@Pages/paper/api';
 
 function ReactionModal() {
   const { updateEmoji } = useContext(PaperHeaderContext);
-
   const { recipientsId } = useParams();
-  const handleEmojiClick = async (emoji) => {
-    try {
-      const data = {
-        type: 'increase',
-        emoji: emoji.emoji,
-      };
+  let timeout = 0;
 
-      await createReactions(recipientsId, data);
-      updateEmoji(emoji.emoji);
-    } catch (error) {
-      console.error('이모지 전송 실패:', error);
-    }
+  const handleEmojiClick = async (emoji) => {
+    if (timeout) return;
+
+    timeout = setTimeout(async () => {
+      try {
+        const data = {
+          type: 'increase',
+          emoji: emoji.emoji,
+        };
+
+        await createReactions(recipientsId, data);
+        updateEmoji(emoji.emoji);
+      } catch (error) {
+        console.error('이모지 전송 실패:', error);
+      }
+    }, 300);
   };
 
   return <EmojiPicker style={{ zIndex: '9999' }} onEmojiClick={handleEmojiClick} />;
