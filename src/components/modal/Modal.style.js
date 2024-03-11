@@ -104,6 +104,7 @@ export const TextBox = styled.div`
   word-wrap: break-word;
   font-family: ${({ $font }) => fontsMapping[$font] || 'Pretendard'};
   flex: 1;
+  scrollbar-width: thin;
 
   &::-webkit-scrollbar {
     width: 4px;
