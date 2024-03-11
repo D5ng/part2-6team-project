@@ -32,20 +32,13 @@ export const ProfileImgBox = styled.div`
   }
 `;
 
-export const ProfileImgListWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  flex: 1;
-`;
-
 export const ProfileListTitle = styled.h2`
   font-size: 16px;
   font-weight: 400;
   color: var(--gray500);
-
+  margin-bottom: 12px;
   @media ${device.mobile} {
     text-align: center;
-    font-size: 10px;
+    font-size: 14px;
   }
 `;

@@ -119,10 +119,10 @@ function MessageForm() {
         <S.InputTitle>프로필 이미지</S.InputTitle>
         <S.ProfileImgBox>
           <PreviewImg currentImg={inputInformation.profileImageURL} />
-          <S.ProfileImgListWrap>
+          <S.Wrapper>
             <S.ProfileListTitle>프로필 이미지를 선택해주세요!</S.ProfileListTitle>
             <ProfileImgList unsplashImageState={unsplashImageState} openModal={handleOpenModal} dispatch={dispatch} />
-          </S.ProfileImgListWrap>
+          </S.Wrapper>
         </S.ProfileImgBox>
       </S.Wrapper>
       <S.Wrapper>
