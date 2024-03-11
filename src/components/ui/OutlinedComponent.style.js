@@ -51,13 +51,19 @@ export const Wrap = styled.div`
   background: var(--white);
   position: absolute;
   top: calc(100% + 12px);
-  right: -10px;
+  right: 0px;
+  @media ${device.tablet} {
+    right: 15px;
+  }
 `;
 export const EmojiChoiceBox = styled.div`
   visibility: ${({ hidden }) => (hidden ? 'hidden' : 'visible')};
   position: absolute;
   top: calc(100% + 12px);
-  right: -1px;
+  right: 0px;
+  @media ${device.tablet} {
+    right: 15px;
+  }
 `;
 export const ShareOption = styled.button`
   width: 138px;
