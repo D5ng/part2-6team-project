@@ -62,6 +62,7 @@ const Button = styled.button`
 
   &.swiper-button-disabled {
     opacity: 0.5;
+    cursor: not-allowed;
   }
 
   @media ${device.tablet} {

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Virtual } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import * as S from '@List/components/Paper.style';
@@ -20,8 +20,9 @@ function PopularPaper({ papers }) {
           nextEl: navigationNextRef.current,
         }}
         breakpoints={breakPoints}
-        modules={[Navigation]}
+        modules={[Navigation, Virtual]}
         className="mySwiper"
+        virtual
       >
         {papers.map((list) => (
           <S.StyledSlide key={list.id}>
