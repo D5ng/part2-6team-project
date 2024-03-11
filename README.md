@@ -110,7 +110,7 @@
   ex ) user_content_cache_topic
 - Topic Branch의 커밋은 기능이 완성되지 않았더라도 팀원들간 원할한 소통을 위해 꾸준히 Push합니다.
 - 새로운 기능을 개발하기 위해 Topic Branch를 생성하기전 Develop Branch에서 Pull을 해야합니다. 
-
+- 해당 Branch에서 기능개발을 완료 후 PR이 승인되어 develop에 merge되면 remote 저장소에 있는  해당 기능 Branch는 삭제해야 합니다.
 
 
 
