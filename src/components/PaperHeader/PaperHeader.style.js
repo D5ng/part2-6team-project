@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { device } from 'styles/breakpoints';
 
 export const PaperHeader = styled.nav`
+  position: relative;
   width: 100%;
   max-width: 1200px;
   height: 68px;
@@ -30,6 +31,7 @@ export const RecipientName = styled.h1`
   font-weight: 700;
   line-height: 42px;
   @media ${device.mobile} {
+    font-size: 25px;
     width: 100%;
     min-width: 384px;
     height: 52px;
@@ -42,12 +44,10 @@ export const RecipientName = styled.h1`
 export const PaperUtility = styled.div`
   display: flex;
   align-items: center;
-  position: relative;
   margin-left: auto;
 
   @media ${device.mobile} {
     justify-content: flex-end;
-    min-width: 400px;
     width: 100%;
     padding: 12px 20px;
     height: 52px;

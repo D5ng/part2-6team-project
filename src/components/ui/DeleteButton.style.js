@@ -14,6 +14,9 @@ export const DeleteButton = styled.button`
   }
   @media ${device.mobile} {
     padding: 6px 8px;
+    position: absolute;
+    top: 8px;
+    right: 20px;
   }
 `;
 

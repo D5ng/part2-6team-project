@@ -17,7 +17,6 @@ function getColorPattenr(color) {
 
 function PaperCard({ list }) {
   const navigate = useNavigate();
-
   const { id, backgroundColor, backgroundImageURL } = list;
   const backgroundColorData = getColor(backgroundColor);
   const backgroundPatternData = getColorPattenr(backgroundColor);
