@@ -77,7 +77,7 @@
    + hooks : 각 페이지에 사용된 커스텀 훅을 담는 폴더
    + pages : 각 페이지를 담는 폴더
    + reducer : 데이터를 전역적으로 관리하기 위한 폴더
-   + service :
+   + service : unsplash API에 관련된 함수가 담긴 폴더
    + styles : 전역적인 styled가 담긴 폴더
    + utils : 자주 사용되는 로직을 담는 폴더
   
