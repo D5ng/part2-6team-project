@@ -120,7 +120,13 @@ function MessageForm() {
         <S.ProfileImgBox>
           <PreviewImg currentImg={inputInformation.profileImageURL} />
           <S.Wrapper>
-            <S.ProfileListTitle>프로필 이미지를 선택해주세요!</S.ProfileListTitle>
+            <S.ProfileListTitle>
+              {!unsplashFetchRequest.hasError ? (
+                <S.OverRequestMessage> 지금은 이미지를 사용할 수 없어요 😂</S.OverRequestMessage>
+              ) : (
+                ' 프로필 이미지를 선택해주세요!'
+              )}
+            </S.ProfileListTitle>
             <ProfileImgList unsplashImageState={unsplashImageState} openModal={handleOpenModal} dispatch={dispatch} />
           </S.Wrapper>
         </S.ProfileImgBox>

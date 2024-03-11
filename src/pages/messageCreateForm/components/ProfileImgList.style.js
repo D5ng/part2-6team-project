@@ -24,6 +24,7 @@ export const ListItem = styled.li`
   isolation: isolate;
   &:last-child {
     overflow: visible;
+    visibility: ${({ $visible }) => ($visible ? 'visible' : 'hidden')};
   }
   @media ${device.mobile} {
     max-width: 60px;

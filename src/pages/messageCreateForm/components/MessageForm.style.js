@@ -32,7 +32,7 @@ export const ProfileImgBox = styled.div`
   }
 `;
 
-export const ProfileListTitle = styled.h2`
+export const ProfileListTitle = styled.p`
   font-size: 16px;
   font-weight: 400;
   color: var(--gray500);
@@ -41,4 +41,9 @@ export const ProfileListTitle = styled.h2`
     text-align: center;
     font-size: 14px;
   }
+`;
+
+export const OverRequestMessage = styled.span`
+  color: var(--error);
+  font-size: 16px;
 `;
