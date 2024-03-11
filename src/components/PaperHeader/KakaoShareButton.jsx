@@ -23,13 +23,14 @@ function KakaoShareButton() {
   }, []);
 
   const handleKakaoShare = () => {
-    const createRollingPaperUrl = window.location.href.slice(0, window.location.href.indexOf('post') + 3);
+    const createRollingPaperUrl = window.location.href.slice(0, window.location.href.indexOf('post') + 4);
     window.Kakao.Link.sendDefault({
       objectType: 'feed',
       content: {
         title: 'Rolling Paper',
         description: '롤링 페이퍼를 작성해 보세요!!😊',
-        imageUrl: '/images/home/home-manual-2.png',
+        // eslint-disable-next-line prefer-template
+        imageUrl: process.env.PUBLIC_URL + '/images/home/home-manual-2.png',
         link: {
           mobileWebUrl: window.location.href,
           webUrl: window.location.href,
