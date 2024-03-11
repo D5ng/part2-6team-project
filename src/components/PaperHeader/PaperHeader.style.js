@@ -34,12 +34,10 @@ export const RecipientName = styled.h1`
     padding-right: 100px;
     font-size: 22px;
     width: 100%;
-    min-width: 384px;
     height: 52px;
     padding: 12px 125px 12px 35px;
     display: flex;
     align-items: center;
-    min-width: 430px;
   }
 `;
 

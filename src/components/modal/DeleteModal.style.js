@@ -68,7 +68,7 @@ export const Button = styled.button`
   background: rgba(0, 0, 0, 0.1);
   font-weight: 500;
   @media ${device.mobile} {
-    width: 110px;
+    width: 120px;
   }
 `;
 export const DeleteButton = styled(Button)`
