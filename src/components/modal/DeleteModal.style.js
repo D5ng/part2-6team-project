@@ -81,4 +81,7 @@ export const DeleteButton = styled(Button)`
 export const ButtonWrapper = styled.div`
   display: flex;
   gap: 20px;
+  @media ${device.mobile} {
+    gap: 10px;
+  }
 `;

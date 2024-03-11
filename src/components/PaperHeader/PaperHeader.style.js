@@ -25,19 +25,22 @@ export const PaperHeader = styled.nav`
 `;
 
 export const RecipientName = styled.h1`
+  border: 1px solid red;
   color: var(--gray800);
   font-size: 28px;
   font-style: normal;
   font-weight: 700;
   line-height: 42px;
   @media ${device.mobile} {
-    font-size: 25px;
+    padding-right: 100px;
+    font-size: 22px;
     width: 100%;
     min-width: 384px;
     height: 52px;
-    padding: 12px 35px;
+    padding: 12px 125px 12px 35px;
     display: flex;
     align-items: center;
+    min-width: 430px;
   }
 `;
 
