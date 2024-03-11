@@ -9,7 +9,7 @@ export const BackgroundOptions = styled.ul`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 12px;
-    padding: 28px 0 80px;
+    padding: 28px 0 30px;
   }
 `;
 

@@ -15,6 +15,7 @@ function App() {
             <Route index element={<Page.Home />} />
             <Route path="post" element={<Page.FormCreatePage />} />
             <Route path="list" element={<Page.RollingList />} />
+            <Route path="posts" element={<Page.Posts />} />
             <Route path="post/:id/message" element={<Page.MessageCreate />} />
             <Route path="post/:recipientsId" element={<Page.Paper />} />
             <Route path="*" element={<NotFound />} />

@@ -18,3 +18,8 @@ export function getRecentPapers() {
 export function getPopularPapers() {
   return fetchData(BASE_URL, '/4-6/recipients/?limit=8&sort=like');
 }
+
+// 인기순 8개 (이모지 수 기준)
+export function getAllPapers() {
+  return fetchData(BASE_URL, '/4-6/recipients/?limit=1000');
+}

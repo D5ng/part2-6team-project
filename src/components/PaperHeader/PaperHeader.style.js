@@ -31,6 +31,7 @@ export const RecipientName = styled.h1`
   font-weight: 700;
   line-height: 42px;
   @media ${device.mobile} {
+    font-size: 25px;
     width: 100%;
     min-width: 384px;
     height: 52px;
@@ -47,7 +48,6 @@ export const PaperUtility = styled.div`
 
   @media ${device.mobile} {
     justify-content: flex-end;
-    min-width: 400px;
     width: 100%;
     padding: 12px 20px;
     height: 52px;

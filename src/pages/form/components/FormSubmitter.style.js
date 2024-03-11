@@ -3,6 +3,7 @@ import { device } from 'styles/breakpoints';
 
 export const Wrapper = styled.form`
   margin-top: 50px;
+  margin-bottom: 100px;
   @media ${device.mobile} {
     padding: 0 20px;
     width: 100%;
