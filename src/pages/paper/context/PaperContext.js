@@ -19,6 +19,8 @@ export function PaperContextProvider({ children }) {
     reactionFetchRequest({ url: API.getreactions(recipientsId) });
   }, []);
 
+  console.log(modalState.isOpen);
+
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const constextValue = {
     paperState,
