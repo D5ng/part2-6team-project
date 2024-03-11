@@ -1,5 +1,5 @@
 /* eslint-disable no-new */
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import * as S from '@Paper/components/RollingPaperList.style';
 import PlusIcon from '@Components/ui/PlusIcon';
 import { PaperContext } from '@Paper/context/PaperContext';
