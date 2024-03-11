@@ -11,6 +11,9 @@ import DeleteButton from '@Components/ui/DeleteButton';
 import DeleteModal from '@Components/modal/DeleteModal';
 import Backdrop from '@Components/modal/Backdrop';
 import { createPortal } from 'react-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { deletePaper } from '@Pages/form/api';
+import useModal from 'hooks/useModal';
 import MessageCount from './MessageCount';
 import { PaperHeaderContext } from './context/PaperHeaderContext';
 
@@ -18,12 +21,18 @@ function PaperHeader() {
   const { paperState } = useContext(PaperContext);
   const { topReactions, fetchRequest } = useContext(PaperHeaderContext);
   const { isLoading } = paperState;
-  const [active, setActive] = useState(false);
+  const { modalState, handleOpenModal, handleCloseModal } = useModal();
+
+  const { recipientsId } = useParams();
+  const navigate = useNavigate();
 
   const recipientName = paperState?.data?.name;
 
-  const handleOpenModal = () => setActive(true);
-  const handleCloseModal = () => setActive(false);
+  const deletePaperRequest = async () => {
+    await deletePaper(recipientsId);
+    handleOpenModal();
+    navigate('/list', { replace: true });
+  };
 
   useEffect(() => {
     fetchRequest();
@@ -35,14 +44,18 @@ function PaperHeader() {
 
   const backdrop = createPortal(<Backdrop onCloseModal={handleCloseModal} />, document.getElementById('backdrop-root'));
   const modal = createPortal(
-    <DeleteModal onCloseModal={handleCloseModal} paperState={paperState} />,
+    <DeleteModal
+      onCloseModal={handleCloseModal}
+      onDeleteEvent={deletePaperRequest}
+      deleteMessage={`${paperState.data?.name} 님의 페이퍼 삭제`}
+    />,
     document.getElementById('modal-root'),
   );
 
   return (
     <S.PaperHeader>
-      {active && backdrop}
-      {active && modal}
+      {modalState.isOpen && backdrop}
+      {modalState.isOpen && modal}
       {paperState?.data?.name && (
         <MetaTag
           title={`롤링 페이퍼 - ${paperState?.data?.name}의 페이퍼`}

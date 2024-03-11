@@ -9,7 +9,7 @@ function CardContent({ list }) {
       <S.CardContentWrapper>
         <div>
           <h2>
-            To.
+            To.&nbsp;
             {name}
           </h2>
           <ImageGallery imageArray={recentMessages?.map((item) => item.profileImageURL)} imageCount={messageCount} />

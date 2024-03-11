@@ -18,7 +18,7 @@ export const Backdrop = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100;
+  z-index: 80;
   background: rgba(0, 0, 0, 0.5);
 `;
 

@@ -1,30 +1,53 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import * as S from '@Components/modal/Modal.style';
 import BadgeRelationship from '@Components/ui/BadgeRelationship';
 import formatDate from 'utils/format';
 import useKeyEvent from 'hooks/useKeyEvent';
 import { createPortal } from 'react-dom';
 import { PaperContext } from '@Pages/paper/context/PaperContext';
+import useModal from 'hooks/useModal';
+import { DELETE_PAPER_MESSAGE } from 'service/message';
+import * as Portal from '@Components/portal';
 import DeleteModal from './DeleteModal';
+import Backdrop from './Backdrop';
 
-function Modal({ onCloseModal, modalData, layoutId, onSelectedMessage }) {
-  const { sender, content, createdAt, profileImageURL, relationship, fonts } = modalData;
-  const { paperState } = useContext(PaperContext);
-  const [active, setActive] = useState(false);
-  useKeyEvent((key) => (key === 'Escape' || key === 'Enter') && onCloseModal());
+function Modal({ onCloseMessage, modalData, layoutId }) {
+  const { sender, content, createdAt, profileImageURL, relationship, fonts, id } = modalData;
+  const { messageFetchRequest } = useContext(PaperContext);
+  const { modalState, handleOpenModal, handleCloseModal } = useModal();
+
+  useKeyEvent((key) => (key === 'Escape' || key === 'Enter') && onCloseMessage());
   const backdropRef = useRef(null);
+
   const messageBox = useRef(null);
   const handleOpenModal = () => setActive(true);
   const handleCloseModal = () => setActive(false);
+
+
+  const deleteMessageRequest = async () => {
+    await messageFetchRequest({
+      url: DELETE_PAPER_MESSAGE(id),
+      options: { method: 'DELETE' },
+      id,
+    });
+
+    onCloseMessage();
+    handleCloseModal();
+  };
+
+
   const modal = createPortal(
-    <DeleteModal onCloseModal={handleCloseModal} paperState={paperState} modalData={modalData} />,
+    <DeleteModal
+      onCloseModal={handleCloseModal}
+      modalId={id}
+      deleteMessage={`${sender} 님의 메시지 삭제`}
+      onDeleteEvent={deleteMessageRequest}
+    />,
     document.getElementById('modal-root'),
   );
 
-  const onClick = () => onSelectedMessage(null);
-
   const backdropHandler = (event) => {
-    if (event.target === backdropRef.current) onSelectedMessage(null);
+    if (event.target === backdropRef.current) onCloseMessage();
   };
 
   useEffect(() => {
@@ -33,9 +56,12 @@ function Modal({ onCloseModal, modalData, layoutId, onSelectedMessage }) {
     return () => document.removeEventListener('click', backdropHandler);
   }, []);
 
+  const backdrop = Portal.Backdrop(<Backdrop onCloseModal={handleCloseModal} />);
+
   return (
     <S.Backdrop ref={backdropRef}>
-      {active && modal}
+      {modalState.isOpen && backdrop}
+      {modalState.isOpen && modal}
       <S.Container
         layoutId={layoutId}
         transition={{
@@ -60,7 +86,7 @@ function Modal({ onCloseModal, modalData, layoutId, onSelectedMessage }) {
           <S.TextBox $font={fonts} ref={messageBox} />
         </S.Contents>
         <S.Buttons>
-          <S.Button onClick={onClick}>확인</S.Button>
+          <S.Button onClick={onCloseMessage}>확인</S.Button>
           <S.EditButton>수정 할래요</S.EditButton>
           <S.DeleteButton onClick={handleOpenModal}>삭제 할래요</S.DeleteButton>
         </S.Buttons>

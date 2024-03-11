@@ -9,7 +9,10 @@ const httpReducerMapping = {
     isLoading: false,
   }),
   ERROR: (state, action) => ({ ...state, isLoading: false, hasError: action.message }),
-  DELETE: (state, action) => ({ ...state, data: { ...state.data, results: [...action.data] }}),
+  DELETE: (state, action) => {
+    const result = state.data.results.filter((messageData) => messageData.id !== action.id);
+    return { ...state, data: { ...state.data, results: result } };
+  },
 };
 
 export const httpActionType = {
