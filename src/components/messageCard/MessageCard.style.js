@@ -59,6 +59,7 @@ export const Text = styled.div`
   -webkit-line-clamp: 4;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  font-family: ${({ $font }) => $font};
 `;
 
 export const Date = styled.span`

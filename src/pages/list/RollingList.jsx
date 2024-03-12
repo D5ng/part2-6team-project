@@ -5,7 +5,6 @@ import * as S from '@List/RollingList.style';
 import PrimaryLink from '@Components/ui/PrimaryLink';
 import { getPopularPapers, getRecentPapers } from '@List/api/api';
 import MetaTag from '@Pages/SEOMetaTag';
-import { Link } from 'react-router-dom';
 import SkeletonList from './components/SkeletonUI';
 
 function RollingList() {

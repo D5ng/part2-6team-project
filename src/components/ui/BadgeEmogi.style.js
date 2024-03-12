@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 import { device } from 'styles/breakpoints';
 
-export const BadgeContainer = styled.div`
-  display: ${({ $isGrid }) => ($isGrid ? 'grid' : 'flex')};
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-`;
 export const BadgeBox = styled.div`
   height: 36px;
   display: flex;
@@ -33,5 +28,7 @@ export const BadgeCount = styled.span`
 `;
 
 export const NoEmogiText = styled.p`
-  width: 150px;
+  width: 155px;
+  grid-column: 1 / 5;
+  text-align: center;
 `;

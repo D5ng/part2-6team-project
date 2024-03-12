@@ -17,17 +17,21 @@ export const ProfileImgList = styled.ul`
 export const ListItem = styled.li`
   width: 56px;
   aspect-ratio: 1/1;
-  border-radius: 100px;
+  border-radius: 50%;
   overflow: hidden;
+  isolation: isolate;
   cursor: pointer;
+  isolation: isolate;
   &:last-child {
     overflow: visible;
+    visibility: ${({ $visible }) => ($visible ? 'visible' : 'hidden')};
   }
   @media ${device.mobile} {
     max-width: 60px;
     width: 100%;
   }
 `;
+
 export const ProfileImg = styled.img`
   width: 100%;
   transition: 0.5s;
@@ -40,7 +44,7 @@ export const ProfileImg = styled.img`
 export const SearchBtb = styled.button`
   width: 56px;
   height: 56px;
-  border-radius: 100px;
+  border-radius: 50%;
   background-color: var(--gray300);
   padding: 8px;
   position: relative;

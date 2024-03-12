@@ -11,6 +11,7 @@ export const Categories = styled.ul`
     margin: 10px 0;
     grid-template-columns: repeat(4, calc(110px - 5px));
     overflow-x: scroll;
+    scrollbar-width: thin;
 
     &::-webkit-scrollbar {
       width: 10px;

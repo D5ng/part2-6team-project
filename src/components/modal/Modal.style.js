@@ -2,13 +2,6 @@ import styled from 'styled-components';
 import { device } from 'styles/breakpoints';
 import { motion } from 'framer-motion';
 
-const fontsMapping = {
-  Pretendard: 'Pretendard',
-  NanumMyeongjo: 'NanumMyeongjo',
-  NotoSansKR: 'NotoSansKR',
-  NanumBaeEunHyeCe: 'NanumBaeEunHyeCe',
-};
-
 export const Backdrop = styled.div`
   position: fixed;
   left: 0;
@@ -28,24 +21,21 @@ export const Container = styled(motion.div)`
   display: flex;
   flex-direction: column;
   width: 600px;
-  height: 476px;
+  height: 410px;
   border-radius: 16px;
   box-shadow: 0px 2px 8px 0px rgba(51, 50, 54, 0.1);
   @media ${device.mobile} {
-    width: 80%;
+    width: 90%;
     padding: 20px;
   }
 `;
 
 export const Info = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   padding-bottom: 19px;
   border-bottom: 1px solid var(--gray200);
-  @media ${device.mobile} {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 `;
 
 export const Profile = styled.div`
@@ -84,9 +74,7 @@ export const CreatAt = styled.span`
   line-height: 20px;
   margin-left: auto;
   @media ${device.mobile} {
-    position: absolute;
-    bottom: 85px;
-    right: 40px;
+    display: none;
   }
 `;
 
@@ -99,7 +87,7 @@ export const Contents = styled.div`
 
 export const TextBox = styled.div`
   width: 100%;
-  padding: 16px 20px 0px 0px;
+  padding: 16px 0px 0px 0px;
   color: #5a5a5a;
   font-size: 18px;
   font-style: normal;
@@ -107,8 +95,9 @@ export const TextBox = styled.div`
   line-height: 28px;
   overflow-y: scroll;
   word-wrap: break-word;
-  font-family: ${({ $font }) => fontsMapping[$font] || 'Pretendard'};
+  font-family: ${({ $font }) => $font};
   flex: 1;
+  scrollbar-width: thin;
 
   &::-webkit-scrollbar {
     width: 4px;
@@ -118,6 +107,10 @@ export const TextBox = styled.div`
   &::-webkit-scrollbar-thumb {
     background-color: var(--gray300);
     border-radius: 10px;
+  }
+
+  @media ${device.mobile} {
+    max-height: 200px;
   }
 `;
 export const Button = styled.button`
@@ -149,10 +142,6 @@ export const EditButton = styled(Button)`
 
 export const DeleteButton = styled(Button)`
   background: var(--error);
-  position: absolute;
-  right: 0;
-  top: 0;
-
   &:hover {
     background: var(--error500);
   }
@@ -161,6 +150,7 @@ export const DeleteButton = styled(Button)`
 export const Buttons = styled.div`
   margin-top: 24px;
   display: flex;
+  justify-content: center;
   gap: 10px;
   position: relative;
 `;

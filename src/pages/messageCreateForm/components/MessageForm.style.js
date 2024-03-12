@@ -9,7 +9,7 @@ export const Form = styled.form`
   gap: 50px;
   @media ${device.tablet} {
     width: 100%;
-    margin-bottom: 300px;
+    margin-bottom: 100px;
   }
 `;
 export const Wrapper = styled.div``;
@@ -32,27 +32,18 @@ export const ProfileImgBox = styled.div`
   }
 `;
 
-export const ProfileImgListWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  flex: 1;
-`;
-
-export const ProfileListTitle = styled.h2`
+export const ProfileListTitle = styled.p`
   font-size: 16px;
   font-weight: 400;
   color: var(--gray500);
+  margin-bottom: 12px;
   @media ${device.mobile} {
     text-align: center;
-    font-size: 10px;
+    font-size: 14px;
   }
 `;
 
-export const ValidMessage = styled.p`
-  font-size: 12px;
-  color: red;
-  font-weight: bold;
-  margin-bottom: 8px;
-  min-height: 12px;
+export const OverRequestMessage = styled.span`
+  color: var(--error);
+  font-size: 16px;
 `;

@@ -1,7 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { Navigation } from 'swiper/modules';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
+
 import * as S from '@List/components/Paper.style';
 import breakPoints from '@List/utils/swiper.breakpoints';
 import PaperCard from '@Components/paperCard/PaperCard';

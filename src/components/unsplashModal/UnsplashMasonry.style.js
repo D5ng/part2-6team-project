@@ -5,6 +5,8 @@ export const ImageList = styled.div`
   margin: 20px 0;
   height: 60vh;
   overflow-y: auto;
+  scrollbar-width: thin;
+
   &::-webkit-scrollbar {
     width: 10px;
     height: 80px;

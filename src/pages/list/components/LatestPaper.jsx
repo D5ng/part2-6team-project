@@ -1,7 +1,10 @@
 import React, { useRef, useState } from 'react';
 import { Navigation } from 'swiper/modules';
+
 import 'swiper/css';
+import 'swiper/css/virtual';
 import 'swiper/css/navigation';
+
 import * as S from '@List/components/Paper.style';
 import breakPoints from '@List/utils/swiper.breakpoints';
 import PaperCard from '@Components/paperCard/PaperCard';
@@ -20,8 +23,8 @@ function PopularPaper({ papers }) {
           nextEl: navigationNextRef.current,
         }}
         breakpoints={breakPoints}
-        modules={[Navigation]}
         className="mySwiper"
+        modules={[Navigation]}
       >
         {papers.map((list) => (
           <S.StyledSlide key={list.id}>

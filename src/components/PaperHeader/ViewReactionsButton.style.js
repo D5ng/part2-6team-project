@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from 'styles/breakpoints';
 
 export const ViewReactionsContainer = styled.div`
   position: relative;
@@ -26,9 +27,14 @@ export const ReactionsWrapper = styled.div`
   background: var(--white);
   position: absolute;
   top: calc(100% + 12px);
-  right: 20px;
+  right: 10px;
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  grid-column-gap: 8px;
+  grid-row-gap: 8px;
+
+  @media ${device.mobile} {
+    right: -40px;
+  }
 `;

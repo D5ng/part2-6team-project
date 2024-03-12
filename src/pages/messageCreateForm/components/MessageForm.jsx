@@ -79,6 +79,7 @@ function MessageForm() {
         navigate(`/post/${params.id}`);
       });
     } catch (error) {
+      // eslint-disable-next-line no-alert
       alert(error);
     } finally {
       setIsLoading(false);
@@ -103,18 +104,13 @@ function MessageForm() {
   const disabled = !(messageLength !== 1 && inputInformation.sender) || isLoading || !isCapcha;
   const backdrop = Portal.Backdrop(<Backdrop onCloseModal={handleCloseModal} />);
   const modal = Portal.Modal(<UnsplashModal onCloseModal={handleCloseModal} unsplashImageState={unsplashImageState} />);
-  const validMessage = formValidCheck({
-    '이름을 입력해주세요': inputInformation.sender,
-    '메세지를 입력해주세요': messageLength !== 1,
-    '봇이 아님을 체크해주세요': isCapcha,
-  });
 
   return (
     <S.Form onSubmit={submitForm}>
       {modalState.isOpen && backdrop}
       {modalState.isOpen && modal}
       <S.Wrapper>
-        <S.InputTitle>From.{inputInformation.sender}</S.InputTitle>
+        <S.InputTitle>From. {inputInformation.sender}</S.InputTitle>
         <Input onChange={handleOnChangeInput} value={inputInformation.sender}>
           이름을 입력해 주세요
         </Input>
@@ -123,10 +119,16 @@ function MessageForm() {
         <S.InputTitle>프로필 이미지</S.InputTitle>
         <S.ProfileImgBox>
           <PreviewImg currentImg={inputInformation.profileImageURL} />
-          <S.ProfileImgListWrap>
-            <S.ProfileListTitle>프로필 이미지를 선택해주세요!</S.ProfileListTitle>
+          <S.Wrapper>
+            <S.ProfileListTitle>
+              {unsplashFetchRequest.hasError ? (
+                <S.OverRequestMessage> 지금은 이미지를 사용할 수 없어요 😂</S.OverRequestMessage>
+              ) : (
+                ' 프로필 이미지를 선택해주세요!'
+              )}
+            </S.ProfileListTitle>
             <ProfileImgList unsplashImageState={unsplashImageState} openModal={handleOpenModal} dispatch={dispatch} />
-          </S.ProfileImgListWrap>
+          </S.Wrapper>
         </S.ProfileImgBox>
       </S.Wrapper>
       <S.Wrapper>
@@ -146,10 +148,8 @@ function MessageForm() {
         <PreviewCard information={inputInformation} />
       </S.Wrapper>
       <ReCAPTCHA ref={recaptcha} onChange={handleCapcha} sitekey={process.env.REACT_APP_SITEKEY} />
-      <S.Wrapper>
-        <S.ValidMessage>{validMessage}</S.ValidMessage>
-        <PrimaryCreateBtn disabled={disabled}>{isLoading ? <Loading /> : '생성하기'}</PrimaryCreateBtn>
-      </S.Wrapper>
+
+      <PrimaryCreateBtn disabled={disabled}>{isLoading ? <Loading /> : '생성하기'}</PrimaryCreateBtn>
     </S.Form>
   );
 }

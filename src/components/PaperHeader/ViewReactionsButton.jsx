@@ -34,7 +34,7 @@ function ViewReactionsButton() {
       </S.ViewReactionsButton>
 
       <S.ReactionsWrapper hidden={isHidden} ref={wrapRef}>
-        <BadgeEmogi emojis={emojis} $isGrid />
+        <BadgeEmogi emojis={emojis} />
       </S.ReactionsWrapper>
     </S.ViewReactionsContainer>
   );
