@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { forwardRef } from 'react';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
@@ -29,13 +30,25 @@ function UnsplashMasonry(props, ref) {
         <Masonry gutter="10px">
           {isLoading && <Loading size={50} color="black" />}
           {imageList?.map((image) => (
-            <S.ImageItem
-              key={image.id}
-              $isSelected={selectedItem === image.urls.regular}
-              onClick={handleBackgroundClick.bind(this, image.urls.regular)}
-            >
-              <S.Image src={image.urls.small} $aspectRatio={`${image.width} / ${image.height}`} alt="unsplash image" />
-            </S.ImageItem>
+            <li key={image.id}>
+              <S.ImageItem
+                $isSelected={selectedItem === image.urls.regular}
+                onClick={handleBackgroundClick.bind(this, image.urls.regular)}
+              >
+                <S.Image
+                  src={image.urls.small}
+                  $aspectRatio={`${image.width} / ${image.height}`}
+                  alt="unsplash image"
+                />
+              </S.ImageItem>
+              <S.Photographer
+                href={`https://unsplash.com/@${image?.user.username}?utm_source=Rolling&utm_medium=referral`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Photo by '{image?.user.username}'
+              </S.Photographer>
+            </li>
           ))}
           <S.Observer ref={observerRef} />
           <S.Observer ref={observerRef} />
