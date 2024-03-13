@@ -49,3 +49,9 @@ export const Image = styled.img`
 export const Observer = styled.div`
   height: 1px;
 `;
+
+export const Photographer = styled.a`
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--gray400);
+`;
